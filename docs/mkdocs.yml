@@ -1,2 +1,7 @@
 site_name: Sierra Plot
 theme: readthedocs
+
+nav:
+  - "Sierra Plot": "index.md"
+  - "Configuration Options": "configuration_options.md"
+  - "Examples": "examples.md"
