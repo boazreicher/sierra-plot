@@ -1,4 +1,4 @@
-# Sierra Plot panel for Grafana
+# Sierra Plot
 
 intro
 
