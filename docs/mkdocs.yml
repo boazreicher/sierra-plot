@@ -1,7 +1,10 @@
 site_name: Sierra Plot
 theme: readthedocs
+extra_css: [custom.css]
 
 nav:
   - "Sierra Plot": "index.md"
+  - "Data": "data.md"
   - "Configuration Options": "configuration_options.md"
+  - "Controls": "controls.md"
   - "Examples": "examples.md"
