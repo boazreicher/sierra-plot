@@ -72,8 +72,48 @@
 
 ## Labels
 
+| Name | Description |
+| ------------ | ------------- |
+| `Show Chart Labels` | Show or hide chart labels |
+| `Label Color` | Color for chart and group labels |
+| `Chart Label Size` | Size of chart labels |
+| `Chart Label Shift` | Shift chart labels horizontally (away from the charts) |
+| `Group Label Size` | Size of group labels |
+
+## Markers
+*Markers are indicators (when hovering over) of the timestamp and value of each series data point*
+
+!!! warning inline
+
+    Enabling markers in plots that have a very high number of data points might have performance implications
+
+| Name | Description |
+| ------------ | ------------- |
+| `Mode` | <ul><li>`Disable`: Markers aren't drawn</li><li>`Hidden`: Markers are present (tooltip on mouse over) but are hidden</li><li>`Visible`: Markers are visible as dots on each series data point</li></ul> |
+| `Show Chart Labels` | Show or hide chart labels |
+| `Show Chart Labels` | Show or hide chart labels |
+
 ## Fog
+
+| Name | Description |
+| ------------ | ------------- |
+| `Show Fog` | Show or hide fog |
+| `Fog Height` | Fog height, as a percentage of each chart's height |
+| `Fog Color` | Color for fog (supports transparency) |
 
 ## Transitions
 
+| Name | Description |
+| ------------ | ------------- |
+| `Type` | <ul><li>`None`: Disable transitions</li><li>`Cycle Groups`: Highlight a new group every `Period` milliseconds</li><li>`Cycle Charts`: Highlight a new chart every `Period` milliseconds</li></ul> |
+| `Period` | Cycle duration in milliseconds |
+
 ## Gridlines
+
+| Name | Description |
+| ------------ | ------------- |
+| `Show` | Show or hide vertical gridlines |
+| `Width` | Width of the vertical gridlines |
+| `Ticks` | Number of vertical gridlines |
+| `Color` | Color for vertical gridlines|
+| `Position` | <ul><li>`Below Charts`: Position gridlines under the charts</li><li>`Aboce Chart`: Position gridlines above the charts</li></ul> |

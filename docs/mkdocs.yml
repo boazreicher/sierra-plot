@@ -1,9 +1,15 @@
 site_name: Sierra Plot
 theme: readthedocs
 extra_css: [custom.css]
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc: {permalink: "#"}
 
 nav:
   - "Sierra Plot": "index.md"
+  - "Features": "features.md"
   - "Data": "data.md"
   - "Configuration Options": "configuration_options.md"
   - "Controls": "controls.md"
