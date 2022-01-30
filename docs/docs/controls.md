@@ -1,6 +1,6 @@
 # Controls
 
-Some [configuration options](configuration_options.md) can be controlled without editing the panel, via contols in the panel itself:
+Some [configuration options](configuration_options.md) can be controlled without editing the panel, via controls in the panel itself:
 
 
 | ID | Action | Comments |

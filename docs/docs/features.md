@@ -50,6 +50,7 @@ Clicking on the totals chart switches its stack mode from regular to stacked to 
 <br>
 ![Image title](/img/totals_drilldown_1.PNG)
 
+## Date Range Control
 
 ## Fog
 
