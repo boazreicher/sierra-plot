@@ -19,7 +19,7 @@
         "@grafana/toolkit": "^8.2.0",
         "@grafana/ui": "latest",
         "@types/d3": "^7.1.0",
-        "@types/react": "^17.0.30",
+        "@types/react": "^17.0.38",
         "emotion": "10.0.27",
         "grafana-plugin-support": "0.4.0"
     },
