@@ -37,6 +37,7 @@ A number of observations become apparent now:
 <li>A huge spike in <i>us-east-1</i> near the middle of the chart</li>
 <li>An unusual increase in request volume in <i>us-east-1</i> near the end of the chart</li>
 <li>An unusual increase in request volume in <i>us-east-2</i> near the end of the chart.  Around the same time as in  <i>us-east-1</i>, but much steeper</li>
+<li>In <i>eu-central-1</i> there were two servers which didn't get any traffic at all during most of the 48 hour period</li>
 </ol>
 
 #### I.I.II  Error Trend
@@ -143,4 +144,150 @@ The above observations might lead us to the following conclusions:
 <li>It doesn't seem like there was some clear issue in the first three servers, since they were still getting traffic and there wasn't an increase in errors</li>
 </ol>
 
-## II. Foo
+#### I.II.IV  Auto Scaling
+
+We noticed earlier that in <i>eu-central-1</i>, two servers didn't get any traffic at all during most of the 48 hour period
+<br>
+Let's focus on that region:
+![autoscaling 1](img/examples/servers_requests/autoscaling1.png)
+
+A number of observations become apparent now:
+<ol>
+<li>Two server (<i>ec1-0</i> & <i>ec1-1</i>) didn't get any requests at all, until Jan 01 at 10:00 PM</li>
+<li>At about the same time, two other servers (<i>ec1-2</i> & <i>ec1-3</i>) started seeing an increase in the number of requests</li>
+<li>At around 01:00 AM Jan 02, the number of requests to <i>ec1-2</i> & <i>ec1-3</i> seems to have plateaued</li>
+<li>At about the same time, the number of requests to <i>ec1-0</i> & <i>ec1-1</i> seems to have increased sharply</li>
+<li>After the load on <i>ec1-2</i> & <i>ec1-3</i> subsided, traffic was shifted away from <i>ec1-0</i> & <i>ec1-1</i> until they were pulled out of rotation completely</i>
+</ol>
+
+The above observations might lead us to the following conclusions:
+<ol>
+<li>When the load on <i>ec1-2</i> & <i>ec1-3</i> increased (and passed some threshold), some autoscaling mechanism was triggered</li>
+<li>The autoscaling mechanism added <i>ec1-0</i> & <i>ec1-1</i> into rotation and they started getting traffic</li>
+<li>At some point, <i>ec1-2</i> & <i>ec1-3</i> reached some capacity threshold, and the LB mechanism maintained that threshold</li>
+<li>Since <i>ec1-2</i> & <i>ec1-3</i> were saturated, the LB mechanism started offloading more traffic to  <i>ec1-0</i> & <i>ec1-1</i></li>
+<li>The asymmetry between the ramp up (fast) and ramp down (slow) of traffic to <i>ec1-0</i> & <i>ec1-1</i> might indicate some hysteresis element at play</li>
+</ol>
+
+Let's see if there was any noticeable effect on the amount of errors during that time:
+![autoscaling 2](img/examples/servers_requests/autoscaling2.png)
+
+A number of observations become apparent now:
+<ol>
+<li>During the sharp increase in the number of requests to <i>ec1-2</i> & <i>ec1-3</i>, the error rate in those two servers slightly increased (also noticeable in the total graph for the region)</li>
+<li>Once <i>ec1-0</i> & <i>ec1-1</i> were added to the rotation the error rates subsided</li>
+</ol>
+
+The above observations might lead us to the following conclusions:
+<ol>
+<li>Overall, the LB mechanism is functioning properly</li>
+<li>Ideally, the additional servers could be added sooner and prevent the temporary increase in errors</li>
+<li>There's some optimization opportunities to the LB.  Specfically, it looks like the scale down could be much more aggresive</li>
+</ol>
+
+#### I.II.V  Region Spillover
+
+Let's focus on the regions us-east-1 and us-east-2 by selecting them as the `Group Values` in [Fields [Advanced]](configuration_options.md#fields-advanced):
+
+![region spillover 1](img/examples/servers_requests/region_spillover1.png)
+
+By looking at the Totals chart we can observe the following:
+<ol>
+<li>At around 20:00 Jan 02, us-east-1 saw a <b>gradual</b> increase in request volume</li>
+<li>About an hour later, us-east-2 saw a <b>sharp</b> increase in request volume</li>
+</ol>
+
+By looking at the series charts we can observe the following:
+<ol>
+<li>At around 21:00 Jan 02, the request volume to us-east-1 started plateauing</li>
+</ol>
+
+The above observations might lead us to the following conclusions:
+<ol>
+<li>The servers in us-east-1 reached some capacity threshold at 21:00</li>
+<li>At that point, traffic started to spill over to us-east-2</li>
+</ol>
+
+It might be interesting to change the Totals chart's stack mode to `Stacked100`, to see the relative traffic distribution between the two us-east regions:
+
+![region spillover 2](img/examples/servers_requests/region_spillover2.png)
+
+This shows us that the traffic distribution between the two us-east regions is roughly equal.
+<br>
+One of the regions (us-east-1) started getting a bigger relative share of the traffic, but it was re-balanced after an hour or so
+
+## II. Mortality Rates
+
+The following example shows the mortality rates in France between 1816 and 2016, by gender
+<br>
+It is based on the amazing [visualization](https://kieranhealy.org/blog/archives/2018/12/04/heatmaps-of-mortality-rates/) created by [Kieran Healy](https://kieranhealy.org/):
+
+![mortality](img/examples/mortality/mortality1.png)
+
+!!! note inline
+
+    The [chart labels](configuration_options.md#labels) have been disabled for clarity.  Each chart represents a single age cohort, starting from <i>0-1</i> at the bottom to <i>95</i> at the top
+
+The plot allows us to immediatly observe events such as world wars and the 1918 influenza pandemic, as well as the considerable decline in infant mortality
+
+By switching the [`max Y type`](configuration_options.md#series) to `Local` we get a different representation, which makes it easier to see trends for each individual age cohort (at the cost of losing the ability to compare values across different age cohorts):
+
+![mortality](img/examples/mortality/mortality2.png)
+
+We can also decide to group certain ages, and represent that in the plot:
+
+![mortality](img/examples/mortality/mortality3.png)
+
+By switching the [`max Y type`](configuration_options.md#series) to `Group` we can see trends for each age cohort relative to its defined group:
+
+![mortality](img/examples/mortality/mortality4.png)
+
+Some more styling options:
+
+![mortality](img/examples/mortality/mortality5.png)
+
+## III. Covid19 Cases
+
+The following example shows the number of daily reported Covid-19 cases in the United States, by state:
+
+![covid](img/examples/covid/covid1.png)
+
+By switching the [`max Y type`](configuration_options.md#series) to `Local` we get a different representation which shows us the trend in each specific state (each chart's Y-axis has its own scale):
+
+![covid](img/examples/covid/covid2.png)
+
+By enabling [`Fog`](features.md#fog) we can highlight the peaks in the plot.  Since we're using `Local` for [`max Y type`](configuration_options.md#series), the [`Fog`](features.md#fog) shows us the alignment of the peaks across all charts (basically, the peaks of the Covid-19 infection waves):
+
+![covid](img/examples/covid/covid3.png)
+
+Some more styling options:
+
+![covid](img/examples/covid/covid4.png)
+
+## III. Lots of Charts
+
+The following examples showcases how Sierra Plots are useful for visualizing high-cardinality datasets
+
+### III.I 200 Servers
+
+The following example shows request rates across a 24 hour period (with 5 minute bins) for <b>200</b> servers across 5 different regions
+<br>
+It shows that even with a very large number of charts, overall trends and abnormal behaviours are still easy to spot:
+
+![many](img/examples/many/200_1.png)
+![many](img/examples/many/200_2.png)
+![many](img/examples/many/200_3.png)
+![many](img/examples/many/200_4.png)
+
+### III.II 2000 Servers
+
+Let's get a little crazy...
+<br>
+The following example shows request rates across a 12 hour period (with 5 minute bins) for <b>2000</b> servers across 5 different regions
+<br>
+Even now, trends and outliers are still readily apparent
+
+![many](img/examples/many/2000_1.png)
+![many](img/examples/many/2000_2.png)
+![many](img/examples/many/2000_3.png)
+![many](img/examples/many/2000_4.png)

@@ -8,16 +8,20 @@
 
 img[alt$=">"] {
     float: right;
-  }
-  
-  img[alt$="<"] {
+}
+
+img[alt$="<"] {
     float: left;
-  }
-  
-  img[alt$="><"] {
+}
+
+img[alt$="><"] {
     display: block;
     max-width: 100%;
     height: auto;
     margin: auto;
     float: none!important;
-  }
+}
+
+img[alt=features] {
+    width: 800px;
+}
