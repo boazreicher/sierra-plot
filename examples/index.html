@@ -155,19 +155,19 @@
 <li>split by result type (<i>OK</i> or <i>ERROR</i>)
 </ul>
 
-<p><img alt="initial" src="/img/examples/serversrequests/initial.png" /></p>
+<p><img alt="initial" src="../img/examples/serversrequests/initial.png" /></p>
 <p>Before diving in, we can make the plot a bit clearer by changing the plot's <a href="../configuration_options/#series"><code>Max Y Type</code></a> from <code>Global</code> to <code>Group</code> using the <a href="../controls/">on-panel controls</a></p>
 <div class="admonition hint inline">
 <p class="admonition-title">Hint</p>
 <p>Using <code>Max Y Type</code> =&gt; <code>Group</code> makes sense here, since comparing individual server metrics across different regions isn't very relevant.  The overall comparison across different regions is captured in the Totals chart</p>
 </div>
-<p><img alt="initial" src="/img/examples/serversrequests/initialgroup.png" /></p>
+<p><img alt="initial" src="../img/examples/serversrequests/initialgroup.png" /></p>
 <h3 id="ii-overview">I.I  Overview<a class="headerlink" href="#ii-overview" title="Permanent link">#</a></h3>
 <h4 id="iii-overall-trend">I.I.I  Overall Trend<a class="headerlink" href="#iii-overall-trend" title="Permanent link">#</a></h4>
 <p>The Totals chart is a simple stacked area chart that clearly shows the overall trend, as well as the per-region breakdown.  However, it doesn't do a very good job of showing the indiviual trends for each region.
 <br>
 By changing the <a href="../configuration_options/#totals"><code>Totals Chart Type</code></a> to <code>Line</code> and playing aroung with the <code>Total Height Percent</code> value, we get:</p>
-<p><img alt="initial" src="/img/examples/serversrequests/initialtotalstrend.png" /></p>
+<p><img alt="initial" src="../img/examples/serversrequests/initialtotalstrend.png" /></p>
 <p>A number of observations become apparent now:</p>
 <ol>
 <li>The trend shows a (baseline) 24 hour cycle in every region</li>
