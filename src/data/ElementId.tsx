@@ -19,11 +19,11 @@ export class ElementId {
     let elements = id.split(ID_SEPERATOR);
     this.type = elements[0];
 
-    if (elements.length == 2 && elements[1] == TOTAL_ELEMENT_ID) {
+    if (elements.length === 2 && elements[1] === TOTAL_ELEMENT_ID) {
       this.value = TOTAL_ELEMENT_ID;
       return;
     }
-    if (elements.length == 2 && elements[1] == ID_TYPE_LABEL_ELEMENT) {
+    if (elements.length === 2 && elements[1] === ID_TYPE_LABEL_ELEMENT) {
       this.value = TOTAL_ELEMENT_ID;
       return;
     }

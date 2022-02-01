@@ -106,7 +106,7 @@ export class ChartElements implements PresentationElement {
 
         for (let index = 0; index < chartGroup.children.length; index++) {
           let element = chartGroup.children[index];
-          if (element.fill !== undefined && element.fill != NO_COLOR) {
+          if (element.fill !== undefined && element.fill !== NO_COLOR) {
             try {
               chartGroup.tooltipData.charts[chart.name] = HSLFilter.fromString(element.fill).toHsl();
             } catch {

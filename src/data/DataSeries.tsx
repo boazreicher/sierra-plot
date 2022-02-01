@@ -8,7 +8,7 @@ export class DataSeries {
   sortKey: string | undefined;
 
   clone() {
-    var result: DataSeries = new DataSeries();
+    let result: DataSeries = new DataSeries();
     result.name = this.name;
     result.sortKey = this.sortKey;
 
@@ -24,7 +24,7 @@ export class DataSeries {
   }
 
   sum(other: DataSeries) {
-    if (other.dataPoints.length != this.dataPoints.length) {
+    if (other.dataPoints.length !== this.dataPoints.length) {
       throw new Error(
         "Dataseries lengths don't match [" +
           other.name +
@@ -37,8 +37,8 @@ export class DataSeries {
           ']'
       );
     }
-    for (var index = 0; index < other.dataPoints.length; index++) {
-      if (this.dataPoints[index].x != other.dataPoints[index].x) {
+    for (let index = 0; index < other.dataPoints.length; index++) {
+      if (this.dataPoints[index].x !== other.dataPoints[index].x) {
         throw new Error('Mismatch on x value for index ' + index);
       }
 
@@ -48,8 +48,8 @@ export class DataSeries {
   }
 
   calculateAverage() {
-    for (var index = 0; index < this.dataPoints.length; index++) {
-      if (this.dataPoints[index].weight == 0) {
+    for (let index = 0; index < this.dataPoints.length; index++) {
+      if (this.dataPoints[index].weight=0) {
         this.dataPoints[index].setY(0);
       } else {
         this.dataPoints[index].setY(this.dataPoints[index].y() / this.dataPoints[index].weight);
@@ -58,7 +58,7 @@ export class DataSeries {
   }
 
   average(other: DataSeries, totals: DataSeries) {
-    if (other.dataPoints.length != this.dataPoints.length) {
+    if (other.dataPoints.length !== this.dataPoints.length) {
       throw new Error(
         "Dataseries lengths don't match [" +
           other.name +
@@ -71,11 +71,11 @@ export class DataSeries {
           ']'
       );
     }
-    for (var index = 0; index < other.dataPoints.length; index++) {
-      if (this.dataPoints[index].x != other.dataPoints[index].x) {
+    for (let index = 0; index < other.dataPoints.length; index++) {
+      if (this.dataPoints[index].x !== other.dataPoints[index].x) {
         throw new Error('Mismatch on x value for index ' + index);
       }
-      if (totals.dataPoints[index].y() == 0) {
+      if (totals.dataPoints[index].y() === 0) {
         // Totals aren't initialized
         // Initialize empty dataseries with other
         this.dataPoints[index].setY(other.dataPoints[index].y());
@@ -100,7 +100,7 @@ export class DataSeries {
   }
 
   getEmptySeries(): DataSeries {
-    var result = new DataSeries();
+    let result = new DataSeries();
 
     this.dataPoints.forEach((dataPoint) => {
       let newCoordinates = new Coordinates(dataPoint.x(), 0);
@@ -114,7 +114,7 @@ export class DataSeries {
   }
 
   getEmptySeriesWithWeights(): DataSeries {
-    var result = new DataSeries();
+    let result = new DataSeries();
 
     this.dataPoints.forEach((dataPoint) => {
       let newCoordinates = new Coordinates(dataPoint.x(), 0);

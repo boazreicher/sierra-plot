@@ -73,7 +73,7 @@ function getTimerOnClickHandler(
 }
 
 function getTimerOutlineColor(type: TransitionType) {
-  return type == 'none' ? '#000000' : '#ffffff';
+  return type === 'none' ? '#000000' : '#ffffff';
 }
 
 function getTimerLabel(panelOptions: SierraPlotOptions): string {

@@ -13,7 +13,7 @@ export const OptionalFieldSelector: React.FC<StandardEditorProps<string>> = ({ i
     for (let i = 0; i < frames.length; i++) {
       let dataFrame = frames[i];
       dataFrame.fields.forEach((field) => {
-        if (field.type == 'number') {
+        if (field.type === 'number') {
           values.add(field.name);
         }
       });

@@ -9,18 +9,18 @@ export abstract class SvgElement {
   class: string | undefined;
   // Probably need to revisit the naming distinction between "DataPoints" and "Coordinates"
   dataPoints: Coordinates[] = [];
-  fill: string = NO_COLOR;
+  fill = NO_COLOR;
   stroke: string | undefined;
-  strokeWidth: number = 1;
-  order: number = -1;
+  strokeWidth = 1;
+  order = -1;
   boundingBox: BoundingBox = new BoundingBox();
-  opacity: number = 1;
-  fillOpacity: number = 1;
-  strokeOpacity: number = 1;
+  opacity = 1;
+  fillOpacity = 1;
+  strokeOpacity = 1;
   x: number | undefined;
   y: number | undefined;
   text: string | undefined;
-  textSize: number = 50;
+  textSize: = 50;
   title: string | undefined;
   onClick: MouseEventHandler | undefined;
   onDoubleClick: MouseEventHandler | undefined;
@@ -31,8 +31,8 @@ export abstract class SvgElement {
 
   zOrder = 0;
 
-  isChartGroup: boolean = false;
-  isFogElement: boolean = false;
+  isChartGroup = false;
+  isFogElement = false;
 
   filter: string | undefined;
   sortKey: string | undefined;
@@ -62,9 +62,9 @@ export abstract class SvgElement {
   isHighlighted(selection: Selection): boolean {
     if (selection !== undefined && selection.active) {
       let selectedId = selection.key + ID_KV_SEPERATOR + selection.value;
-      if (selection.type === SelectionType.Chart && selectedId == this.id) {
+      if (selection.type === SelectionType.Chart && selectedId === this.id) {
         return true;
-      } else if (selection.type === SelectionType.Group && selection.value == this.sortKey) {
+      } else if (selection.type === SelectionType.Group && selection.value === this.sortKey) {
         return true;
       }
     }

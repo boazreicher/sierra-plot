@@ -8,7 +8,7 @@ export abstract class SeriesElement {
   dataPoints: DataPoint[] = [];
   closingDataPoints: DataPoint[] = [];
   dimensions: Dimensions = new Dimensions();
-  stepped: boolean = false;
+  stepped = false;
   sortKey: string | undefined;
 
   abstract toOutlineElement(): SvgPolyline;
@@ -18,7 +18,7 @@ export abstract class SeriesElement {
   protected abstract addBottom(): void;
 
   clone(): SeriesElement {
-    var element = this.getNewWithType();
+    let element = this.getNewWithType();
     element.id = this.id;
     element.dimensions = this.dimensions.clone();
     element.stepped = this.stepped;
@@ -35,7 +35,7 @@ export abstract class SeriesElement {
 
   format(numDataPoints: number): void {
     this.shiftX(numDataPoints);
-    var effectiveMaxY = this.getEffectiveMaxY();
+    let effectiveMaxY = this.getEffectiveMaxY();
     this.scaleY(effectiveMaxY);
     if (this.stepped) {
       this.makeStepped();
@@ -44,46 +44,46 @@ export abstract class SeriesElement {
   }
 
   toSvgElement(): SvgElement {
-    var element = this.getNewSvgElementWithType();
+    let element = this.getNewSvgElementWithType();
 
     element.id = this.id;
     element.maxHeight = this.dimensions.height;
 
-    var minX = -1;
-    var maxX = -1;
-    var minY = -1;
-    var maxY = -1;
+    let minX = -1;
+    let maxX = -1;
+    let minY = -1;
+    let maxY = -1;
     this.dataPoints.forEach((dataPoint) => {
       element.dataPoints.push(dataPoint.coordinates.clone());
-      if (minX == -1 || minX > dataPoint.x()) {
+      if (minX === -1 || minX > dataPoint.x()) {
         minX = dataPoint.x();
       }
-      if (maxX == -1 || maxX < dataPoint.x()) {
+      if (maxX === -1 || maxX < dataPoint.x()) {
         maxX = dataPoint.x();
       }
-      if (minY == -1 || minY > dataPoint.y()) {
+      if (minY === -1 || minY > dataPoint.y()) {
         minY = dataPoint.y();
       }
-      if (maxY == -1 || maxY < dataPoint.y()) {
+      if (maxY === -1 || maxY < dataPoint.y()) {
         maxY = dataPoint.y();
       }
     });
     this.closingDataPoints.forEach((dataPoint) => {
       element.dataPoints.push(dataPoint.coordinates.clone());
-      if (minX == -1 || minX > dataPoint.x()) {
+      if (minX === -1 || minX > dataPoint.x()) {
         minX = dataPoint.x();
       }
-      if (maxX == -1 || maxX < dataPoint.x()) {
+      if (maxX === -1 || maxX < dataPoint.x()) {
         maxX = dataPoint.x();
       }
-      if (minY == -1 || minY > dataPoint.y()) {
+      if (minY === -1 || minY > dataPoint.y()) {
         minY = dataPoint.y();
       }
-      if (maxY == -1 || maxY < dataPoint.y()) {
+      if (maxY === -1 || maxY < dataPoint.y()) {
         maxY = dataPoint.y();
       }
     });
-    var boundingBox: BoundingBox = new BoundingBox();
+    let boundingBox: BoundingBox = new BoundingBox();
     boundingBox.minX = minX;
     boundingBox.maxX = maxX;
     boundingBox.minY = minY;

@@ -27,7 +27,7 @@ export class HSLFilter extends Filter {
 
     let hslComponents = /^(\d\d\d)(\d\d)(\d\d)$/i.exec(hsl[2]);
 
-    if (!hslComponents || hslComponents.length != 4) {
+    if (!hslComponents || hslComponents.length !== 4) {
       throw new Error('Failed to extract components from ' + hsl);
     }
 

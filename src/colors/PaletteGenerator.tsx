@@ -25,7 +25,7 @@ export class PaletteGenerator {
     this.seriesPalette.reset();
     this.groupPalette.reset();
 
-    var colorPalettes: ColorPalettes = new ColorPalettes();
+    let colorPalettes: ColorPalettes = new ColorPalettes();
 
     colorPalettes.addPalette(
       PaletteType.Regular,
@@ -37,7 +37,7 @@ export class PaletteGenerator {
         panelOptions.colorMode
       )
     );
-    var selectedValue: string | undefined = undefined;
+    let selectedValue: string | undefined = undefined;
     if (
       panelOptions.selectedChart !== undefined &&
       panelOptions.selectedChart.active &&
@@ -69,12 +69,12 @@ export class PaletteGenerator {
     colorMode: ColorMode,
     selectedValue: string | undefined = undefined
   ): ColorPalette {
-    var chartPalette: BasicPalette =
+    let chartPalette: BasicPalette =
       selectedValue !== undefined
         ? this.generatePaletteForSelectedCharts(sortedChartsSeries, selectedValue)
         : this.generatePaletteForCharts(colorString, colorType, this.getSizeOfLargestGroup(sortedChartsSeries));
 
-    var palette: PredefinedColorMap = new PredefinedColorMap(
+    let palette: PredefinedColorMap = new PredefinedColorMap(
       this.totalColor,
       hexToHsl(labelColor),
       this.groupPalette,
@@ -118,11 +118,11 @@ export class PaletteGenerator {
   }
 
   private generatePaletteForSelectedCharts(sortedChartsSeries: ChartData[], selectedValue: string): BasicPalette {
-    var chartPalette: BasicPalette = new BasicPalette();
+    let chartPalette: BasicPalette = new BasicPalette();
 
-    var numCharts = 0;
+    let numCharts = 0;
     sortedChartsSeries.forEach((chart) => {
-      if (chart.sortKey == selectedValue) {
+      if (chart.sortKey === selectedValue) {
         numCharts++;
       }
     });
@@ -134,9 +134,9 @@ export class PaletteGenerator {
   }
 
   private generatePaletteForCharts(colorString: string, colorType: ColorType, charts: number): BasicPalette {
-    var chartPalette: BasicPalette = new BasicPalette();
+    let chartPalette: BasicPalette = new BasicPalette();
 
-    var chartColor: HSL = hexToHsl(colorString);
+    let chartColor: HSL = hexToHsl(colorString);
     chartPalette.addColor(chartColor);
 
     let cappedSteps = charts;
@@ -153,7 +153,7 @@ export class PaletteGenerator {
       let step: number = (80 - chartColor.l) / (cappedSteps - 1);
       step = Math.min(step, 20);
       for (let index = 1; index < cappedSteps; index++) {
-        var stepped: Color = chartColor.clone();
+        let stepped: Color = chartColor.clone();
 
         stepped.increaseLuminance(step * index);
         chartPalette.addColor(stepped);

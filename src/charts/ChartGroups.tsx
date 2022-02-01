@@ -40,7 +40,7 @@ export class ChartGroups implements PresentationElement {
     }
 
     if (
-      this.get(sortKey).boundingBox.minX == -1 ||
+      this.get(sortKey).boundingBox.minX === -1 ||
       this.get(sortKey).boundingBox.minX > dimensionsForStackedAreaChart.startX
     ) {
       this.get(sortKey).boundingBox.minX = dimensionsForStackedAreaChart.startX;
@@ -49,7 +49,7 @@ export class ChartGroups implements PresentationElement {
       this.get(sortKey).boundingBox.maxX = dimensionsForStackedAreaChart.startX;
     }
     if (
-      this.get(sortKey).boundingBox.minY == -1 ||
+      this.get(sortKey).boundingBox.minY === -1 ||
       this.get(sortKey).boundingBox.minY > dimensionsForStackedAreaChart.startY
     ) {
       this.get(sortKey).boundingBox.minY = dimensionsForStackedAreaChart.startY;

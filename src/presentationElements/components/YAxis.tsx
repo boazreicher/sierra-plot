@@ -27,7 +27,7 @@ function createYAxis(
   if (!enabled || totalsDimensions === undefined) {
     return <></>;
   }
-  let range = new ValueRange(0, totalStackMode == 'stacked' ? effectiveMaxY : 100);
+  let range = new ValueRange(0, totalStackMode === 'stacked' ? effectiveMaxY : 100);
   let properties = buildYAxisProperties(range, totalsDimensions);
 
   const yScale = d3

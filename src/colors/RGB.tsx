@@ -2,9 +2,9 @@ import { Color } from 'colors/Color';
 import { HSL } from 'colors/HSL';
 
 export class RGB implements Color {
-  red: number = 0;
-  green: number = 0;
-  blue: number = 0;
+  red = 0;
+  green = 0;
+  blue = 0;
 
   constructor(red: number, green: number, blue: number) {
     this.red = red;
@@ -41,20 +41,20 @@ export class RGB implements Color {
   }
 
   toHsl(): HSL {
-    var r = (this.red /= 255);
-    var g = (this.green /= 255);
-    var b = (this.blue /= 255);
+    let r = (this.red /= 255);
+    let g = (this.green /= 255);
+    let b = (this.blue /= 255);
 
-    var max = Math.max(r, g, b),
+    let max = Math.max(r, g, b),
       min = Math.min(r, g, b);
-    var h = (max + min) / 2;
-    var s = (max + min) / 2;
-    var l = (max + min) / 2;
+    let h = (max + min) / 2;
+    let s = (max + min) / 2;
+    let l = (max + min) / 2;
 
-    if (max == min) {
+    if (max === min) {
       h = s = 0; // achromatic
     } else {
-      var d = max - min;
+      let d = max - min;
       s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
       switch (max) {
         case r:
@@ -76,7 +76,7 @@ export class RGB implements Color {
     l = Math.round(l);
     h = Math.round(360 * h);
 
-    var opacity = 1;
+    let opacity = 1;
 
     return new HSL(h, s, l, opacity);
   }

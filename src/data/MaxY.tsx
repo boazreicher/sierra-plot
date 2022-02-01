@@ -6,7 +6,7 @@ import { Totals } from './Totals';
 export class MaxY {
   scaleType: ScaleType | undefined;
   local: number | undefined;
-  global: number = 0;
+  global = 0;
   total: number | undefined;
   group: Record<string, number> | undefined;
 
@@ -24,7 +24,7 @@ export class MaxY {
 
     charts.forEach((chart) => {
       let sortKey = chart.sortKey;
-      let sortKeyValue: string = '';
+      let sortKeyValue = '';
       if (sortKey !== undefined) {
         sortKeyValue = sortKey;
       }
@@ -40,7 +40,7 @@ export class MaxY {
       for (let xIndex = 0; xIndex < numDataPoints; xIndex++) {
         let currentMaxYForXIndex = 0;
         chart.data.forEach((series) => {
-          if (chartType == 'area') {
+          if (chartType === 'area') {
             currentMaxYForXIndex += series.dataPoints[xIndex].y();
           } else {
             if (currentMaxYForXIndex < series.dataPoints[xIndex].y()) {
@@ -72,7 +72,7 @@ export class MaxY {
           if (!chartSums.hasOwnProperty(chart.data[index].dataPoints[xIndex].x())) {
             chartSums[chart.data[index].dataPoints[xIndex].x()] = 0;
           }
-          if (chartType == 'area') {
+          if (chartType='area') {
             // Calculate maxY as sum, since chart is stacked
             chartSums[chart.data[index].dataPoints[xIndex].x()] += chart.data[index].dataPoints[xIndex].y();
           } else {

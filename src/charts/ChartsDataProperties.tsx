@@ -26,6 +26,6 @@ export class ChartsDataProperties {
   }
 
   customTimeRange(): boolean {
-    return this.formattedTimeRange.start != this.formattedTimeRange.end;
+    return this.formattedTimeRange.start !== this.formattedTimeRange.end;
   }
 }

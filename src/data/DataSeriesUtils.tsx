@@ -21,7 +21,7 @@ import { MaxValues } from './MaxValues';
 import { SumValues } from './SumValues';
 
 export function getSortedCharts(dataFrames: DataFrame[], properties: ChartsDataProperties): ChartData[] {
-  var firstChartName;
+  let firstChartName;
   if (
     properties.selection !== undefined &&
     properties.selection.active &&
@@ -30,13 +30,13 @@ export function getSortedCharts(dataFrames: DataFrame[], properties: ChartsDataP
     firstChartName = properties.selection.value;
   }
 
-  var result = sortCharts(getCharts(dataFrames, properties), firstChartName, properties.sortMode);
+  let result = sortCharts(getCharts(dataFrames, properties), firstChartName, properties.sortMode);
 
   return result;
 }
 
 function getCharts(dataFrames: DataFrame[], properties: ChartsDataProperties): Record<string, ChartData> {
-  var series: DataSeries[] = extractDataSeries(
+  let series: DataSeries[] = extractDataSeries(
     dataFrames,
     properties.amplitudeField,
     properties.weightField,
@@ -47,14 +47,14 @@ function getCharts(dataFrames: DataFrame[], properties: ChartsDataProperties): R
   // This is a side-effect that should be refactored
   properties.formattedTimeRange = normalizeHorizontalAxis(series, properties);
 
-  var charts: Record<string, ChartData> = splitSeriesForCharts(
+  let charts: Record<string, ChartData> = splitSeriesForCharts(
     series,
     properties.breakdowns.chartBreakdown,
     properties.breakdowns.groupField
   );
 
   let breakDownField =
-    properties.breakdowns.seriesBreakdown === undefined || properties.breakdowns.chartBreakdownType == 'none'
+    properties.breakdowns.seriesBreakdown === undefined || properties.breakdowns.chartBreakdownType === 'none'
       ? properties.breakdowns.chartBreakdown
       : properties.breakdowns.seriesBreakdown;
   charts = sumOverSeriesFieldBreakdown(charts, breakDownField, properties.aggregation);
@@ -69,8 +69,8 @@ function extractDataSeries(
   filters: SeriesFilters,
   timeRange: TimeRange
 ): DataSeries[] {
-  var valueDataFrames: DataFrame[] = getDataFrames(dataFrames, valueFieldName);
-  var weightDataFrames: DataFrame[] = weightFieldName === undefined ? [] : getDataFrames(dataFrames, weightFieldName);
+  let valueDataFrames: DataFrame[] = getDataFrames(dataFrames, valueFieldName);
+  let weightDataFrames: DataFrame[] = weightFieldName === undefined ? [] : getDataFrames(dataFrames, weightFieldName);
 
   return extractDataSeriesValuesAndWeights(valueDataFrames, weightDataFrames, filters, timeRange);
 }
@@ -81,11 +81,11 @@ function extractDataSeriesValuesAndWeights(
   filters: SeriesFilters,
   timeRange: TimeRange
 ): DataSeries[] {
-  var result: DataSeries[] = [];
+  let result: DataSeries[] = [];
 
-  var hasWeights: boolean = false;
+  let hasWeights = false;
   if (weightDataFrames.length > 0) {
-    if (valueDataFrames.length == weightDataFrames.length) {
+    if (valueDataFrames.length === weightDataFrames.length) {
       hasWeights = true;
     } else {
       console.warn('Different number of frames for values and weights');
@@ -97,11 +97,11 @@ function extractDataSeriesValuesAndWeights(
     let weightFrame = hasWeights ? weightDataFrames[index] : undefined;
 
     // Assuming that field with index 0 is always time
-    var timestamps = dataFrame.fields[0].values;
+    let timestamps = dataFrame.fields[0].values;
 
-    var valueField: Field = dataFrame.fields[1];
-    var weightField: Field | undefined = weightFrame === undefined ? undefined : weightFrame.fields[1];
-    var seriesElement: DataSeries = new DataSeries();
+    let valueField: Field = dataFrame.fields[1];
+    let weightField: Field | undefined = weightFrame === undefined ? undefined : weightFrame.fields[1];
+    let seriesElement: DataSeries = new DataSeries();
     seriesElement.name = valueField.name;
 
     if (valueField.labels) {
@@ -115,8 +115,8 @@ function extractDataSeriesValuesAndWeights(
     }
 
     for (let index = 0; index < valueField.values.length; index++) {
-      var weight = weightField !== undefined ? weightField.values.get(index) : 1;
-      var dataPoint: DataPoint = new DataPoint(
+      let weight = weightField !== undefined ? weightField.values.get(index) : 1;
+      let dataPoint: DataPoint = new DataPoint(
         new Coordinates(timestamps.get(index), valueField.values.get(index)),
         weight
       );
@@ -158,7 +158,7 @@ export function getTimeRange(series: DataFrame[]): TimeRange {
 
     // Assuming that field with index 0 is always time
     let timestamps = dataFrame.fields[0].values;
-    if (minTimestamp == -1 || minTimestamp > timestamps.get(0)) {
+    if (minTimestamp === -1 || minTimestamp > timestamps.get(0)) {
       minTimestamp = timestamps.get(0);
     }
     if (maxTimestamp < timestamps.get(timestamps.length - 1)) {
@@ -199,7 +199,7 @@ export function sortCharts(
 }
 
 function compareBySortKey(a: ChartData, b: ChartData) {
-  if (a.sortKey === undefined || b.sortKey === undefined || a.sortKey == b.sortKey) {
+  if (a.sortKey === undefined || b.sortKey === undefined || a.sortKey === b.sortKey) {
     return compareLex(a.name, b.name);
   }
   return 0 - (a.sortKey < b.sortKey ? 1 : -1);
@@ -218,7 +218,7 @@ function compareLex(a: string | undefined, b: string | undefined): number {
   if (isNaN(+a) && !isNaN(+b)) {
     return 1;
   }
-  if (a == b) {
+  if (a === b) {
     return 0;
   }
   return 0 - (a < b ? 1 : -1);
@@ -248,11 +248,11 @@ export function sumOverSeriesFieldBreakdown(
       }
     });
 
-    if (aggregation == 'sum') {
+    if (aggregation === 'sum') {
       chartsSeries[key].data.forEach((series) => {
         seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]].sum(series);
       });
-    } else if (aggregation == 'avg') {
+    } else if (aggregation === 'avg') {
       chartsSeries[key].data.forEach((series) => {
         seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]].sum(series);
       });
@@ -271,12 +271,12 @@ export function sumOverSeriesFieldBreakdown(
 }
 
 function generateChartElementName(chartName: string, breakDownName: string, sortKey: string | undefined): string {
-  let name: string = ID_PREFIX_CHART_ELEMENT;
+  let name = ID_PREFIX_CHART_ELEMENT;
   if (sortKey !== undefined) {
     name += ID_SEPERATOR + ID_TYPE_GROUP_ELEMENT + ID_KV_SEPERATOR + sortKey;
   }
   name += ID_SEPERATOR + ID_TYPE_CHART_ELEMENT + ID_KV_SEPERATOR + chartName;
-  if (chartName != breakDownName) {
+  if (chartName !== breakDownName) {
     name += ID_SEPERATOR + ID_TYPE_SERIES_ELEMENT + ID_KV_SEPERATOR + breakDownName;
   }
 
@@ -284,7 +284,7 @@ function generateChartElementName(chartName: string, breakDownName: string, sort
 }
 
 function compareNumeric(a: number, b: number): number {
-  if (a == b) {
+  if (a === b) {
     return 0;
   }
   return 0 - (a > b ? -1 : 1);
@@ -293,7 +293,7 @@ function compareNumeric(a: number, b: number): number {
 function getDataFrames(dataFrames: DataFrame[], fieldName: string): DataFrame[] {
   // Assuming that the relevant field has index 1 (0 is for time field) and has type number
   return dataFrames.filter((frame) => {
-    return frame.fields[1].name == fieldName && frame.fields[1].type == 'number';
+    return frame.fields[1].name === fieldName && frame.fields[1].type === 'number';
   });
 }
 
@@ -308,7 +308,7 @@ function normalizeHorizontalAxis(series: DataSeries[], properties: ChartsDataPro
     }
 
     series[index].dataPoints.forEach((dataPoint) => {
-      if (minTimestamp > dataPoint.x() || minTimestamp == -1) {
+      if (minTimestamp > dataPoint.x() || minTimestamp === -1) {
         minTimestamp = dataPoint.x();
       }
       if (maxTimestamp < dataPoint.x()) {
@@ -341,10 +341,10 @@ function normalizeHorizontalAxis(series: DataSeries[], properties: ChartsDataPro
       dataPoint.setUnformattedX(dataPoint.x());
       dataPoint.setX(newX);
 
-      if (minNewX == -1 || minNewX > newX) {
+      if (minNewX === -1 || minNewX > newX) {
         minNewX = newX;
       }
-      if (maxNewX == -1 || maxNewX < newX) {
+      if (maxNewX === -1 || maxNewX < newX) {
         maxNewX = newX;
       }
     });
@@ -361,14 +361,14 @@ function sortByMax(result: ChartData[], maxValues: MaxValues) {
     let groupA = a.sortKey === undefined ? UNKNOWN_SELECTION_VALUE : a.sortKey;
     let groupB = b.sortKey === undefined ? UNKNOWN_SELECTION_VALUE : b.sortKey;
 
-    if (groupA == groupB) {
-      if (maxValues.groupChartValues[groupA][a.name] == maxValues.groupChartValues[groupA][b.name]) {
+    if (groupA === groupB) {
+      if (maxValues.groupChartValues[groupA][a.name] === maxValues.groupChartValues[groupA][b.name]) {
         return 0;
       }
       return 0 - (maxValues.groupChartValues[groupA][a.name] < maxValues.groupChartValues[groupA][b.name] ? 1 : -1);
     }
 
-    if (maxValues.groupValues[groupA] == maxValues.groupValues[groupB]) {
+    if (maxValues.groupValues[groupA] === maxValues.groupValues[groupB]) {
       return 0;
     }
 
@@ -381,14 +381,14 @@ function sortBySum(result: ChartData[], sumValues: SumValues) {
     let groupA = a.sortKey === undefined ? UNKNOWN_SELECTION_VALUE : a.sortKey;
     let groupB = b.sortKey === undefined ? UNKNOWN_SELECTION_VALUE : b.sortKey;
 
-    if (groupA == groupB) {
-      if (sumValues.groupChartValues[groupA][a.name] == sumValues.groupChartValues[groupA][b.name]) {
+    if (groupA === groupB) {
+      if (sumValues.groupChartValues[groupA][a.name] === sumValues.groupChartValues[groupA][b.name]) {
         return 0;
       }
       return 0 - (sumValues.groupChartValues[groupA][a.name] < sumValues.groupChartValues[groupA][b.name] ? 1 : -1);
     }
 
-    if (sumValues.groupValues[groupA] == sumValues.groupValues[groupB]) {
+    if (sumValues.groupValues[groupA] === sumValues.groupValues[groupB]) {
       return 0;
     }
 
@@ -397,13 +397,13 @@ function sortBySum(result: ChartData[], sumValues: SumValues) {
 }
 
 export function calculateTotalsSingleOriginal(charts: ChartData[]): DataSeries {
-  var result: DataSeries = new DataSeries();
+  let result: DataSeries = new DataSeries();
 
-  var sums: Record<number, number> = {};
+  let sums: Record<number, number> = {};
 
   charts.forEach((chart) => {
-    for (var index = 0; index < chart.originalData.length; index++) {
-      for (var xIndex = 0; xIndex < chart.originalData[index].dataPoints.length; xIndex++) {
+    for (let index = 0; index < chart.originalData.length; index++) {
+      for (let xIndex = 0; xIndex < chart.originalData[index].dataPoints.length; xIndex++) {
         if (!sums.hasOwnProperty(chart.originalData[index].dataPoints[xIndex].x())) {
           sums[chart.originalData[index].dataPoints[xIndex].x()] = 0;
         }
@@ -412,7 +412,7 @@ export function calculateTotalsSingleOriginal(charts: ChartData[]): DataSeries {
     }
   });
 
-  var keys: number[] = [];
+  let keys: number[] = [];
   for (let xValue in sums) {
     keys.push(+xValue);
   }

@@ -48,10 +48,10 @@ export class BackgroundElement implements PresentationElement {
       if (
         first === undefined &&
         chartsSvgElements[index].isGroup() &&
-        chartsSvgElements[index].id != TOTAL_ELEMENT_ID
+        chartsSvgElements[index].id !== TOTAL_ELEMENT_ID
       ) {
         first = chartsSvgElements[index].children[0].boundingBox;
-      } else if (chartsSvgElements[index].isGroup() && chartsSvgElements[index].id != TOTAL_ELEMENT_ID) {
+      } else if (chartsSvgElements[index].isGroup() && chartsSvgElements[index].id !== TOTAL_ELEMENT_ID) {
         second = chartsSvgElements[index].children[0].boundingBox;
         break;
       }

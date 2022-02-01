@@ -21,7 +21,7 @@ export class ChartLabels implements PresentationElement {
 
     let result: SvgElement[] = [];
     this.charts.forEach((chart) => {
-      let inSelectedGroup: boolean = true;
+      let inSelectedGroup = true;
       inSelectedGroup = chart.inSelectedGroup;
       result.push(chart.label.toSvg(this.selection, inSelectedGroup));
     });

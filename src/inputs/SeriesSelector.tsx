@@ -12,15 +12,15 @@ export const SeriesSelector: React.FC<StandardEditorProps<string[]>> = ({ item, 
   if (context.data) {
     const frames = context.data;
 
-    var values: Set<string> = new Set();
+    let values: Set<string> = new Set();
     for (let i = 0; i < frames.length; i++) {
       for (let fieldIndex = 0; fieldIndex < frames[i].fields.length; fieldIndex++) {
         for (let label in frames[i].fields[fieldIndex].labels) {
-          if (seriesField === undefined || seriesField != label) {
+          if (seriesField === undefined || seriesField !== label) {
             continue;
           }
-          var foo: Labels | undefined = frames[i].fields[fieldIndex].labels;
-          var bar: Labels;
+          let foo: Labels | undefined = frames[i].fields[fieldIndex].labels;
+          let bar: Labels;
           if (foo === undefined) {
             bar = {};
           } else {

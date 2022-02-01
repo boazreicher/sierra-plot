@@ -49,7 +49,7 @@ export class Charts {
     let elements: SvgElement[] = [];
 
     this.charts.forEach((chart) => {
-      let inSelectedGroup: boolean = true;
+      let inSelectedGroup = true;
       if (
         selection !== undefined &&
         selection.active &&
@@ -73,10 +73,10 @@ export class Charts {
       let selectedGroup =
         panelOptions.selectedChart !== undefined &&
         panelOptions.selectedChart.active &&
-        panelOptions.selectedChart.type == SelectionType.Group
+        panelOptions.selectedChart.type === SelectionType.Group
           ? panelOptions.selectedChart.value
           : UNKNOWN_SELECTION_VALUE;
-      if (selectedGroup != UNKNOWN_SELECTION_VALUE && selectedGroup != chart.sortKey) {
+      if (selectedGroup !== UNKNOWN_SELECTION_VALUE && selectedGroup !== chart.sortKey) {
         chart.inSelectedGroup = false;
       }
     });

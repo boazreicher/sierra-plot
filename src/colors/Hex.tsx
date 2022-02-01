@@ -13,7 +13,7 @@ export class Hex implements Color {
   }
 
   toString(): string {
-    return this.hex.charAt(0) != '#' ? '#' + this.hex : this.hex;
+    return this.hex.charAt(0) !== '#' ? '#' + this.hex : this.hex;
   }
   clone(): Color {
     return new Hex(this.hex);

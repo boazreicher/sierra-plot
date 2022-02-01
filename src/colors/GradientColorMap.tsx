@@ -21,37 +21,37 @@ export class GradientColorMap implements ColorPalette {
   groupElements: Record<string, Color> = {};
 
   addColor(key: string, color: Color) {
-    var elements = key.split(ID_SEPERATOR);
-    var type = elements[0];
-    if (type == ID_PREFIX_TOTAL_ELEMENT && elements[elements.length - 1] == TOTAL_ELEMENT_ID) {
+    let elements = key.split(ID_SEPERATOR);
+    let type = elements[0];
+    if (type === ID_PREFIX_TOTAL_ELEMENT && elements[elements.length - 1] === TOTAL_ELEMENT_ID) {
       this.total = color;
       return;
     }
 
     for (let index = elements.length - 1; index > 0; index--) {
-      var pair = elements[index].split(ID_KV_SEPERATOR);
+      let pair = elements[index].split(ID_KV_SEPERATOR);
 
-      var elementType = pair[0];
-      var value = pair[1];
+      let elementType = pair[0];
+      let value = pair[1];
 
       switch (elementType) {
         case ID_TYPE_SERIES_ELEMENT:
           if (!this.seriesElements.hasOwnProperty(value)) {
-            var newColor = color.clone().toHsl();
+            let newColor = color.clone().toHsl();
             newColor.shiftHue(HUE_SHIFT_SERIES * Object.keys(this.seriesElements).length);
             this.seriesElements[value] = newColor;
           }
           break;
         case ID_TYPE_CHART_ELEMENT:
           if (!this.chartElements.hasOwnProperty(value)) {
-            var newColor = color.clone().toHsl();
+            let newColor = color.clone().toHsl();
             newColor.increaseLuminance(LUMINANCE_INCEASE_CHARTS * Object.keys(this.chartElements).length);
             this.chartElements[value] = newColor;
           }
           break;
         case ID_TYPE_GROUP_ELEMENT:
           if (!this.groupElements.hasOwnProperty(value)) {
-            var newColor = color.clone().toHsl();
+            let newColor = color.clone().toHsl();
             newColor.shiftHue(HUE_SHIFT_GROUPS * Object.keys(this.groupElements).length);
             this.groupElements[value] = newColor;
           }
@@ -63,7 +63,7 @@ export class GradientColorMap implements ColorPalette {
   }
 
   getColorFor(elementId: ElementId): Color {
-    if (elementId.type == ID_PREFIX_TOTAL_ELEMENT && elementId.value == TOTAL_ELEMENT_ID) {
+    if (elementId.type === ID_PREFIX_TOTAL_ELEMENT && elementId.value === TOTAL_ELEMENT_ID) {
       if (this.total === undefined) {
         throw new Error('No color defined for total');
       }

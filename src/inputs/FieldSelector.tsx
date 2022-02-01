@@ -14,7 +14,7 @@ export const FieldSelector: React.FC<StandardEditorProps<string>> = ({ item, val
     for (let i = 0; i < frames.length; i++) {
       let dataFrame = frames[i];
       dataFrame.fields.forEach((field) => {
-        if (field.type == 'number') {
+        if (field.type === 'number') {
           if (first === undefined) {
             first = field.name;
           }

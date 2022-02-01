@@ -47,7 +47,7 @@ export class ChartGroup {
     panelOptions: SierraPlotOptions,
     presentationProperties: ChartGroupPresentationProperties
   ): SvgElement {
-    var coordinatesForGroupElement: Coordinates[] = [];
+    let coordinatesForGroupElement: Coordinates[] = [];
 
     coordinatesForGroupElement.push(new Coordinates(this.boundingBox.maxX, this.boundingBox.minY - 2));
     coordinatesForGroupElement.push(new Coordinates(0, this.boundingBox.minY - 2));
@@ -58,7 +58,7 @@ export class ChartGroup {
       coordinatesElement.x += presentationProperties.shiftX;
     });
 
-    var element = new SvgPolygon();
+    let element = new SvgPolygon();
     element.dataPoints = coordinatesForGroupElement;
     element.id = ID_PREFIX_GROUP_ELEMENT + ID_SEPERATOR + ID_TYPE_GROUP_ELEMENT + ID_KV_SEPERATOR + this.name;
     element.stroke = 'white';
@@ -68,8 +68,8 @@ export class ChartGroup {
     if (panelOptions.selectedChart !== undefined && panelOptions.selectedChart.active) {
       panelOptions.selectedChart.updatePositionForGroup(this.name, this.boundingBox.minX, this.boundingBox.maxY);
       if (
-        panelOptions.selectedChart.type == SelectionType.Group &&
-        panelOptions.selectedChart.value == this.name &&
+        panelOptions.selectedChart.type === SelectionType.Group &&
+        panelOptions.selectedChart.value === this.name &&
         panelOptions.selectedChart.currentColor !== undefined
       ) {
         element.fill = panelOptions.selectedChart.currentColor;
@@ -93,7 +93,7 @@ export class ChartGroup {
     textSize: number,
     selection: Selection | undefined
   ): SvgElement {
-    var groupLabel = new SvgText();
+    let groupLabel = new SvgText();
     groupLabel.id = ID_PREFIX_LINE_ELEMENT + ID_SEPERATOR + ID_TYPE_GROUP_ELEMENT + ID_KV_SEPERATOR + this.name;
     groupLabel.class = GROUP_LABEL_CLASS;
     groupLabel.text = this.name;
@@ -105,7 +105,7 @@ export class ChartGroup {
 
     groupLabel.fillOpacity = 1;
     if (selection !== undefined && selection.active && selection.type === SelectionType.Group) {
-      if (selection.value != this.name) {
+      if (selection.value !== this.name) {
         groupLabel.fillOpacity = 0.1;
       }
     }

@@ -383,7 +383,7 @@ function getChartBreakdownTypeOnClickHandler(
   return clickEventHandler;
 }
 
-function getChartColor(color: Color, greyOut: boolean, disabled: boolean = false): string {
+function getChartColor(color: Color, greyOut: boolean, disabled = false): string {
   if (greyOut) {
     if (disabled) {
       return 'url(#linearGradient53236)';
@@ -397,7 +397,7 @@ function seriesDisabled(panelOptions: SierraPlotOptions): boolean {
   return panelOptions.seriesFieldBreakdown === undefined || panelOptions.chartBreakdownType != 'series';
 }
 
-function getTotalChartColor(original: string, color: Color, greyOut: boolean, disabled: boolean = false): string {
+function getTotalChartColor(original: string, color: Color, greyOut: boolean, disabled = false): string {
   if (greyOut) {
     if (disabled) {
       return '#2A2A2A';

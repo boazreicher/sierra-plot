@@ -3,16 +3,16 @@ import { HSL } from 'colors/HSL';
 import { RGB } from 'colors/RGB';
 
 export function hexToRgb(hex: string): RGB {
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result ? new RGB(parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)) : new RGB(0, 0, 0);
 }
 
 export function hexToHsl(hex: string): HSL {
-  var result;
-  if (hex.length == 6 || hex.length == 7) {
+  let result;
+  if (hex.length === 6 || hex.length === 7) {
     // No opacity
     result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  } else if (hex.length == 8 || hex.length == 9) {
+  } else if (hex.length === 8 || hex.length === 9) {
     // Has opacity
     result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   }
@@ -22,24 +22,24 @@ export function hexToHsl(hex: string): HSL {
     return new HSL(0, 0, 0);
   }
 
-  var opacity: number = result.length == 4 ? 255 : parseInt(result[4], 16);
+  let opacity: number = result.length === 4 ? 255 : parseInt(result[4], 16);
   opacity /= 255;
 
-  var r = parseInt(result[1], 16);
-  var g = parseInt(result[2], 16);
-  var b = parseInt(result[3], 16);
+  let r = parseInt(result[1], 16);
+  let g = parseInt(result[2], 16);
+  let b = parseInt(result[3], 16);
 
   (r /= 255), (g /= 255), (b /= 255);
-  var max = Math.max(r, g, b),
+  let max = Math.max(r, g, b),
     min = Math.min(r, g, b);
-  var h = (max + min) / 2;
-  var s = (max + min) / 2;
-  var l = (max + min) / 2;
+  let h = (max + min) / 2;
+  let s = (max + min) / 2;
+  let l = (max + min) / 2;
 
-  if (max == min) {
+  if (max === min) {
     h = s = 0; // achromatic
   } else {
-    var d = max - min;
+    let d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
     switch (max) {
       case r:

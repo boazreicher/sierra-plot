@@ -31,16 +31,16 @@ export class SvgPolyline extends SvgElement {
   }
 
   includedInParentBoundingBox(chartType: ChartType): boolean {
-    return chartType == 'line';
+    return chartType === 'line';
   }
 
   getPointsAsString(height: number | undefined = undefined): string {
     let points = '';
 
-    var firstX = -1;
-    var maxY = 0;
+    let firstX = -1;
+    let maxY = 0;
     for (let index = 0; index < this.dataPoints.length; index++) {
-      if (firstX == -1) {
+      if (firstX === -1) {
         firstX = this.dataPoints[index].roundedX();
       }
       if (maxY < this.dataPoints[index].y) {
@@ -50,8 +50,8 @@ export class SvgPolyline extends SvgElement {
       points += this.dataPoints[index].asString();
     }
     if (height !== undefined) {
-      var newY = maxY - height;
-      var point = firstX + ',' + newY + ' ';
+      let newY = maxY - height;
+      let point = firstX + ',' + newY + ' ';
       points = point + points;
     }
 

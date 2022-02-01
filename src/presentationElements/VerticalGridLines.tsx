@@ -28,8 +28,8 @@ export class VerticalGridLines implements PresentationElement {
     let topIndex = -1;
 
     for (let index = 0; index < elements.length; index++) {
-      if (elements[index].isChartGroup && elements[index].id != TOTAL_ELEMENT_ID) {
-        if (bottomIndex == -1) {
+      if (elements[index].isChartGroup && elements[index].id !== TOTAL_ELEMENT_ID) {
+        if (bottomIndex === -1) {
           bottomIndex = index;
         } else {
           topIndex = index;
@@ -53,7 +53,7 @@ export class VerticalGridLines implements PresentationElement {
       result.dataPoints = [bottom, top];
       result.strokeWidth = this.width;
       result.stroke = this.color.toString();
-      result.zOrder = this.position == 'above' ? ZORDER_CHART_LABEL : ZORDER_BACKGROUND_ELEMENT - 1;
+      result.zOrder = this.position === 'above' ? ZORDER_CHART_LABEL : ZORDER_BACKGROUND_ELEMENT - 1;
 
       results.push(result);
     }

@@ -17,11 +17,11 @@ export abstract class ChartData {
   sortKey: string | undefined;
   data: DataSeries[] = [];
   originalData: DataSeries[] = [];
-  zOrder: number = 0;
+  zOrder = 0;
   dimensions: Dimensions = new Dimensions();
   elements: SvgElement[] = [];
   label: ChartLabel = ChartLabel.empty();
-  inSelectedGroup: boolean = true;
+  inSelectedGroup = true;
 
   constructor(name: string, sortKey: string | undefined, breakDownField: string, type: ChartType) {
     this.name = name;

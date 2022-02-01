@@ -65,10 +65,10 @@ export class StackedAreaChart extends Chart<Polygon> {
       return this.chartDimensions.maxY;
     }
 
-    var sumYs: Record<number, number> = {};
+    let sumYs: Record<number, number> = {};
 
     series.forEach((element) => {
-      for (var index = 0; index < element.dataPoints.length; index++) {
+      for (let index = 0; index < element.dataPoints.length; index++) {
         if (!sumYs.hasOwnProperty(index)) {
           sumYs[index] = 0;
         }
@@ -76,7 +76,7 @@ export class StackedAreaChart extends Chart<Polygon> {
       }
     });
 
-    var effectiveMaxY = 0;
+    let effectiveMaxY = 0;
 
     for (let key in sumYs) {
       if (sumYs[key] > effectiveMaxY) {
@@ -88,12 +88,12 @@ export class StackedAreaChart extends Chart<Polygon> {
   }
 
   private generateStackedPolygons(polygons: SeriesElement[], numDataPoints: number): SeriesElement[] {
-    var stackedPolygons: SeriesElement[] = [];
+    let stackedPolygons: SeriesElement[] = [];
 
     polygons.forEach((polygon) => {
       polygon.format(numDataPoints);
       // First polygon isn't stacked
-      if (stackedPolygons.length == 0) {
+      if (stackedPolygons.length === 0) {
         stackedPolygons.push(polygon);
       } else {
         polygon.stackedOn(stackedPolygons);

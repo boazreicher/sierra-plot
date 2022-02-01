@@ -4,7 +4,7 @@ import { ElementId } from 'data/ElementId';
 
 export class BasicPalette implements ColorPalette {
   protected colors: Color[] = [];
-  private cursor: number = 0;
+  private cursor = 0;
   private lastKey: string | undefined;
 
   constructor(...colors: Color[]) {

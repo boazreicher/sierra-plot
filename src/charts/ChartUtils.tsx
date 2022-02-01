@@ -89,14 +89,14 @@ export function updateTimer(
   let chartCoordinates: Record<string, Coordinates> = {};
 
   elements.forEach((element) => {
-    if (element.isChartGroup && element.id !== undefined && element.id != 'Total') {
+    if (element.isChartGroup && element.id !== undefined && element.id !== 'Total') {
       let coordinates = new Coordinates(element.boundingBox.minX, element.boundingBox.maxY);
       chartCoordinates[element.id] = coordinates;
     }
   });
 
   let timer = Timer.getInstance(panelOptions, groups, chartCoordinates, onOptionsChange);
-  if (panelOptions.transitionType == 'none') {
+  if (panelOptions.transitionType === 'none') {
     timer.stop();
   } else {
     timer.start();
@@ -121,10 +121,10 @@ export function truncateOutsideTimeRange(
     chartData.data.forEach((series) => {
       let newDataPoints: DataPoint[] = [];
       series.dataPoints.forEach((dataPoint) => {
-        if (minX == -1 || minX > dataPoint.x()) {
+        if (minX === -1 || minX > dataPoint.x()) {
           minX = dataPoint.x();
         }
-        if (maxX == -1 || maxX < dataPoint.x()) {
+        if (maxX === -1 || maxX < dataPoint.x()) {
           maxX = dataPoint.x();
         }
 

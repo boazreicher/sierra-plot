@@ -6,7 +6,7 @@ import { Selection, SelectionType } from 'data/Selection';
 
 export class ChartLabel {
   text: string;
-  class: string = CHART_LABEL_CLASS;
+  class = CHART_LABEL_CLASS;
   baseCoordinates: Coordinates;
   shiftX: number;
   textSize: number;

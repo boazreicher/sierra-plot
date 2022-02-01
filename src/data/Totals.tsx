@@ -26,10 +26,10 @@ export class Totals {
   getEffectiveMaxY(panelOptions: SierraPlotOptions): number {
     let series = this.getSelectedTotals(panelOptions);
 
-    var sumYs: Record<number, number> = {};
+    let sumYs: Record<number, number> = {};
 
     series.forEach((element) => {
-      for (var index = 0; index < element.dataPoints.length; index++) {
+      for (let index = 0; index < element.dataPoints.length; index++) {
         if (!sumYs.hasOwnProperty(index)) {
           sumYs[index] = 0;
         }
@@ -45,7 +45,7 @@ export class Totals {
       }
     });
 
-    var effectiveMaxY = 0;
+    let effectiveMaxY = 0;
 
     for (let key in sumYs) {
       if (sumYs[key] > effectiveMaxY) {
@@ -69,10 +69,10 @@ export class Totals {
   }
 
   private calculateTotalsSeries(sortedChartsSeries: ChartData[], panelOptions: SierraPlotOptions): DataSeries[] {
-    var stacked: DataSeries[] = [];
-    var stacked100: DataSeries[] = [];
-    var summationsForGroups: Record<string, DataSeries> = {};
-    var summations100ForGroups: Record<string, DataSeries> = {};
+    let stacked: DataSeries[] = [];
+    let stacked100: DataSeries[] = [];
+    let summationsForGroups: Record<string, DataSeries> = {};
+    let summations100ForGroups: Record<string, DataSeries> = {};
 
     if (
       panelOptions.selectedChart !== undefined &&
@@ -109,8 +109,8 @@ export class Totals {
       summations100ForGroups[group] = summationsForGroups[group].clone();
     }
 
-    for (var index = 0; index < sortedChartsSeries[0].data[0].dataPoints.length; index++) {
-      var sum = 0;
+    for (let index = 0; index < sortedChartsSeries[0].data[0].dataPoints.length; index++) {
+      let sum = 0;
       for (let group in summationsForGroups) {
         sum += summationsForGroups[group].dataPoints[index].y();
       }
@@ -139,7 +139,7 @@ export class Totals {
           console.warn('Undefined chart sort key');
           return;
         }
-        if (chart.sortKey != selectedGroup) {
+        if (chart.sortKey !== selectedGroup) {
           return;
         }
       }
@@ -147,9 +147,9 @@ export class Totals {
         console.warn('Undefined chart name');
         return;
       }
-      var chartName = chart.name;
+      let chartName = chart.name;
       chart.data.forEach((series) => {
-        var seriesName = this.getSeriesName(series.name);
+        let seriesName = this.getSeriesName(series.name);
         if (seriesName === undefined) {
           console.warn('Series name undefined for ' + chartName);
           return;
@@ -174,7 +174,7 @@ export class Totals {
           console.warn('Undefined chart sort key');
           return;
         }
-        if (chart.sortKey != selectedGroup) {
+        if (chart.sortKey !== selectedGroup) {
           return;
         }
       }
@@ -218,14 +218,14 @@ export class Totals {
   }
 
   private calculateTotalsSingle(charts: ChartData[]): DataSeries {
-    var result: DataSeries = new DataSeries();
+    let result: DataSeries = new DataSeries();
     result.name = TOTAL_ELEMENT_ID;
 
-    var sums: Record<number, number> = {};
+    let sums: Record<number, number> = {};
 
     charts.forEach((chart) => {
-      for (var index = 0; index < chart.data.length; index++) {
-        for (var xIndex = 0; xIndex < chart.data[index].dataPoints.length; xIndex++) {
+      for (let index = 0; index < chart.data.length; index++) {
+        for (let xIndex = 0; xIndex < chart.data[index].dataPoints.length; xIndex++) {
           if (!sums.hasOwnProperty(chart.data[index].dataPoints[xIndex].x())) {
             sums[chart.data[index].dataPoints[xIndex].x()] = 0;
           }
@@ -234,7 +234,7 @@ export class Totals {
       }
     });
 
-    var keys: number[] = [];
+    let keys: number[] = [];
     for (let xValue in sums) {
       keys.push(+xValue);
     }

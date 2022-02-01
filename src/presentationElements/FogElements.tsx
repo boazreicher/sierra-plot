@@ -79,7 +79,7 @@ export class FogElements implements PresentationElement {
   }
 
   private getMaxYValue(chartsSvgElements: SvgElement[]): number {
-    var result: number = 0;
+    let result = 0;
     chartsSvgElements.forEach((element) => {
       if (!element.isChartGroup || element.id == TOTAL_ELEMENT_ID) {
         return;

@@ -30,7 +30,7 @@ export class ChartsSvgElements {
     let id = field + ID_KV_SEPERATOR + value;
 
     for (let index = 0; index < this.chartsElements.length; index++) {
-      if (this.chartsElements[index].isChartGroup && this.chartsElements[index].id == id) {
+      if (this.chartsElements[index].isChartGroup && this.chartsElements[index].id === id) {
         return this.chartsElements[index].boundingBox;
       }
     }

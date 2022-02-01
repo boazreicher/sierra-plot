@@ -4,9 +4,9 @@ export class Selection {
   key: string;
   value: string;
   type: SelectionType = SelectionType.None;
-  active: boolean = false;
-  x: number = -1;
-  y: number = -1;
+  active = false;
+  x = -1;
+  y = -1;
   hightlightMode: SelectionHighlightMode = 'none';
   currentColor: string | undefined;
 
@@ -24,13 +24,13 @@ export class Selection {
   }
 
   updatePositionForGroup(groupName: string, x: number, y: number) {
-    if (this.active && this.type === SelectionType.Group && this.value == groupName) {
+    if (this.active && this.type === SelectionType.Group && this.value === groupName) {
       this.x = x;
       this.y = y;
     }
   }
   updatePositionForChart(chartName: string, x: number, y: number) {
-    if (this.active && this.type === SelectionType.Chart && this.value == chartName) {
+    if (this.active && this.type === SelectionType.Chart && this.value === chartName) {
       this.x = x;
       this.y = y;
     }

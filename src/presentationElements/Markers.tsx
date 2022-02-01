@@ -17,7 +17,7 @@ export class Markers implements PresentationElement {
   }
 
   toSvgElements(elements: SvgElement[]): SvgElement[] {
-    if (this.panelOptions.markersMode == 'disable') {
+    if (this.panelOptions.markersMode === 'disable') {
       return [];
     }
     let markers: SvgElement[] = [];
@@ -29,7 +29,7 @@ export class Markers implements PresentationElement {
             // Not adding markers to closing data points
             let marker = new SvgCircle(dp.x, dp.y, this.panelOptions.markersRadius);
             marker.fill = this.panelOptions.markersColor;
-            if (this.panelOptions.markersMode == 'hidden') {
+            if (this.panelOptions.markersMode === 'hidden') {
               marker.fillOpacity = 0;
             }
             marker.toolTipContent = this.buildMarkerTooltip(chart.name, element.id, dp.unformattedX, dp.unformattedY);

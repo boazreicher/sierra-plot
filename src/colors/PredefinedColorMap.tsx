@@ -28,8 +28,8 @@ export class PredefinedColorMap implements ColorPalette {
   chartPalette: ColorPalette;
   seriesPalette: ColorPalette;
 
-  currentChart: string = '';
-  chartCursor: number = 0;
+  currentChart = '';
+  chartCursor = 0;
 
   constructor(
     total: Color,
@@ -51,12 +51,12 @@ export class PredefinedColorMap implements ColorPalette {
     throw new Error('Method not implemented.');
   }
 
-  addKey(elementId: ElementId, colorMode: ColorMode, selected: boolean = false) {
-    if (elementId.type == ID_PREFIX_TOTAL_ELEMENT && elementId.value == TOTAL_ELEMENT_ID) {
+  addKey(elementId: ElementId, colorMode: ColorMode, selected = false) {
+    if (elementId.type ===ID_PREFIX_TOTAL_ELEMENT && elementId.value === TOTAL_ELEMENT_ID) {
       return;
     }
 
-    let group: string = '';
+    let group = '';
     if (elementId.group !== undefined) {
       group = elementId.group;
       if (!this.groupElements.hasOwnProperty(group)) {
@@ -71,7 +71,7 @@ export class PredefinedColorMap implements ColorPalette {
 
         if (selected) {
           this.chartElements[elementId.chart] = new HSLFilter(chartColor.toHsl(), FILTER_NAME_PREFIX_SELECTED_CHART);
-        } else if (colorMode == 'group') {
+        } else if (colorMode === 'group') {
           this.chartElements[elementId.chart] = new HSLFilter(
             blend(this.groupElements[group], chartColor).toHsl(),
             FILTER_NAME_PREFIX_CHART
@@ -90,16 +90,16 @@ export class PredefinedColorMap implements ColorPalette {
   }
 
   getColorFor(elementId: ElementId): Color {
-    if (elementId.type == ID_PREFIX_TOTAL_ELEMENT && elementId.value == TOTAL_ELEMENT_ID) {
+    if (elementId.type === ID_PREFIX_TOTAL_ELEMENT && elementId.value === TOTAL_ELEMENT_ID) {
       if (this.total === undefined) {
         throw new Error('No color defined for total');
       }
       return this.total;
-    } else if (elementId.type == ID_PREFIX_LINE_ELEMENT) {
+    } else if (elementId.type === ID_PREFIX_LINE_ELEMENT) {
       return this.labels;
     }
 
-    if (elementId.type == ID_PREFIX_TOTAL_ELEMENT && elementId.series !== undefined) {
+    if (elementId.type === ID_PREFIX_TOTAL_ELEMENT && elementId.series !== undefined) {
       return this.seriesElements[elementId.series];
     }
 
@@ -125,7 +125,7 @@ export class PredefinedColorMap implements ColorPalette {
   }
 
   calculateSeriesElement(seriesColor: Color, chart: string): Color {
-    if (chart != this.currentChart) {
+    if (chart !== this.currentChart) {
       this.chartCursor += 1;
     }
 
