@@ -91,7 +91,7 @@ There are two different tranisition modes:
 <br>
 ![Image title](img/transitionsgroup.gif)
 <br>
-1. `Chart`: The plot periodically highlights a different chart:
+2. `Chart`: The plot periodically highlights a different chart:
 <br>
 ![Image title](img/transitionschart.gif)
 
