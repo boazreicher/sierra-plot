@@ -11,14 +11,14 @@ The following example showcases how a Sierra Plot can be used to visualize and a
 <li>split by result type (<i>OK</i> or <i>ERROR</i>)
 </ul>
 
-![initial](/img/examples/serversrequests/initial.png)
+![initial](img/examples/serversrequests/initial.png)
 
 Before diving in, we can make the plot a bit clearer by changing the plot's [`Max Y Type`](configuration_options.md#series) from `Global` to `Group` using the [on-panel controls](controls.md)
 !!! hint inline
 
     Using `Max Y Type` => `Group` makes sense here, since comparing individual server metrics across different regions isn't very relevant.  The overall comparison across different regions is captured in the Totals chart
 
-![initial](/img/examples/serversrequests/initialgroup.png)
+![initial](img/examples/serversrequests/initialgroup.png)
 
 ### I.I  Overview
 
@@ -28,7 +28,7 @@ The Totals chart is a simple stacked area chart that clearly shows the overall t
 <br>
 By changing the [`Totals Chart Type`](configuration_options.md#totals) to `Line` and playing aroung with the `Total Height Percent` value, we get:
 
-![initial](/img/examples/serversrequests/initialtotalstrend.png)
+![initial](img/examples/serversrequests/initialtotalstrend.png)
 
 A number of observations become apparent now:
 <ol>
