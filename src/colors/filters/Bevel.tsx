@@ -9,7 +9,7 @@ export class Bevel extends Filter {
   toFilter() {
     return (
       <filter id={this.filterName} height="220%">
-        <feFlood flood-color="black" />
+        <feFlood floodColor="black" />
         <feComposite operator="out" in2="SourceGraphic" />
         <feGaussianBlur stdDeviation="25" />
         <feComposite operator="atop" in2="SourceGraphic" />
