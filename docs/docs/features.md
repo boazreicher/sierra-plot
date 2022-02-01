@@ -5,7 +5,7 @@
 ### Group Drilldown
 It is possible to drilldown into a specific group by clicking the (colored) group segment on the left part of the plot
 <br>
-![Image title](/img/groupdrilldownnew1.PNG)
+![Image title](img/groupdrilldownnew1.png)
 <br>
 <br>
 The first drilldown focuses on the group by changing the plot's appearance in the following ways:
@@ -20,12 +20,12 @@ Changing the color palette for the charts in the selected group (to make them mo
 Having the totals chart represent only the data from the selected group
 </li>
 </ol>
-![Image title](/img/groupdrilldownnew2.PNG)
+![Image title](img/groupdrilldownnew2.png)
 <br>
 <br>
 Drilling down into a group that's already in focus, changes it to exlucsive mode, where in addition to the effects of focusing the group, all of the other groups are altogether removed from the plot
 <br>
-![Image title](/img/groupdrilldownnew3.PNG)
+![Image title](img/groupdrilldownnew3.png)
 <br>
 Clicking on a group that is already in exclusive mode will reset the selection (no group is selected)
 
@@ -40,7 +40,7 @@ Fading out all of the charts
 Setting the X-axis right below the selected chart
 </li>
 </ol>
-![Image title](/img/chartdrilldownnew1.PNG)
+![Image title](img/chartdrilldownnew1.png)
 <br>
 Clicking on a chart that is already in focus will reset the selection (no chart is selected)
 
@@ -48,7 +48,8 @@ Clicking on a chart that is already in focus will reset the selection (no chart 
 
 Clicking on the totals chart switches its stack mode from regular to stacked to 100% and back
 <br>
-![Image title](/img/totalsdrilldownnew1.PNG)
+
+![Image title](img/totalsdrilldownnew1.png)
 
 ## Date Range Control
 
@@ -74,7 +75,7 @@ Fog is used to highlight values above a certain threshold.  Parts of the chart b
 <br>
 By using fog, it is much easier to spot outlier values (which will be above the fog)
 
-![Image title](/img/fognew.PNG)
+![Image title](img/fognew.png)
 
 ## Transitions
 
@@ -88,10 +89,10 @@ There are two different tranisition modes:
 <br>
 1. `Group`: The plot periodically highlights a different group:
 <br>
-![Image title](/img/transitionsgroup.gif)
+![Image title](img/transitionsgroup.gif)
 <br>
 1. `Chart`: The plot periodically highlights a different chart:
 <br>
-![Image title](/img/transitionschart.gif)
+![Image title](img/transitionschart.gif)
 
 The cycle period is [configurable](configuration_options.md#transitions)
