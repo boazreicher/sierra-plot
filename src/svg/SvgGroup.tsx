@@ -102,7 +102,7 @@ export class SvgGroup extends SvgElement {
   setDisplayedCharts(
     selection: Selection,
     chart: ChartData,
-    chartsFieldBreakdown: string,
+    chartsFieldBreakdown: string
   ) {
     if (selection !== undefined && selection.active) {
       if (
@@ -138,14 +138,14 @@ const getTooltip = (data: ToolTipData, chartName: string | undefined) => (
 function getStyle(
   chart: string,
   color: Color,
-  chartName: string | undefined,
+  chartName: string | undefined
 ): React.CSSProperties | undefined {
   if (chartName !== undefined && chartName.endsWith(chart)) {
     const style = {
       fontWeight: 'bold',
       color: color.toHsl().toString(),
       textDecoration: 'underline',
-      margin: 0,
+      margin: 0
     } as const;
 
     return style;
@@ -153,18 +153,18 @@ function getStyle(
 
   const style = {
     margin: 0,
-    color: color.toHsl().toString(),
+    color: color.toHsl().toString()
   } as const;
 
   return style;
 }
 
 function getStyleForGroup(
-  color: Color | undefined,
+  color: Color | undefined
 ): React.CSSProperties | undefined {
   const style = {
     textDecoration: 'underline',
-    color: color === undefined ? White().toString() : color.toHsl().toString(),
+    color: color === undefined ? White().toString() : color.toHsl().toString()
   };
 
   return style;

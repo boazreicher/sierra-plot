@@ -7,7 +7,7 @@ export function Container() {
       <path
         id="control_container"
         style={getStyleObj(
-          'mix-blend-mode:normal;fill:url(#radialGradient31385);fill-opacity:1;stroke:#484848;stroke-width:0.750505;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0750505, 0.0750505;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal',
+          'mix-blend-mode:normal;fill:url(#radialGradient31385);fill-opacity:1;stroke:#484848;stroke-width:0.750505;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0750505, 0.0750505;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal'
         )}
         d="m 174.36562,10.885525 v 0.0676 L 1.9122359,100.97665 1.8934441,128.86476 c 1.6486536,-0.18319 172.4721759,0.37748 172.4721759,0.37748 h 0.12987 15.96789 16.09777 V 70.063884 10.885525 h -16.09777 -15.96789 z"
       />

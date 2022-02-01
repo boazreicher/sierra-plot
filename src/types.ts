@@ -91,10 +91,10 @@ export interface SierraPlotOptions {
 }
 
 export class BoundingBox {
-  minX: number = -1;
-  maxX: number = -1;
-  minY: number = -1;
-  maxY: number = -1;
+  minX = -1;
+  maxX = -1;
+  minY = -1;
+  maxY = -1;
 }
 
 export class Coordinates {
@@ -107,7 +107,7 @@ export class Coordinates {
     x: number,
     y: number,
     unformattedX?: number,
-    unformattedY?: number,
+    unformattedY?: number
   ) {
     this.x = x;
     this.y = y;
@@ -120,30 +120,30 @@ export class Coordinates {
       this.x,
       this.y,
       this.unformattedX,
-      this.unformattedY,
+      this.unformattedY
     );
   }
 
-  roundedX(digits: number = 2) {
+  roundedX(digits = 2) {
     var factor = Math.pow(10, digits);
     return Math.round(this.x * factor) / factor;
   }
 
-  roundedY(digits: number = 2) {
+  roundedY(digits = 2) {
     var factor = Math.pow(10, digits);
     return Math.round(this.y * factor) / factor;
   }
 
-  asString(digits: number = 2) {
+  asString(digits = 2) {
     return this.roundedX(digits) + ',' + this.roundedY(digits) + ' ';
   }
 }
 
 export class Dimensions {
-  startX: number = 0;
-  startY: number = 0;
-  width: number = 0;
-  height: number = 0;
+  startX = 0;
+  startY = 0;
+  width = 0;
+  height = 0;
   maxY: number | undefined;
 
   clone(): Dimensions {
@@ -172,7 +172,7 @@ export class ChartDimensions {
     totalHeight: number,
     originalHeight: number,
     shiftY: number,
-    maxY: number | undefined,
+    maxY: number | undefined
   ) {
     this.width = width;
     this.height = height;
@@ -195,7 +195,7 @@ export class ChartDimensionsProperties {
     showTotal: boolean,
     scaleY: number,
     skewPercentage: number,
-    totalHeightPercentage: number,
+    totalHeightPercentage: number
   ) {
     this.numCharts = numCharts;
     this.showTotal = showTotal;
@@ -215,7 +215,7 @@ export class BaseDimensionsProperties {
     leftMargin: number,
     topMargin: number,
     width: number,
-    height: number,
+    height: number
   ) {
     this.leftMargin = leftMargin;
     this.topMargin = topMargin;
@@ -233,14 +233,14 @@ export class TimeRange {
     this.end = end;
   }
 
-  public toString(): string {
+  toString(): string {
     return '[' + this.start + ', ' + this.end + ']';
   }
 }
 
 export class ValueRange {
-  start: number = 0;
-  end: number = 0;
+  start = 0;
+  end = 0;
 
   constructor(start: number, end: number | undefined) {
     this.start = start;

@@ -19,7 +19,7 @@ export class DefaultGroupPalette extends BasicPalette {
       new Hex('08bdba'),
       new Hex('bae6ff'),
       new Hex('ba4e00'),
-      new Hex('d4bbff'),
+      new Hex('d4bbff')
     );
     super.setAttributes(80, 50);
   }

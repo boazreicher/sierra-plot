@@ -10,7 +10,7 @@ import {
   ID_TYPE_GROUP_ELEMENT,
   NO_COLOR,
   ZORDER_CHART_RANGE,
-  ZORDER_CHART_START,
+  ZORDER_CHART_START
 } from 'Constants';
 import { ElementId } from 'data/ElementId';
 import { SierraPlotProperties } from 'data/SierraPlotProperties';
@@ -19,7 +19,7 @@ import { SvgElement } from 'svg/SvgElement';
 import { SierraPlotOptions } from 'types';
 import {
   getOnClickHandlerForChart,
-  getOnClickHandlerForTotal,
+  getOnClickHandlerForTotal
 } from './EventHandlers';
 import { PresentationElement } from './PresentationElement';
 
@@ -34,7 +34,7 @@ export class ChartElements implements PresentationElement {
     charts: ChartData[],
     totalChart: TotalChartData,
     panelOptions: SierraPlotOptions,
-    sierraPlotProperties: SierraPlotProperties,
+    sierraPlotProperties: SierraPlotProperties
   ) {
     this.charts = charts;
     this.totalChart = totalChart;
@@ -42,22 +42,22 @@ export class ChartElements implements PresentationElement {
     this.sierraPlotProperties = sierraPlotProperties;
     this.chartsTooltipData = this.buildTooltipData(
       charts,
-      sierraPlotProperties.getPalette(),
+      sierraPlotProperties.getPalette()
     );
   }
 
   toSvgElements(elements: SvgElement[]): SvgElement[] {
     let result: SvgElement[] = this.generateSvgElementsForCharts(
       this.panelOptions,
-      this.sierraPlotProperties,
+      this.sierraPlotProperties
     );
 
     if (this.panelOptions.showTotal) {
       result.push(
         this.generateSvgElementsForTotal(
           this.panelOptions,
-          this.sierraPlotProperties,
-        ),
+          this.sierraPlotProperties
+        )
       );
     }
 
@@ -66,7 +66,7 @@ export class ChartElements implements PresentationElement {
 
   private buildTooltipData(
     charts: ChartData[],
-    palette: ColorPalette,
+    palette: ColorPalette
   ): Record<string, ToolTipData> {
     let chartsTooltipData: Record<string, ToolTipData> = {};
     charts.forEach((chart) => {
@@ -80,8 +80,8 @@ export class ChartElements implements PresentationElement {
                 ID_SEPERATOR +
                 ID_TYPE_GROUP_ELEMENT +
                 ID_KV_SEPERATOR +
-                chart.sortKey,
-            ),
+                chart.sortKey
+            )
           );
         }
         chartsTooltipData[chart.sortKey].charts[chart.name] = White();
@@ -92,12 +92,12 @@ export class ChartElements implements PresentationElement {
 
   private generateSvgElementsForTotal(
     panelOptions: SierraPlotOptions,
-    sierraPlotProperties: SierraPlotProperties,
+    sierraPlotProperties: SierraPlotProperties
   ): SvgElement {
     let totalElement = this.totalChart.toSvgGroup(panelOptions.selectedChart);
     totalElement.onClick = getOnClickHandlerForTotal(
       panelOptions,
-      sierraPlotProperties.onOptionsChange,
+      sierraPlotProperties.onOptionsChange
     );
 
     return totalElement;
@@ -105,7 +105,7 @@ export class ChartElements implements PresentationElement {
 
   private generateSvgElementsForCharts(
     panelOptions: SierraPlotOptions,
-    sierraPlotProperties: SierraPlotProperties,
+    sierraPlotProperties: SierraPlotProperties
   ): SvgElement[] {
     let elements: SvgElement[] = [];
 
@@ -124,7 +124,7 @@ export class ChartElements implements PresentationElement {
         chart.name,
         chartGroup.boundingBox.minX,
         chartGroup.boundingBox.maxY,
-        sierraPlotProperties.onOptionsChange,
+        sierraPlotProperties.onOptionsChange
       );
 
       if (chart.sortKey !== undefined) {
@@ -135,7 +135,7 @@ export class ChartElements implements PresentationElement {
           if (element.fill !== undefined && element.fill != NO_COLOR) {
             try {
               chartGroup.tooltipData.charts[chart.name] = HSLFilter.fromString(
-                element.fill,
+                element.fill
               ).toHsl();
             } catch {
               chartGroup.tooltipData.charts[chart.name] = White();

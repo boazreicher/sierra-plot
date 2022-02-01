@@ -14,7 +14,7 @@ export const XAxis = ({
 
 function buildXAxisProperties(
   sierraPlotProperties: SierraPlotProperties,
-  selection: Selection,
+  selection: Selection
 ): XAxisProperties {
   return new XAxisProperties(
     sierraPlotProperties.timeRange,
@@ -23,9 +23,9 @@ function buildXAxisProperties(
     getXAxisYPos(
       selection,
       sierraPlotProperties.dimensions.height,
-      sierraPlotProperties.dimensions.startY,
+      sierraPlotProperties.dimensions.startY
     ),
-    sierraPlotProperties.chartDimensions.width,
+    sierraPlotProperties.chartDimensions.width
   );
 }
 
@@ -57,18 +57,18 @@ function getXAxisYPos(selection: Selection, yPos: number, topMargin: number) {
 
 function getXAxisElementWidth(
   startX: number,
-  width: number,
+  width: number
 ): string | number | undefined {
   return startX + width;
 }
 
 function createXAxis(
   sierraPlotProperties: SierraPlotProperties,
-  selection: Selection,
+  selection: Selection
 ) {
   let properties: XAxisProperties = buildXAxisProperties(
     sierraPlotProperties,
-    selection,
+    selection
   );
 
   var timeShiftRatio = 0;
@@ -83,7 +83,7 @@ function createXAxis(
     .domain([properties.timeRange.start + timeShift, properties.timeRange.end])
     .range([
       properties.startX + properties.minX,
-      properties.startX + properties.width,
+      properties.startX + properties.width
     ]);
   const xAxis = d3.axisBottom(xScale).ticks(30);
   return (
@@ -120,7 +120,7 @@ export class XAxisProperties {
     minX: number,
     startX: number,
     yPos: number,
-    width: number,
+    width: number
   ) {
     this.timeRange = timeRange;
     this.minX = minX;

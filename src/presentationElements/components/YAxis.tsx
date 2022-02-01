@@ -12,19 +12,19 @@ export const YAxis = ({
     props.effectiveMaxY,
     props.totalStackMode,
     props.enabled,
-    props.totalsDimensions,
+    props.totalsDimensions
   );
 
 function buildYAxisProperties(
   range: ValueRange,
-  totalsDimensions: Dimensions,
+  totalsDimensions: Dimensions
 ): YAxisProperties {
   return new YAxisProperties(
     range,
     totalsDimensions.startX,
     0,
     totalsDimensions.height,
-    '~s',
+    '~s'
   );
 }
 
@@ -36,14 +36,14 @@ function createYAxis(
   effectiveMaxY: number,
   totalStackMode: StackMode,
   enabled: boolean,
-  totalsDimensions?: Dimensions,
+  totalsDimensions?: Dimensions
 ) {
   if (!enabled || totalsDimensions === undefined) {
     return <></>;
   }
   let range = new ValueRange(
     0,
-    totalStackMode == 'stacked' ? effectiveMaxY : 100,
+    totalStackMode == 'stacked' ? effectiveMaxY : 100
   );
   let properties = buildYAxisProperties(range, totalsDimensions);
 
@@ -82,7 +82,7 @@ export class YAxisProperties {
     startX: number,
     yPos: number,
     height: number,
-    format: string,
+    format: string
   ) {
     this.range = range;
     this.startX = startX;

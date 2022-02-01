@@ -6,12 +6,12 @@ import {
   optionsChangeCallback,
   TimeRange,
   BaseDimensionsProperties,
-  ChartDimensionsProperties,
+  ChartDimensionsProperties
 } from 'types';
 import {
   buildDataForRangeSelector,
   calculateTotalsSingleOriginal,
-  getSortedCharts,
+  getSortedCharts
 } from 'data/DataSeriesUtils';
 import {
   generateViewbox,
@@ -20,7 +20,7 @@ import {
   getWidth,
   initBreakdowns,
   truncateOutsideTimeRange,
-  updateTimer,
+  updateTimer
 } from 'charts/ChartUtils';
 import { SierraPlotProperties } from 'data/SierraPlotProperties';
 import { getOnClickHandler } from 'presentationElements/EventHandlers';
@@ -65,14 +65,14 @@ export const SierraPlot = ({
           props.width,
           props.height,
           props.timeRange,
-          props.onOptionsChange,
+          props.onOptionsChange
         )}
         height="100%"
         width="100%"
         viewBox={generateViewbox(
           props.width,
           props.height,
-          props.panelOptions.showRangeSelector,
+          props.panelOptions.showRangeSelector
         )}
         onClick={getOnClickHandler(props.panelOptions, props.onOptionsChange)}
       >
@@ -129,14 +129,14 @@ function initSierraPlotElements(
   width: propNumber,
   height: propNumber,
   timeRange: TimeRange,
-  onOptionsChange: optionsChangeCallback,
+  onOptionsChange: optionsChangeCallback
 ): string {
   initBreakdowns(panelOptions);
 
   let chartsDataProperties = new ChartsDataProperties(panelOptions);
   let sortedCharts: ChartData[] = getSortedCharts(
     dataFrames,
-    chartsDataProperties,
+    chartsDataProperties
   );
 
   let totalsOriginal = calculateTotalsSingleOriginal(sortedCharts);
@@ -145,7 +145,7 @@ function initSierraPlotElements(
     sortedCharts,
     chartsDataProperties.customTimeRange(),
     chartsDataProperties.formattedTimeRange,
-    panelOptions.showRangeSelector,
+    panelOptions.showRangeSelector
   );
 
   let totals = new Totals(sortedCharts, totalsOriginal, panelOptions);
@@ -157,14 +157,14 @@ function initSierraPlotElements(
     width,
     height,
     chartsDataProperties.timeRange,
-    onOptionsChange,
+    onOptionsChange
   );
 
   let charts = new Charts(
     sortedCharts,
     totals,
     sierraPlotProperties,
-    panelOptions,
+    panelOptions
   );
   sierraPlotProperties.totalsDimensions = charts.getTotalsDimensions();
 
@@ -175,38 +175,38 @@ function initSierraPlotElements(
       charts.getCharts(),
       charts.getTotalChart(),
       panelOptions,
-      sierraPlotProperties,
+      sierraPlotProperties
     ),
     new ChartLabels(
       charts.getCharts(),
       panelOptions.selectedChart,
-      panelOptions.showChartLabels,
+      panelOptions.showChartLabels
     ),
     new ChartGroups(
       charts.getCharts(),
       sierraPlotProperties,
       panelOptions,
-      onOptionsChange,
+      onOptionsChange
     ),
     new Markers(charts.getCharts(), panelOptions),
     new BackgroundElement(
       sierraPlotProperties.minX,
       panelOptions.backgroundColor,
-      panelOptions.showBackground,
+      panelOptions.showBackground
     ),
     new FogElements(
       panelOptions.fogHeight,
       panelOptions.fogColor,
       panelOptions.selectedChart,
-      panelOptions.showFog,
+      panelOptions.showFog
     ),
     new VerticalGridLines(
       panelOptions.gridlineEnabled,
       panelOptions.gridlineWidth,
       new Hex(panelOptions.gridlineColor),
       panelOptions.gridlinePosition,
-      panelOptions.gridlineTicks,
-    ),
+      panelOptions.gridlineTicks
+    )
   );
 
   // Set the tranistions timer
@@ -214,7 +214,7 @@ function initSierraPlotElements(
     charts.getCharts(),
     chartsSvgElements.getChartsElements(),
     panelOptions,
-    onOptionsChange,
+    onOptionsChange
   );
 
   return 'http://www.w3.org/2000/svg';
@@ -227,20 +227,20 @@ function initSierraPlotProperties(
   width: propNumber,
   height: propNumber,
   timeRange: TimeRange,
-  onOptionsChange: optionsChangeCallback,
+  onOptionsChange: optionsChangeCallback
 ): SierraPlotProperties {
   let baseDimensionsProperties = new BaseDimensionsProperties(
     panelOptions.leftMargin,
     panelOptions.topMargin,
     getWidth(width, height),
-    getHeight(width, height, panelOptions.showRangeSelector),
+    getHeight(width, height, panelOptions.showRangeSelector)
   );
   let chartDimensionsProperties = new ChartDimensionsProperties(
     sortedCharts.length,
     panelOptions.showTotal,
     panelOptions.scaleY,
     panelOptions.skewPercentage,
-    panelOptions.totalPerc,
+    panelOptions.totalPerc
   );
   let paletteGenerator = new DefaultPaletteGenerator();
 
@@ -252,6 +252,6 @@ function initSierraPlotProperties(
     chartDimensionsProperties,
     paletteGenerator,
     timeRange,
-    onOptionsChange,
+    onOptionsChange
   );
 }

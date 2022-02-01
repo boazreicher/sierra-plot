@@ -21,7 +21,7 @@ export class Timer {
     panelOptions: SierraPlotOptions,
     groups: Record<string, boolean>,
     chartCoordinates: Record<string, Coordinates>,
-    onOptionsChange: optionsChangeCallback,
+    onOptionsChange: optionsChangeCallback
   ): Timer {
     if (!Timer.instance) {
       Timer.instance = new Timer();
@@ -36,7 +36,7 @@ export class Timer {
     panelOptions: SierraPlotOptions,
     groups: Record<string, boolean>,
     chartCoordinates: Record<string, Coordinates>,
-    onOptionsChange: optionsChangeCallback,
+    onOptionsChange: optionsChangeCallback
   ): void {
     Timer.instance.panelOptions = panelOptions;
     Timer.instance.groups = [];
@@ -105,7 +105,7 @@ export class Timer {
           case 'groups':
             this.panelOptions.selectedChart = new Selection(
               'group',
-              this.groups[this.cursor++ % this.groups.length],
+              this.groups[this.cursor++ % this.groups.length]
             );
             this.panelOptions.selectedChart.type = SelectionType.Group;
             this.panelOptions.selectedChart.hightlightMode = 'focus';
@@ -115,11 +115,11 @@ export class Timer {
               this.chartIds[this.cursor++ % this.chartIds.length];
             let chartName = chartId.replace(
               this.panelOptions.chartsFieldBreakdown + ID_KV_SEPERATOR,
-              '',
+              ''
             );
             this.panelOptions.selectedChart = new Selection(
               this.panelOptions.chartsFieldBreakdown,
-              chartName,
+              chartName
             );
             this.panelOptions.selectedChart.x = this.charts[chartId].x;
             this.panelOptions.selectedChart.y = this.charts[chartId].y;

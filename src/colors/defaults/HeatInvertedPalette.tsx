@@ -7,7 +7,7 @@ export class HeatInvertedPalette extends BasicPalette {
       new Hex('ffa600'),
       new Hex('ef5675'),
       new Hex('7a5195'),
-      new Hex('003f5c'),
+      new Hex('003f5c')
     );
   }
 }

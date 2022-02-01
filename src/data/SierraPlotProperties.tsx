@@ -16,7 +16,7 @@ import {
   FILTER_NAME_BEVEL,
   FILTER_NAME_GLOW,
   FILTER_NAME_HEAT,
-  FILTER_NAME_HEAT_INVERTED,
+  FILTER_NAME_HEAT_INVERTED
 } from 'Constants';
 import { MaxY } from 'data/MaxY';
 import { Selection, SelectionType } from 'data/Selection';
@@ -29,7 +29,7 @@ import {
   Dimensions,
   optionsChangeCallback,
   SierraPlotOptions,
-  TimeRange,
+  TimeRange
 } from 'types';
 import { Totals } from './Totals';
 
@@ -61,13 +61,13 @@ export class SierraPlotProperties {
     chartDimensionsProperties: ChartDimensionsProperties,
     paletteGenerator: PaletteGenerator,
     timeRange: TimeRange,
-    onOptionsChange: optionsChangeCallback,
+    onOptionsChange: optionsChangeCallback
   ) {
     this.maxY = new MaxY(
       panelOptions.maxYType,
       panelOptions.chartType,
       charts,
-      totals,
+      totals
     );
     this.totalsMaxY = totals.getEffectiveMaxY(panelOptions);
     this.palettes = paletteGenerator.generatePalettes(charts, panelOptions);
@@ -76,7 +76,7 @@ export class SierraPlotProperties {
     this.skew = this.calculateSkew(chartDimensionsProperties);
     this.chartDimensions = this.generateChartDimensions(
       chartDimensionsProperties,
-      baseDimensionsProperties.topMargin,
+      baseDimensionsProperties.topMargin
     );
     this.minX = 0;
     this.timeRange = timeRange;
@@ -87,26 +87,26 @@ export class SierraPlotProperties {
     let filters: Set<Filter> = new Set<Filter>();
 
     this.createLinearGradientFilters(
-      this.palettes.getPalette(PaletteType.Regular).toArray(),
+      this.palettes.getPalette(PaletteType.Regular).toArray()
     ).forEach(filters.add, filters);
     this.createLinearGradientFilters(
-      new DefaultGroupPalette().asFilters().toArray(),
+      new DefaultGroupPalette().asFilters().toArray()
     ).forEach(filters.add, filters);
     this.createLinearGradientFilters(
-      new DefaultSeriesPalette().asFilters().toArray(),
+      new DefaultSeriesPalette().asFilters().toArray()
     ).forEach(filters.add, filters);
     this.createLinearGradientFilters(
-      this.palettes.getPalette(PaletteType.Selected).toArray(),
+      this.palettes.getPalette(PaletteType.Selected).toArray()
     ).forEach(filters.add, filters);
 
     filters.add(
-      new LinearGradient(FILTER_NAME_HEAT, new HeatPalette().toArray()),
+      new LinearGradient(FILTER_NAME_HEAT, new HeatPalette().toArray())
     );
     filters.add(
       new LinearGradient(
         FILTER_NAME_HEAT_INVERTED,
-        new HeatInvertedPalette().toArray(),
-      ),
+        new HeatInvertedPalette().toArray()
+      )
     );
     filters.add(new Bevel(FILTER_NAME_BEVEL));
     filters.add(new Glow(FILTER_NAME_GLOW, glowSpread));
@@ -164,7 +164,7 @@ export class SierraPlotProperties {
     selection: Selection | undefined,
     groupName: string | undefined,
     isTotal: boolean,
-    breakDownType: ChartBreakdown,
+    breakDownType: ChartBreakdown
   ) {
     if (colorMode == 'values' && !isTotal) {
       return new FilterPalette('heat');
@@ -187,7 +187,7 @@ export class SierraPlotProperties {
   }
 
   private generateBaseDimensions(
-    properties: BaseDimensionsProperties,
+    properties: BaseDimensionsProperties
   ): Dimensions {
     var dimensions: Dimensions = new Dimensions();
     dimensions.startX = properties.leftMargin;
@@ -200,7 +200,7 @@ export class SierraPlotProperties {
 
   private generateChartDimensions(
     properties: ChartDimensionsProperties,
-    topMargin: number,
+    topMargin: number
   ): ChartDimensions {
     let shiftForTotal = properties.showTotal ? 1 : 0;
     let width =
@@ -229,7 +229,7 @@ export class SierraPlotProperties {
       totalHeight,
       originalHeight,
       shiftY,
-      maxY,
+      maxY
     );
   }
 

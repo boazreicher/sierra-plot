@@ -16,7 +16,7 @@ export class ChartsPresentationProperties {
     isTotal: boolean,
     palette: ColorPalette,
     outlineColor: Color,
-    panelOptions: SierraPlotOptions,
+    panelOptions: SierraPlotOptions
   ) {
     this.isTotal = isTotal;
     this.palette = palette;

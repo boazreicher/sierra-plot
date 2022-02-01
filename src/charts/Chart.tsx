@@ -1,7 +1,7 @@
 import {
   ID_PREFIX_TOTAL_ELEMENT,
   ID_SEPERATOR,
-  TOTAL_ELEMENT_ID,
+  TOTAL_ELEMENT_ID
 } from 'Constants';
 import { SvgElement } from 'svg/SvgElement';
 import { Dimensions } from 'types';
@@ -17,7 +17,7 @@ export abstract class Chart<ElementType extends SeriesElement> {
   constructor(
     id: string,
     chartDimensions: Dimensions,
-    private type: new () => ElementType,
+    private type: new () => ElementType
   ) {
     this.id = id;
     this.chartDimensions = chartDimensions;
@@ -26,28 +26,28 @@ export abstract class Chart<ElementType extends SeriesElement> {
   buildSvgElements(
     series: DataSeries[],
     numDataPoints: number,
-    chartsPresentationProperties: ChartsPresentationProperties,
+    chartsPresentationProperties: ChartsPresentationProperties
   ): SvgElement[] {
     let seriesElements = this.buildElements(
       series,
       chartsPresentationProperties.isTotal,
-      chartsPresentationProperties.stepped,
+      chartsPresentationProperties.stepped
     );
 
     let formattedSeriesElements = this.formatSeriesElements(
       seriesElements,
-      numDataPoints,
+      numDataPoints
     );
 
     return this.generateSvgElements(
       formattedSeriesElements,
-      chartsPresentationProperties,
+      chartsPresentationProperties
     );
   }
 
   protected generateSvgElements(
     seriesElements: SeriesElement[],
-    chartsPresentationProperties: ChartsPresentationProperties,
+    chartsPresentationProperties: ChartsPresentationProperties
   ): SvgElement[] {
     var elements: SvgElement[] = [];
 
@@ -73,7 +73,7 @@ export abstract class Chart<ElementType extends SeriesElement> {
       this.setStyleForUnderlyingType(
         svgElement,
         color,
-        chartsPresentationProperties,
+        chartsPresentationProperties
       );
 
       elements.push(svgElement);
@@ -88,7 +88,7 @@ export abstract class Chart<ElementType extends SeriesElement> {
             elements,
             seriesElements[index],
             chartsPresentationProperties,
-            true,
+            true
           );
         }
       }
@@ -98,7 +98,7 @@ export abstract class Chart<ElementType extends SeriesElement> {
       elements,
       seriesElements[seriesElements.length - 1],
       chartsPresentationProperties,
-      false,
+      false
     );
 
     return elements;
@@ -110,23 +110,23 @@ export abstract class Chart<ElementType extends SeriesElement> {
   protected abstract setStyleForUnderlyingType(
     element: SvgElement,
     color: string,
-    chartsPresentationProperties: ChartsPresentationProperties,
+    chartsPresentationProperties: ChartsPresentationProperties
   ): void;
   protected abstract addTopSvgElement(
     elements: SvgElement[],
     element: SeriesElement,
     chartsPresentationProperties: ChartsPresentationProperties,
-    totalNotLast: boolean,
+    totalNotLast: boolean
   ): void;
   protected abstract formatSeriesElements(
     elements: SeriesElement[],
-    numDataPoints: number,
+    numDataPoints: number
   ): SeriesElement[];
 
   protected buildElements(
     series: DataSeries[],
     isTotal: boolean,
-    stepped: boolean,
+    stepped: boolean
   ): SeriesElement[] {
     var elements: SeriesElement[] = [];
 

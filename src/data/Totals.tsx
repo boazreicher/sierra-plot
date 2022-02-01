@@ -4,7 +4,7 @@ import {
   ID_TYPE_CHART_ELEMENT,
   ID_TYPE_GROUP_ELEMENT,
   ID_TYPE_SERIES_ELEMENT,
-  TOTAL_ELEMENT_ID,
+  TOTAL_ELEMENT_ID
 } from 'Constants';
 import { Coordinates, SierraPlotOptions } from 'types';
 import { DataPoint } from './DataPoint';
@@ -20,7 +20,7 @@ export class Totals {
   constructor(
     charts: ChartData[],
     original: DataSeries,
-    panelOptions: SierraPlotOptions,
+    panelOptions: SierraPlotOptions
   ) {
     this.single = this.calculateTotalsSingle(charts);
     this.multi = this.calculateTotalsSeries(charts, panelOptions);
@@ -76,7 +76,7 @@ export class Totals {
 
   private calculateTotalsSeries(
     sortedChartsSeries: ChartData[],
-    panelOptions: SierraPlotOptions,
+    panelOptions: SierraPlotOptions
   ): DataSeries[] {
     var stacked: DataSeries[] = [];
     var stacked100: DataSeries[] = [];
@@ -95,13 +95,13 @@ export class Totals {
         this.getTotalsBreakDownForSeries(
           sortedChartsSeries,
           summationsForGroups,
-          panelOptions.selectedChart.value,
+          panelOptions.selectedChart.value
         );
       } else {
         this.getTotalsBreakDownForCharts(
           sortedChartsSeries,
           summationsForGroups,
-          panelOptions.selectedChart.value,
+          panelOptions.selectedChart.value
         );
       }
     } else {
@@ -111,13 +111,13 @@ export class Totals {
         case 'series':
           this.getTotalsBreakDownForSeries(
             sortedChartsSeries,
-            summationsForGroups,
+            summationsForGroups
           );
           break;
         case 'chart':
           this.getTotalsBreakDownForCharts(
             sortedChartsSeries,
-            summationsForGroups,
+            summationsForGroups
           );
           break;
         case 'group':
@@ -125,7 +125,7 @@ export class Totals {
             sortedChartsSeries,
             summationsForGroups,
             panelOptions.totalChartType == 'line' &&
-              panelOptions.aggregation == 'avg',
+              panelOptions.aggregation == 'avg'
           );
           break;
       }
@@ -149,7 +149,7 @@ export class Totals {
         summations100ForGroups[group].dataPoints[index].setY(
           sum == 0
             ? 0
-            : (100 * summationsForGroups[group].dataPoints[index].y()) / sum,
+            : (100 * summationsForGroups[group].dataPoints[index].y()) / sum
         );
       }
     }
@@ -164,7 +164,7 @@ export class Totals {
   private getTotalsBreakDownForSeries(
     sortedChartsSeries: ChartData[],
     summationsForGroups: Record<string, DataSeries>,
-    selectedGroup: string | undefined = undefined,
+    selectedGroup: string | undefined = undefined
   ) {
     sortedChartsSeries.forEach((chart) => {
       if (selectedGroup !== undefined) {
@@ -200,7 +200,7 @@ export class Totals {
   private getTotalsBreakDownForCharts(
     sortedChartsSeries: ChartData[],
     summationsForGroups: Record<string, DataSeries>,
-    selectedGroup: string | undefined = undefined,
+    selectedGroup: string | undefined = undefined
   ) {
     sortedChartsSeries.forEach((chart) => {
       if (selectedGroup !== undefined) {
@@ -231,7 +231,7 @@ export class Totals {
   private getTotalsBreakDownForGroups(
     sortedChartsSeries: ChartData[],
     summationsForGroups: Record<string, DataSeries>,
-    average: boolean,
+    average: boolean
   ) {
     sortedChartsSeries.forEach((chart) => {
       if (chart.sortKey === undefined) {
@@ -247,7 +247,7 @@ export class Totals {
         if (average) {
           summationsForGroups[chart.sortKey].average(
             chart.data[index],
-            chart.data[index].getEmptySeries(),
+            chart.data[index].getEmptySeries()
           );
         } else {
           summationsForGroups[chart.sortKey].sum(chart.data[index]);
@@ -285,7 +285,7 @@ export class Totals {
 
     keys.forEach((xValue) => {
       result.dataPoints.push(
-        new DataPoint(new Coordinates(xValue, sums[xValue])),
+        new DataPoint(new Coordinates(xValue, sums[xValue]))
       );
     });
 

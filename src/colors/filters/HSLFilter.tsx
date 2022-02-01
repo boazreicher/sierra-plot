@@ -33,7 +33,7 @@ export class HSLFilter extends Filter {
 
     return new HSLFilter(
       new HSL(+hslComponents[1], +hslComponents[2], +hslComponents[3]),
-      hsl[1],
+      hsl[1]
     );
   }
 }

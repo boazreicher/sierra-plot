@@ -48,5 +48,5 @@ export class Selection {
 export enum SelectionType {
   None = 1,
   Chart,
-  Group,
+  Group
 }

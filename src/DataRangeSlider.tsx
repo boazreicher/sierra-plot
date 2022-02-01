@@ -25,7 +25,7 @@ class RangeSliderComponent extends React.Component<Props, State> {
     super(props);
     this.state = {
       selectedRange: [],
-      selectedData: [],
+      selectedData: []
     };
 
     if (props.panelOptions.showRangeSelector) {
@@ -41,7 +41,7 @@ class RangeSliderComponent extends React.Component<Props, State> {
 
   componentDidUpdate(prevProps: Props, prevState: State) {
     if (
-      prevProps.data == this.props.data ||
+      prevProps.data === this.props.data ||
       !this.props.panelOptions.showRangeSelector
     ) {
       return;
@@ -54,18 +54,18 @@ class RangeSliderComponent extends React.Component<Props, State> {
       <svg
         x={getXAxisStartX(
           this.props.sierraPlotProperties.minX,
-          this.props.sierraPlotProperties.dimensions.startX,
+          this.props.sierraPlotProperties.dimensions.startX
         )}
         y={getXAxisYPos(
           this.props.sierraPlotProperties.dimensions.height,
-          this.props.sierraPlotProperties.dimensions.startY,
+          this.props.sierraPlotProperties.dimensions.startY
         )}
         height="100%"
         style={{
           marginTop: '0px',
           borderRadius: '5px',
           paddingTop: '0px',
-          paddingLeft: '0px',
+          paddingLeft: '0px'
         }}
         ref={this.nodeRef}
       />
@@ -88,8 +88,8 @@ class RangeSliderComponent extends React.Component<Props, State> {
         getXAxisWidth(
           this.props.sierraPlotProperties.minX,
           this.props.sierraPlotProperties.dimensions.startX,
-          this.props.sierraPlotProperties.chartDimensions.width,
-        ),
+          this.props.sierraPlotProperties.chartDimensions.width
+        )
       )
       .svgHeight(100)
       .yTicks(0)
@@ -101,7 +101,7 @@ class RangeSliderComponent extends React.Component<Props, State> {
         this.props.onOptionsChange(this.props.panelOptions);
         this.setState({
           selectedRange: d.range,
-          selectedData: d.data,
+          selectedData: d.data
         });
       })
       .render();

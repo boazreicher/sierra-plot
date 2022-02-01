@@ -7,7 +7,7 @@ export class HeatPalette extends BasicPalette {
       new Hex('003f5c'),
       new Hex('7a5195'),
       new Hex('ef5675'),
-      new Hex('ffa600'),
+      new Hex('ffa600')
     );
   }
 }

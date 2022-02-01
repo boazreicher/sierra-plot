@@ -20,7 +20,7 @@ export const SierraPlotPanel: React.FC<Props> = ({
   data,
   width,
   height,
-  onOptionsChange,
+  onOptionsChange
 }) => {
   const xAxisHeight = X_AXIS_HEIGHT;
   const styles = getStyles();
@@ -35,7 +35,7 @@ export const SierraPlotPanel: React.FC<Props> = ({
         css`
           width: ${width}px;
           height: ${height}px;
-        `,
+        `
       )}
     >
       <SierraPlot
@@ -65,6 +65,6 @@ const getStyles = stylesFactory(() => {
       bottom: 0;
       left: 0;
       padding: 10px;
-    `,
+    `
   };
 });

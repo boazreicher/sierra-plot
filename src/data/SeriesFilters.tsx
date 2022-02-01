@@ -15,27 +15,27 @@ export class SeriesFilters {
       panelOptions.selectedChart.hightlightMode == 'exclusive'
     ) {
       this.addFilter(panelOptions.chartsGroupField, [
-        panelOptions.selectedChart.value,
+        panelOptions.selectedChart.value
       ]);
     } else {
       if (panelOptions.chartsGroupField !== undefined) {
         this.addFilter(
           panelOptions.chartsGroupField,
-          panelOptions.selectedGroups,
+          panelOptions.selectedGroups
         );
         this.addExcludeFilter(
           panelOptions.chartsGroupField,
-          panelOptions.excludedGroups,
+          panelOptions.excludedGroups
         );
       }
       if (panelOptions.seriesFieldBreakdown !== undefined) {
         this.addFilter(
           panelOptions.seriesFieldBreakdown,
-          panelOptions.selectedSeries,
+          panelOptions.selectedSeries
         );
         this.addExcludeFilter(
           panelOptions.seriesFieldBreakdown,
-          panelOptions.excludedSeries,
+          panelOptions.excludedSeries
         );
       }
     }

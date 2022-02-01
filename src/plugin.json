@@ -9,7 +9,12 @@
             "name": "boazr",
             "url": "https://github.com/boazreicher"
         },
-        "keywords": ["Sierra", "Ridgeline", "Joyplot", "Joy Plot"],
+        "keywords": [
+            "Sierra",
+            "Ridgeline",
+            "Joyplot",
+            "Joy Plot"
+        ],
         "logos": {
             "small": "img/logo.svg",
             "large": "img/logo.svg"

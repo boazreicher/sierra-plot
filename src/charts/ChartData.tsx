@@ -7,7 +7,7 @@ import {
   ColorType,
   SierraPlotOptions,
   Dimensions,
-  ColorMode,
+  ColorMode
 } from 'types';
 import { DataSeries } from 'data/DataSeries';
 import { ChartsPresentationProperties } from './ChartsPresentationProperties';
@@ -33,7 +33,7 @@ export abstract class ChartData {
     name: string,
     sortKey: string | undefined,
     breakDownField: string,
-    type: ChartType,
+    type: ChartType
   ) {
     this.name = name;
     this.sortKey = sortKey;
@@ -43,7 +43,7 @@ export abstract class ChartData {
 
   buildElements(
     sierraPlotProperties: SierraPlotProperties,
-    panelOptions: SierraPlotOptions,
+    panelOptions: SierraPlotOptions
   ): void {
     this.calculateDimensions(sierraPlotProperties, panelOptions.skewPercentage);
     this.calculateChartElements(panelOptions, sierraPlotProperties);
@@ -55,7 +55,7 @@ export abstract class ChartData {
 
   private calculateDimensions(
     sierraPlotProperties: SierraPlotProperties,
-    skewPercentage: number,
+    skewPercentage: number
   ) {
     let result: Dimensions = new Dimensions();
 
@@ -77,14 +77,14 @@ export abstract class ChartData {
 
   private calculateChartElements(
     panelOptions: SierraPlotOptions,
-    sierraPlotProperties: SierraPlotProperties,
+    sierraPlotProperties: SierraPlotProperties
   ) {
     let groupMaxY = this.getEffectiveGroupMaxY(sierraPlotProperties);
     let chart = initChart(this.type, this.name, this.dimensions, groupMaxY);
     this.elements = chart.buildSvgElements(
       this.data,
       this.getNumDataPoints(),
-      this.getChartsPresentationProperties(sierraPlotProperties, panelOptions),
+      this.getChartsPresentationProperties(sierraPlotProperties, panelOptions)
     );
   }
 
@@ -96,7 +96,7 @@ export abstract class ChartData {
     this.elements.forEach((element) => {
       if (element.hasDataPoints()) {
         element.dataPoints = element.dataPoints.filter(
-          (coordnates) => coordnates.x >= minX + this.dimensions.startX,
+          (coordnates) => coordnates.x >= minX + this.dimensions.startX
         );
       }
     });
@@ -108,24 +108,24 @@ export abstract class ChartData {
   }
 
   protected abstract getEffectiveChartHeight(
-    sierraPlotProperties: SierraPlotProperties,
+    sierraPlotProperties: SierraPlotProperties
   ): number;
   protected abstract getEffectiveStartY(
     sierraPlotProperties: SierraPlotProperties,
-    numCharts: number,
+    numCharts: number
   ): number;
   protected abstract getEffectiveMaxY(
-    sierraPlotProperties: SierraPlotProperties,
+    sierraPlotProperties: SierraPlotProperties
   ): number | undefined;
   protected abstract getEffectiveGroupMaxY(
-    sierraPlotProperties: SierraPlotProperties,
+    sierraPlotProperties: SierraPlotProperties
   ): number | undefined;
   protected abstract getChartsPresentationProperties(
     sierraPlotProperties: SierraPlotProperties,
-    panelOptions: SierraPlotOptions,
+    panelOptions: SierraPlotOptions
   ): ChartsPresentationProperties;
   protected abstract getChartLabel(
     sierraPlotProperties: SierraPlotProperties,
-    panelOptions: SierraPlotOptions,
+    panelOptions: SierraPlotOptions
   ): ChartLabel;
 }

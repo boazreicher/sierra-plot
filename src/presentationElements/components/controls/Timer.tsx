@@ -3,13 +3,13 @@ import * as React from 'react';
 import {
   optionsChangeCallback,
   SierraPlotOptions,
-  TransitionType,
+  TransitionType
 } from 'types';
 import { getStyleObj } from './Utils';
 
 export function Timer(
   panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback,
+  onOptionsChange: optionsChangeCallback
 ) {
   return (
     <g
@@ -20,7 +20,7 @@ export function Timer(
         style={getStyleObj(
           'fill:url(#linearGradient2349);fill-opacity:1;stroke:' +
             getTimerOutlineColor(panelOptions.transitionType) +
-            ';stroke-width:0.734984;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+            ';stroke-width:0.734984;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="btn_timer"
         width="25.262375"
@@ -40,7 +40,7 @@ export function Timer(
       <text
         xmlSpace="preserve"
         style={getStyleObj(
-          'font-style:normal;font-weight:normal;font-size:9.76979px;line-height:1.25;font-family:sans-serif;fill:#d2d2d2;fill-opacity:1;stroke:none;stroke-width:0.366367',
+          'font-style:normal;font-weight:normal;font-size:9.76979px;line-height:1.25;font-family:sans-serif;fill:#d2d2d2;fill-opacity:1;stroke:none;stroke-width:0.366367'
         )}
         x="195.16956"
         y="66.593407"
@@ -49,7 +49,7 @@ export function Timer(
         <tspan
           id="tspan12002"
           style={getStyleObj(
-            'font-size:9.76979px;fill:#d2d2d2;fill-opacity:1;stroke-width:0.366367',
+            'font-size:9.76979px;fill:#d2d2d2;fill-opacity:1;stroke-width:0.366367'
           )}
           x="195.16956"
           y="66.593407"
@@ -63,7 +63,7 @@ export function Timer(
 
 function getTimerOnClickHandler(
   panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback,
+  onOptionsChange: optionsChangeCallback
 ): React.MouseEventHandler<SVGElement> | undefined {
   var clickEventHandler: React.MouseEventHandler = (event) => {
     switch (panelOptions.transitionType) {

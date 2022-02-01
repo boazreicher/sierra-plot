@@ -22,46 +22,46 @@ export class TotalChartData extends ChartData {
   }
   protected getChartLabel(
     sierraPlotProperties: SierraPlotProperties,
-    panelOptions: SierraPlotOptions,
+    panelOptions: SierraPlotOptions
   ): ChartLabel {
     return ChartLabel.empty();
   }
   protected getChartsPresentationProperties(
     sierraPlotProperties: SierraPlotProperties,
-    panelOptions: SierraPlotOptions,
+    panelOptions: SierraPlotOptions
   ): ChartsPresentationProperties {
     let palette: ColorPalette = sierraPlotProperties.selectPalette(
       panelOptions.colorMode,
       panelOptions.selectedChart,
       this.sortKey,
       true,
-      panelOptions.chartBreakdownType,
+      panelOptions.chartBreakdownType
     );
     return new ChartsPresentationProperties(
       true,
       palette,
       Black(),
-      panelOptions,
+      panelOptions
     );
   }
   protected getEffectiveGroupMaxY(
-    sierraPlotProperties: SierraPlotProperties,
+    sierraPlotProperties: SierraPlotProperties
   ): number | undefined {
     return undefined;
   }
   protected getEffectiveStartY(
     sierraPlotProperties: SierraPlotProperties,
-    numCharts: number,
+    numCharts: number
   ): number {
     return this.getEffectiveChartHeight(sierraPlotProperties);
   }
   protected getEffectiveMaxY(
-    sierraPlotProperties: SierraPlotProperties,
+    sierraPlotProperties: SierraPlotProperties
   ): number | undefined {
     return undefined;
   }
   protected getEffectiveChartHeight(
-    sierraPlotProperties: SierraPlotProperties,
+    sierraPlotProperties: SierraPlotProperties
   ): number {
     return (
       sierraPlotProperties.dimensions.height -
@@ -73,7 +73,7 @@ export class TotalChartData extends ChartData {
     name: string,
     sortKey: string | undefined,
     breakDownField: string,
-    type: ChartType = 'other',
+    type: ChartType = 'other'
   ) {
     super(name, sortKey, breakDownField, type);
   }

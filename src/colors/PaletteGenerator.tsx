@@ -18,7 +18,7 @@ export class PaletteGenerator {
   constructor(
     seriesPalette: ColorPalette,
     groupPalette: ColorPalette,
-    totalColor: Color,
+    totalColor: Color
   ) {
     this.seriesPalette = seriesPalette;
     this.groupPalette = groupPalette;
@@ -27,7 +27,7 @@ export class PaletteGenerator {
 
   generatePalettes(
     sortedCharts: ChartData[],
-    panelOptions: SierraPlotOptions,
+    panelOptions: SierraPlotOptions
   ): ColorPalettes {
     this.seriesPalette.reset();
     this.groupPalette.reset();
@@ -41,8 +41,8 @@ export class PaletteGenerator {
         sortedCharts,
         panelOptions.color,
         panelOptions.colorType,
-        panelOptions.colorMode,
-      ),
+        panelOptions.colorMode
+      )
     );
     var selectedValue: string | undefined = undefined;
     if (
@@ -61,8 +61,8 @@ export class PaletteGenerator {
         panelOptions.color,
         panelOptions.colorType,
         panelOptions.colorMode,
-        selectedValue,
-      ),
+        selectedValue
+      )
     );
 
     return colorPalettes;
@@ -74,18 +74,18 @@ export class PaletteGenerator {
     colorString: string,
     colorType: ColorType,
     colorMode: ColorMode,
-    selectedValue: string | undefined = undefined,
+    selectedValue: string | undefined = undefined
   ): ColorPalette {
     var chartPalette: BasicPalette =
       selectedValue !== undefined
         ? this.generatePaletteForSelectedCharts(
             sortedChartsSeries,
-            selectedValue,
+            selectedValue
           )
         : this.generatePaletteForCharts(
             colorString,
             colorType,
-            this.getSizeOfLargestGroup(sortedChartsSeries),
+            this.getSizeOfLargestGroup(sortedChartsSeries)
           );
 
     var palette: PredefinedColorMap = new PredefinedColorMap(
@@ -93,7 +93,7 @@ export class PaletteGenerator {
       hexToHsl(labelColor),
       this.groupPalette,
       chartPalette,
-      this.seriesPalette,
+      this.seriesPalette
     );
 
     sortedChartsSeries.forEach((chart) => {
@@ -103,7 +103,7 @@ export class PaletteGenerator {
           palette.addKey(
             new ElementId(element.name),
             selectedValue === undefined ? colorMode : 'regular',
-            selectedValue !== undefined,
+            selectedValue !== undefined
           );
         }
       });
@@ -133,7 +133,7 @@ export class PaletteGenerator {
 
   private generatePaletteForSelectedCharts(
     sortedChartsSeries: ChartData[],
-    selectedValue: string,
+    selectedValue: string
   ): BasicPalette {
     var chartPalette: BasicPalette = new BasicPalette();
 
@@ -157,7 +157,7 @@ export class PaletteGenerator {
   private generatePaletteForCharts(
     colorString: string,
     colorType: ColorType,
-    charts: number,
+    charts: number
   ): BasicPalette {
     var chartPalette: BasicPalette = new BasicPalette();
 

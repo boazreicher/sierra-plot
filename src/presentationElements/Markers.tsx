@@ -30,7 +30,7 @@ export class Markers implements PresentationElement {
             let marker = new SvgCircle(
               dp.x,
               dp.y,
-              this.panelOptions.markersRadius,
+              this.panelOptions.markersRadius
             );
             marker.fill = this.panelOptions.markersColor;
             if (this.panelOptions.markersMode == 'hidden') {
@@ -40,7 +40,7 @@ export class Markers implements PresentationElement {
               chart.name,
               element.id,
               dp.unformattedX,
-              dp.unformattedY,
+              dp.unformattedY
             );
             marker.class = HOVERABLE_CLASS;
             marker.zOrder = chart.zOrder;
@@ -57,7 +57,7 @@ export class Markers implements PresentationElement {
     name: string,
     id: string | undefined,
     unformattedX: number,
-    unformattedY: number,
+    unformattedY: number
   ): PopoverContent {
     let timestamp = new Date(unformattedX);
     let timestampString = this.formatTimestamp(timestamp);

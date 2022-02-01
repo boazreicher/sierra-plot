@@ -24,7 +24,7 @@ export class ChartsDataProperties {
     this.sortMode = panelOptions.sortMode;
     this.timeRange = new TimeRange(
       panelOptions.timeRangeStart,
-      panelOptions.timeRangeEnd,
+      panelOptions.timeRangeEnd
     );
   }
 

@@ -16,7 +16,7 @@ export class Polygon extends SeriesElement {
   protected addBottom(): void {
     for (var index = this.dataPoints.length - 1; index >= -0; index--) {
       var dataPoint = new DataPoint(
-        new Coordinates(this.dataPoints[index].x(), 0),
+        new Coordinates(this.dataPoints[index].x(), 0)
       );
       this.closingDataPoints.push(dataPoint);
     }

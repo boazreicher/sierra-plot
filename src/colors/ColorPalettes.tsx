@@ -3,13 +3,13 @@ import { ColorPalette } from 'colors/ColorPalette';
 
 export enum PaletteType {
   Regular = 1,
-  Selected,
+  Selected
 }
 
 export class ColorPalettes {
   private palettes: Record<PaletteType, ColorPalette> = {
     1: new BasicPalette(),
-    2: new BasicPalette(),
+    2: new BasicPalette()
   };
 
   addPalette(type: PaletteType, palette: ColorPalette) {

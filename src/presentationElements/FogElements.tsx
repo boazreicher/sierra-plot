@@ -3,7 +3,7 @@ import {
   ID_PREFIX_FOG,
   ID_SEPERATOR,
   TOTAL_ELEMENT_ID,
-  ZORDER_CHART_RANGE,
+  ZORDER_CHART_RANGE
 } from 'Constants';
 import { SvgElement } from 'svg/SvgElement';
 import { SvgPolygon } from 'svg/SvgPolygon';
@@ -21,7 +21,7 @@ export class FogElements implements PresentationElement {
     fogHeight: number,
     fogColor: string,
     selection: Selection,
-    enabled: boolean,
+    enabled: boolean
   ) {
     this.fogHeight = fogHeight;
     this.fogColor = fogColor;
@@ -53,18 +53,18 @@ export class FogElements implements PresentationElement {
         let topRight = new Coordinates(source.maxX, source.maxY - height);
         let bottomRight = new Coordinates(
           source.maxX - chartDistances.x,
-          source.maxY + chartDistances.y - height,
+          source.maxY + chartDistances.y - height
         );
         let bottomLeft = new Coordinates(
           source.minX - chartDistances.x,
-          source.maxY + chartDistances.y - height,
+          source.maxY + chartDistances.y - height
         );
 
         var fogSliceCoordinates: Coordinates[] = [
           topLeft,
           topRight,
           bottomRight,
-          bottomLeft,
+          bottomLeft
         ];
 
         // Shift right to limit covering the chart labels
@@ -125,7 +125,7 @@ export class FogElements implements PresentationElement {
   }
 
   private calculateChartDistances(
-    chartsSvgElements: SvgElement[],
+    chartsSvgElements: SvgElement[]
   ): Coordinates {
     let source: BoundingBox | undefined;
 
@@ -139,7 +139,7 @@ export class FogElements implements PresentationElement {
       if (source !== undefined) {
         return new Coordinates(
           Math.abs(source.minX - chartsSvgElements[index].boundingBox.minX),
-          Math.abs(source.maxY - chartsSvgElements[index].boundingBox.maxY),
+          Math.abs(source.maxY - chartsSvgElements[index].boundingBox.maxY)
         );
       }
       source = chartsSvgElements[index].boundingBox;

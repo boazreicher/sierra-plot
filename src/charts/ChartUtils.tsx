@@ -3,7 +3,7 @@ import {
   propNumber,
   optionsChangeCallback,
   Coordinates,
-  TimeRange,
+  TimeRange
 } from 'types';
 import {
   CLICKABLE_CLASS,
@@ -14,7 +14,7 @@ import {
   PADDING_FOR_RANGE_SELECTOR,
   PANEL_MARGIN,
   SHIFT_FOR_AXIS,
-  SHIFT_FOR_RANGE_SELECTOR,
+  SHIFT_FOR_RANGE_SELECTOR
 } from 'Constants';
 import { SvgElement } from 'svg/SvgElement';
 import React from 'react';
@@ -41,7 +41,7 @@ export function getWidth(width: propNumber, height: propNumber) {
 export function getHeight(
   width: propNumber,
   height: propNumber,
-  showRangeSelector: boolean,
+  showRangeSelector: boolean
 ) {
   if (height === undefined || width === undefined) {
     console.warn('Dimensions not defined');
@@ -83,7 +83,7 @@ export function getMainSvgStyle() {
 export function generateViewbox(
   width: propNumber,
   height: propNumber,
-  showRangeSelector: boolean,
+  showRangeSelector: boolean
 ): string {
   let shiftForRangeSelector: number = showRangeSelector
     ? SHIFT_FOR_RANGE_SELECTOR
@@ -92,7 +92,7 @@ export function generateViewbox(
     0,
     SHIFT_FOR_AXIS + shiftForRangeSelector,
     getWidth(width, height),
-    getHeight(width, height, showRangeSelector),
+    getHeight(width, height, showRangeSelector)
   ).toString();
 }
 
@@ -100,7 +100,7 @@ export function updateTimer(
   charts: ChartData[],
   elements: SvgElement[],
   panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback,
+  onOptionsChange: optionsChangeCallback
 ): Timer {
   let groups: Record<string, boolean> = {};
   charts.forEach((chart) => {
@@ -119,7 +119,7 @@ export function updateTimer(
     ) {
       let coordinates = new Coordinates(
         element.boundingBox.minX,
-        element.boundingBox.maxY,
+        element.boundingBox.maxY
       );
       chartCoordinates[element.id] = coordinates;
     }
@@ -129,7 +129,7 @@ export function updateTimer(
     panelOptions,
     groups,
     chartCoordinates,
-    onOptionsChange,
+    onOptionsChange
   );
   if (panelOptions.transitionType == 'none') {
     timer.stop();
@@ -144,7 +144,7 @@ export function truncateOutsideTimeRange(
   sortedCharts: ChartData[],
   customTimeRange: boolean,
   formattedTimeRange: TimeRange,
-  enabled: boolean,
+  enabled: boolean
 ) {
   if (!enabled || !customTimeRange) {
     return;

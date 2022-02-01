@@ -8,7 +8,7 @@ export class DefaultPaletteGenerator extends PaletteGenerator {
     super(
       new DefaultSeriesPalette(),
       new DefaultGroupPalette(),
-      new DefaultTotalColor(),
+      new DefaultTotalColor()
     );
   }
 }

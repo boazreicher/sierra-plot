@@ -13,7 +13,7 @@ export class ChartsSvgElements {
   ) {
     this.chartsElements = chartElements.toSvgElements([]);
     presentationElements.forEach((presentationElement) =>
-      this.presentationElements.push(presentationElement),
+      this.presentationElements.push(presentationElement)
     );
   }
 
@@ -23,8 +23,8 @@ export class ChartsSvgElements {
     this.presentationElements.forEach(
       (presentationElement) =>
         (result = result.concat(
-          presentationElement.toSvgElements(this.chartsElements),
-        )),
+          presentationElement.toSvgElements(this.chartsElements)
+        ))
     );
 
     return this.chartsElements.concat(result);

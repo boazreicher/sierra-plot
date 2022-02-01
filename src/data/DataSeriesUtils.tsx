@@ -7,7 +7,7 @@ import {
   ID_TYPE_GROUP_ELEMENT,
   ID_TYPE_SERIES_ELEMENT,
   UNKNOWN_SELECTION_VALUE,
-  ZORDER_MISC_BACK,
+  ZORDER_MISC_BACK
 } from 'Constants';
 import { SeriesFilters } from 'data/SeriesFilters';
 import { Aggregation, Coordinates, SortMode, TimeRange } from 'types';
@@ -22,7 +22,7 @@ import { SumValues } from './SumValues';
 
 export function getSortedCharts(
   dataFrames: DataFrame[],
-  properties: ChartsDataProperties,
+  properties: ChartsDataProperties
 ): ChartData[] {
   var firstChartName;
   if (
@@ -36,7 +36,7 @@ export function getSortedCharts(
   var result = sortCharts(
     getCharts(dataFrames, properties),
     firstChartName,
-    properties.sortMode,
+    properties.sortMode
   );
 
   return result;
@@ -44,14 +44,14 @@ export function getSortedCharts(
 
 function getCharts(
   dataFrames: DataFrame[],
-  properties: ChartsDataProperties,
+  properties: ChartsDataProperties
 ): Record<string, ChartData> {
   var series: DataSeries[] = extractDataSeries(
     dataFrames,
     properties.amplitudeField,
     properties.weightField,
     properties.filters,
-    properties.timeRange,
+    properties.timeRange
   );
 
   // This is a side-effect that should be refactored
@@ -60,7 +60,7 @@ function getCharts(
   var charts: Record<string, ChartData> = splitSeriesForCharts(
     series,
     properties.breakdowns.chartBreakdown,
-    properties.breakdowns.groupField,
+    properties.breakdowns.groupField
   );
 
   let breakDownField =
@@ -71,7 +71,7 @@ function getCharts(
   charts = sumOverSeriesFieldBreakdown(
     charts,
     breakDownField,
-    properties.aggregation,
+    properties.aggregation
   );
 
   return charts;
@@ -82,7 +82,7 @@ function extractDataSeries(
   valueFieldName: string,
   weightFieldName: string | undefined,
   filters: SeriesFilters,
-  timeRange: TimeRange,
+  timeRange: TimeRange
 ): DataSeries[] {
   var valueDataFrames: DataFrame[] = getDataFrames(dataFrames, valueFieldName);
   var weightDataFrames: DataFrame[] =
@@ -94,7 +94,7 @@ function extractDataSeries(
     valueDataFrames,
     weightDataFrames,
     filters,
-    timeRange,
+    timeRange
   );
 }
 
@@ -102,7 +102,7 @@ function extractDataSeriesValuesAndWeights(
   valueDataFrames: DataFrame[],
   weightDataFrames: DataFrame[],
   filters: SeriesFilters,
-  timeRange: TimeRange,
+  timeRange: TimeRange
 ): DataSeries[] {
   var result: DataSeries[] = [];
 
@@ -146,7 +146,7 @@ function extractDataSeriesValuesAndWeights(
         weightField !== undefined ? weightField.values.get(index) : 1;
       var dataPoint: DataPoint = new DataPoint(
         new Coordinates(timestamps.get(index), valueField.values.get(index)),
-        weight,
+        weight
       );
       seriesElement.dataPoints.push(dataPoint);
     }
@@ -160,7 +160,7 @@ function extractDataSeriesValuesAndWeights(
 function splitSeriesForCharts(
   series: DataSeries[],
   splitField: string,
-  groupField: string | undefined,
+  groupField: string | undefined
 ): Record<string, ChartData> {
   let result: Record<string, ChartData> = {};
 
@@ -205,7 +205,7 @@ export function getTimeRange(series: DataFrame[]): TimeRange {
 export function sortCharts(
   charts: Record<string, ChartData>,
   firstChartName: string | undefined,
-  sortMode: SortMode = 'lex',
+  sortMode: SortMode = 'lex'
 ): ChartData[] {
   let result: ChartData[] = [];
 
@@ -264,7 +264,7 @@ function compareLex(a: string | undefined, b: string | undefined): number {
 export function sumOverSeriesFieldBreakdown(
   chartsSeries: Record<string, ChartData>,
   seriesFieldBreakdown: string,
-  aggregation: Aggregation,
+  aggregation: Aggregation
 ): Record<string, ChartData> {
   let result: Record<string, ChartData> = {};
 
@@ -272,14 +272,14 @@ export function sumOverSeriesFieldBreakdown(
     result[key] = new BasicChartData(
       key,
       chartsSeries[key].sortKey,
-      chartsSeries[key].breakDownField,
+      chartsSeries[key].breakDownField
     );
 
     let seriesForBreakdownField: Record<string, DataSeries> = {};
     chartsSeries[key].data.forEach((series) => {
       if (
         !seriesForBreakdownField.hasOwnProperty(
-          series.dimensions[seriesFieldBreakdown],
+          series.dimensions[seriesFieldBreakdown]
         )
       ) {
         seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]] =
@@ -288,7 +288,7 @@ export function sumOverSeriesFieldBreakdown(
           generateChartElementName(
             key,
             series.dimensions[seriesFieldBreakdown],
-            chartsSeries[key].sortKey,
+            chartsSeries[key].sortKey
           );
         seriesForBreakdownField[
           series.dimensions[seriesFieldBreakdown]
@@ -300,13 +300,13 @@ export function sumOverSeriesFieldBreakdown(
     if (aggregation == 'sum') {
       chartsSeries[key].data.forEach((series) => {
         seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]].sum(
-          series,
+          series
         );
       });
     } else if (aggregation == 'avg') {
       chartsSeries[key].data.forEach((series) => {
         seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]].sum(
-          series,
+          series
         );
       });
       for (let seriesKey in seriesForBreakdownField) {
@@ -317,7 +317,7 @@ export function sumOverSeriesFieldBreakdown(
     for (let breakdownFieldValue in seriesForBreakdownField) {
       result[key].data.push(seriesForBreakdownField[breakdownFieldValue]);
       result[key].originalData.push(
-        seriesForBreakdownField[breakdownFieldValue].clone(),
+        seriesForBreakdownField[breakdownFieldValue].clone()
       );
     }
   }
@@ -328,7 +328,7 @@ export function sumOverSeriesFieldBreakdown(
 function generateChartElementName(
   chartName: string,
   breakDownName: string,
-  sortKey: string | undefined,
+  sortKey: string | undefined
 ): string {
   let name: string = ID_PREFIX_CHART_ELEMENT;
   if (sortKey !== undefined) {
@@ -352,7 +352,7 @@ function compareNumeric(a: number, b: number): number {
 
 function getDataFrames(
   dataFrames: DataFrame[],
-  fieldName: string,
+  fieldName: string
 ): DataFrame[] {
   // Assuming that the relevant field has index 1 (0 is for time field) and has type number
   return dataFrames.filter((frame) => {
@@ -364,7 +364,7 @@ function getDataFrames(
 
 function normalizeHorizontalAxis(
   series: DataSeries[],
-  properties: ChartsDataProperties,
+  properties: ChartsDataProperties
 ): TimeRange {
   let minTimestamp = -1;
   let maxTimestamp = 0;
@@ -395,7 +395,7 @@ function normalizeHorizontalAxis(
   for (let index = 0; index < series.length; index++) {
     series[index].dataPoints.forEach((dataPoint) => {
       let formattedXAxisValue = Math.round(
-        (dataPoint.x() - minTimestamp) * ((maxNumDataPoint - 1) / span),
+        (dataPoint.x() - minTimestamp) * ((maxNumDataPoint - 1) / span)
       );
 
       if (
@@ -417,7 +417,7 @@ function normalizeHorizontalAxis(
       }
 
       let newX = Math.round(
-        (dataPoint.x() - minTimestamp) * ((maxNumDataPoint - 1) / span),
+        (dataPoint.x() - minTimestamp) * ((maxNumDataPoint - 1) / span)
       );
       dataPoint.setUnformattedX(dataPoint.x());
       dataPoint.setX(newX);
@@ -435,7 +435,7 @@ function normalizeHorizontalAxis(
     (properties.formattedTimeRange.start =
       minFormattedXAxisValue === undefined ? -1 : minFormattedXAxisValue),
     (properties.formattedTimeRange.end =
-      maxFormattedXAxisValue === undefined ? -1 : maxFormattedXAxisValue + 1),
+      maxFormattedXAxisValue === undefined ? -1 : maxFormattedXAxisValue + 1)
   ); // For some reason the max value seems to be off by one
 }
 
@@ -533,7 +533,7 @@ export function calculateTotalsSingleOriginal(charts: ChartData[]): DataSeries {
 
   keys.forEach((xValue) => {
     result.dataPoints.push(
-      new DataPoint(new Coordinates(xValue, sums[xValue])),
+      new DataPoint(new Coordinates(xValue, sums[xValue]))
     );
   });
 
@@ -542,11 +542,11 @@ export function calculateTotalsSingleOriginal(charts: ChartData[]): DataSeries {
 
 export function buildDataForRangeSelector(
   timeRange: TimeRange,
-  single: DataSeries,
+  single: DataSeries
 ): string[] {
   let result: string[] = [];
   console.log(
-    'Building data from time range: ' + timeRange.start + ' - ' + timeRange.end,
+    'Building data from time range: ' + timeRange.start + ' - ' + timeRange.end
   );
   let start = Math.floor(timeRange.start);
   let end = Math.floor(timeRange.end);

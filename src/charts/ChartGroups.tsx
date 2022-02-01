@@ -15,11 +15,11 @@ export class ChartGroups implements PresentationElement {
     charts: ChartData[],
     sierraPlotProperties: SierraPlotProperties,
     panelOptions: SierraPlotOptions,
-    onOptionsChange: optionsChangeCallback,
+    onOptionsChange: optionsChangeCallback
   ) {
     this.presentationProperties = new ChartGroupPresentationProperties(
       sierraPlotProperties,
-      onOptionsChange,
+      onOptionsChange
     );
     this.panelOptions = panelOptions;
     this.updateBoundsForCharts(charts);
@@ -39,7 +39,7 @@ export class ChartGroups implements PresentationElement {
 
   private addBoundsForGroup(
     sortKey: string,
-    dimensionsForStackedAreaChart: Dimensions,
+    dimensionsForStackedAreaChart: Dimensions
   ) {
     if (!this.contains(sortKey)) {
       this.set(sortKey, new ChartGroup(sortKey));
@@ -80,8 +80,8 @@ export class ChartGroups implements PresentationElement {
       elements = elements.concat(
         this.groups[group].toSvgElements(
           this.panelOptions,
-          this.presentationProperties,
-        ),
+          this.presentationProperties
+        )
       );
     }
 
@@ -124,7 +124,7 @@ export class ChartGroupPresentationProperties {
 
   constructor(
     sierraPlotProperties: SierraPlotProperties,
-    onOptionsChange: optionsChangeCallback,
+    onOptionsChange: optionsChangeCallback
   ) {
     this.startX = sierraPlotProperties.dimensions.startX;
     this.shiftX = sierraPlotProperties.minX;

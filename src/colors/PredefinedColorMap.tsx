@@ -9,7 +9,7 @@ import {
   FILTER_NAME_PREFIX_SELECTED_CHART,
   FILTER_NAME_PREFIX_GROUP,
   FILTER_NAME_PREFIX_CHART,
-  FILTER_NAME_PREFIX_SERIES,
+  FILTER_NAME_PREFIX_SERIES
 } from 'Constants';
 import { HSL } from 'colors/HSL';
 import { ElementId } from 'data/ElementId';
@@ -36,7 +36,7 @@ export class PredefinedColorMap implements ColorPalette {
     labels: Color,
     groupPalette: ColorPalette,
     chartPalette: ColorPalette,
-    seriesPalette: ColorPalette,
+    seriesPalette: ColorPalette
   ) {
     this.total = total;
     this.labels = labels;
@@ -54,7 +54,7 @@ export class PredefinedColorMap implements ColorPalette {
   addKey(
     elementId: ElementId,
     colorMode: ColorMode,
-    selected: boolean = false,
+    selected: boolean = false
   ) {
     if (
       elementId.type == ID_PREFIX_TOTAL_ELEMENT &&
@@ -70,7 +70,7 @@ export class PredefinedColorMap implements ColorPalette {
         let groupColor = this.groupPalette.next().toHsl();
         this.groupElements[group] = new HSLFilter(
           groupColor,
-          FILTER_NAME_PREFIX_GROUP,
+          FILTER_NAME_PREFIX_GROUP
         );
       }
     }
@@ -82,17 +82,17 @@ export class PredefinedColorMap implements ColorPalette {
         if (selected) {
           this.chartElements[elementId.chart] = new HSLFilter(
             chartColor.toHsl(),
-            FILTER_NAME_PREFIX_SELECTED_CHART,
+            FILTER_NAME_PREFIX_SELECTED_CHART
           );
         } else if (colorMode == 'group') {
           this.chartElements[elementId.chart] = new HSLFilter(
             blend(this.groupElements[group], chartColor).toHsl(),
-            FILTER_NAME_PREFIX_CHART,
+            FILTER_NAME_PREFIX_CHART
           );
         } else {
           this.chartElements[elementId.chart] = new HSLFilter(
             chartColor.toHsl(),
-            FILTER_NAME_PREFIX_CHART,
+            FILTER_NAME_PREFIX_CHART
           );
         }
       }
@@ -102,7 +102,7 @@ export class PredefinedColorMap implements ColorPalette {
         let seriesColor = this.seriesPalette.next();
         this.seriesElements[elementId.series] = new HSLFilter(
           seriesColor.toHsl(),
-          FILTER_NAME_PREFIX_SERIES,
+          FILTER_NAME_PREFIX_SERIES
         );
       }
     }
@@ -131,12 +131,12 @@ export class PredefinedColorMap implements ColorPalette {
     if (elementId.series !== undefined) {
       if (elementId.chart === undefined) {
         throw new Error(
-          'Missing chart element in ' + JSON.stringify(elementId),
+          'Missing chart element in ' + JSON.stringify(elementId)
         );
       } else {
         return this.calculateSeriesElement(
           this.seriesElements[elementId.series],
-          elementId.chart,
+          elementId.chart
         );
       }
     }
@@ -167,7 +167,7 @@ export class PredefinedColorMap implements ColorPalette {
     this.currentChart = chart;
     let shifted: HSL = baseColor.clone().toHsl();
     shifted.decreaseLuminance(
-      LUMINANCE_DECREASE_SERIES * (this.chartCursor % 2),
+      LUMINANCE_DECREASE_SERIES * (this.chartCursor % 2)
     );
 
     return new HSLFilter(shifted.toHsl(), FILTER_NAME_PREFIX_SERIES);

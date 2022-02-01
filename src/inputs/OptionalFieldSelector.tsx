@@ -6,7 +6,7 @@ export const OptionalFieldSelector: React.FC<StandardEditorProps<string>> = ({
   item,
   value,
   onChange,
-  context,
+  context
 }) => {
   const options: SelectableValue<string>[] = [];
   options.push({ label: 'None', value: undefined });
@@ -27,7 +27,7 @@ export const OptionalFieldSelector: React.FC<StandardEditorProps<string>> = ({
     for (let value of values) {
       options.push({
         label: value,
-        value: value,
+        value: value
       });
     }
   }

@@ -12,7 +12,7 @@ import {
   TotalChart,
   TotalGroup,
   TotalSeries,
-  TotalTotal,
+  TotalTotal
 } from './Chart';
 import { Container } from './Container';
 import { RangeSelector } from './RangeSelector';
@@ -26,13 +26,13 @@ export const ControlElements = ({
   createControlElements(
     props.chartsSvgElements,
     props.panelOptions,
-    props.onOptionsChange,
+    props.onOptionsChange
   );
 
 function createControlElements(
   chartsSvgElements: ChartsSvgElements,
   panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback,
+  onOptionsChange: optionsChangeCallback
 ) {
   if (!panelOptions.showControlElements) {
     return <></>;

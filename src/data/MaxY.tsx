@@ -14,7 +14,7 @@ export class MaxY {
     maxYType: ScaleType,
     chartType: ChartType,
     charts: ChartData[],
-    totals: Totals,
+    totals: Totals
   ) {
     this.scaleType = maxYType;
     if (maxYType === 'group') {
@@ -26,7 +26,7 @@ export class MaxY {
 
   private generateMaxYValueForGroups(
     charts: ChartData[],
-    chartType: ChartType,
+    chartType: ChartType
   ): Record<string, number> {
     var result: Record<string, number> = {};
 
@@ -72,7 +72,7 @@ export class MaxY {
 
   private calculateMaxY(
     chartsSeries: ChartData[],
-    chartType: ChartType,
+    chartType: ChartType
   ): number {
     let maxY = 0;
 

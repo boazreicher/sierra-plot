@@ -10,7 +10,7 @@ import {
   ID_PREFIX_TOTAL_ELEMENT,
   ID_SEPERATOR,
   LUMINANCE_INCEASE_CHARTS,
-  TOTAL_ELEMENT_ID,
+  TOTAL_ELEMENT_ID
 } from 'Constants';
 import { ElementId } from 'data/ElementId';
 
@@ -42,7 +42,7 @@ export class GradientColorMap implements ColorPalette {
           if (!this.seriesElements.hasOwnProperty(value)) {
             var newColor = color.clone().toHsl();
             newColor.shiftHue(
-              HUE_SHIFT_SERIES * Object.keys(this.seriesElements).length,
+              HUE_SHIFT_SERIES * Object.keys(this.seriesElements).length
             );
             this.seriesElements[value] = newColor;
           }
@@ -51,7 +51,7 @@ export class GradientColorMap implements ColorPalette {
           if (!this.chartElements.hasOwnProperty(value)) {
             var newColor = color.clone().toHsl();
             newColor.increaseLuminance(
-              LUMINANCE_INCEASE_CHARTS * Object.keys(this.chartElements).length,
+              LUMINANCE_INCEASE_CHARTS * Object.keys(this.chartElements).length
             );
             this.chartElements[value] = newColor;
           }
@@ -60,7 +60,7 @@ export class GradientColorMap implements ColorPalette {
           if (!this.groupElements.hasOwnProperty(value)) {
             var newColor = color.clone().toHsl();
             newColor.shiftHue(
-              HUE_SHIFT_GROUPS * Object.keys(this.groupElements).length,
+              HUE_SHIFT_GROUPS * Object.keys(this.groupElements).length
             );
             this.groupElements[value] = newColor;
           }

@@ -3,7 +3,7 @@ import { Selection, SelectionType } from 'data/Selection';
 
 export function getOnClickHandler(
   panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback,
+  onOptionsChange: optionsChangeCallback
 ): React.MouseEventHandler<SVGSVGElement> | undefined {
   var clickEventHandler: React.MouseEventHandler = (event) => {
     panelOptions.selectedChart.deselect();
@@ -19,7 +19,7 @@ export function getOnClickHandlerForChart(
   name: string | undefined,
   x: number,
   y: number,
-  onOptionsChange: optionsChangeCallback,
+  onOptionsChange: optionsChangeCallback
 ): React.MouseEventHandler<SVGSVGElement> | undefined {
   var clickEventHandler: React.MouseEventHandler = (event) => {
     var chartName: string = name === undefined ? '' : name;
@@ -37,7 +37,7 @@ export function getOnClickHandlerForChart(
     } else {
       panelOptions.selectedChart = new Selection(
         panelOptions.chartsFieldBreakdown,
-        chartName,
+        chartName
       );
       panelOptions.selectedChart.x = x;
       panelOptions.selectedChart.y = y;
@@ -53,7 +53,7 @@ export function getOnClickHandlerForChart(
 
 export function getOnClickHandlerForTotal(
   panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback,
+  onOptionsChange: optionsChangeCallback
 ): React.MouseEventHandler<SVGSVGElement> | undefined {
   var clickEventHandler: React.MouseEventHandler = (event) => {
     if (panelOptions.selectedChart === undefined) {
@@ -77,7 +77,7 @@ export function getOnClickHandlerForGroupBounds(
   boundingBox: BoundingBox,
   panelOptions: SierraPlotOptions,
   groupColor: string,
-  onOptionsChange: optionsChangeCallback,
+  onOptionsChange: optionsChangeCallback
 ): React.MouseEventHandler<SVGSVGElement> | undefined {
   var clickEventHandler: React.MouseEventHandler = (event) => {
     if (panelOptions.selectedChart === undefined) {

@@ -6,7 +6,7 @@ export const LabelSelector: React.FC<StandardEditorProps<string>> = ({
   item,
   value,
   onChange,
-  context,
+  context
 }) => {
   const options: SelectableValue<string>[] = [];
 
@@ -31,7 +31,7 @@ export const LabelSelector: React.FC<StandardEditorProps<string>> = ({
     for (let label of labels) {
       options.push({
         label: label,
-        value: label,
+        value: label
       });
     }
   }

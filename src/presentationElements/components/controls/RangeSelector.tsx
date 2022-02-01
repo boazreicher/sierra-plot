@@ -5,7 +5,7 @@ import { getStyleObj } from './Utils';
 
 export function RangeSelector(
   panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback,
+  onOptionsChange: optionsChangeCallback
 ) {
   return (
     <g
@@ -19,7 +19,7 @@ export function RangeSelector(
             getStrokeColor(panelOptions.showRangeSelector) +
             ';stroke-width:' +
             getStrokeWidth(panelOptions.showRangeSelector) +
-            ';stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;paint-order:normal',
+            ';stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;paint-order:normal'
         )}
         id="range_main"
         width="28.833591"
@@ -31,7 +31,7 @@ export function RangeSelector(
         style={getStyleObj(
           'fill:#999999;fill-opacity:1;stroke:' +
             getStrokeColor(panelOptions.showRangeSelector) +
-            ';stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+            ';stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-3-09"
         width="0.70661634"
@@ -42,7 +42,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_1-7-4"
         width="0.70661634"
@@ -53,7 +53,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-3-3-5"
         width="0.70661634"
@@ -64,7 +64,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_5-9"
         width="0.70661634"
@@ -75,7 +75,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-60-0"
         width="0.70661634"
@@ -86,7 +86,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_1-2-0"
         width="0.70661634"
@@ -97,7 +97,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-3-0-3"
         width="0.70661634"
@@ -108,7 +108,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_6-8"
         width="0.70661634"
@@ -119,7 +119,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-2-8"
         width="0.70661634"
@@ -130,7 +130,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_1-23-8"
         width="0.70661634"
@@ -141,7 +141,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-3-09-1"
         width="0.70661634"
@@ -152,7 +152,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_1-7-3"
         width="0.70661634"
@@ -163,7 +163,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-3-3-2"
         width="0.70661634"
@@ -174,7 +174,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_5-4"
         width="0.70661634"
@@ -185,7 +185,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-60-6"
         width="0.70661634"
@@ -196,7 +196,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_1-2-4"
         width="0.70661634"
@@ -207,7 +207,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-3-0-4"
         width="0.70661634"
@@ -218,7 +218,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_6-0"
         width="0.70661634"
@@ -229,7 +229,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-2-3"
         width="0.70661634"
@@ -240,7 +240,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_1-23-7"
         width="0.70661634"
@@ -251,7 +251,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-3-09-3"
         width="0.70661634"
@@ -262,7 +262,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_1-7-7"
         width="0.70661634"
@@ -273,7 +273,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-3-3-0"
         width="0.70661634"
@@ -284,7 +284,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_5-6"
         width="0.70661634"
@@ -295,7 +295,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-60-4"
         width="0.70661634"
@@ -306,7 +306,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_1-2-2"
         width="0.70661634"
@@ -317,7 +317,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-3-0-8"
         width="0.70661634"
@@ -328,7 +328,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_6-81"
         width="0.70661634"
@@ -339,7 +339,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-2-81"
         width="0.70661634"
@@ -350,7 +350,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_1-23-9"
         width="0.70661634"
@@ -361,7 +361,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-3-09-7"
         width="0.70661634"
@@ -372,7 +372,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_1-7-34"
         width="0.70661634"
@@ -383,7 +383,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-3-3-03"
         width="0.70661634"
@@ -394,7 +394,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_5-49"
         width="0.70661634"
@@ -405,7 +405,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-60-68"
         width="0.70661634"
@@ -416,7 +416,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_1-2-1"
         width="0.70661634"
@@ -427,7 +427,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-3-0-5"
         width="0.70661634"
@@ -438,7 +438,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_6-1"
         width="0.70661634"
@@ -449,7 +449,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-2-5"
         width="0.70661634"
@@ -460,7 +460,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+          'fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_1-23-1"
         width="0.70661634"
@@ -473,7 +473,7 @@ export function RangeSelector(
         style={getStyleObj(
           'fill:#999999;fill-opacity:1;stroke:' +
             getStrokeColor(panelOptions.showRangeSelector) +
-            ';stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1',
+            ';stroke-width:0.189957;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
         )}
         id="bar_3-3-09-0"
         width="0.70661634"
@@ -484,7 +484,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#ffffff;fill-opacity:0.29918;stroke:none;stroke-width:0.297901;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal',
+          'fill:#ffffff;fill-opacity:0.29918;stroke:none;stroke-width:0.297901;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal'
         )}
         id="rect4575"
         width="14.838882"
@@ -494,7 +494,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#000000;fill-opacity:0.368853;stroke:none;stroke-width:1.54853;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal',
+          'fill:#000000;fill-opacity:0.368853;stroke:none;stroke-width:1.54853;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal'
         )}
         id="rect5478"
         width="1.4189228"
@@ -504,7 +504,7 @@ export function RangeSelector(
       />
       <rect
         style={getStyleObj(
-          'fill:#000000;fill-opacity:0.368853;stroke:none;stroke-width:1.54305;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal',
+          'fill:#000000;fill-opacity:0.368853;stroke:none;stroke-width:1.54305;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal'
         )}
         id="rect5478-9"
         width="1.4189228"
@@ -522,7 +522,7 @@ function getStrokeColor(enabled: boolean): string {
 
 function getRangeSelectorOnClickHandler(
   panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback,
+  onOptionsChange: optionsChangeCallback
 ): React.MouseEventHandler<SVGSVGElement> | undefined {
   var clickEventHandler: React.MouseEventHandler = (event) => {
     panelOptions.showRangeSelector = !panelOptions.showRangeSelector;

@@ -34,13 +34,13 @@ export class BackgroundElement implements PresentationElement {
       this.getBackgroundElementCoordinates(topBoundingBox, bottomBoundingBox);
     let backgroundElement = this.buildBackgroundElement(
       backgroundElementDatapoints,
-      this.color,
+      this.color
     );
     return [backgroundElement];
   }
 
   private calculateTopBoundingBox(
-    chartsSvgElements: SvgElement[],
+    chartsSvgElements: SvgElement[]
   ): BoundingBox | undefined {
     // Iterating backwards to skip all the presentation elements
     // Using the first and second (non-Total) charts to extrapolate the top bounding box
@@ -82,7 +82,7 @@ export class BackgroundElement implements PresentationElement {
 
   private buildBackgroundElement(
     backgroundElementDatapoints: Coordinates[],
-    color: string,
+    color: string
   ) {
     let backgroundElement = new SvgPolygon();
     backgroundElement.dataPoints = backgroundElementDatapoints;
@@ -95,7 +95,7 @@ export class BackgroundElement implements PresentationElement {
 
   private getBackgroundElementCoordinates(
     topBoundingBox: BoundingBox,
-    bottomBoundingBox: BoundingBox,
+    bottomBoundingBox: BoundingBox
   ): Coordinates[] {
     let coordinates: Coordinates[] = [];
 
@@ -103,11 +103,11 @@ export class BackgroundElement implements PresentationElement {
     let topRight = new Coordinates(topBoundingBox.maxX, topBoundingBox.maxY);
     let bottomLeft = new Coordinates(
       bottomBoundingBox.minX,
-      bottomBoundingBox.maxY,
+      bottomBoundingBox.maxY
     );
     let bottomRight = new Coordinates(
       bottomBoundingBox.maxX,
-      bottomBoundingBox.maxY,
+      bottomBoundingBox.maxY
     );
 
     coordinates.push(topLeft);

@@ -17,7 +17,7 @@ export class Charts {
     charts: ChartData[],
     totals: Totals,
     properties: SierraPlotProperties,
-    panelOptions: SierraPlotOptions,
+    panelOptions: SierraPlotOptions
   ) {
     this.charts = charts;
     this.totals = totals;
@@ -25,7 +25,7 @@ export class Charts {
       TOTAL_ELEMENT_ID,
       undefined,
       panelOptions.chartsFieldBreakdown,
-      panelOptions.totalChartType,
+      panelOptions.totalChartType
     );
     this.totalChart.data = this.totals.getSelectedTotals(panelOptions);
     this.totalChart.originalData = [this.totals.original];
@@ -50,7 +50,7 @@ export class Charts {
   getLabels(
     selection: Selection,
     selectedGroup: ChartGroup,
-    enabled: boolean,
+    enabled: boolean
   ): SvgElement[] {
     if (!enabled) {
       return [];
@@ -75,7 +75,7 @@ export class Charts {
 
   private buildCharts(
     sierraPlotProperties: SierraPlotProperties,
-    panelOptions: SierraPlotOptions,
+    panelOptions: SierraPlotOptions
   ) {
     this.charts.forEach((chart) => {
       chart.type = panelOptions.chartType;

@@ -3,7 +3,7 @@ import {
   ID_PREFIX_GRIDLINE_ELEMENT,
   TOTAL_ELEMENT_ID,
   ZORDER_BACKGROUND_ELEMENT,
-  ZORDER_CHART_LABEL,
+  ZORDER_CHART_LABEL
 } from 'Constants';
 import { SvgElement } from 'svg/SvgElement';
 import { SvgPolyline } from 'svg/SvgPolyline';
@@ -22,7 +22,7 @@ export class VerticalGridLines implements PresentationElement {
     width: number,
     color: Color,
     position: GridLinePosition,
-    ticks: number,
+    ticks: number
   ) {
     this.enabled = enabled;
     this.width = width;
@@ -53,15 +53,15 @@ export class VerticalGridLines implements PresentationElement {
 
     let topLeft = new Coordinates(
       elements[topIndex].boundingBox.minX,
-      elements[topIndex].boundingBox.maxY,
+      elements[topIndex].boundingBox.maxY
     );
     let topRight = new Coordinates(
       elements[topIndex].boundingBox.maxX,
-      elements[topIndex].boundingBox.maxY,
+      elements[topIndex].boundingBox.maxY
     );
     let bottomLeft = new Coordinates(
       elements[bottomIndex].boundingBox.minX,
-      elements[bottomIndex].boundingBox.maxY,
+      elements[bottomIndex].boundingBox.maxY
     );
 
     let results: SvgElement[] = [];
@@ -70,11 +70,11 @@ export class VerticalGridLines implements PresentationElement {
     for (let index = 0; index < this.ticks + 1; index++) {
       let bottom = new Coordinates(
         bottomLeft.x + (index * width) / this.ticks,
-        bottomLeft.y,
+        bottomLeft.y
       );
       let top = new Coordinates(
         topLeft.x + (index * width) / this.ticks,
-        topLeft.y,
+        topLeft.y
       );
 
       let result = new SvgPolyline();

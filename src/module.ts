@@ -8,7 +8,7 @@ import { GroupsSelector } from 'inputs/GroupsSelector';
 import { SeriesSelector } from 'inputs/SeriesSelector';
 
 export const plugin = new PanelPlugin<SierraPlotOptions>(
-  SierraPlotPanel,
+  SierraPlotPanel
 ).setPanelOptions((builder) => {
   return builder
     .addCustomEditor({
@@ -17,7 +17,7 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       name: 'Amplitude',
       description: 'Field for series values',
       category: ['Fields'],
-      editor: FieldSelector,
+      editor: FieldSelector
     })
     .addCustomEditor({
       id: 'chartsFieldBreakdown',
@@ -25,7 +25,7 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       name: 'Breakdown',
       description: 'Field for chart breakdown',
       category: ['Fields'],
-      editor: LabelSelector,
+      editor: LabelSelector
     })
     .addCustomEditor({
       id: 'chartsGroupField',
@@ -33,7 +33,7 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       name: 'Group',
       description: 'Field for grouping charts',
       category: ['Fields'],
-      editor: LabelSelector,
+      editor: LabelSelector
     })
     .addCustomEditor({
       id: 'weightField',
@@ -41,7 +41,7 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       name: 'Weight',
       description: 'Field for series weights',
       category: ['Fields [Advanced]'],
-      editor: OptionalFieldSelector,
+      editor: OptionalFieldSelector
     })
     .addCustomEditor({
       id: 'seriesFieldBreakdown',
@@ -49,7 +49,7 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       name: 'Series Breakdwon',
       description: 'Field for series breakdown',
       category: ['Fields [Advanced]'],
-      editor: LabelSelector,
+      editor: LabelSelector
     })
     .addCustomEditor({
       id: 'selectedSeries',
@@ -57,7 +57,7 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       name: 'Series Values',
       category: ['Fields [Advanced]'],
       defaultValue: ['*'],
-      editor: SeriesSelector,
+      editor: SeriesSelector
     })
     .addCustomEditor({
       id: 'excludedSeries',
@@ -65,7 +65,7 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       name: 'Series Values to Exclude',
       category: ['Fields [Advanced]'],
       defaultValue: [''],
-      editor: SeriesSelector,
+      editor: SeriesSelector
     })
     .addCustomEditor({
       id: 'selectedGroups',
@@ -73,7 +73,7 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       name: 'Group Values',
       category: ['Fields [Advanced]'],
       defaultValue: ['*'],
-      editor: GroupsSelector,
+      editor: GroupsSelector
     })
     .addCustomEditor({
       id: 'excludedGroups',
@@ -81,7 +81,7 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       name: 'Group Values to Exclude',
       category: ['Fields [Advanced]'],
       defaultValue: [''],
-      editor: GroupsSelector,
+      editor: GroupsSelector
     })
     .addRadio({
       path: 'sortMode',
@@ -91,19 +91,19 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
         options: [
           {
             value: 'lex',
-            label: 'Lex',
+            label: 'Lex'
           },
           {
             value: 'max',
-            label: 'Max',
+            label: 'Max'
           },
           {
             value: 'sum',
-            label: 'Sum',
-          },
-        ],
+            label: 'Sum'
+          }
+        ]
       },
-      category: ['Series'],
+      category: ['Series']
     })
     .addRadio({
       path: 'chartType',
@@ -113,21 +113,21 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
         options: [
           {
             value: 'area',
-            label: 'Area',
+            label: 'Area'
           },
           {
             value: 'line',
-            label: 'Line',
-          },
-        ],
+            label: 'Line'
+          }
+        ]
       },
-      category: ['Series'],
+      category: ['Series']
     })
     .addBooleanSwitch({
       path: 'stepped',
       name: 'Stepped Area Chart',
       defaultValue: false,
-      category: ['Series'],
+      category: ['Series']
     })
     .addRadio({
       path: 'aggregation',
@@ -137,15 +137,15 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
         options: [
           {
             value: 'sum',
-            label: 'Sum',
+            label: 'Sum'
           },
           {
             value: 'avg',
-            label: 'Average',
-          },
-        ],
+            label: 'Average'
+          }
+        ]
       },
-      category: ['Series'],
+      category: ['Series']
     })
     .addRadio({
       path: 'maxYType',
@@ -155,23 +155,23 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
         options: [
           {
             value: 'global',
-            label: 'Global',
+            label: 'Global'
           },
           {
             value: 'total',
-            label: 'Total',
+            label: 'Total'
           },
           {
             value: 'local',
-            label: 'Local',
+            label: 'Local'
           },
           {
             value: 'group',
-            label: 'Group',
-          },
-        ],
+            label: 'Group'
+          }
+        ]
       },
-      category: ['Series'],
+      category: ['Series']
     })
 
     .addSliderInput({
@@ -181,9 +181,9 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 0,
         max: 20,
-        step: 0.01,
+        step: 0.01
       },
-      category: ['Series'],
+      category: ['Series']
     })
 
     .addSliderInput({
@@ -193,9 +193,9 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 0,
         max: 10000,
-        step: 1,
+        step: 1
       },
-      category: ['Series'],
+      category: ['Series']
     })
     .addRadio({
       path: 'totalChartType',
@@ -205,15 +205,15 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
         options: [
           {
             value: 'area',
-            label: 'Area',
+            label: 'Area'
           },
           {
             value: 'line',
-            label: 'Line',
-          },
-        ],
+            label: 'Line'
+          }
+        ]
       },
-      category: ['Totals'],
+      category: ['Totals']
     })
     .addRadio({
       path: 'totalBreakdown',
@@ -223,23 +223,23 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
         options: [
           {
             value: 'none',
-            label: 'None',
+            label: 'None'
           },
           {
             value: 'group',
-            label: 'Group',
+            label: 'Group'
           },
           {
             value: 'chart',
-            label: 'Chart',
+            label: 'Chart'
           },
           {
             value: 'series',
-            label: 'Series',
-          },
-        ],
+            label: 'Series'
+          }
+        ]
       },
-      category: ['Totals'],
+      category: ['Totals']
     })
     .addRadio({
       path: 'totalStackMode',
@@ -249,15 +249,15 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
         options: [
           {
             value: 'stacked',
-            label: 'Stacked',
+            label: 'Stacked'
           },
           {
             value: 'stacked100',
-            label: 'Stacked 100%',
-          },
-        ],
+            label: 'Stacked 100%'
+          }
+        ]
       },
-      category: ['Totals'],
+      category: ['Totals']
     })
     .addSliderInput({
       path: 'totalPerc',
@@ -266,26 +266,26 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 0,
         max: 100,
-        step: 1,
+        step: 1
       },
-      category: ['Totals'],
+      category: ['Totals']
     })
     .addBooleanSwitch({
       path: 'showTotal',
       name: 'Show Total',
-      category: ['Totals'],
+      category: ['Totals']
     })
     .addBooleanSwitch({
       path: 'showRangeSelector',
       name: 'Show Range Selector',
       defaultValue: false,
-      category: ['Presentation'],
+      category: ['Presentation']
     })
     .addBooleanSwitch({
       path: 'showGroups',
       name: 'Show Groups',
       defaultValue: false,
-      category: ['Presentation'],
+      category: ['Presentation']
     })
     .addSliderInput({
       path: 'leftMargin',
@@ -294,9 +294,9 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 0,
         max: 300,
-        step: 1,
+        step: 1
       },
-      category: ['Presentation'],
+      category: ['Presentation']
     })
     .addSliderInput({
       path: 'topMargin',
@@ -305,15 +305,15 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 0,
         max: 300,
-        step: 1,
+        step: 1
       },
-      category: ['Presentation'],
+      category: ['Presentation']
     })
     .addColorPicker({
       path: 'color',
       name: 'Chart Color',
       defaultValue: '#663399',
-      category: ['Style'],
+      category: ['Style']
     })
     .addRadio({
       path: 'colorMode',
@@ -323,23 +323,23 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
         options: [
           {
             value: 'regular',
-            label: 'Regular',
+            label: 'Regular'
           },
           {
             value: 'group',
-            label: 'Group',
+            label: 'Group'
           },
           {
             value: 'values',
-            label: 'Values',
+            label: 'Values'
           },
           {
             value: 'valuesInverted',
-            label: 'Values (Inverted)',
-          },
-        ],
+            label: 'Values (Inverted)'
+          }
+        ]
       },
-      category: ['Style'],
+      category: ['Style']
     })
     .addRadio({
       path: 'colorType',
@@ -349,25 +349,25 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
         options: [
           {
             value: 'single',
-            label: 'Single',
+            label: 'Single'
           },
           {
             value: 'sequential',
-            label: 'Sequential',
+            label: 'Sequential'
           },
           {
             value: 'alternating',
-            label: 'Alternating',
-          },
-        ],
+            label: 'Alternating'
+          }
+        ]
       },
-      category: ['Style'],
+      category: ['Style']
     })
     .addColorPicker({
       path: 'outlineColor',
       name: 'Outline Color',
       defaultValue: '#000000',
-      category: ['Style'],
+      category: ['Style']
     })
     .addSliderInput({
       path: 'outlineWidth',
@@ -376,9 +376,9 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 0,
         max: 10,
-        step: 0.1,
+        step: 0.1
       },
-      category: ['Style'],
+      category: ['Style']
     })
     .addSliderInput({
       path: 'outlineOpacity',
@@ -387,15 +387,15 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 0,
         max: 1,
-        step: 0.01,
+        step: 0.01
       },
-      category: ['Style'],
+      category: ['Style']
     })
     .addBooleanSwitch({
       path: 'glow',
       name: 'Glow',
       defaultValue: false,
-      category: ['Style'],
+      category: ['Style']
     })
     .addSliderInput({
       path: 'glowSpread',
@@ -404,39 +404,39 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 0,
         max: 100,
-        step: 1,
+        step: 1
       },
-      category: ['Style'],
+      category: ['Style']
     })
     .addBooleanSwitch({
       path: 'chartBevel',
       name: 'Bevel',
-      category: ['Style'],
+      category: ['Style']
     })
     .addBooleanSwitch({
       path: 'showBackground',
       name: 'Show Background',
       defaultValue: false,
-      category: ['Style'],
+      category: ['Style']
     })
     .addColorPicker({
       path: 'backgroundColor',
       name: 'Background Color',
       defaultValue: '#000000',
-      category: ['Style'],
+      category: ['Style']
     })
 
     .addBooleanSwitch({
       path: 'showChartLabels',
       name: 'Show Chart Labels',
       defaultValue: true,
-      category: ['Labels'],
+      category: ['Labels']
     })
     .addColorPicker({
       path: 'labelColor',
       name: 'Label Color',
       defaultValue: '#ffffff',
-      category: ['Labels'],
+      category: ['Labels']
     })
     .addSliderInput({
       path: 'chartLabelSize',
@@ -445,9 +445,9 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 5,
         max: 100,
-        step: 1,
+        step: 1
       },
-      category: ['Labels'],
+      category: ['Labels']
     })
     .addSliderInput({
       path: 'chartLabelShiftX',
@@ -456,9 +456,9 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 0,
         max: 500,
-        step: 1,
+        step: 1
       },
-      category: ['Labels'],
+      category: ['Labels']
     })
 
     .addSliderInput({
@@ -468,9 +468,9 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 5,
         max: 100,
-        step: 1,
+        step: 1
       },
-      category: ['Labels'],
+      category: ['Labels']
     })
 
     .addRadio({
@@ -481,19 +481,19 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
         options: [
           {
             value: 'disable',
-            label: 'Disable',
+            label: 'Disable'
           },
           {
             value: 'hidden',
-            label: 'Hidden',
+            label: 'Hidden'
           },
           {
             value: 'visible',
-            label: 'Visible',
-          },
-        ],
+            label: 'Visible'
+          }
+        ]
       },
-      category: ['Markers'],
+      category: ['Markers']
     })
     .addSliderInput({
       path: 'markersRadius',
@@ -502,22 +502,22 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 0,
         max: 30,
-        step: 0.1,
+        step: 0.1
       },
-      category: ['Markers'],
+      category: ['Markers']
     })
     .addColorPicker({
       path: 'markersColor',
       name: 'Color',
       defaultValue: '#663399',
-      category: ['Markers'],
+      category: ['Markers']
     })
 
     .addBooleanSwitch({
       path: 'showFog',
       name: 'Show Fog',
       defaultValue: false,
-      category: ['Fog'],
+      category: ['Fog']
     })
     .addSliderInput({
       path: 'fogHeight',
@@ -526,15 +526,15 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 0,
         max: 100,
-        step: 1,
+        step: 1
       },
-      category: ['Fog'],
+      category: ['Fog']
     })
     .addColorPicker({
       path: 'fogColor',
       name: 'Fog Color',
       defaultValue: 'rgba(255, 255, 255, 0.66)',
-      category: ['Fog'],
+      category: ['Fog']
     })
 
     .addRadio({
@@ -545,32 +545,32 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
         options: [
           {
             value: 'none',
-            label: 'None',
+            label: 'None'
           },
           {
             value: 'groups',
-            label: 'Cycle Groups',
+            label: 'Cycle Groups'
           },
           {
             value: 'charts',
-            label: 'Cycle Charts',
-          },
-        ],
+            label: 'Cycle Charts'
+          }
+        ]
       },
-      category: ['Transitions'],
+      category: ['Transitions']
     })
     .addTextInput({
       path: 'transitionPeriod',
       name: 'Period',
       defaultValue: '5000',
-      category: ['Transitions'],
+      category: ['Transitions']
     })
 
     .addBooleanSwitch({
       path: 'gridlineEnabled',
       name: 'Show',
       category: ['Gridlines'],
-      defaultValue: false,
+      defaultValue: false
     })
     .addSliderInput({
       path: 'gridlineWidth',
@@ -579,9 +579,9 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 0,
         max: 20,
-        step: 0.1,
+        step: 0.1
       },
-      category: ['Gridlines'],
+      category: ['Gridlines']
     })
     .addSliderInput({
       path: 'gridlineTicks',
@@ -590,15 +590,15 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
       settings: {
         min: 0,
         max: 100,
-        step: 1,
+        step: 1
       },
-      category: ['Gridlines'],
+      category: ['Gridlines']
     })
     .addColorPicker({
       path: 'gridlineColor',
       name: 'Color',
       defaultValue: '#0488d0',
-      category: ['Gridlines'],
+      category: ['Gridlines']
     })
     .addRadio({
       path: 'gridlinePosition',
@@ -608,14 +608,14 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(
         options: [
           {
             value: 'below',
-            label: 'Below Charts',
+            label: 'Below Charts'
           },
           {
             value: 'above',
-            label: 'Above Charts',
-          },
-        ],
+            label: 'Above Charts'
+          }
+        ]
       },
-      category: ['Gridlines'],
+      category: ['Gridlines']
     });
 });

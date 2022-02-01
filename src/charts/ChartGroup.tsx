@@ -9,7 +9,7 @@ import {
   ID_SEPERATOR,
   ID_TYPE_GROUP_ELEMENT,
   ZORDER_GROUP_BOUNDS,
-  ZORDER_GROUP_LABEL,
+  ZORDER_GROUP_LABEL
 } from 'Constants';
 import { getOnClickHandlerForGroupBounds } from 'presentationElements/EventHandlers';
 import { SvgElement } from 'svg/SvgElement';
@@ -35,13 +35,13 @@ export class ChartGroup {
 
   toSvgElements(
     panelOptions: SierraPlotOptions,
-    presentationProperties: ChartGroupPresentationProperties,
+    presentationProperties: ChartGroupPresentationProperties
   ): SvgElement[] {
     let polygon = this.toPolygon(panelOptions, presentationProperties);
     let label = this.toLabel(
       presentationProperties,
       panelOptions.groupLabelSize,
-      panelOptions.selectedChart,
+      panelOptions.selectedChart
     );
 
     return [polygon, label];
@@ -49,19 +49,19 @@ export class ChartGroup {
 
   private toPolygon(
     panelOptions: SierraPlotOptions,
-    presentationProperties: ChartGroupPresentationProperties,
+    presentationProperties: ChartGroupPresentationProperties
   ): SvgElement {
     var coordinatesForGroupElement: Coordinates[] = [];
 
     coordinatesForGroupElement.push(
-      new Coordinates(this.boundingBox.maxX, this.boundingBox.minY - 2),
+      new Coordinates(this.boundingBox.maxX, this.boundingBox.minY - 2)
     );
     coordinatesForGroupElement.push(
-      new Coordinates(0, this.boundingBox.minY - 2),
+      new Coordinates(0, this.boundingBox.minY - 2)
     );
     coordinatesForGroupElement.push(new Coordinates(0, this.boundingBox.maxY));
     coordinatesForGroupElement.push(
-      new Coordinates(this.boundingBox.minX, this.boundingBox.maxY),
+      new Coordinates(this.boundingBox.minX, this.boundingBox.maxY)
     );
 
     coordinatesForGroupElement.forEach((coordinatesElement) => {
@@ -89,7 +89,7 @@ export class ChartGroup {
       panelOptions.selectedChart.updatePositionForGroup(
         this.name,
         this.boundingBox.minX,
-        this.boundingBox.maxY,
+        this.boundingBox.maxY
       );
       if (
         panelOptions.selectedChart.type == SelectionType.Group &&
@@ -105,7 +105,7 @@ export class ChartGroup {
       this.boundingBox,
       panelOptions,
       element.fill,
-      presentationProperties.onOptionsChange,
+      presentationProperties.onOptionsChange
     );
     element.zOrder = ZORDER_GROUP_BOUNDS;
 
@@ -115,7 +115,7 @@ export class ChartGroup {
   private toLabel(
     presentationProperties: ChartGroupPresentationProperties,
     textSize: number,
-    selection: Selection | undefined,
+    selection: Selection | undefined
   ): SvgElement {
     var groupLabel = new SvgText();
     groupLabel.id =

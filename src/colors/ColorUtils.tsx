@@ -8,7 +8,7 @@ export function hexToRgb(hex: string): RGB {
     ? new RGB(
         parseInt(result[1], 16),
         parseInt(result[2], 16),
-        parseInt(result[3], 16),
+        parseInt(result[3], 16)
       )
     : new RGB(0, 0, 0);
 }

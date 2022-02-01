@@ -3,7 +3,7 @@ import { hexToHsl } from 'colors/ColorUtils';
 import {
   CHART_LABEL_MARGIN_X,
   CHART_LABEL_MARGIN_Y,
-  ID_KV_SEPERATOR,
+  ID_KV_SEPERATOR
 } from 'Constants';
 import { SierraPlotProperties } from 'data/SierraPlotProperties';
 import { SvgGroup } from 'svg/SvgGroup';
@@ -36,7 +36,7 @@ export class BasicChartData extends ChartData {
       selection.updatePositionForChart(
         this.name,
         chartGroup.boundingBox.minX,
-        chartGroup.boundingBox.maxY,
+        chartGroup.boundingBox.maxY
       );
     }
 
@@ -45,46 +45,46 @@ export class BasicChartData extends ChartData {
 
   protected getChartLabel(
     sierraPlotProperties: SierraPlotProperties,
-    panelOptions: SierraPlotOptions,
+    panelOptions: SierraPlotOptions
   ): ChartLabel {
     let chartCoordinates = new Coordinates(
       this.dimensions.startX - CHART_LABEL_MARGIN_X + sierraPlotProperties.minX,
-      this.dimensions.startY - CHART_LABEL_MARGIN_Y,
+      this.dimensions.startY - CHART_LABEL_MARGIN_Y
     );
     return new ChartLabel(
       this.name,
       chartCoordinates,
       panelOptions.chartLabelShiftX,
       panelOptions.chartLabelSize,
-      panelOptions.labelColor,
+      panelOptions.labelColor
     );
   }
   protected getChartsPresentationProperties(
     sierraPlotProperties: SierraPlotProperties,
-    panelOptions: SierraPlotOptions,
+    panelOptions: SierraPlotOptions
   ): ChartsPresentationProperties {
     let palette: ColorPalette = sierraPlotProperties.selectPalette(
       panelOptions.colorMode,
       panelOptions.selectedChart,
       this.sortKey,
       false,
-      panelOptions.chartBreakdownType,
+      panelOptions.chartBreakdownType
     );
     return new ChartsPresentationProperties(
       false,
       palette,
       hexToHsl(panelOptions.outlineColor),
-      panelOptions,
+      panelOptions
     );
   }
   protected getEffectiveGroupMaxY(
-    sierraPlotProperties: SierraPlotProperties,
+    sierraPlotProperties: SierraPlotProperties
   ): number | undefined {
     return sierraPlotProperties.maxY.getMaxY(this.sortKey);
   }
   protected getEffectiveStartY(
     sierraPlotProperties: SierraPlotProperties,
-    numCharts: number,
+    numCharts: number
   ): number {
     return (
       sierraPlotProperties.dimensions.height -
@@ -93,12 +93,12 @@ export class BasicChartData extends ChartData {
     );
   }
   protected getEffectiveMaxY(
-    sierraPlotProperties: SierraPlotProperties,
+    sierraPlotProperties: SierraPlotProperties
   ): number | undefined {
     return sierraPlotProperties.chartDimensions.maxY;
   }
   protected getEffectiveChartHeight(
-    sierraPlotProperties: SierraPlotProperties,
+    sierraPlotProperties: SierraPlotProperties
   ): number {
     return sierraPlotProperties.chartDimensions.height;
   }
@@ -107,7 +107,7 @@ export class BasicChartData extends ChartData {
     name: string,
     sortKey: string | undefined,
     breakDownField: string,
-    type: ChartType = 'other',
+    type: ChartType = 'other'
   ) {
     super(name, sortKey, breakDownField, type);
   }

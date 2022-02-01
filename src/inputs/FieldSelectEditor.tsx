@@ -23,7 +23,7 @@ export const FieldSelectEditor: React.FC<Props> = ({
   item,
   value,
   onChange,
-  context,
+  context
 }) => {
   if (context.data && context.data.length > 0) {
     const options = context.data
@@ -31,11 +31,11 @@ export const FieldSelectEditor: React.FC<Props> = ({
       .filter((field) =>
         item.settings?.filterByType
           ? item.settings?.filterByType.some((_) => field.type === _)
-          : true,
+          : true
       )
       .map((field) => ({
         label: JSON.stringify(field.labels),
-        value: field.name,
+        value: field.name
       }));
 
     if (item.settings?.multi) {

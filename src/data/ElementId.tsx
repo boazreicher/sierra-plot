@@ -5,7 +5,7 @@ import {
   ID_TYPE_GROUP_ELEMENT,
   ID_TYPE_LABEL_ELEMENT,
   ID_TYPE_SERIES_ELEMENT,
-  TOTAL_ELEMENT_ID,
+  TOTAL_ELEMENT_ID
 } from 'Constants';
 
 export class ElementId {
@@ -45,7 +45,7 @@ export class ElementId {
           break;
         default:
           throw new Error(
-            'Invalid element id ' + id + ' with type ' + elementType,
+            'Invalid element id ' + id + ' with type ' + elementType
           );
       }
     }

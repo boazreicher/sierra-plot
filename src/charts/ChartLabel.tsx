@@ -2,7 +2,7 @@ import {
   CHART_LABEL_CLASS,
   CHART_LABEL_OPACITY_DESELECTED,
   CHART_LABEL_SHIFT_Y,
-  ZORDER_CHART_LABEL,
+  ZORDER_CHART_LABEL
 } from 'Constants';
 import { SvgElement } from 'svg/SvgElement';
 import { SvgText } from 'svg/SvgText';
@@ -26,7 +26,7 @@ export class ChartLabel {
     coordinates: Coordinates,
     shiftX: number,
     textSize: number,
-    textColor: string,
+    textColor: string
   ) {
     this.text = text;
     this.baseCoordinates = coordinates;

@@ -9,7 +9,7 @@ import {
   FILTER_GLOW,
   NO_COLOR,
   TOTAL_SEPERATOR_LINE_WIDTH,
-  TOTAL_TOP_LINE_WIDTH,
+  TOTAL_TOP_LINE_WIDTH
 } from 'Constants';
 import { DataSeries } from 'data/DataSeries';
 import { Black } from 'colors/ColorUtils';
@@ -21,7 +21,7 @@ export class StackedAreaChart extends Chart<Polygon> {
 
   protected formatSeriesElements(
     elements: SeriesElement[],
-    numDataPoints: number,
+    numDataPoints: number
   ): SeriesElement[] {
     return this.generateStackedPolygons(elements, numDataPoints);
   }
@@ -30,7 +30,7 @@ export class StackedAreaChart extends Chart<Polygon> {
     elements: SvgElement[],
     element: SeriesElement,
     chartsPresentationProperties: ChartsPresentationProperties,
-    totalNotLast: boolean,
+    totalNotLast: boolean
   ): void {
     let topLine = element.toOutlineElement();
     topLine.fill = NO_COLOR;
@@ -56,7 +56,7 @@ export class StackedAreaChart extends Chart<Polygon> {
   protected setStyleForUnderlyingType(
     element: SvgElement,
     color: string,
-    chartsPresentationProperties: ChartsPresentationProperties,
+    chartsPresentationProperties: ChartsPresentationProperties
   ): void {
     element.fill = color;
 
@@ -98,7 +98,7 @@ export class StackedAreaChart extends Chart<Polygon> {
 
   private generateStackedPolygons(
     polygons: SeriesElement[],
-    numDataPoints: number,
+    numDataPoints: number
   ): SeriesElement[] {
     var stackedPolygons: SeriesElement[] = [];
 

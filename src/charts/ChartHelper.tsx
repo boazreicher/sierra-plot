@@ -6,7 +6,7 @@ export function initChart(
   type: ChartType,
   name: string,
   dimensions: Dimensions,
-  maxY: number | undefined = undefined,
+  maxY: number | undefined = undefined
 ) {
   var singleChart;
   if (type == 'area') {

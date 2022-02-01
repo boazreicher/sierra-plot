@@ -14,7 +14,7 @@ export class LineChart extends Chart<Polyline> {
 
   protected formatSeriesElements(
     elements: SeriesElement[],
-    numDataPoints: number,
+    numDataPoints: number
   ): SeriesElement[] {
     var formattedPolylines: SeriesElement[] = [];
     elements.forEach((polyline) => {
@@ -30,7 +30,7 @@ export class LineChart extends Chart<Polyline> {
     elements: SvgElement[],
     element: SeriesElement,
     chartsPresentationProperties: ChartsPresentationProperties,
-    totalNotLast: boolean,
+    totalNotLast: boolean
   ): void {
     // No top element for line chart
   }
@@ -38,7 +38,7 @@ export class LineChart extends Chart<Polyline> {
   protected setStyleForUnderlyingType(
     element: SvgElement,
     color: string,
-    chartsPresentationProperties: ChartsPresentationProperties,
+    chartsPresentationProperties: ChartsPresentationProperties
   ): void {
     element.strokeWidth = chartsPresentationProperties.outlineWidth;
     element.strokeOpacity = chartsPresentationProperties.outlineOpacity;

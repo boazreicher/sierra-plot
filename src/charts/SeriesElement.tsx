@@ -113,7 +113,7 @@ export abstract class SeriesElement {
     let factor = this.dimensions.width / numDataPoints;
     for (let index = 0; index < this.dataPoints.length; index++) {
       this.dataPoints[index].setX(
-        this.dimensions.startX + this.dataPoints[index].x() * factor,
+        this.dimensions.startX + this.dataPoints[index].x() * factor
       );
     }
   }
@@ -125,7 +125,7 @@ export abstract class SeriesElement {
       // Capping maximum value at element height
       newY = newY > this.dimensions.height ? this.dimensions.height : newY;
       this.dataPoints[index].setUnformattedY(
-        this.dataPoints[index].coordinates.roundedY(),
+        this.dataPoints[index].coordinates.roundedY()
       );
       this.dataPoints[index].setY(newY);
     }
@@ -148,12 +148,12 @@ export abstract class SeriesElement {
   invertY(): void {
     for (let index = 0; index < this.dataPoints.length; index++) {
       this.dataPoints[index].setY(
-        this.dimensions.startY - this.dataPoints[index].y(),
+        this.dimensions.startY - this.dataPoints[index].y()
       );
     }
     for (let index = 0; index < this.closingDataPoints.length; index++) {
       this.closingDataPoints[index].setY(
-        this.dimensions.startY - this.closingDataPoints[index].y(),
+        this.dimensions.startY - this.closingDataPoints[index].y()
       );
     }
   }
