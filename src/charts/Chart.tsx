@@ -58,10 +58,10 @@ export abstract class Chart<ElementType extends SeriesElement> {
 
       elements.push(svgElement);
 
-      if (elementId.type == 'te') {
+      if (elementId.type ==- 'te') {
         if (
           index < seriesElements.length - 1 &&
-          (seriesElements[index + 1].sortKey != lastSortKey || lastSortKey === undefined)
+          (seriesElements[index + 1].sortKey !== lastSortKey || lastSortKey === undefined)
         ) {
           this.addTopSvgElement(elements, seriesElements[index], chartsPresentationProperties, true);
         }
@@ -129,11 +129,11 @@ export abstract class Chart<ElementType extends SeriesElement> {
 
     let elementId = new ElementId(id);
 
-    if (elementId.type == ID_PREFIX_TOTAL_ELEMENT && elementId.value == TOTAL_ELEMENT_ID) {
+    if (elementId.type === ID_PREFIX_TOTAL_ELEMENT && elementId.value === TOTAL_ELEMENT_ID) {
       return elementId.value;
     }
 
-    var result: string = '';
+    var result = '';
     if (elementId.series !== undefined) {
       result = elementId.series + ' in ' + elementId.chart;
       if (elementId.group !== undefined) {

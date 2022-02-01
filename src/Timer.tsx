@@ -6,9 +6,9 @@ export class Timer {
   private groups: string[] = [];
   private chartIds: string[] = [];
   private charts: Record<string, Coordinates> = {};
-  private cursor: number = 0;
-  private active: boolean = false;
-  private resetRequired: boolean = false;
+  private cursor = 0;
+  private active = false;
+  private resetRequired = false;
 
   private panelOptions?: SierraPlotOptions;
   private onOptionsChange?: optionsChangeCallback;
@@ -58,19 +58,19 @@ export class Timer {
       return false;
     }
 
-    if (this.panelOptions?.selectedChart != panelOptions.selectedChart) {
+    if (this.panelOptions?.selectedChart !== panelOptions.selectedChart) {
       return true;
     }
-    if (this.panelOptions?.selectedChart.type != panelOptions.selectedChart.type) {
+    if (this.panelOptions?.selectedChart.type !== panelOptions.selectedChart.type) {
       return true;
     }
-    if (this.panelOptions?.selectedChart.hightlightMode != panelOptions.selectedChart.hightlightMode) {
+    if (this.panelOptions?.selectedChart.hightlightMode !== panelOptions.selectedChart.hightlightMode) {
       return true;
     }
-    if (this.panelOptions?.transitionType != panelOptions.transitionType) {
+    if (this.panelOptions?.transitionType !== panelOptions.transitionType) {
       return true;
     }
-    if (this.panelOptions?.transitionPeriod != panelOptions.transitionPeriod) {
+    if (this.panelOptions?.transitionPeriod !== panelOptions.transitionPeriod) {
       return true;
     }
 

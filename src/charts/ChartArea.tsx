@@ -8,10 +8,10 @@ export class ChartArea {
   bottomLeft: Coordinates = new Coordinates(-1, -1);
 
   constructor(elements: SvgElement[]) {
-    var minX: number = 999999999;
-    var maxX: number = -1;
-    var minY: number = 999999999;
-    var maxY: number = -1;
+    var minX = 999999999;
+    var maxX = -1;
+    var minY = 999999999;
+    var maxY = -1;
     elements.forEach((element) => {
       if (element.isChartGroup) {
         if (element.boundingBox.maxX < minX) {
