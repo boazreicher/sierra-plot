@@ -26,7 +26,7 @@ export class SvgGroup extends SvgElement {
           filter={this.filter}
         >
           {this.children.map((child) => (
-            <SierraPlotSvgElement element={child} height={maxHeight} />
+            <SierraPlotSvgElement key={child.id} element={child} height={maxHeight} />
           ))}
         </g>
       </Tooltip>

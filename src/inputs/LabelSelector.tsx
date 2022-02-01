@@ -3,7 +3,7 @@ import { Select } from '@grafana/ui';
 import React from 'react';
 
 export const LabelSelector: React.FC<StandardEditorProps<string>> = ({ item, value, onChange, context }) => {
-  const options: SelectableValue<string>[] = [];
+  const options: Array<SelectableValue<string>> = [];
 
   options.push({ label: 'None', value: undefined });
 
