@@ -5,7 +5,8 @@ markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
-  - toc: {permalink: "#"}
+  - footnotes
+  - toc: { permalink: "#" }
 
 nav:
   - "Sierra Plot": "index.md"
