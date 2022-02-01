@@ -1,35 +1,34 @@
-import { Color } from "colors/Color";
-import { ColorPalette } from "colors/ColorPalette";
-import { Filter } from "colors/filters/Filter";
-import { ElementId } from "data/ElementId";
-
+import { Color } from 'colors/Color';
+import { ColorPalette } from 'colors/ColorPalette';
+import { Filter } from 'colors/filters/Filter';
+import { ElementId } from 'data/ElementId';
 
 export class FilterPalette implements ColorPalette {
-    filterName: string
-    filter: Filter
+  filterName: string;
+  filter: Filter;
 
-    constructor(filterName: string) {
-        this.filterName = filterName
-        this.filter = new Filter(filterName)
-    }
+  constructor(filterName: string) {
+    this.filterName = filterName;
+    this.filter = new Filter(filterName);
+  }
 
-    resetIfDifferent(key: string | undefined): void {
-        throw new Error("Method not implemented.");
-    }
-    
-    reset(): void {
-        throw new Error("Method not implemented.");
-    }
+  resetIfDifferent(key: string | undefined): void {
+    throw new Error('Method not implemented.');
+  }
 
-    getColorFor(elementId: ElementId): Color {
-        return this.filter
-    }
+  reset(): void {
+    throw new Error('Method not implemented.');
+  }
 
-    next(): Color {
-        return this.filter
-    }
+  getColorFor(elementId: ElementId): Color {
+    return this.filter;
+  }
 
-    toArray(): Color[] {
-        return [this.next()]
-    }
+  next(): Color {
+    return this.filter;
+  }
+
+  toArray(): Color[] {
+    return [this.next()];
+  }
 }

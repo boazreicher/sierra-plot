@@ -1,15 +1,14 @@
-import { HSL } from "colors/HSL";
-
+import { HSL } from 'colors/HSL';
 
 export interface Color {
-    toString(): string
-    clone(): Color
+  toString(): string;
+  clone(): Color;
 
-    shiftHue(shift: number): void
-    increaseSaturation(increasePercentage: number): void
-    increaseLuminance(increasePercentage: number): void
-    decreaseSaturation(decreasePercentage: number): void
-    decreaseLuminance(decreasePercentage: number): void
+  shiftHue(shift: number): void;
+  increaseSaturation(increasePercentage: number): void;
+  increaseLuminance(increasePercentage: number): void;
+  decreaseSaturation(decreasePercentage: number): void;
+  decreaseLuminance(decreasePercentage: number): void;
 
-    toHsl(): HSL
+  toHsl(): HSL;
 }

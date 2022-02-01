@@ -1,6 +1,5 @@
-import { SvgElement } from "svg/SvgElement";
-
+import { SvgElement } from 'svg/SvgElement';
 
 export interface PresentationElement {
-    toSvgElements(elements: SvgElement[]): SvgElement[]
+  toSvgElements(elements: SvgElement[]): SvgElement[];
 }

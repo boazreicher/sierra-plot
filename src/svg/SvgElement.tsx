@@ -1,8 +1,8 @@
-import { DragEventHandler, MouseEventHandler, WheelEventHandler } from "react";
-import { BoundingBox, ChartType, ColorMode, Coordinates } from "types";
-import { Selection, SelectionType } from "data/Selection"
-import { ID_KV_SEPERATOR, NO_COLOR } from "Constants";
-import { ToolTipData } from "data/ToolTipData";
+import { DragEventHandler, MouseEventHandler, WheelEventHandler } from 'react';
+import { BoundingBox, ChartType, ColorMode, Coordinates } from 'types';
+import { Selection, SelectionType } from 'data/Selection';
+import { ID_KV_SEPERATOR, NO_COLOR } from 'Constants';
+import { ToolTipData } from 'data/ToolTipData';
 
 export abstract class SvgElement {
   id: string | undefined;
@@ -13,8 +13,8 @@ export abstract class SvgElement {
   stroke: string | undefined;
   strokeWidth: number = 1;
   order: number = -1;
-  boundingBox: BoundingBox = new BoundingBox;
-  opacity: number = 1
+  boundingBox: BoundingBox = new BoundingBox();
+  opacity: number = 1;
   fillOpacity: number = 1;
   strokeOpacity: number = 1;
   x: number | undefined;
@@ -31,43 +31,46 @@ export abstract class SvgElement {
 
   zOrder = 0;
 
-  isChartGroup: boolean = false
-  isFogElement: boolean = false
+  isChartGroup: boolean = false;
+  isFogElement: boolean = false;
 
-  filter: string | undefined
-  sortKey: string | undefined
+  filter: string | undefined;
+  sortKey: string | undefined;
 
-  colorMode: ColorMode = 'regular'
+  colorMode: ColorMode = 'regular';
 
   // Maximum height that the chart can occupy
   // Used for aligning gradient fill scales
-  maxHeight: number | undefined
+  maxHeight: number | undefined;
 
   children: SvgElement[] = [];
 
-  tooltipData: ToolTipData = new ToolTipData
+  tooltipData: ToolTipData = new ToolTipData();
 
-  abstract calculateBoundingBox(chartType: ChartType): void
+  abstract calculateBoundingBox(chartType: ChartType): void;
 
-  abstract includedInParentBoundingBox(chartType: ChartType): boolean
+  abstract includedInParentBoundingBox(chartType: ChartType): boolean;
 
-  abstract getPointsAsString(height?: number | undefined): string
+  abstract getPointsAsString(height?: number | undefined): string;
 
-  abstract isGroup(): boolean
+  abstract isGroup(): boolean;
 
-  abstract buildElement(height?: number | undefined): JSX.Element
+  abstract buildElement(height?: number | undefined): JSX.Element;
 
-  abstract hasDataPoints(): boolean
+  abstract hasDataPoints(): boolean;
 
   isHighlighted(selection: Selection): boolean {
     if (selection !== undefined && selection.active) {
-        let selectedId = selection.key + ID_KV_SEPERATOR + selection.value
-        if (selection.type === SelectionType.Chart && selectedId == this.id) {
-            return true
-        } else if (selection.type === SelectionType.Group && selection.value == this.sortKey) {
-            return true
-        }
+      let selectedId = selection.key + ID_KV_SEPERATOR + selection.value;
+      if (selection.type === SelectionType.Chart && selectedId == this.id) {
+        return true;
+      } else if (
+        selection.type === SelectionType.Group &&
+        selection.value == this.sortKey
+      ) {
+        return true;
+      }
     }
-    return false
-}
+    return false;
+  }
 }

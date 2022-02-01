@@ -7,8 +7,9 @@ import { OptionalFieldSelector } from 'inputs/OptionalFieldSelector';
 import { GroupsSelector } from 'inputs/GroupsSelector';
 import { SeriesSelector } from 'inputs/SeriesSelector';
 
-
-export const plugin = new PanelPlugin<SierraPlotOptions>(SierraPlotPanel).setPanelOptions(builder => {
+export const plugin = new PanelPlugin<SierraPlotOptions>(
+  SierraPlotPanel,
+).setPanelOptions((builder) => {
   return builder
     .addCustomEditor({
       id: 'amplitudeField',
@@ -16,7 +17,7 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(SierraPlotPanel).setPan
       name: 'Amplitude',
       description: 'Field for series values',
       category: ['Fields'],
-      editor: FieldSelector
+      editor: FieldSelector,
     })
     .addCustomEditor({
       id: 'chartsFieldBreakdown',
@@ -40,7 +41,7 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(SierraPlotPanel).setPan
       name: 'Weight',
       description: 'Field for series weights',
       category: ['Fields [Advanced]'],
-      editor: OptionalFieldSelector
+      editor: OptionalFieldSelector,
     })
     .addCustomEditor({
       id: 'seriesFieldBreakdown',
@@ -83,8 +84,8 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(SierraPlotPanel).setPan
       editor: GroupsSelector,
     })
     .addRadio({
-      path: "sortMode",
-      name: "Sort Mode",
+      path: 'sortMode',
+      name: 'Sort Mode',
       defaultValue: 'lex',
       settings: {
         options: [
@@ -99,14 +100,14 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(SierraPlotPanel).setPan
           {
             value: 'sum',
             label: 'Sum',
-          }
-        ]
+          },
+        ],
       },
-      category: ['Series']
+      category: ['Series'],
     })
     .addRadio({
-      path: "chartType",
-      name: "Chart Type",
+      path: 'chartType',
+      name: 'Chart Type',
       defaultValue: 'area',
       settings: {
         options: [
@@ -117,20 +118,20 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(SierraPlotPanel).setPan
           {
             value: 'line',
             label: 'Line',
-          }
-        ]
+          },
+        ],
       },
-      category: ['Series']
+      category: ['Series'],
     })
     .addBooleanSwitch({
-      path: "stepped",
-      name: "Stepped Area Chart",
+      path: 'stepped',
+      name: 'Stepped Area Chart',
       defaultValue: false,
-      category: ['Series']
+      category: ['Series'],
     })
     .addRadio({
-      path: "aggregation",
-      name: "Aggregation",
+      path: 'aggregation',
+      name: 'Aggregation',
       defaultValue: 'sum',
       settings: {
         options: [
@@ -141,14 +142,14 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(SierraPlotPanel).setPan
           {
             value: 'avg',
             label: 'Average',
-          }
-        ]
+          },
+        ],
       },
-      category: ['Series']
+      category: ['Series'],
     })
     .addRadio({
-      path: "maxYType",
-      name: "Max Y Type",
+      path: 'maxYType',
+      name: 'Max Y Type',
       defaultValue: 'global',
       settings: {
         options: [
@@ -167,38 +168,38 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(SierraPlotPanel).setPan
           {
             value: 'group',
             label: 'Group',
-          }
-        ]
+          },
+        ],
       },
-      category: ['Series']
+      category: ['Series'],
     })
 
     .addSliderInput({
-      path: "skewPercentage",
-      name: "Skew Percent",
+      path: 'skewPercentage',
+      name: 'Skew Percent',
       defaultValue: 10,
       settings: {
         min: 0,
         max: 20,
-        step: 0.01
+        step: 0.01,
       },
-      category: ['Series']
+      category: ['Series'],
     })
 
     .addSliderInput({
-      path: "scaleY",
-      name: "Scale Y",
+      path: 'scaleY',
+      name: 'Scale Y',
       defaultValue: 100,
       settings: {
         min: 0,
         max: 10000,
-        step: 1
+        step: 1,
       },
-      category: ['Series']
+      category: ['Series'],
     })
     .addRadio({
-      path: "totalChartType",
-      name: "Chart Type",
+      path: 'totalChartType',
+      name: 'Chart Type',
       defaultValue: 'area',
       settings: {
         options: [
@@ -209,14 +210,14 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(SierraPlotPanel).setPan
           {
             value: 'line',
             label: 'Line',
-          }
-        ]
+          },
+        ],
       },
-      category: ['Totals']
+      category: ['Totals'],
     })
     .addRadio({
-      path: "totalBreakdown",
-      name: "Breakdown",
+      path: 'totalBreakdown',
+      name: 'Breakdown',
       defaultValue: 'none',
       settings: {
         options: [
@@ -235,14 +236,14 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(SierraPlotPanel).setPan
           {
             value: 'series',
             label: 'Series',
-          }
-        ]
+          },
+        ],
       },
-      category: ['Totals']
+      category: ['Totals'],
     })
     .addRadio({
-      path: "totalStackMode",
-      name: "Stack Mode",
+      path: 'totalStackMode',
+      name: 'Stack Mode',
       defaultValue: 'stacked',
       settings: {
         options: [
@@ -253,370 +254,368 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(SierraPlotPanel).setPan
           {
             value: 'stacked100',
             label: 'Stacked 100%',
-          }
-        ]
+          },
+        ],
       },
-      category: ['Totals']
+      category: ['Totals'],
     })
     .addSliderInput({
-      path: "totalPerc",
-      name: "Total Height Percent",
+      path: 'totalPerc',
+      name: 'Total Height Percent',
       defaultValue: 50,
       settings: {
         min: 0,
         max: 100,
-        step: 1
+        step: 1,
       },
-      category: ['Totals']
+      category: ['Totals'],
     })
     .addBooleanSwitch({
-      path: "showTotal",
-      name: "Show Total",
-      category: ['Totals']
+      path: 'showTotal',
+      name: 'Show Total',
+      category: ['Totals'],
     })
     .addBooleanSwitch({
-      path: "showRangeSelector",
-      name: "Show Range Selector",
+      path: 'showRangeSelector',
+      name: 'Show Range Selector',
       defaultValue: false,
-      category: ['Presentation']
+      category: ['Presentation'],
     })
     .addBooleanSwitch({
-      path: "showGroups",
-      name: "Show Groups",
+      path: 'showGroups',
+      name: 'Show Groups',
       defaultValue: false,
-      category: ['Presentation']
+      category: ['Presentation'],
     })
     .addSliderInput({
-      path: "leftMargin",
-      name: "Left Margin Size",
+      path: 'leftMargin',
+      name: 'Left Margin Size',
       defaultValue: 100,
       settings: {
         min: 0,
         max: 300,
-        step: 1
+        step: 1,
       },
-      category: ['Presentation']
+      category: ['Presentation'],
     })
     .addSliderInput({
-      path: "topMargin",
-      name: "Top Margin Size",
+      path: 'topMargin',
+      name: 'Top Margin Size',
       defaultValue: 0,
       settings: {
         min: 0,
         max: 300,
-        step: 1
+        step: 1,
       },
-      category: ['Presentation']
+      category: ['Presentation'],
     })
     .addColorPicker({
-      path: "color",
-      name: "Chart Color",
-      defaultValue: "#663399",
-      category: ['Style']
+      path: 'color',
+      name: 'Chart Color',
+      defaultValue: '#663399',
+      category: ['Style'],
     })
     .addRadio({
-      path: "colorMode",
-      name: "Color Mode",
+      path: 'colorMode',
+      name: 'Color Mode',
       defaultValue: 'regular',
       settings: {
         options: [
           {
             value: 'regular',
-            label: 'Regular'
+            label: 'Regular',
           },
           {
             value: 'group',
-            label: 'Group'
+            label: 'Group',
           },
           {
             value: 'values',
-            label: 'Values'
+            label: 'Values',
           },
           {
             value: 'valuesInverted',
-            label: 'Values (Inverted)'
-          }
-        ]
+            label: 'Values (Inverted)',
+          },
+        ],
       },
-      category: ['Style']
+      category: ['Style'],
     })
     .addRadio({
-      path: "colorType",
-      name: "Color Type",
+      path: 'colorType',
+      name: 'Color Type',
       defaultValue: 'single',
       settings: {
         options: [
           {
             value: 'single',
-            label: 'Single'
+            label: 'Single',
           },
           {
             value: 'sequential',
-            label: 'Sequential'
+            label: 'Sequential',
           },
           {
             value: 'alternating',
-            label: 'Alternating'
-          }
-        ]
+            label: 'Alternating',
+          },
+        ],
       },
-      category: ['Style']
+      category: ['Style'],
     })
     .addColorPicker({
-      path: "outlineColor",
-      name: "Outline Color",
-      defaultValue: "#000000",
-      category: ['Style']
+      path: 'outlineColor',
+      name: 'Outline Color',
+      defaultValue: '#000000',
+      category: ['Style'],
     })
     .addSliderInput({
-      path: "outlineWidth",
-      name: "Outline Width",
+      path: 'outlineWidth',
+      name: 'Outline Width',
       defaultValue: 2,
       settings: {
         min: 0,
         max: 10,
-        step: 0.1
+        step: 0.1,
       },
-      category: ['Style']
+      category: ['Style'],
     })
     .addSliderInput({
-      path: "outlineOpacity",
-      name: "Outline Opacity",
-      defaultValue: .2,
+      path: 'outlineOpacity',
+      name: 'Outline Opacity',
+      defaultValue: 0.2,
       settings: {
         min: 0,
         max: 1,
-        step: 0.01
+        step: 0.01,
       },
-      category: ['Style']
+      category: ['Style'],
     })
     .addBooleanSwitch({
-      path: "glow",
-      name: "Glow",
+      path: 'glow',
+      name: 'Glow',
       defaultValue: false,
-      category: ['Style']
+      category: ['Style'],
     })
     .addSliderInput({
-      path: "glowSpread",
-      name: "Glow Spread",
+      path: 'glowSpread',
+      name: 'Glow Spread',
       defaultValue: 1,
       settings: {
         min: 0,
         max: 100,
-        step: 1
+        step: 1,
       },
-      category: ['Style']
+      category: ['Style'],
     })
     .addBooleanSwitch({
-      path: "chartBevel",
-      name: "Bevel",
-      category: ['Style']
+      path: 'chartBevel',
+      name: 'Bevel',
+      category: ['Style'],
     })
     .addBooleanSwitch({
-      path: "showBackground",
-      name: "Show Background",
+      path: 'showBackground',
+      name: 'Show Background',
       defaultValue: false,
-      category: ['Style']
+      category: ['Style'],
     })
     .addColorPicker({
-      path: "backgroundColor",
-      name: "Background Color",
-      defaultValue: "#000000",
-      category: ['Style']
+      path: 'backgroundColor',
+      name: 'Background Color',
+      defaultValue: '#000000',
+      category: ['Style'],
     })
 
     .addBooleanSwitch({
-      path: "showChartLabels",
-      name: "Show Chart Labels",
+      path: 'showChartLabels',
+      name: 'Show Chart Labels',
       defaultValue: true,
-      category: ['Labels']
+      category: ['Labels'],
     })
     .addColorPicker({
-      path: "labelColor",
-      name: "Label Color",
-      defaultValue: "#ffffff",
-      category: ['Labels']
+      path: 'labelColor',
+      name: 'Label Color',
+      defaultValue: '#ffffff',
+      category: ['Labels'],
     })
     .addSliderInput({
-      path: "chartLabelSize",
-      name: "Chart Label Size",
+      path: 'chartLabelSize',
+      name: 'Chart Label Size',
       defaultValue: 50,
       settings: {
         min: 5,
         max: 100,
-        step: 1
+        step: 1,
       },
-      category: ['Labels']
+      category: ['Labels'],
     })
     .addSliderInput({
-      path: "chartLabelShiftX",
-      name: "Chart Label Shift",
+      path: 'chartLabelShiftX',
+      name: 'Chart Label Shift',
       defaultValue: 50,
       settings: {
         min: 0,
         max: 500,
-        step: 1
+        step: 1,
       },
-      category: ['Labels']
+      category: ['Labels'],
     })
 
-
     .addSliderInput({
-      path: "groupLabelSize",
-      name: "Group Label Size",
+      path: 'groupLabelSize',
+      name: 'Group Label Size',
       defaultValue: 50,
       settings: {
         min: 5,
         max: 100,
-        step: 1
+        step: 1,
       },
-      category: ['Labels']
+      category: ['Labels'],
     })
 
     .addRadio({
-      path: "markersMode",
-      name: "Mode",
+      path: 'markersMode',
+      name: 'Mode',
       defaultValue: 'disable',
       settings: {
         options: [
           {
             value: 'disable',
-            label: 'Disable'
+            label: 'Disable',
           },
           {
             value: 'hidden',
-            label: 'Hidden'
+            label: 'Hidden',
           },
           {
             value: 'visible',
-            label: 'Visible'
-          }
-        ]
+            label: 'Visible',
+          },
+        ],
       },
-      category: ['Markers']
+      category: ['Markers'],
     })
     .addSliderInput({
-      path: "markersRadius",
-      name: "Size",
+      path: 'markersRadius',
+      name: 'Size',
       defaultValue: 10,
       settings: {
         min: 0,
         max: 30,
-        step: .1
+        step: 0.1,
       },
-      category: ['Markers']
+      category: ['Markers'],
     })
     .addColorPicker({
-      path: "markersColor",
-      name: "Color",
-      defaultValue: "#663399",
-      category: ['Markers']
+      path: 'markersColor',
+      name: 'Color',
+      defaultValue: '#663399',
+      category: ['Markers'],
     })
-
 
     .addBooleanSwitch({
-      path: "showFog",
-      name: "Show Fog",
+      path: 'showFog',
+      name: 'Show Fog',
       defaultValue: false,
-      category: ['Fog']
+      category: ['Fog'],
     })
     .addSliderInput({
-      path: "fogHeight",
-      name: "Fog Height",
+      path: 'fogHeight',
+      name: 'Fog Height',
       defaultValue: 50,
       settings: {
         min: 0,
         max: 100,
-        step: 1
+        step: 1,
       },
-      category: ['Fog']
+      category: ['Fog'],
     })
     .addColorPicker({
-      path: "fogColor",
-      name: "Fog Color",
-      defaultValue: "rgba(255, 255, 255, 0.66)",
-      category: ['Fog']
+      path: 'fogColor',
+      name: 'Fog Color',
+      defaultValue: 'rgba(255, 255, 255, 0.66)',
+      category: ['Fog'],
     })
 
     .addRadio({
-      path: "transitionType",
-      name: "Type",
+      path: 'transitionType',
+      name: 'Type',
       defaultValue: 'none',
       settings: {
         options: [
           {
             value: 'none',
-            label: 'None'
+            label: 'None',
           },
           {
             value: 'groups',
-            label: 'Cycle Groups'
+            label: 'Cycle Groups',
           },
           {
             value: 'charts',
-            label: 'Cycle Charts'
-          }
-        ]
+            label: 'Cycle Charts',
+          },
+        ],
       },
-      category: ['Transitions']
+      category: ['Transitions'],
     })
     .addTextInput({
-      path: "transitionPeriod",
-      name: "Period",
-      defaultValue: "5000",
-      category: ['Transitions']
+      path: 'transitionPeriod',
+      name: 'Period',
+      defaultValue: '5000',
+      category: ['Transitions'],
     })
 
     .addBooleanSwitch({
-      path: "gridlineEnabled",
-      name: "Show",
+      path: 'gridlineEnabled',
+      name: 'Show',
       category: ['Gridlines'],
-      defaultValue: false
+      defaultValue: false,
     })
     .addSliderInput({
-      path: "gridlineWidth",
-      name: "Width",
+      path: 'gridlineWidth',
+      name: 'Width',
       defaultValue: 3,
       settings: {
         min: 0,
         max: 20,
-        step: .1
+        step: 0.1,
       },
-      category: ['Gridlines']
+      category: ['Gridlines'],
     })
     .addSliderInput({
-      path: "gridlineTicks",
-      name: "Ticks",
+      path: 'gridlineTicks',
+      name: 'Ticks',
       defaultValue: 30,
       settings: {
         min: 0,
         max: 100,
-        step: 1
+        step: 1,
       },
-      category: ['Gridlines']
+      category: ['Gridlines'],
     })
     .addColorPicker({
-      path: "gridlineColor",
-      name: "Color",
-      defaultValue: "#0488d0",
-      category: ['Gridlines']
+      path: 'gridlineColor',
+      name: 'Color',
+      defaultValue: '#0488d0',
+      category: ['Gridlines'],
     })
     .addRadio({
-      path: "gridlinePosition",
-      name: "Position",
+      path: 'gridlinePosition',
+      name: 'Position',
       defaultValue: 'below',
       settings: {
         options: [
           {
             value: 'below',
-            label: 'Below Charts'
+            label: 'Below Charts',
           },
           {
             value: 'above',
-            label: 'Above Charts'
-          }
-        ]
+            label: 'Above Charts',
+          },
+        ],
       },
-      category: ['Gridlines']
-    })
-})
+      category: ['Gridlines'],
+    });
+});

@@ -1,6 +1,6 @@
-import React from "react";
-import { StandardEditorProps, FieldType } from "@grafana/data";
-import { MultiSelect, Select } from "@grafana/ui";
+import React from 'react';
+import { StandardEditorProps, FieldType } from '@grafana/data';
+import { MultiSelect, Select } from '@grafana/ui';
 
 interface Settings {
   filterByType: FieldType[];
@@ -26,18 +26,17 @@ export const FieldSelectEditor: React.FC<Props> = ({
   context,
 }) => {
   if (context.data && context.data.length > 0) {
-      const options = context.data
+    const options = context.data
       .flatMap((frame) => frame.fields)
       .filter((field) =>
         item.settings?.filterByType
           ? item.settings?.filterByType.some((_) => field.type === _)
-          : true
+          : true,
       )
       .map((field) => ({
         label: JSON.stringify(field.labels),
         value: field.name,
       }));
-
 
     if (item.settings?.multi) {
       return (

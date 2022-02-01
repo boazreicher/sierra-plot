@@ -1,38 +1,37 @@
-import React, { RefObject } from "react";
+import React, { RefObject } from 'react';
 
-import RangeSlider from "data-driven-range-slider";
-import { optionsChangeCallback, SierraPlotOptions } from "types";
-import { SierraPlotProperties } from "data/SierraPlotProperties";
+import RangeSlider from 'data-driven-range-slider';
+import { optionsChangeCallback, SierraPlotOptions } from 'types';
+import { SierraPlotProperties } from 'data/SierraPlotProperties';
 
 interface Props {
-  data: string[]
-  onOptionsChange: optionsChangeCallback
-  sierraPlotProperties: SierraPlotProperties
-  panelOptions: SierraPlotOptions
+  data: string[];
+  onOptionsChange: optionsChangeCallback;
+  sierraPlotProperties: SierraPlotProperties;
+  panelOptions: SierraPlotOptions;
 }
 
 interface State {
-  selectedRange: Date[]
-  selectedData: string[]
+  selectedRange: Date[];
+  selectedData: string[];
 }
 
 class RangeSliderComponent extends React.Component<Props, State> {
-  state: State
+  state: State;
   nodeRef: RefObject<SVGSVGElement> = React.createRef();
-  chart: any
+  chart: any;
 
   constructor(props: Props) {
     super(props);
     this.state = {
       selectedRange: [],
-      selectedData: []
+      selectedData: [],
     };
 
     if (props.panelOptions.showRangeSelector) {
       this.createDiagram = this.createDiagram.bind(this);
     }
   }
-
 
   componentDidMount() {
     if (this.props.panelOptions.showRangeSelector) {
@@ -41,25 +40,37 @@ class RangeSliderComponent extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
-    if (prevProps.data == this.props.data || !this.props.panelOptions.showRangeSelector) {
+    if (
+      prevProps.data == this.props.data ||
+      !this.props.panelOptions.showRangeSelector
+    ) {
       return;
     }
     this.createDiagram();
   }
 
   render() {
-    return (
-      this.props.panelOptions.showRangeSelector ?
-        <svg x={getXAxisStartX(this.props.sierraPlotProperties.minX, this.props.sierraPlotProperties.dimensions.startX)} y={getXAxisYPos(this.props.sierraPlotProperties.dimensions.height, this.props.sierraPlotProperties.dimensions.startY)} height="100%"
-          style={{
-            marginTop: "0px",
-            borderRadius: "5px",
-            paddingTop: "0px",
-            paddingLeft: "0px"
-          }}
-          ref={this.nodeRef}
-        />
-        : <></>
+    return this.props.panelOptions.showRangeSelector ? (
+      <svg
+        x={getXAxisStartX(
+          this.props.sierraPlotProperties.minX,
+          this.props.sierraPlotProperties.dimensions.startX,
+        )}
+        y={getXAxisYPos(
+          this.props.sierraPlotProperties.dimensions.height,
+          this.props.sierraPlotProperties.dimensions.startY,
+        )}
+        height="100%"
+        style={{
+          marginTop: '0px',
+          borderRadius: '5px',
+          paddingTop: '0px',
+          paddingLeft: '0px',
+        }}
+        ref={this.nodeRef}
+      />
+    ) : (
+      <></>
     );
   }
 
@@ -73,18 +84,24 @@ class RangeSliderComponent extends React.Component<Props, State> {
     }
     this.chart
       .container(node)
-      .svgWidth(getXAxisWidth(this.props.sierraPlotProperties.minX, this.props.sierraPlotProperties.dimensions.startX, this.props.sierraPlotProperties.chartDimensions.width))
+      .svgWidth(
+        getXAxisWidth(
+          this.props.sierraPlotProperties.minX,
+          this.props.sierraPlotProperties.dimensions.startX,
+          this.props.sierraPlotProperties.chartDimensions.width,
+        ),
+      )
       .svgHeight(100)
       .yTicks(0)
       .data(this.props.data)
       .accessor((d: string | number | Date) => new Date(d))
-      .onBrush((d: { range: Date[]; data: string[]; }) => {
-        this.props.panelOptions.timeRangeStart = d.range[0].getTime()
-        this.props.panelOptions.timeRangeEnd = d.range[1].getTime()
-        this.props.onOptionsChange(this.props.panelOptions)
+      .onBrush((d: { range: Date[]; data: string[] }) => {
+        this.props.panelOptions.timeRangeStart = d.range[0].getTime();
+        this.props.panelOptions.timeRangeEnd = d.range[1].getTime();
+        this.props.onOptionsChange(this.props.panelOptions);
         this.setState({
           selectedRange: d.range,
-          selectedData: d.data
+          selectedData: d.data,
         });
       })
       .render();
@@ -92,15 +109,14 @@ class RangeSliderComponent extends React.Component<Props, State> {
 }
 
 function getXAxisYPos(yPos: number, topMargin: number) {
-  return yPos + topMargin + 100
+  return yPos + topMargin + 100;
 }
 
 export default RangeSliderComponent;
 
 function getXAxisStartX(minX: number, startX: number): number {
-  return minX + startX - 30
+  return minX + startX - 30;
 }
 function getXAxisWidth(minX: number, startX: number, width: number): number {
-  return width - minX
+  return width - minX;
 }
-
