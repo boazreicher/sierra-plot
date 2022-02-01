@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
     "type": "panel",
     "name": "Sierra Plot",
-    "id": "sierraplot",
+    "id": "boazr-sierraplot-panel",
     "info": {
         "description": "Sierra Plot Panel",
         "author": {
@@ -28,7 +28,31 @@
                 "url": "https://github.com/boazreicher/sierra-plot/blob/main/LICENSE"
             }
         ],
-        "screenshots": [],
+        "screenshots": [{
+                "name": "Covid-19",
+                "path": "img/covid.png"
+            },
+            {
+                "name": "Covid-19 2",
+                "path": "img/covid2.png"
+            },
+            {
+                "name": "Mortality Rates",
+                "path": "img/mortality.png"
+            },
+            {
+                "name": "200 Servers",
+                "path": "img/200.png"
+            },
+            {
+                "name": "2000 Servers",
+                "path": "img/2000.png"
+            },
+            {
+                "name": "Transitions",
+                "path": "img/transitions.gif"
+            }
+        ],
         "version": "%VERSION%",
         "updated": "%TODAY%"
     },
