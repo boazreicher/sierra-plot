@@ -44,7 +44,7 @@ export class SierraPlotProperties {
   minX: number;
   timeRange: TimeRange;
 
-  private running: number = 0;
+  private running = 0;
 
   onOptionsChange: optionsChangeCallback;
 
@@ -142,20 +142,20 @@ export class SierraPlotProperties {
     isTotal: boolean,
     breakDownType: ChartBreakdown
   ) {
-    if (colorMode == 'values' && !isTotal) {
+    if (colorMode === 'values' && !isTotal) {
       return new FilterPalette('heat');
-    } else if (colorMode == 'valuesInverted' && !isTotal) {
+    } else if (colorMode === 'valuesInverted' && !isTotal) {
       return new FilterPalette('heatInverted');
     }
-    var palette: ColorPalette = this.getPalette();
-    if (breakDownType == 'series') {
+    let palette: ColorPalette = this.getPalette();
+    if (breakDownType === 'series') {
       return palette;
     }
     if (
       selection !== undefined &&
       selection.active &&
       selection.type === SelectionType.Group &&
-      (selection.value == groupName || isTotal)
+      (selection.value === groupName || isTotal)
     ) {
       palette = this.getPaletteSelected();
     }
@@ -163,7 +163,7 @@ export class SierraPlotProperties {
   }
 
   private generateBaseDimensions(properties: BaseDimensionsProperties): Dimensions {
-    var dimensions: Dimensions = new Dimensions();
+    let dimensions: Dimensions = new Dimensions();
     dimensions.startX = properties.leftMargin;
     dimensions.startY = properties.topMargin;
     dimensions.width = properties.width;

@@ -4,7 +4,7 @@ export class DataPoint {
   coordinates!: Coordinates;
   weight!: number;
 
-  constructor(coordinates: Coordinates, weight: number = 0) {
+  constructor(coordinates: Coordinates, weight = 0) {
     this.coordinates = coordinates.clone();
     this.weight = weight;
   }

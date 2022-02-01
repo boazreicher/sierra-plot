@@ -23,7 +23,7 @@ function buildXAxisProperties(sierraPlotProperties: SierraPlotProperties, select
 
 function getXAxisStartX(selection: Selection, startX: number) {
   if (selection !== undefined && selection.active) {
-    if (selection.type == SelectionType.Group && selection.hightlightMode == 'exclusive') {
+    if (selection.type === SelectionType.Group && selection.hightlightMode === 'exclusive') {
       return startX;
     }
     return selection.x;
@@ -33,7 +33,7 @@ function getXAxisStartX(selection: Selection, startX: number) {
 
 function getXAxisYPos(selection: Selection, yPos: number, topMargin: number) {
   if (selection !== undefined && selection.active) {
-    if (selection.type == SelectionType.Group && selection.hightlightMode == 'exclusive') {
+    if (selection.type === SelectionType.Group && selection.hightlightMode == 'exclusive') {
       return yPos + topMargin;
     }
     return selection.y;
@@ -48,11 +48,11 @@ function getXAxisElementWidth(startX: number, width: number): string | number | 
 function createXAxis(sierraPlotProperties: SierraPlotProperties, selection: Selection) {
   let properties: XAxisProperties = buildXAxisProperties(sierraPlotProperties, selection);
 
-  var timeShiftRatio = 0;
+  let timeShiftRatio = 0;
   if (properties.minX > 0) {
     timeShiftRatio = properties.minX / properties.width;
   }
-  var timeShift = (properties.timeRange.end - properties.timeRange.start) * timeShiftRatio;
+  let timeShift = (properties.timeRange.end - properties.timeRange.start) * timeShiftRatio;
 
   const xScale = d3
     .scaleTime()

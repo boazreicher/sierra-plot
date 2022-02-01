@@ -5,7 +5,7 @@ export function getOnClickHandler(
   panelOptions: SierraPlotOptions,
   onOptionsChange: optionsChangeCallback
 ): React.MouseEventHandler<SVGSVGElement> | undefined {
-  var clickEventHandler: React.MouseEventHandler = (event) => {
+  let clickEventHandler: React.MouseEventHandler = (event) => {
     panelOptions.selectedChart.deselect();
     event.preventDefault();
     event.stopPropagation();
@@ -21,8 +21,8 @@ export function getOnClickHandlerForChart(
   y: number,
   onOptionsChange: optionsChangeCallback
 ): React.MouseEventHandler<SVGSVGElement> | undefined {
-  var clickEventHandler: React.MouseEventHandler = (event) => {
-    var chartName: string = name === undefined ? '' : name;
+  let clickEventHandler: React.MouseEventHandler = (event) => {
+    let chartName: string = name === undefined ? '' : name;
     if (panelOptions.selectedChart === undefined) {
       panelOptions.selectedChart = new Selection('', '');
     }
@@ -52,12 +52,12 @@ export function getOnClickHandlerForTotal(
   panelOptions: SierraPlotOptions,
   onOptionsChange: optionsChangeCallback
 ): React.MouseEventHandler<SVGSVGElement> | undefined {
-  var clickEventHandler: React.MouseEventHandler = (event) => {
+  let clickEventHandler: React.MouseEventHandler = (event) => {
     if (panelOptions.selectedChart === undefined) {
       panelOptions.selectedChart = new Selection('', '');
     }
 
-    if (panelOptions.totalStackMode == 'stacked') {
+    if (panelOptions.totalStackMode === 'stacked') {
       panelOptions.totalStackMode = 'stacked100';
     } else {
       panelOptions.totalStackMode = 'stacked';
@@ -76,18 +76,18 @@ export function getOnClickHandlerForGroupBounds(
   groupColor: string,
   onOptionsChange: optionsChangeCallback
 ): React.MouseEventHandler<SVGSVGElement> | undefined {
-  var clickEventHandler: React.MouseEventHandler = (event) => {
+  let clickEventHandler: React.MouseEventHandler = (event) => {
     if (panelOptions.selectedChart === undefined) {
       panelOptions.selectedChart = new Selection('', '');
     }
 
     if (
       panelOptions.selectedChart.active &&
-      panelOptions.selectedChart.type == SelectionType.Group &&
-      panelOptions.selectedChart.value == groupName
+      panelOptions.selectedChart.type === SelectionType.Group &&
+      panelOptions.selectedChart.value === groupName
     ) {
       // Clicked on the currently selected group
-      if (panelOptions.selectedChart.hightlightMode == 'focus') {
+      if (panelOptions.selectedChart.hightlightMode === 'focus') {
         // Switch from focus to exclusive
         panelOptions.selectedChart.hightlightMode = 'exclusive';
         panelOptions.selectedChart.currentColor = groupColor;

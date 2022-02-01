@@ -13,7 +13,7 @@ export class SvgGroup extends SvgElement {
   children: SvgElement[] = [];
 
   buildElement(height?: number): JSX.Element {
-    var maxHeight = this.colorMode == 'values' || this.colorMode == 'valuesInverted' ? this.maxHeight : undefined;
+    let maxHeight = this.colorMode === 'values' || this.colorMode === 'valuesInverted' ? this.maxHeight : undefined;
 
     return (
       <Tooltip content={getTooltip(this.tooltipData, this.id)}>
@@ -25,7 +25,7 @@ export class SvgGroup extends SvgElement {
           onMouseOver={this.onMouseOver}
           filter={this.filter}
         >
-          {this.children.map((child) => (
+          {this.children.map(child => (
             <SierraPlotSvgElement element={child} height={maxHeight} />
           ))}
         </g>
@@ -50,10 +50,10 @@ export class SvgGroup extends SvgElement {
   }
 
   calculateBoundingBox(chartType: ChartType): void {
-    var minX = -1;
-    var maxX = -1;
-    var minY = -1;
-    var maxY = -1;
+    let minX = -1;
+    let maxX = -1;
+    let minY = -1;
+    let maxY = -1;
 
     this.children.forEach((element) => {
       // Only including polygons (or polylines for line charts) for bounding box
@@ -62,13 +62,13 @@ export class SvgGroup extends SvgElement {
       }
       element.calculateBoundingBox(chartType);
 
-      if (minX == -1 || minX > element.boundingBox.minX) {
+      if (minX === -1 || minX > element.boundingBox.minX) {
         minX = element.boundingBox.minX;
       }
       if (maxX < element.boundingBox.maxX) {
         maxX = element.boundingBox.maxX;
       }
-      if (minY == -1 || minY > element.boundingBox.minY) {
+      if (minY === -1 || minY > element.boundingBox.minY) {
         minY = element.boundingBox.minY;
       }
       if (maxY < element.boundingBox.maxY) {
@@ -83,7 +83,7 @@ export class SvgGroup extends SvgElement {
   }
 
   calculateMaxHeightFromChildren() {
-    var maxHeight: number | undefined;
+    let maxHeight: number | undefined;
 
     this.children.forEach((element) => {
       if (element.maxHeight !== undefined) {

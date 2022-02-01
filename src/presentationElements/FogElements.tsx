@@ -30,7 +30,7 @@ export class FogElements implements PresentationElement {
     let chartDistances: Coordinates = this.calculateChartDistances(elements);
 
     for (let index = elements.length - 1; index >= 0; index--) {
-      if (!elements[index].isChartGroup || elements[index].id == TOTAL_ELEMENT_ID) {
+      if (!elements[index].isChartGroup || elements[index].id === TOTAL_ELEMENT_ID) {
         continue;
       }
 
@@ -40,7 +40,7 @@ export class FogElements implements PresentationElement {
         let bottomRight = new Coordinates(source.maxX - chartDistances.x, source.maxY + chartDistances.y - height);
         let bottomLeft = new Coordinates(source.minX - chartDistances.x, source.maxY + chartDistances.y - height);
 
-        var fogSliceCoordinates: Coordinates[] = [topLeft, topRight, bottomRight, bottomLeft];
+        let fogSliceCoordinates: Coordinates[] = [topLeft, topRight, bottomRight, bottomLeft];
 
         // Shift right to limit covering the chart labels
         let slope: number = (topRight.y - bottomRight.y) / (topRight.x - bottomRight.x);
@@ -49,7 +49,7 @@ export class FogElements implements PresentationElement {
           coordinatesElement.x += shiftX;
         });
 
-        var fogSlice = new SvgPolygon();
+        let fogSlice = new SvgPolygon();
         fogSlice.id = ID_PREFIX_FOG + ID_SEPERATOR + elements[index].id;
         fogSlice.fill = this.fogColor;
         fogSlice.stroke = this.fogColor;
@@ -62,10 +62,10 @@ export class FogElements implements PresentationElement {
         // Should extract this to some "isSelected" utility
         if (this.selection !== undefined && this.selection.active) {
           let selectedId = this.selection.key + ID_KV_SEPERATOR + this.selection.value;
-          if (this.selection.type === SelectionType.Chart && selectedId == elements[index].id) {
+          if (this.selection.type === SelectionType.Chart && selectedId === elements[index].id) {
             fogSlice.zOrder += ZORDER_CHART_RANGE;
           }
-          if (this.selection.type === SelectionType.Group && this.selection.value == elements[index].sortKey) {
+          if (this.selection.type === SelectionType.Group && this.selection.value === elements[index].sortKey) {
             fogSlice.zOrder += ZORDER_CHART_RANGE;
           }
         }
@@ -81,7 +81,7 @@ export class FogElements implements PresentationElement {
   private getMaxYValue(chartsSvgElements: SvgElement[]): number {
     let result = 0;
     chartsSvgElements.forEach((element) => {
-      if (!element.isChartGroup || element.id == TOTAL_ELEMENT_ID) {
+      if (!element.isChartGroup || element.id === TOTAL_ELEMENT_ID) {
         return;
       }
       if (element.boundingBox.maxY - element.boundingBox.minY > result) {
@@ -95,7 +95,7 @@ export class FogElements implements PresentationElement {
     let source: BoundingBox | undefined;
 
     for (let index = chartsSvgElements.length - 1; index >= 0; index--) {
-      if (!chartsSvgElements[index].isChartGroup || chartsSvgElements[index].id == TOTAL_ELEMENT_ID) {
+      if (!chartsSvgElements[index].isChartGroup || chartsSvgElements[index].id === TOTAL_ELEMENT_ID) {
         continue;
       }
       if (source !== undefined) {

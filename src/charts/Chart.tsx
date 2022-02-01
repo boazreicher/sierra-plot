@@ -35,15 +35,15 @@ export abstract class Chart<ElementType extends SeriesElement> {
     seriesElements: SeriesElement[],
     chartsPresentationProperties: ChartsPresentationProperties
   ): SvgElement[] {
-    var elements: SvgElement[] = [];
+    let elements: SvgElement[] = [];
 
-    var color;
+    let color;
     let lastSortKey;
-    for (var index = 0; index < seriesElements.length; index++) {
+    for (let index = 0; index < seriesElements.length; index++) {
       lastSortKey = seriesElements[index].sortKey;
       seriesElements[index].invertY();
 
-      var svgElement = seriesElements[index].toSvgElement();
+      let svgElement = seriesElements[index].toSvgElement();
 
       if (svgElement.id === undefined) {
         continue;
@@ -58,7 +58,7 @@ export abstract class Chart<ElementType extends SeriesElement> {
 
       elements.push(svgElement);
 
-      if (elementId.type ==- 'te') {
+      if (elementId.type === 'te') {
         if (
           index < seriesElements.length - 1 &&
           (seriesElements[index + 1].sortKey !== lastSortKey || lastSortKey === undefined)
@@ -90,14 +90,14 @@ export abstract class Chart<ElementType extends SeriesElement> {
   protected abstract formatSeriesElements(elements: SeriesElement[], numDataPoints: number): SeriesElement[];
 
   protected buildElements(series: DataSeries[], isTotal: boolean, stepped: boolean): SeriesElement[] {
-    var elements: SeriesElement[] = [];
+    let elements: SeriesElement[] = [];
 
-    var effectiveMaxY = this.calculateEffectiveMaxY(series);
+    let effectiveMaxY = this.calculateEffectiveMaxY(series);
 
-    for (var index = 0; index < series.length; index++) {
-      var element = this.getNewFromUnderlyingType();
+    for (let index = 0; index < series.length; index++) {
+      let element = this.getNewFromUnderlyingType();
       element.stepped = stepped;
-      var id: string | undefined = series[index].name;
+      let id: string | undefined = series[index].name;
 
       if (isTotal) {
         id = ID_PREFIX_TOTAL_ELEMENT + ID_SEPERATOR + series[index].name;
@@ -106,11 +106,11 @@ export abstract class Chart<ElementType extends SeriesElement> {
       }
       element.id = id;
 
-      for (var xIndex = 0; xIndex < series[index].dataPoints.length; xIndex++) {
+      for (let xIndex = 0; xIndex < series[index].dataPoints.length; xIndex++) {
         element.dataPoints.push(series[index].dataPoints[xIndex].clone());
       }
 
-      var dimensions = this.chartDimensions.clone();
+      let dimensions = this.chartDimensions.clone();
       dimensions.maxY = effectiveMaxY;
       element.dimensions = dimensions;
       element.sortKey = series[index].sortKey;
@@ -133,7 +133,7 @@ export abstract class Chart<ElementType extends SeriesElement> {
       return elementId.value;
     }
 
-    var result = '';
+    let result = '';
     if (elementId.series !== undefined) {
       result = elementId.series + ' in ' + elementId.chart;
       if (elementId.group !== undefined) {

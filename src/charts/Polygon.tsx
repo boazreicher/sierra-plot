@@ -14,16 +14,16 @@ export class Polygon extends SeriesElement {
   }
 
   protected addBottom(): void {
-    for (var index = this.dataPoints.length - 1; index >= -0; index--) {
-      var dataPoint = new DataPoint(new Coordinates(this.dataPoints[index].x(), 0));
+    for (let index = this.dataPoints.length - 1; index >= -0; index--) {
+      let dataPoint = new DataPoint(new Coordinates(this.dataPoints[index].x(), 0));
       this.closingDataPoints.push(dataPoint);
     }
   }
 
   stackedOn(polygons: Polygon[]): void {
-    for (var index = 0; index < this.dataPoints.length; index++) {
-      var shift = 0;
-      for (var polygonIndex = 0; polygonIndex < polygons.length; polygonIndex++) {
+    for (let index = 0; index < this.dataPoints.length; index++) {
+      let shift = 0;
+      for (let polygonIndex = 0; polygonIndex < polygons.length; polygonIndex++) {
         shift +=
           polygons[polygonIndex].dataPoints[index].y() -
           polygons[polygonIndex].closingDataPoints[polygons[polygonIndex].closingDataPoints.length - index - 1].y();
@@ -31,8 +31,8 @@ export class Polygon extends SeriesElement {
 
       this.dataPoints[index].shiftY(shift);
 
-      var closingShift = 0;
-      for (var polygonIndex = 0; polygonIndex < polygons.length; polygonIndex++) {
+      let closingShift = 0;
+      for (let polygonIndex = 0; polygonIndex < polygons.length; polygonIndex++) {
         closingShift +=
           polygons[polygonIndex].dataPoints[polygons[polygonIndex].dataPoints.length - index - 1].y() -
           polygons[polygonIndex].closingDataPoints[index].y();
@@ -43,7 +43,7 @@ export class Polygon extends SeriesElement {
   }
 
   toOutlineElement(): SvgPolyline {
-    var svgPolyline = new SvgPolyline();
+    let svgPolyline = new SvgPolyline();
 
     svgPolyline.id = this.id + '-tl';
 

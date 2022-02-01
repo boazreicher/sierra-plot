@@ -6,7 +6,7 @@ export class HSL implements Color {
   l: number;
   a: number;
 
-  constructor(h: number, s: number, l: number, a: number = 1) {
+  constructor(h: number, s: number, l: number, a = 1) {
     this.h = h;
     this.s = s;
     this.l = l;

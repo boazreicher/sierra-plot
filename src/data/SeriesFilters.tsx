@@ -10,9 +10,9 @@ export class SeriesFilters {
     if (
       panelOptions.selectedChart !== undefined &&
       panelOptions.selectedChart.active &&
-      panelOptions.selectedChart.type == SelectionType.Group &&
+      panelOptions.selectedChart.type === SelectionType.Group &&
       panelOptions.chartsGroupField !== undefined &&
-      panelOptions.selectedChart.hightlightMode == 'exclusive'
+      panelOptions.selectedChart.hightlightMode === 'exclusive'
     ) {
       this.addFilter(panelOptions.chartsGroupField, [panelOptions.selectedChart.value]);
     } else {
@@ -37,12 +37,12 @@ export class SeriesFilters {
 
   filterSeriesForIncludes(seriesElement: DataSeries) {
     for (let field in this.fieldValues) {
-      if (this.fieldValues[field].length == 0) {
+      if (this.fieldValues[field].length === 0) {
         continue;
       }
-      var noFilter = false;
+      let noFilter = false;
       for (let index = 0; index < this.fieldValues[field].length; index++) {
-        if (this.fieldValues[field][index] == '*') {
+        if (this.fieldValues[field][index] === '*') {
           noFilter = true;
           break;
         }
@@ -54,7 +54,7 @@ export class SeriesFilters {
         continue;
       }
       for (let index = 0; index < this.fieldValues[field].length; index++) {
-        if (seriesElement.dimensions[field] == this.fieldValues[field][index]) {
+        if (seriesElement.dimensions[field] === this.fieldValues[field][index]) {
           noFilter = true;
           break;
         }
@@ -69,12 +69,12 @@ export class SeriesFilters {
 
   filterSeriesForExcludes(seriesElement: DataSeries) {
     for (let field in this.excludedValues) {
-      if (this.excludedValues[field].length == 0) {
+      if (this.excludedValues[field].length === 0) {
         continue;
       }
-      var noFilter = false;
+      let noFilter = false;
       for (let index = 0; index < this.excludedValues[field].length; index++) {
-        if (this.excludedValues[field][index] == '') {
+        if (this.excludedValues[field][index] === '') {
           noFilter = true;
           break;
         }
@@ -86,7 +86,7 @@ export class SeriesFilters {
         continue;
       }
       for (let index = 0; index < this.excludedValues[field].length; index++) {
-        if (seriesElement.dimensions[field] == this.excludedValues[field][index]) {
+        if (seriesElement.dimensions[field] === this.excludedValues[field][index]) {
           return true;
         }
       }

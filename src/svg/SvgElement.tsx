@@ -20,7 +20,7 @@ export abstract class SvgElement {
   x: number | undefined;
   y: number | undefined;
   text: string | undefined;
-  textSize: = 50;
+  textSize = 50;
   title: string | undefined;
   onClick: MouseEventHandler | undefined;
   onDoubleClick: MouseEventHandler | undefined;

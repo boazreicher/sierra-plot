@@ -49,7 +49,7 @@ export class DataSeries {
 
   calculateAverage() {
     for (let index = 0; index < this.dataPoints.length; index++) {
-      if (this.dataPoints[index].weight=0) {
+      if (this.dataPoints[index].weight === 0) {
         this.dataPoints[index].setY(0);
       } else {
         this.dataPoints[index].setY(this.dataPoints[index].y() / this.dataPoints[index].weight);

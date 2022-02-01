@@ -52,7 +52,7 @@ export class PredefinedColorMap implements ColorPalette {
   }
 
   addKey(elementId: ElementId, colorMode: ColorMode, selected = false) {
-    if (elementId.type ===ID_PREFIX_TOTAL_ELEMENT && elementId.value === TOTAL_ELEMENT_ID) {
+    if (elementId.type === ID_PREFIX_TOTAL_ELEMENT && elementId.value === TOTAL_ELEMENT_ID) {
       return;
     }
 

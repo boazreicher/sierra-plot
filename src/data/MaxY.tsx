@@ -72,7 +72,7 @@ export class MaxY {
           if (!chartSums.hasOwnProperty(chart.data[index].dataPoints[xIndex].x())) {
             chartSums[chart.data[index].dataPoints[xIndex].x()] = 0;
           }
-          if (chartType='area') {
+          if (chartType === 'area') {
             // Calculate maxY as sum, since chart is stacked
             chartSums[chart.data[index].dataPoints[xIndex].x()] += chart.data[index].dataPoints[xIndex].y();
           } else {

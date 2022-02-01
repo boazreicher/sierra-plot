@@ -33,7 +33,7 @@ export class Totals {
         if (!sumYs.hasOwnProperty(index)) {
           sumYs[index] = 0;
         }
-        if (panelOptions.chartType == 'area') {
+        if (panelOptions.chartType === 'area') {
           // For stacked area chart, taking the sum of the different series
           sumYs[index] = sumYs[index] + element.dataPoints[index].y();
         } else {
@@ -58,9 +58,9 @@ export class Totals {
 
   getSelectedTotals(panelOptions: SierraPlotOptions): DataSeries[] {
     if (
-      panelOptions.totalBreakdown == 'chart' ||
-      (panelOptions.totalBreakdown == 'group' && panelOptions.chartsGroupField !== undefined) ||
-      (panelOptions.totalBreakdown == 'series' && panelOptions.seriesFieldBreakdown !== undefined)
+      panelOptions.totalBreakdown === 'chart' ||
+      (panelOptions.totalBreakdown === 'group' && panelOptions.chartsGroupField !== undefined) ||
+      (panelOptions.totalBreakdown === 'series' && panelOptions.seriesFieldBreakdown !== undefined)
     ) {
       return this.multi;
     } else {
@@ -116,7 +116,7 @@ export class Totals {
       }
       for (let group in summationsForGroups) {
         summations100ForGroups[group].dataPoints[index].setY(
-          sum == 0 ? 0 : (100 * summationsForGroups[group].dataPoints[index].y()) / sum
+          sum === 0 ? 0 : (100 * summationsForGroups[group].dataPoints[index].y()) / sum
         );
       }
     }
@@ -148,7 +148,7 @@ export class Totals {
         return;
       }
       let chartName = chart.name;
-      chart.data.forEach((series) => {
+      chart.data.forEach(series => {
         let seriesName = this.getSeriesName(series.name);
         if (seriesName === undefined) {
           console.warn('Series name undefined for ' + chartName);
