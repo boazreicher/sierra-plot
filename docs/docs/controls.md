@@ -21,4 +21,4 @@ Some [configuration options](configuration_options.md) can be controlled without
 
 
 
-![Image title](/img/controls2.png){align=left}
+![Image title](img/controls2.png){align=left}
