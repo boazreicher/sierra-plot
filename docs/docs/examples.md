@@ -58,11 +58,11 @@ Before drilling down into the specific issues, let's take one more step just to 
 <br>
 To get a clear picture that specifically targets error rates (as opposed to the volume of requests and their breakdowns) we'll make the following adjustments to the plot's configuration:
 <ol>
-<li>Change the <a href="/configuration_options/#series">Series Chart Type</a> and <a href="/configuration_options/#totals">Totals Chart Type</a> from <i>Stacked Area Chart</i> to <i>Line Chart</i></li>
-<li>Set the <b>Total</b> field as the plot's <a href="/configuration_options/#fields-advanced">Weight Field</a></li>
-<li>Set the field value <i>ERROR</i> as the only <a href="/configuration_options/#fields-advanced">Series Value</a></li>
-<li>Change the value of <a href="/configuration_options/#series">Aggregation</a> from <i>Sum</i> to <i>Average</i></li>
-<li>Set the <a href="/configuration_options/#style">Color Mode</a> to <i>Values (Inverted)</i></li>
+<li>Change the <a href="configuration_options/#series">Series Chart Type</a> and <a href="configuration_options/#totals">Totals Chart Type</a> from <i>Stacked Area Chart</i> to <i>Line Chart</i></li>
+<li>Set the <b>Total</b> field as the plot's <a href="configuration_options/#fields-advanced">Weight Field</a></li>
+<li>Set the field value <i>ERROR</i> as the only <a href="configuration_options/#fields-advanced">Series Value</a></li>
+<li>Change the value of <a href="configuration_options/#series">Aggregation</a> from <i>Sum</i> to <i>Average</i></li>
+<li>Set the <a href="configuration_options/#style">Color Mode</a> to <i>Values (Inverted)</i></li>
 </ol>
 !!! note inline
 
