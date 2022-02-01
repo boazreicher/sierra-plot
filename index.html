@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="custom.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -49,13 +50,23 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href=".">Sierra Plot</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#about">About</a>
-    </li>
     </ul>
                     </li>
                 </ul>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="features/">Features</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="data/">Data</a>
+                    </li>
+                </ul>
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="configuration_options/">Configuration Options</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="controls/">Controls</a>
                     </li>
                 </ul>
                 <ul>
@@ -95,10 +106,25 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="sierra-plot-panel-for-grafana">Sierra Plot panel for Grafana</h1>
-<p>intro</p>
-<h2 id="about">About</h2>
-<p>afaf</p>
+                <h1 id="sierra-plot">Sierra Plot<a class="headerlink" href="#sierra-plot" title="Permanent link">#</a></h1>
+<p>Sierra Plot is a Grafan panel plugin for visualizing datasets containing a very large number of series
+<br>
+A Sierra Plot is an extension of the <a href="https://blog.revolutionanalytics.com/2017/07/joyplots.html">Ridgeline Plot</a><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, with a number of additional elements, most notably:</p>
+<ul>
+<li>An added chart showing the totals across all of the different series</li>
+<li><a href="/features/#fog">Fog</a> for highlighting values above some threshold</li>
+<li>Grouping</li>
+<li>And much <a href="/features/">more</a></li>
+</ul>
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Although the use case is quite different, the original motivation is <a href="https://www.brendangregg.com/index.html">Brendan Gregg's</a> <a href="https://www.brendangregg.com/FrequencyTrails/intro.html">Frequency Trails</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
               
             </div>
           </div>
@@ -106,7 +132,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="configuration_options/" class="btn btn-neutral float-right" title="Configuration Options">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="features/" class="btn btn-neutral float-right" title="Features">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -134,7 +160,7 @@
     
     
     
-      <span><a href="configuration_options/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="features/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
@@ -153,5 +179,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-01-17 12:17:40.841621+00:00
+Build Date UTC : 2022-02-01 11:02:38.218232+00:00
 -->
