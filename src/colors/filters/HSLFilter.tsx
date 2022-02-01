@@ -2,7 +2,7 @@ import { Filter } from './Filter';
 import { HSL } from '../HSL';
 
 export class HSLFilter extends Filter {
-  constructor(baseColor: HSL, prefix: string = '') {
+  constructor(baseColor: HSL, prefix = '') {
     let h = addPadding(Math.round(baseColor.h), 3);
     let s = addPadding(Math.round(baseColor.s), 2);
     let l = addPadding(Math.round(baseColor.l), 2);

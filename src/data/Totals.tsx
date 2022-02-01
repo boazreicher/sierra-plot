@@ -79,7 +79,7 @@ export class Totals {
       panelOptions.selectedChart.active &&
       panelOptions.selectedChart.type === SelectionType.Group
     ) {
-      if (panelOptions.totalBreakdown == 'series' && panelOptions.seriesFieldBreakdown !== undefined) {
+      if (panelOptions.totalBreakdown === 'series' && panelOptions.seriesFieldBreakdown !== undefined) {
         this.getTotalsBreakDownForSeries(sortedChartsSeries, summationsForGroups, panelOptions.selectedChart.value);
       } else {
         this.getTotalsBreakDownForCharts(sortedChartsSeries, summationsForGroups, panelOptions.selectedChart.value);
@@ -98,7 +98,7 @@ export class Totals {
           this.getTotalsBreakDownForGroups(
             sortedChartsSeries,
             summationsForGroups,
-            panelOptions.totalChartType == 'line' && panelOptions.aggregation == 'avg'
+            panelOptions.totalChartType === 'line' && panelOptions.aggregation === 'avg'
           );
           break;
       }
@@ -125,7 +125,7 @@ export class Totals {
       stacked100.push(summations100ForGroups[group]);
     }
 
-    return panelOptions.totalStackMode == 'stacked' ? stacked : stacked100;
+    return panelOptions.totalStackMode === 'stacked' ? stacked : stacked100;
   }
 
   private getTotalsBreakDownForSeries(
@@ -148,7 +148,7 @@ export class Totals {
         return;
       }
       let chartName = chart.name;
-      chart.data.forEach(series => {
+      chart.data.forEach((series) => {
         let seriesName = this.getSeriesName(series.name);
         if (seriesName === undefined) {
           console.warn('Series name undefined for ' + chartName);

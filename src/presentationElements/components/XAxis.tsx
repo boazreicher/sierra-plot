@@ -33,7 +33,7 @@ function getXAxisStartX(selection: Selection, startX: number) {
 
 function getXAxisYPos(selection: Selection, yPos: number, topMargin: number) {
   if (selection !== undefined && selection.active) {
-    if (selection.type === SelectionType.Group && selection.hightlightMode == 'exclusive') {
+    if (selection.type === SelectionType.Group && selection.hightlightMode === 'exclusive') {
       return yPos + topMargin;
     }
     return selection.y;

@@ -25,7 +25,7 @@ export class SvgGroup extends SvgElement {
           onMouseOver={this.onMouseOver}
           filter={this.filter}
         >
-          {this.children.map(child => (
+          {this.children.map((child) => (
             <SierraPlotSvgElement element={child} height={maxHeight} />
           ))}
         </g>

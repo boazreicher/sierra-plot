@@ -15,7 +15,7 @@ export function TotalTotal(panelOptions: SierraPlotOptions, onOptionsChange: opt
             getTotalChartColor(
               'url(#linearGradient14874)',
               new RGB(102, 51, 153),
-              panelOptions.totalBreakdown != 'none'
+              panelOptions.totalBreakdown !== 'none'
             ) +
             ';fill-opacity:1;stroke:#0f0f0f;stroke-width:0.735;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0735,0.0735;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal'
         )}
@@ -53,7 +53,7 @@ export function TotalGroup(panelOptions: SierraPlotOptions, onOptionsChange: opt
             getTotalChartColor(
               'url(#linearGradient14872)',
               new RGB(144, 88, 200),
-              panelOptions.totalBreakdown != 'group'
+              panelOptions.totalBreakdown !== 'group'
             ) +
             ';fill-opacity:1;stroke:#0f0f0f;stroke-width:0.735;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0735,0.0735;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal'
         )}
@@ -66,7 +66,7 @@ export function TotalGroup(panelOptions: SierraPlotOptions, onOptionsChange: opt
             getTotalChartColor(
               'url(#linearGradient14911)',
               new RGB(102, 51, 153),
-              panelOptions.totalBreakdown != 'group'
+              panelOptions.totalBreakdown !== 'group'
             ) +
             ';fill-opacity:1;stroke:#181818;stroke-width:0.735;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0735,0.0735;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal'
         )}
@@ -122,7 +122,7 @@ export function TotalChart(panelOptions: SierraPlotOptions, onOptionsChange: opt
             getTotalChartColor(
               'url(#linearGradient14817)',
               new RGB(144, 88, 200),
-              panelOptions.totalBreakdown != 'chart'
+              panelOptions.totalBreakdown !== 'chart'
             ) +
             ';fill-opacity:1;stroke:#0f0f0f;stroke-width:0.735;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0735,0.0735;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal'
         )}
@@ -135,7 +135,7 @@ export function TotalChart(panelOptions: SierraPlotOptions, onOptionsChange: opt
             getTotalChartColor(
               'url(#linearGradient15852)',
               new RGB(102, 51, 153),
-              panelOptions.totalBreakdown != 'chart'
+              panelOptions.totalBreakdown !== 'chart'
             ) +
             ';fill-opacity:1;stroke:#181818;stroke-width:0.735;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0735,0.0735;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal'
         )}
@@ -197,7 +197,7 @@ export function TotalSeries(panelOptions: SierraPlotOptions, onOptionsChange: op
             getTotalChartColor(
               'url(#linearGradient13443)',
               new RGB(144, 88, 200),
-              panelOptions.totalBreakdown != 'series',
+              panelOptions.totalBreakdown !== 'series',
               seriesDisabled(panelOptions)
             ) +
             ';fill-opacity:1;stroke:#0f0f0f;stroke-width:0.735;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0735,0.0735;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal'
@@ -211,7 +211,7 @@ export function TotalSeries(panelOptions: SierraPlotOptions, onOptionsChange: op
             getTotalChartColor(
               'url(#linearGradient16137)',
               new RGB(102, 51, 153),
-              panelOptions.totalBreakdown != 'series',
+              panelOptions.totalBreakdown !== 'series',
               seriesDisabled(panelOptions)
             ) +
             ';fill-opacity:1;stroke:#181818;stroke-width:0.735;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0735,0.0735;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal'
@@ -304,7 +304,7 @@ export function ChartSeries(panelOptions: SierraPlotOptions, onOptionsChange: op
           'fill:' +
             getChartColor(
               new RGB(144, 88, 200),
-              panelOptions.chartBreakdownType != 'series',
+              panelOptions.chartBreakdownType !== 'series',
               seriesDisabled(panelOptions)
             ) +
             ';fill-opacity:1;stroke:#0f0f0f;stroke-width:0.735;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0735,0.0735;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal'
@@ -317,7 +317,7 @@ export function ChartSeries(panelOptions: SierraPlotOptions, onOptionsChange: op
           'fill:' +
             getChartColor(
               new RGB(102, 51, 153),
-              panelOptions.chartBreakdownType != 'series',
+              panelOptions.chartBreakdownType !== 'series',
               seriesDisabled(panelOptions)
             ) +
             ';fill-opacity:1;stroke:#181818;stroke-width:0.735;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0735,0.0735;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal'
@@ -394,7 +394,7 @@ function getChartColor(color: Color, greyOut: boolean, disabled = false): string
 }
 
 function seriesDisabled(panelOptions: SierraPlotOptions): boolean {
-  return panelOptions.seriesFieldBreakdown === undefined || panelOptions.chartBreakdownType != 'series';
+  return panelOptions.seriesFieldBreakdown === undefined || panelOptions.chartBreakdownType !== 'series';
 }
 
 function getTotalChartColor(original: string, color: Color, greyOut: boolean, disabled = false): string {
