@@ -21,7 +21,7 @@ export class LinearGradient extends Filter {
       <linearGradient key={this.filterName} id={this.filterName} x1="0%" y1="0%" x2="0%" y2="100%">
         {this.colors.map((color) => {
           return (
-            <stop offset={offset * step + '%'} stopColor={this.colors[offset++].toString()} stopOpacity="1"></stop>
+            <stop key={this.filterName + "_stop"} offset={offset * step + '%'} stopColor={this.colors[offset++].toString()} stopOpacity="1"></stop>
           );
         })}
       </linearGradient>
