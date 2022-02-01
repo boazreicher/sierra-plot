@@ -8,24 +8,10 @@ export const YAxis = ({
 }: React.SVGProps<SVGElement> & { effectiveMaxY: number } & {
   totalStackMode: StackMode;
 } & { enabled: boolean } & { totalsDimensions?: Dimensions }) =>
-  createYAxis(
-    props.effectiveMaxY,
-    props.totalStackMode,
-    props.enabled,
-    props.totalsDimensions
-  );
+  createYAxis(props.effectiveMaxY, props.totalStackMode, props.enabled, props.totalsDimensions);
 
-function buildYAxisProperties(
-  range: ValueRange,
-  totalsDimensions: Dimensions
-): YAxisProperties {
-  return new YAxisProperties(
-    range,
-    totalsDimensions.startX,
-    0,
-    totalsDimensions.height,
-    '~s'
-  );
+function buildYAxisProperties(range: ValueRange, totalsDimensions: Dimensions): YAxisProperties {
+  return new YAxisProperties(range, totalsDimensions.startX, 0, totalsDimensions.height, '~s');
 }
 
 function getTransform(properties: YAxisProperties) {
@@ -41,20 +27,14 @@ function createYAxis(
   if (!enabled || totalsDimensions === undefined) {
     return <></>;
   }
-  let range = new ValueRange(
-    0,
-    totalStackMode == 'stacked' ? effectiveMaxY : 100
-  );
+  let range = new ValueRange(0, totalStackMode == 'stacked' ? effectiveMaxY : 100);
   let properties = buildYAxisProperties(range, totalsDimensions);
 
   const yScale = d3
     .scaleLinear()
     .domain([properties.range.start, properties.range.end])
     .range([properties.height, properties.yPos]);
-  const yAxis = d3
-    .axisLeft(yScale)
-    .ticks(4)
-    .tickFormat(d3.format(properties.format));
+  const yAxis = d3.axisLeft(yScale).ticks(4).tickFormat(d3.format(properties.format));
 
   return (
     <g
@@ -77,13 +57,7 @@ export class YAxisProperties {
   height: number;
   format: string;
 
-  constructor(
-    range: ValueRange,
-    startX: number,
-    yPos: number,
-    height: number,
-    format: string
-  ) {
+  constructor(range: ValueRange, startX: number, yPos: number, height: number, format: string) {
     this.range = range;
     this.startX = startX;
     this.yPos = yPos;

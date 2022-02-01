@@ -52,9 +52,7 @@ export class DataSeries {
       if (this.dataPoints[index].weight == 0) {
         this.dataPoints[index].setY(0);
       } else {
-        this.dataPoints[index].setY(
-          this.dataPoints[index].y() / this.dataPoints[index].weight
-        );
+        this.dataPoints[index].setY(this.dataPoints[index].y() / this.dataPoints[index].weight);
       }
     }
   }
@@ -86,19 +84,14 @@ export class DataSeries {
         totals.dataPoints[index].shiftY(other.dataPoints[index].weight);
       } else {
         // Get sum (de-normalize)
-        this.dataPoints[index].setY(
-          this.dataPoints[index].y() / totals.dataPoints[index].y()
-        );
+        this.dataPoints[index].setY(this.dataPoints[index].y() / totals.dataPoints[index].y());
         // Add weighted value
-        this.dataPoints[index].shiftY(
-          other.dataPoints[index].y() * other.dataPoints[index].weight
-        );
+        this.dataPoints[index].shiftY(other.dataPoints[index].y() * other.dataPoints[index].weight);
         // Update total for datapoint
         totals.dataPoints[index].shiftY(other.dataPoints[index].weight);
         // Normalize
         this.dataPoints[index].setY(
-          this.dataPoints[index].y() /
-            (totals.dataPoints[index].y() + other.dataPoints[index].weight)
+          this.dataPoints[index].y() / (totals.dataPoints[index].y() + other.dataPoints[index].weight)
         );
         // Not sure about this
         this.dataPoints[index].weight = totals.dataPoints[index].y();

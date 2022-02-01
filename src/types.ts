@@ -103,12 +103,7 @@ export class Coordinates {
   unformattedX?: number;
   unformattedY?: number;
 
-  constructor(
-    x: number,
-    y: number,
-    unformattedX?: number,
-    unformattedY?: number
-  ) {
+  constructor(x: number, y: number, unformattedX?: number, unformattedY?: number) {
     this.x = x;
     this.y = y;
     this.unformattedX = unformattedX;
@@ -116,12 +111,7 @@ export class Coordinates {
   }
 
   clone() {
-    return new Coordinates(
-      this.x,
-      this.y,
-      this.unformattedX,
-      this.unformattedY
-    );
+    return new Coordinates(this.x, this.y, this.unformattedX, this.unformattedY);
   }
 
   roundedX(digits = 2) {
@@ -211,12 +201,7 @@ export class BaseDimensionsProperties {
   width: number;
   height: number;
 
-  constructor(
-    leftMargin: number,
-    topMargin: number,
-    width: number,
-    height: number
-  ) {
+  constructor(leftMargin: number, topMargin: number, width: number, height: number) {
     this.leftMargin = leftMargin;
     this.topMargin = topMargin;
     this.width = width;

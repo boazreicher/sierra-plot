@@ -7,8 +7,7 @@ interface Settings {
   multi: boolean;
 }
 
-interface Props
-  extends StandardEditorProps<string | string[] | null, Settings> {}
+interface Props extends StandardEditorProps<string | string[] | null, Settings> {}
 
 /**
  * FieldSelectEditor populates a Select with the names of the fields returned by
@@ -19,23 +18,16 @@ interface Props
  *
  * https://github.com/grafana/grafana/pull/24829
  */
-export const FieldSelectEditor: React.FC<Props> = ({
-  item,
-  value,
-  onChange,
-  context
-}) => {
+export const FieldSelectEditor: React.FC<Props> = ({ item, value, onChange, context }) => {
   if (context.data && context.data.length > 0) {
     const options = context.data
       .flatMap((frame) => frame.fields)
       .filter((field) =>
-        item.settings?.filterByType
-          ? item.settings?.filterByType.some((_) => field.type === _)
-          : true
+        item.settings?.filterByType ? item.settings?.filterByType.some((_) => field.type === _) : true
       )
       .map((field) => ({
         label: JSON.stringify(field.labels),
-        value: field.name
+        value: field.name,
       }));
 
     if (item.settings?.multi) {

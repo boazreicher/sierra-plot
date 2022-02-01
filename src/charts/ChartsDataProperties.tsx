@@ -22,10 +22,7 @@ export class ChartsDataProperties {
     this.aggregation = panelOptions.aggregation;
     this.filters = new SeriesFilters(panelOptions);
     this.sortMode = panelOptions.sortMode;
-    this.timeRange = new TimeRange(
-      panelOptions.timeRangeStart,
-      panelOptions.timeRangeEnd
-    );
+    this.timeRange = new TimeRange(panelOptions.timeRangeStart, panelOptions.timeRangeEnd);
   }
 
   customTimeRange(): boolean {

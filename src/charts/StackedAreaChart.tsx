@@ -4,13 +4,7 @@ import { SvgElement } from 'svg/SvgElement';
 import { SeriesElement } from './SeriesElement';
 import { ChartsPresentationProperties } from './ChartsPresentationProperties';
 import { Dimensions } from 'types';
-import {
-  FILTER_BEVEL,
-  FILTER_GLOW,
-  NO_COLOR,
-  TOTAL_SEPERATOR_LINE_WIDTH,
-  TOTAL_TOP_LINE_WIDTH
-} from 'Constants';
+import { FILTER_BEVEL, FILTER_GLOW, NO_COLOR, TOTAL_SEPERATOR_LINE_WIDTH, TOTAL_TOP_LINE_WIDTH } from 'Constants';
 import { DataSeries } from 'data/DataSeries';
 import { Black } from 'colors/ColorUtils';
 
@@ -19,10 +13,7 @@ export class StackedAreaChart extends Chart<Polygon> {
     super(id, chartDimensions, Polygon);
   }
 
-  protected formatSeriesElements(
-    elements: SeriesElement[],
-    numDataPoints: number
-  ): SeriesElement[] {
+  protected formatSeriesElements(elements: SeriesElement[], numDataPoints: number): SeriesElement[] {
     return this.generateStackedPolygons(elements, numDataPoints);
   }
 
@@ -96,10 +87,7 @@ export class StackedAreaChart extends Chart<Polygon> {
     return effectiveMaxY;
   }
 
-  private generateStackedPolygons(
-    polygons: SeriesElement[],
-    numDataPoints: number
-  ): SeriesElement[] {
+  private generateStackedPolygons(polygons: SeriesElement[], numDataPoints: number): SeriesElement[] {
     var stackedPolygons: SeriesElement[] = [];
 
     polygons.forEach((polygon) => {

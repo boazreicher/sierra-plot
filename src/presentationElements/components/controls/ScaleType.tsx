@@ -3,15 +3,9 @@ import { optionsChangeCallback, SierraPlotOptions } from 'types';
 import * as React from 'react';
 import { getStyleObj } from './Utils';
 
-export function ScaleType(
-  panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback
-) {
+export function ScaleType(panelOptions: SierraPlotOptions, onOptionsChange: optionsChangeCallback) {
   return (
-    <g
-      onClick={getScaleTypeOnClickHandler(panelOptions, onOptionsChange)}
-      className={CLICKABLE_CLASS}
-    >
+    <g onClick={getScaleTypeOnClickHandler(panelOptions, onOptionsChange)} className={CLICKABLE_CLASS}>
       <rect
         onClick={getScaleTypeOnClickHandler(panelOptions, onOptionsChange)}
         className={CLICKABLE_CLASS}
@@ -42,9 +36,7 @@ export function ScaleType(
       >
         <tspan
           id="tspan12002-2"
-          style={getStyleObj(
-            'font-size:11.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367'
-          )}
+          style={getStyleObj('font-size:11.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367')}
           x="84.150009"
           y="89.962639"
         >

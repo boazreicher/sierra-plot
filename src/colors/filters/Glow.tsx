@@ -11,35 +11,12 @@ export class Glow extends Filter {
 
   toFilter() {
     return (
-      <filter
-        id={this.filterName}
-        filterUnits="userSpaceOnUse"
-        x="-50%"
-        y="-50%"
-        width="200%"
-        height="200%"
-      >
+      <filter id={this.filterName} filterUnits="userSpaceOnUse" x="-50%" y="-50%" width="200%" height="200%">
         <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur1" />
-        <feGaussianBlur
-          in="SourceGraphic"
-          stdDeviation={5 + ((this.glowSpread - 5) / 4) * 1}
-          result="blur2"
-        />
-        <feGaussianBlur
-          in="SourceGraphic"
-          stdDeviation={5 + ((this.glowSpread - 5) / 4) * 2}
-          result="blur3"
-        />
-        <feGaussianBlur
-          in="SourceGraphic"
-          stdDeviation={5 + ((this.glowSpread - 5) / 4) * 3}
-          result="blur4"
-        />
-        <feGaussianBlur
-          in="SourceGraphic"
-          stdDeviation={this.glowSpread}
-          result="blur5"
-        />
+        <feGaussianBlur in="SourceGraphic" stdDeviation={5 + ((this.glowSpread - 5) / 4) * 1} result="blur2" />
+        <feGaussianBlur in="SourceGraphic" stdDeviation={5 + ((this.glowSpread - 5) / 4) * 2} result="blur3" />
+        <feGaussianBlur in="SourceGraphic" stdDeviation={5 + ((this.glowSpread - 5) / 4) * 3} result="blur4" />
+        <feGaussianBlur in="SourceGraphic" stdDeviation={this.glowSpread} result="blur5" />
 
         <feMerge result="blur-merged">
           {this.glowSpread >= 10 ? <feMergeNode in="blur2" /> : ''}

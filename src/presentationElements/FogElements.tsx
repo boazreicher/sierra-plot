@@ -1,10 +1,4 @@
-import {
-  ID_KV_SEPERATOR,
-  ID_PREFIX_FOG,
-  ID_SEPERATOR,
-  TOTAL_ELEMENT_ID,
-  ZORDER_CHART_RANGE
-} from 'Constants';
+import { ID_KV_SEPERATOR, ID_PREFIX_FOG, ID_SEPERATOR, TOTAL_ELEMENT_ID, ZORDER_CHART_RANGE } from 'Constants';
 import { SvgElement } from 'svg/SvgElement';
 import { SvgPolygon } from 'svg/SvgPolygon';
 import { BoundingBox, Coordinates } from 'types';
@@ -17,12 +11,7 @@ export class FogElements implements PresentationElement {
   private selection: Selection;
   private enabled: boolean;
 
-  constructor(
-    fogHeight: number,
-    fogColor: string,
-    selection: Selection,
-    enabled: boolean
-  ) {
+  constructor(fogHeight: number, fogColor: string, selection: Selection, enabled: boolean) {
     this.fogHeight = fogHeight;
     this.fogColor = fogColor;
     this.selection = selection;
@@ -41,35 +30,20 @@ export class FogElements implements PresentationElement {
     let chartDistances: Coordinates = this.calculateChartDistances(elements);
 
     for (let index = elements.length - 1; index >= 0; index--) {
-      if (
-        !elements[index].isChartGroup ||
-        elements[index].id == TOTAL_ELEMENT_ID
-      ) {
+      if (!elements[index].isChartGroup || elements[index].id == TOTAL_ELEMENT_ID) {
         continue;
       }
 
       if (source !== undefined) {
         let topLeft = new Coordinates(source.minX, source.maxY - height);
         let topRight = new Coordinates(source.maxX, source.maxY - height);
-        let bottomRight = new Coordinates(
-          source.maxX - chartDistances.x,
-          source.maxY + chartDistances.y - height
-        );
-        let bottomLeft = new Coordinates(
-          source.minX - chartDistances.x,
-          source.maxY + chartDistances.y - height
-        );
+        let bottomRight = new Coordinates(source.maxX - chartDistances.x, source.maxY + chartDistances.y - height);
+        let bottomLeft = new Coordinates(source.minX - chartDistances.x, source.maxY + chartDistances.y - height);
 
-        var fogSliceCoordinates: Coordinates[] = [
-          topLeft,
-          topRight,
-          bottomRight,
-          bottomLeft
-        ];
+        var fogSliceCoordinates: Coordinates[] = [topLeft, topRight, bottomRight, bottomLeft];
 
         // Shift right to limit covering the chart labels
-        let slope: number =
-          (topRight.y - bottomRight.y) / (topRight.x - bottomRight.x);
+        let slope: number = (topRight.y - bottomRight.y) / (topRight.x - bottomRight.x);
         let shiftX = -1 * (height / slope);
         fogSliceCoordinates.forEach((coordinatesElement) => {
           coordinatesElement.x += shiftX;
@@ -87,18 +61,11 @@ export class FogElements implements PresentationElement {
 
         // Should extract this to some "isSelected" utility
         if (this.selection !== undefined && this.selection.active) {
-          let selectedId =
-            this.selection.key + ID_KV_SEPERATOR + this.selection.value;
-          if (
-            this.selection.type === SelectionType.Chart &&
-            selectedId == elements[index].id
-          ) {
+          let selectedId = this.selection.key + ID_KV_SEPERATOR + this.selection.value;
+          if (this.selection.type === SelectionType.Chart && selectedId == elements[index].id) {
             fogSlice.zOrder += ZORDER_CHART_RANGE;
           }
-          if (
-            this.selection.type === SelectionType.Group &&
-            this.selection.value == elements[index].sortKey
-          ) {
+          if (this.selection.type === SelectionType.Group && this.selection.value == elements[index].sortKey) {
             fogSlice.zOrder += ZORDER_CHART_RANGE;
           }
         }
@@ -124,16 +91,11 @@ export class FogElements implements PresentationElement {
     return result;
   }
 
-  private calculateChartDistances(
-    chartsSvgElements: SvgElement[]
-  ): Coordinates {
+  private calculateChartDistances(chartsSvgElements: SvgElement[]): Coordinates {
     let source: BoundingBox | undefined;
 
     for (let index = chartsSvgElements.length - 1; index >= 0; index--) {
-      if (
-        !chartsSvgElements[index].isChartGroup ||
-        chartsSvgElements[index].id == TOTAL_ELEMENT_ID
-      ) {
+      if (!chartsSvgElements[index].isChartGroup || chartsSvgElements[index].id == TOTAL_ELEMENT_ID) {
         continue;
       }
       if (source !== undefined) {

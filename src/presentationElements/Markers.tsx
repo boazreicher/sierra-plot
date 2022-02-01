@@ -27,21 +27,12 @@ export class Markers implements PresentationElement {
         element.dataPoints.forEach((dp) => {
           if (dp.unformattedX !== undefined && dp.unformattedY !== undefined) {
             // Not adding markers to closing data points
-            let marker = new SvgCircle(
-              dp.x,
-              dp.y,
-              this.panelOptions.markersRadius
-            );
+            let marker = new SvgCircle(dp.x, dp.y, this.panelOptions.markersRadius);
             marker.fill = this.panelOptions.markersColor;
             if (this.panelOptions.markersMode == 'hidden') {
               marker.fillOpacity = 0;
             }
-            marker.toolTipContent = this.buildMarkerTooltip(
-              chart.name,
-              element.id,
-              dp.unformattedX,
-              dp.unformattedY
-            );
+            marker.toolTipContent = this.buildMarkerTooltip(chart.name, element.id, dp.unformattedX, dp.unformattedY);
             marker.class = HOVERABLE_CLASS;
             marker.zOrder = chart.zOrder;
             markers.push(marker);

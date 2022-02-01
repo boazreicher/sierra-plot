@@ -6,13 +6,9 @@ import {
   optionsChangeCallback,
   TimeRange,
   BaseDimensionsProperties,
-  ChartDimensionsProperties
+  ChartDimensionsProperties,
 } from 'types';
-import {
-  buildDataForRangeSelector,
-  calculateTotalsSingleOriginal,
-  getSortedCharts
-} from 'data/DataSeriesUtils';
+import { buildDataForRangeSelector, calculateTotalsSingleOriginal, getSortedCharts } from 'data/DataSeriesUtils';
 import {
   generateViewbox,
   getHeight,
@@ -20,7 +16,7 @@ import {
   getWidth,
   initBreakdowns,
   truncateOutsideTimeRange,
-  updateTimer
+  updateTimer,
 } from 'charts/ChartUtils';
 import { SierraPlotProperties } from 'data/SierraPlotProperties';
 import { getOnClickHandler } from 'presentationElements/EventHandlers';
@@ -69,11 +65,7 @@ export const SierraPlot = ({
         )}
         height="100%"
         width="100%"
-        viewBox={generateViewbox(
-          props.width,
-          props.height,
-          props.panelOptions.showRangeSelector
-        )}
+        viewBox={generateViewbox(props.width, props.height, props.panelOptions.showRangeSelector)}
         onClick={getOnClickHandler(props.panelOptions, props.onOptionsChange)}
       >
         {getMainSvgStyle()}
@@ -97,10 +89,7 @@ export const SierraPlot = ({
           panelOptions={props.panelOptions}
           onOptionsChange={props.onOptionsChange}
         />
-        <XAxis
-          sierraPlotProperties={sierraPlotProperties}
-          selection={props.panelOptions.selectedChart}
-        />
+        <XAxis sierraPlotProperties={sierraPlotProperties} selection={props.panelOptions.selectedChart} />
         <RangeSliderComponent
           panelOptions={props.panelOptions}
           sierraPlotProperties={sierraPlotProperties}
@@ -134,10 +123,7 @@ function initSierraPlotElements(
   initBreakdowns(panelOptions);
 
   let chartsDataProperties = new ChartsDataProperties(panelOptions);
-  let sortedCharts: ChartData[] = getSortedCharts(
-    dataFrames,
-    chartsDataProperties
-  );
+  let sortedCharts: ChartData[] = getSortedCharts(dataFrames, chartsDataProperties);
 
   let totalsOriginal = calculateTotalsSingleOriginal(sortedCharts);
 
@@ -160,46 +146,18 @@ function initSierraPlotElements(
     onOptionsChange
   );
 
-  let charts = new Charts(
-    sortedCharts,
-    totals,
-    sierraPlotProperties,
-    panelOptions
-  );
+  let charts = new Charts(sortedCharts, totals, sierraPlotProperties, panelOptions);
   sierraPlotProperties.totalsDimensions = charts.getTotalsDimensions();
 
   dataForRangeSelector = buildDataForRangeSelector(timeRange, totalsOriginal);
 
   chartsSvgElements = new ChartsSvgElements(
-    new ChartElements(
-      charts.getCharts(),
-      charts.getTotalChart(),
-      panelOptions,
-      sierraPlotProperties
-    ),
-    new ChartLabels(
-      charts.getCharts(),
-      panelOptions.selectedChart,
-      panelOptions.showChartLabels
-    ),
-    new ChartGroups(
-      charts.getCharts(),
-      sierraPlotProperties,
-      panelOptions,
-      onOptionsChange
-    ),
+    new ChartElements(charts.getCharts(), charts.getTotalChart(), panelOptions, sierraPlotProperties),
+    new ChartLabels(charts.getCharts(), panelOptions.selectedChart, panelOptions.showChartLabels),
+    new ChartGroups(charts.getCharts(), sierraPlotProperties, panelOptions, onOptionsChange),
     new Markers(charts.getCharts(), panelOptions),
-    new BackgroundElement(
-      sierraPlotProperties.minX,
-      panelOptions.backgroundColor,
-      panelOptions.showBackground
-    ),
-    new FogElements(
-      panelOptions.fogHeight,
-      panelOptions.fogColor,
-      panelOptions.selectedChart,
-      panelOptions.showFog
-    ),
+    new BackgroundElement(sierraPlotProperties.minX, panelOptions.backgroundColor, panelOptions.showBackground),
+    new FogElements(panelOptions.fogHeight, panelOptions.fogColor, panelOptions.selectedChart, panelOptions.showFog),
     new VerticalGridLines(
       panelOptions.gridlineEnabled,
       panelOptions.gridlineWidth,
@@ -210,12 +168,7 @@ function initSierraPlotElements(
   );
 
   // Set the tranistions timer
-  updateTimer(
-    charts.getCharts(),
-    chartsSvgElements.getChartsElements(),
-    panelOptions,
-    onOptionsChange
-  );
+  updateTimer(charts.getCharts(), chartsSvgElements.getChartsElements(), panelOptions, onOptionsChange);
 
   return 'http://www.w3.org/2000/svg';
 }

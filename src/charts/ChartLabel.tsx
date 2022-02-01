@@ -1,9 +1,4 @@
-import {
-  CHART_LABEL_CLASS,
-  CHART_LABEL_OPACITY_DESELECTED,
-  CHART_LABEL_SHIFT_Y,
-  ZORDER_CHART_LABEL
-} from 'Constants';
+import { CHART_LABEL_CLASS, CHART_LABEL_OPACITY_DESELECTED, CHART_LABEL_SHIFT_Y, ZORDER_CHART_LABEL } from 'Constants';
 import { SvgElement } from 'svg/SvgElement';
 import { SvgText } from 'svg/SvgText';
 import { Coordinates } from 'types';
@@ -21,13 +16,7 @@ export class ChartLabel {
     return new ChartLabel('', new Coordinates(-1, -1), -1, -1, '');
   }
 
-  constructor(
-    text: string,
-    coordinates: Coordinates,
-    shiftX: number,
-    textSize: number,
-    textColor: string
-  ) {
+  constructor(text: string, coordinates: Coordinates, shiftX: number, textSize: number, textColor: string) {
     this.text = text;
     this.baseCoordinates = coordinates;
     this.shiftX = shiftX;
@@ -44,10 +33,7 @@ export class ChartLabel {
     chartLabel.fillOpacity = 1;
 
     if (selection !== undefined && selection.active) {
-      if (
-        selection.type === SelectionType.Chart &&
-        selection.value !== this.text
-      ) {
+      if (selection.type === SelectionType.Chart && selection.value !== this.text) {
         chartLabel.fillOpacity = CHART_LABEL_OPACITY_DESELECTED;
       } else if (selection.type === SelectionType.Group) {
         if (!inSelectedGroup) {

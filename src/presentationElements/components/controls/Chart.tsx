@@ -2,27 +2,12 @@ import { Color } from 'colors/Color';
 import { RGB } from 'colors/RGB';
 import { CLICKABLE_CLASS } from 'Constants';
 import * as React from 'react';
-import {
-  ChartBreakdown,
-  optionsChangeCallback,
-  SierraPlotOptions,
-  TotalBreakdown
-} from 'types';
+import { ChartBreakdown, optionsChangeCallback, SierraPlotOptions, TotalBreakdown } from 'types';
 import { getStyleObj } from './Utils';
 
-export function TotalTotal(
-  panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback
-) {
+export function TotalTotal(panelOptions: SierraPlotOptions, onOptionsChange: optionsChangeCallback) {
   return (
-    <g
-      onClick={getTotalTypeOnClickHandler(
-        panelOptions,
-        onOptionsChange,
-        'none'
-      )}
-      className={CLICKABLE_CLASS}
-    >
+    <g onClick={getTotalTypeOnClickHandler(panelOptions, onOptionsChange, 'none')} className={CLICKABLE_CLASS}>
       <path
         id="btn_total_total"
         style={getStyleObj(
@@ -47,9 +32,7 @@ export function TotalTotal(
       >
         <tspan
           id="tspan22496"
-          style={getStyleObj(
-            'font-size:11.7238px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367'
-          )}
+          style={getStyleObj('font-size:11.7238px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367')}
           x="26.161543"
           y="121.23445"
         >
@@ -60,19 +43,9 @@ export function TotalTotal(
   );
 }
 
-export function TotalGroup(
-  panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback
-) {
+export function TotalGroup(panelOptions: SierraPlotOptions, onOptionsChange: optionsChangeCallback) {
   return (
-    <g
-      className={CLICKABLE_CLASS}
-      onClick={getTotalTypeOnClickHandler(
-        panelOptions,
-        onOptionsChange,
-        'group'
-      )}
-    >
+    <g className={CLICKABLE_CLASS} onClick={getTotalTypeOnClickHandler(panelOptions, onOptionsChange, 'group')}>
       <path
         id="btn_total_group1"
         style={getStyleObj(
@@ -110,9 +83,7 @@ export function TotalGroup(
       >
         <tspan
           id="tspan22496-2"
-          style={getStyleObj(
-            'font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367'
-          )}
+          style={getStyleObj('font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367')}
           x="69.828011"
           y="113.57953"
         >
@@ -130,9 +101,7 @@ export function TotalGroup(
       >
         <tspan
           id="tspan22496-2-5"
-          style={getStyleObj(
-            'font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367'
-          )}
+          style={getStyleObj('font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367')}
           x="78.709389"
           y="125.42892"
         >
@@ -143,19 +112,9 @@ export function TotalGroup(
   );
 }
 
-export function TotalChart(
-  panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback
-) {
+export function TotalChart(panelOptions: SierraPlotOptions, onOptionsChange: optionsChangeCallback) {
   return (
-    <g
-      className={CLICKABLE_CLASS}
-      onClick={getTotalTypeOnClickHandler(
-        panelOptions,
-        onOptionsChange,
-        'chart'
-      )}
-    >
+    <g className={CLICKABLE_CLASS} onClick={getTotalTypeOnClickHandler(panelOptions, onOptionsChange, 'chart')}>
       <path
         id="btn_total_chart1"
         style={getStyleObj(
@@ -193,9 +152,7 @@ export function TotalChart(
       >
         <tspan
           id="tspan22496-2-50"
-          style={getStyleObj(
-            'font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367'
-          )}
+          style={getStyleObj('font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367')}
           x="118.73431"
           y="112.994"
         >
@@ -213,18 +170,14 @@ export function TotalChart(
       >
         <tspan
           id="tspan22496-2-50-5"
-          style={getStyleObj(
-            'font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367'
-          )}
+          style={getStyleObj('font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367')}
           x="128.82594"
           y="126.08133"
         >
           C2
         </tspan>
         <tspan
-          style={getStyleObj(
-            'font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367'
-          )}
+          style={getStyleObj('font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367')}
           x="128.82594"
           y="138.29358"
           id="tspan47744"
@@ -234,19 +187,9 @@ export function TotalChart(
   );
 }
 
-export function TotalSeries(
-  panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback
-) {
+export function TotalSeries(panelOptions: SierraPlotOptions, onOptionsChange: optionsChangeCallback) {
   return (
-    <g
-      className={CLICKABLE_CLASS}
-      onClick={getTotalTypeOnClickHandler(
-        panelOptions,
-        onOptionsChange,
-        'series'
-      )}
-    >
+    <g className={CLICKABLE_CLASS} onClick={getTotalTypeOnClickHandler(panelOptions, onOptionsChange, 'series')}>
       <path
         id="btn_total_series1"
         style={getStyleObj(
@@ -285,9 +228,7 @@ export function TotalSeries(
         id="text22498-2-0-9"
       >
         <tspan
-          style={getStyleObj(
-            'font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367'
-          )}
+          style={getStyleObj('font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367')}
           x="168.2032"
           y="113.64641"
           id="tspan49160"
@@ -305,9 +246,7 @@ export function TotalSeries(
         id="text22498-2-0-5"
       >
         <tspan
-          style={getStyleObj(
-            'font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367'
-          )}
+          style={getStyleObj('font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367')}
           x="179.21329"
           y="125.69274"
           id="tspan50831"
@@ -319,27 +258,14 @@ export function TotalSeries(
   );
 }
 
-export function ChartChart(
-  panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback
-) {
+export function ChartChart(panelOptions: SierraPlotOptions, onOptionsChange: optionsChangeCallback) {
   return (
-    <g
-      onClick={getChartBreakdownTypeOnClickHandler(
-        panelOptions,
-        onOptionsChange,
-        'none'
-      )}
-      className={CLICKABLE_CLASS}
-    >
+    <g onClick={getChartBreakdownTypeOnClickHandler(panelOptions, onOptionsChange, 'none')} className={CLICKABLE_CLASS}>
       <path
         id="btn_chart_chart"
         style={getStyleObj(
           'fill:' +
-            getChartColor(
-              new RGB(102, 51, 153),
-              panelOptions.chartBreakdownType == 'series'
-            ) +
+            getChartColor(new RGB(102, 51, 153), panelOptions.chartBreakdownType == 'series') +
             ';fill-opacity:1;stroke:#0f0f0f;stroke-width:0.735;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0735,0.0735;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal'
         )}
         d="m 146.21095,73.97096 -2.87388,1.130576 -1.38427,-1.217799 -4.36676,1.562712 -3.41981,-1.80603 -4.86895,1.837975 -3.61014,-0.133484 v 0 l -2.94142,-1.217383 -2.59571,-1.217798 -3.46083,0.999473 -3.28771,0.948669 -5.9783,-1.190313 -3.23909,4.080284 v 20.201077 h 49.59058 v -20.05783 l -1.61277,-1.815406 -3.6337,1.217798 z"
@@ -355,9 +281,7 @@ export function ChartChart(
       >
         <tspan
           id="tspan22496-0"
-          style={getStyleObj(
-            'font-size:11.7238px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367'
-          )}
+          style={getStyleObj('font-size:11.7238px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367')}
           x="125.11302"
           y="91.44455"
         >
@@ -368,17 +292,10 @@ export function ChartChart(
   );
 }
 
-export function ChartSeries(
-  panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback
-) {
+export function ChartSeries(panelOptions: SierraPlotOptions, onOptionsChange: optionsChangeCallback) {
   return (
     <g
-      onClick={getChartBreakdownTypeOnClickHandler(
-        panelOptions,
-        onOptionsChange,
-        'series'
-      )}
+      onClick={getChartBreakdownTypeOnClickHandler(panelOptions, onOptionsChange, 'series')}
       className={CLICKABLE_CLASS}
     >
       <path
@@ -418,9 +335,7 @@ export function ChartSeries(
       >
         <tspan
           id="tspan22496-2-3"
-          style={getStyleObj(
-            'font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367'
-          )}
+          style={getStyleObj('font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367')}
           x="168.77953"
           y="83.789627"
         >
@@ -438,9 +353,7 @@ export function ChartSeries(
       >
         <tspan
           id="tspan22496-2-5-1"
-          style={getStyleObj(
-            'font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367'
-          )}
+          style={getStyleObj('font-size:9.76979px;fill:#cec6c6;fill-opacity:1;stroke-width:0.366367')}
           x="177.66089"
           y="95.639015"
         >
@@ -470,11 +383,7 @@ function getChartBreakdownTypeOnClickHandler(
   return clickEventHandler;
 }
 
-function getChartColor(
-  color: Color,
-  greyOut: boolean,
-  disabled: boolean = false
-): string {
+function getChartColor(color: Color, greyOut: boolean, disabled: boolean = false): string {
   if (greyOut) {
     if (disabled) {
       return 'url(#linearGradient53236)';
@@ -485,18 +394,10 @@ function getChartColor(
 }
 
 function seriesDisabled(panelOptions: SierraPlotOptions): boolean {
-  return (
-    panelOptions.seriesFieldBreakdown === undefined ||
-    panelOptions.chartBreakdownType != 'series'
-  );
+  return panelOptions.seriesFieldBreakdown === undefined || panelOptions.chartBreakdownType != 'series';
 }
 
-function getTotalChartColor(
-  original: string,
-  color: Color,
-  greyOut: boolean,
-  disabled: boolean = false
-): string {
+function getTotalChartColor(original: string, color: Color, greyOut: boolean, disabled: boolean = false): string {
   if (greyOut) {
     if (disabled) {
       return '#2A2A2A';

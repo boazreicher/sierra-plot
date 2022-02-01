@@ -5,76 +5,28 @@ export function Defs() {
   return (
     <defs id="defs2">
       <linearGradient id="linearGradient7266-5">
-        <stop
-          style={getStyleObj('stop-color:#999999;stop-opacity:1;')}
-          offset="0"
-          id="stop6984"
-        />
-        <stop
-          style={getStyleObj('stop-color:#646464;stop-opacity:1')}
-          offset="1"
-          id="stop6986"
-        />
+        <stop style={getStyleObj('stop-color:#999999;stop-opacity:1;')} offset="0" id="stop6984" />
+        <stop style={getStyleObj('stop-color:#646464;stop-opacity:1')} offset="1" id="stop6986" />
       </linearGradient>
       <linearGradient id="dsf">
-        <stop
-          style={getStyleObj('stop-color:#999999;stop-opacity:1;')}
-          offset="0"
-          id="stop6630"
-        />
-        <stop
-          style={getStyleObj('stop-color:#646464;stop-opacity:1')}
-          offset="1"
-          id="stop6632"
-        />
+        <stop style={getStyleObj('stop-color:#999999;stop-opacity:1;')} offset="0" id="stop6630" />
+        <stop style={getStyleObj('stop-color:#646464;stop-opacity:1')} offset="1" id="stop6632" />
       </linearGradient>
       <linearGradient id="linearGradient7266">
-        <stop
-          style={getStyleObj('stop-color:#999999;stop-opacity:1;')}
-          offset="0"
-          id="stop6301"
-        />
-        <stop
-          style={getStyleObj('stop-color:#646464;stop-opacity:1')}
-          offset="1"
-          id="stop6303"
-        />
+        <stop style={getStyleObj('stop-color:#999999;stop-opacity:1;')} offset="0" id="stop6301" />
+        <stop style={getStyleObj('stop-color:#646464;stop-opacity:1')} offset="1" id="stop6303" />
       </linearGradient>
       <linearGradient id="linearGradient14035-0">
-        <stop
-          style={getStyleObj('stop-color:#999999;stop-opacity:1;')}
-          offset="0"
-          id="stop14031"
-        />
-        <stop
-          style={getStyleObj('stop-color:#3b3b3b;stop-opacity:1')}
-          offset="1"
-          id="stop14033"
-        />
+        <stop style={getStyleObj('stop-color:#999999;stop-opacity:1;')} offset="0" id="stop14031" />
+        <stop style={getStyleObj('stop-color:#3b3b3b;stop-opacity:1')} offset="1" id="stop14033" />
       </linearGradient>
       <linearGradient id="linearGradient10074">
-        <stop
-          style={getStyleObj('stop-color:#ffffff;stop-opacity:1')}
-          offset="0"
-          id="stop10070"
-        />
-        <stop
-          style={getStyleObj('stop-color:#ffffff;stop-opacity:0')}
-          offset="1"
-          id="stop10072"
-        />
+        <stop style={getStyleObj('stop-color:#ffffff;stop-opacity:1')} offset="0" id="stop10070" />
+        <stop style={getStyleObj('stop-color:#ffffff;stop-opacity:0')} offset="1" id="stop10072" />
       </linearGradient>
       <linearGradient id="linearGradient7266-5-4">
-        <stop
-          style={getStyleObj('stop-color:#999999;stop-opacity:1;')}
-          offset="0"
-          id="stop7262"
-        />
-        <stop
-          style={getStyleObj('stop-color:#646464;stop-opacity:1')}
-          offset="1"
-          id="stop7264"
-        />
+        <stop style={getStyleObj('stop-color:#999999;stop-opacity:1;')} offset="0" id="stop7262" />
+        <stop style={getStyleObj('stop-color:#646464;stop-opacity:1')} offset="1" id="stop7264" />
       </linearGradient>
       <filter
         style={getStyleObj('color-interpolation-filters:sRGB;')}
@@ -84,65 +36,19 @@ export function Defs() {
         width="1.7380652"
         height="1.8522443"
       >
-        <feGaussianBlur
-          stdDeviation="2.3"
-          in="SourceAlpha"
-          result="result0"
-          id="feGaussianBlur12575"
-        />
-        <feMorphology
-          in="SourceAlpha"
-          radius="6.6"
-          result="result1"
-          id="feMorphology12577"
-        />
-        <feGaussianBlur
-          stdDeviation="8.9"
-          in="result1"
-          id="feGaussianBlur12579"
-        />
-        <feColorMatrix
-          values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.3 0"
-          result="result91"
-          id="feColorMatrix12581"
-        />
-        <feComposite
-          in="result0"
-          operator="out"
-          result="result2"
-          in2="result91"
-          id="feComposite12583"
-        />
-        <feGaussianBlur
-          stdDeviation="1.7"
-          result="result4"
-          id="feGaussianBlur12585"
-        />
+        <feGaussianBlur stdDeviation="2.3" in="SourceAlpha" result="result0" id="feGaussianBlur12575" />
+        <feMorphology in="SourceAlpha" radius="6.6" result="result1" id="feMorphology12577" />
+        <feGaussianBlur stdDeviation="8.9" in="result1" id="feGaussianBlur12579" />
+        <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.3 0" result="result91" id="feColorMatrix12581" />
+        <feComposite in="result0" operator="out" result="result2" in2="result91" id="feComposite12583" />
+        <feGaussianBlur stdDeviation="1.7" result="result4" id="feGaussianBlur12585" />
         <feDiffuseLighting surfaceScale="10" id="feDiffuseLighting12589">
-          <feDistantLight
-            azimuth="225"
-            elevation="45"
-            id="feDistantLight12587"
-          />
+          <feDistantLight azimuth="225" elevation="45" id="feDistantLight12587" />
         </feDiffuseLighting>
         <feBlend in2="SourceGraphic" mode="multiply" id="feBlend12591" />
-        <feComposite
-          in2="SourceAlpha"
-          operator="in"
-          result="result3"
-          id="feComposite12593"
-        />
-        <feSpecularLighting
-          in="result4"
-          surfaceScale="5"
-          specularExponent="17.9"
-          id="feSpecularLighting12597"
-        >
-          <feDistantLight
-            azimuth="225"
-            elevation="45"
-            id="feDistantLight12595"
-          />
+        <feComposite in2="SourceAlpha" operator="in" result="result3" id="feComposite12593" />
+        <feSpecularLighting in="result4" surfaceScale="5" specularExponent="17.9" id="feSpecularLighting12597">
+          <feDistantLight azimuth="225" elevation="45" id="feDistantLight12595" />
         </feSpecularLighting>
         <feComposite in2="result3" operator="atop" id="feComposite12599" />
       </filter>
@@ -154,65 +60,19 @@ export function Defs() {
         width="1.7380652"
         height="1.8522443"
       >
-        <feGaussianBlur
-          stdDeviation="2.3"
-          in="SourceAlpha"
-          result="result0"
-          id="feGaussianBlur13025"
-        />
-        <feMorphology
-          in="SourceAlpha"
-          radius="6.6"
-          result="result1"
-          id="feMorphology13027"
-        />
-        <feGaussianBlur
-          stdDeviation="8.9"
-          in="result1"
-          id="feGaussianBlur13029"
-        />
-        <feColorMatrix
-          values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.3 0"
-          result="result91"
-          id="feColorMatrix13031"
-        />
-        <feComposite
-          in="result0"
-          operator="out"
-          result="result2"
-          in2="result91"
-          id="feComposite13033"
-        />
-        <feGaussianBlur
-          stdDeviation="1.7"
-          result="result4"
-          id="feGaussianBlur13035"
-        />
+        <feGaussianBlur stdDeviation="2.3" in="SourceAlpha" result="result0" id="feGaussianBlur13025" />
+        <feMorphology in="SourceAlpha" radius="6.6" result="result1" id="feMorphology13027" />
+        <feGaussianBlur stdDeviation="8.9" in="result1" id="feGaussianBlur13029" />
+        <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.3 0" result="result91" id="feColorMatrix13031" />
+        <feComposite in="result0" operator="out" result="result2" in2="result91" id="feComposite13033" />
+        <feGaussianBlur stdDeviation="1.7" result="result4" id="feGaussianBlur13035" />
         <feDiffuseLighting surfaceScale="10" id="feDiffuseLighting13039">
-          <feDistantLight
-            azimuth="225"
-            elevation="45"
-            id="feDistantLight13037"
-          />
+          <feDistantLight azimuth="225" elevation="45" id="feDistantLight13037" />
         </feDiffuseLighting>
         <feBlend in2="SourceGraphic" mode="multiply" id="feBlend13041" />
-        <feComposite
-          in2="SourceAlpha"
-          operator="in"
-          result="result3"
-          id="feComposite13043"
-        />
-        <feSpecularLighting
-          in="result4"
-          surfaceScale="5"
-          specularExponent="17.9"
-          id="feSpecularLighting13047"
-        >
-          <feDistantLight
-            azimuth="225"
-            elevation="45"
-            id="feDistantLight13045"
-          />
+        <feComposite in2="SourceAlpha" operator="in" result="result3" id="feComposite13043" />
+        <feSpecularLighting in="result4" surfaceScale="5" specularExponent="17.9" id="feSpecularLighting13047">
+          <feDistantLight azimuth="225" elevation="45" id="feDistantLight13045" />
         </feSpecularLighting>
         <feComposite in2="result3" operator="atop" id="feComposite13049" />
       </filter>
@@ -235,65 +95,19 @@ export function Defs() {
         width="1.5841042"
         height="40.882593"
       >
-        <feGaussianBlur
-          stdDeviation="2.3"
-          in="SourceAlpha"
-          result="result0"
-          id="feGaussianBlur10572"
-        />
-        <feMorphology
-          in="SourceAlpha"
-          radius="6.6"
-          result="result1"
-          id="feMorphology10574"
-        />
-        <feGaussianBlur
-          stdDeviation="8.9"
-          in="result1"
-          id="feGaussianBlur10576"
-        />
-        <feColorMatrix
-          values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.3 0"
-          result="result91"
-          id="feColorMatrix10578"
-        />
-        <feComposite
-          in="result0"
-          operator="out"
-          result="result2"
-          in2="result91"
-          id="feComposite10580"
-        />
-        <feGaussianBlur
-          stdDeviation="1.7"
-          result="result4"
-          id="feGaussianBlur10582"
-        />
+        <feGaussianBlur stdDeviation="2.3" in="SourceAlpha" result="result0" id="feGaussianBlur10572" />
+        <feMorphology in="SourceAlpha" radius="6.6" result="result1" id="feMorphology10574" />
+        <feGaussianBlur stdDeviation="8.9" in="result1" id="feGaussianBlur10576" />
+        <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.3 0" result="result91" id="feColorMatrix10578" />
+        <feComposite in="result0" operator="out" result="result2" in2="result91" id="feComposite10580" />
+        <feGaussianBlur stdDeviation="1.7" result="result4" id="feGaussianBlur10582" />
         <feDiffuseLighting surfaceScale="10" id="feDiffuseLighting10586">
-          <feDistantLight
-            azimuth="225"
-            elevation="45"
-            id="feDistantLight10584"
-          />
+          <feDistantLight azimuth="225" elevation="45" id="feDistantLight10584" />
         </feDiffuseLighting>
         <feBlend in2="SourceGraphic" mode="multiply" id="feBlend10588" />
-        <feComposite
-          in2="SourceAlpha"
-          operator="in"
-          result="result3"
-          id="feComposite10590"
-        />
-        <feSpecularLighting
-          in="result4"
-          surfaceScale="5"
-          specularExponent="17.9"
-          id="feSpecularLighting10594"
-        >
-          <feDistantLight
-            azimuth="225"
-            elevation="45"
-            id="feDistantLight10592"
-          />
+        <feComposite in2="SourceAlpha" operator="in" result="result3" id="feComposite10590" />
+        <feSpecularLighting in="result4" surfaceScale="5" specularExponent="17.9" id="feSpecularLighting10594">
+          <feDistantLight azimuth="225" elevation="45" id="feDistantLight10592" />
         </feSpecularLighting>
         <feComposite in2="result3" operator="atop" id="feComposite10596" />
       </filter>
@@ -305,65 +119,19 @@ export function Defs() {
         width="1.9628222"
         height="41.096952"
       >
-        <feGaussianBlur
-          stdDeviation="2.3"
-          in="SourceAlpha"
-          result="result0"
-          id="feGaussianBlur10658"
-        />
-        <feMorphology
-          in="SourceAlpha"
-          radius="6.6"
-          result="result1"
-          id="feMorphology10660"
-        />
-        <feGaussianBlur
-          stdDeviation="8.9"
-          in="result1"
-          id="feGaussianBlur10662"
-        />
-        <feColorMatrix
-          values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.3 0"
-          result="result91"
-          id="feColorMatrix10664"
-        />
-        <feComposite
-          in="result0"
-          operator="out"
-          result="result2"
-          in2="result91"
-          id="feComposite10666"
-        />
-        <feGaussianBlur
-          stdDeviation="1.7"
-          result="result4"
-          id="feGaussianBlur10668"
-        />
+        <feGaussianBlur stdDeviation="2.3" in="SourceAlpha" result="result0" id="feGaussianBlur10658" />
+        <feMorphology in="SourceAlpha" radius="6.6" result="result1" id="feMorphology10660" />
+        <feGaussianBlur stdDeviation="8.9" in="result1" id="feGaussianBlur10662" />
+        <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.3 0" result="result91" id="feColorMatrix10664" />
+        <feComposite in="result0" operator="out" result="result2" in2="result91" id="feComposite10666" />
+        <feGaussianBlur stdDeviation="1.7" result="result4" id="feGaussianBlur10668" />
         <feDiffuseLighting surfaceScale="10" id="feDiffuseLighting10672">
-          <feDistantLight
-            azimuth="225"
-            elevation="45"
-            id="feDistantLight10670"
-          />
+          <feDistantLight azimuth="225" elevation="45" id="feDistantLight10670" />
         </feDiffuseLighting>
         <feBlend in2="SourceGraphic" mode="multiply" id="feBlend10674" />
-        <feComposite
-          in2="SourceAlpha"
-          operator="in"
-          result="result3"
-          id="feComposite10676"
-        />
-        <feSpecularLighting
-          in="result4"
-          surfaceScale="5"
-          specularExponent="17.9"
-          id="feSpecularLighting10680"
-        >
-          <feDistantLight
-            azimuth="225"
-            elevation="45"
-            id="feDistantLight10678"
-          />
+        <feComposite in2="SourceAlpha" operator="in" result="result3" id="feComposite10676" />
+        <feSpecularLighting in="result4" surfaceScale="5" specularExponent="17.9" id="feSpecularLighting10680">
+          <feDistantLight azimuth="225" elevation="45" id="feDistantLight10678" />
         </feSpecularLighting>
         <feComposite in2="result3" operator="atop" id="feComposite10682" />
       </filter>
@@ -375,65 +143,19 @@ export function Defs() {
         width="1.4189634"
         height="40.248074"
       >
-        <feGaussianBlur
-          stdDeviation="2.3"
-          in="SourceAlpha"
-          result="result0"
-          id="feGaussianBlur10704"
-        />
-        <feMorphology
-          in="SourceAlpha"
-          radius="6.6"
-          result="result1"
-          id="feMorphology10706"
-        />
-        <feGaussianBlur
-          stdDeviation="8.9"
-          in="result1"
-          id="feGaussianBlur10708"
-        />
-        <feColorMatrix
-          values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.3 0"
-          result="result91"
-          id="feColorMatrix10710"
-        />
-        <feComposite
-          in="result0"
-          operator="out"
-          result="result2"
-          in2="result91"
-          id="feComposite10712"
-        />
-        <feGaussianBlur
-          stdDeviation="1.7"
-          result="result4"
-          id="feGaussianBlur10714"
-        />
+        <feGaussianBlur stdDeviation="2.3" in="SourceAlpha" result="result0" id="feGaussianBlur10704" />
+        <feMorphology in="SourceAlpha" radius="6.6" result="result1" id="feMorphology10706" />
+        <feGaussianBlur stdDeviation="8.9" in="result1" id="feGaussianBlur10708" />
+        <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.3 0" result="result91" id="feColorMatrix10710" />
+        <feComposite in="result0" operator="out" result="result2" in2="result91" id="feComposite10712" />
+        <feGaussianBlur stdDeviation="1.7" result="result4" id="feGaussianBlur10714" />
         <feDiffuseLighting surfaceScale="10" id="feDiffuseLighting10718">
-          <feDistantLight
-            azimuth="225"
-            elevation="45"
-            id="feDistantLight10716"
-          />
+          <feDistantLight azimuth="225" elevation="45" id="feDistantLight10716" />
         </feDiffuseLighting>
         <feBlend in2="SourceGraphic" mode="multiply" id="feBlend10720" />
-        <feComposite
-          in2="SourceAlpha"
-          operator="in"
-          result="result3"
-          id="feComposite10722"
-        />
-        <feSpecularLighting
-          in="result4"
-          surfaceScale="5"
-          specularExponent="17.9"
-          id="feSpecularLighting10726"
-        >
-          <feDistantLight
-            azimuth="225"
-            elevation="45"
-            id="feDistantLight10724"
-          />
+        <feComposite in2="SourceAlpha" operator="in" result="result3" id="feComposite10722" />
+        <feSpecularLighting in="result4" surfaceScale="5" specularExponent="17.9" id="feSpecularLighting10726">
+          <feDistantLight azimuth="225" elevation="45" id="feDistantLight10724" />
         </feSpecularLighting>
         <feComposite in2="result3" operator="atop" id="feComposite10728" />
       </filter>
@@ -576,29 +298,11 @@ export function Defs() {
         width="1.1650118"
         height="1.1756331"
       >
-        <feMorphology
-          radius="4.3"
-          in="SourceAlpha"
-          result="result91"
-          id="feMorphology3936"
-        />
-        <feComposite
-          operator="out"
-          in="SourceGraphic"
-          in2="result91"
-          id="feComposite3938"
-        />
-        <feGaussianBlur
-          result="result0"
-          stdDeviation="1.2"
-          id="feGaussianBlur3940"
-        />
+        <feMorphology radius="4.3" in="SourceAlpha" result="result91" id="feMorphology3936" />
+        <feComposite operator="out" in="SourceGraphic" in2="result91" id="feComposite3938" />
+        <feGaussianBlur result="result0" stdDeviation="1.2" id="feGaussianBlur3940" />
         <feDiffuseLighting diffuseConstant="1" id="feDiffuseLighting3944">
-          <feDistantLight
-            elevation="66"
-            azimuth="225"
-            id="feDistantLight3942"
-          />
+          <feDistantLight elevation="66" azimuth="225" id="feDistantLight3942" />
         </feDiffuseLighting>
         <feBlend mode="multiply" in2="SourceGraphic" id="feBlend3946" />
         <feComposite operator="in" in2="SourceAlpha" id="feComposite3948" />

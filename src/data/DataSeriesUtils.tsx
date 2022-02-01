@@ -7,7 +7,7 @@ import {
   ID_TYPE_GROUP_ELEMENT,
   ID_TYPE_SERIES_ELEMENT,
   UNKNOWN_SELECTION_VALUE,
-  ZORDER_MISC_BACK
+  ZORDER_MISC_BACK,
 } from 'Constants';
 import { SeriesFilters } from 'data/SeriesFilters';
 import { Aggregation, Coordinates, SortMode, TimeRange } from 'types';
@@ -20,10 +20,7 @@ import { BasicChartData } from 'charts/BasicChartData';
 import { MaxValues } from './MaxValues';
 import { SumValues } from './SumValues';
 
-export function getSortedCharts(
-  dataFrames: DataFrame[],
-  properties: ChartsDataProperties
-): ChartData[] {
+export function getSortedCharts(dataFrames: DataFrame[], properties: ChartsDataProperties): ChartData[] {
   var firstChartName;
   if (
     properties.selection !== undefined &&
@@ -33,19 +30,12 @@ export function getSortedCharts(
     firstChartName = properties.selection.value;
   }
 
-  var result = sortCharts(
-    getCharts(dataFrames, properties),
-    firstChartName,
-    properties.sortMode
-  );
+  var result = sortCharts(getCharts(dataFrames, properties), firstChartName, properties.sortMode);
 
   return result;
 }
 
-function getCharts(
-  dataFrames: DataFrame[],
-  properties: ChartsDataProperties
-): Record<string, ChartData> {
+function getCharts(dataFrames: DataFrame[], properties: ChartsDataProperties): Record<string, ChartData> {
   var series: DataSeries[] = extractDataSeries(
     dataFrames,
     properties.amplitudeField,
@@ -64,15 +54,10 @@ function getCharts(
   );
 
   let breakDownField =
-    properties.breakdowns.seriesBreakdown === undefined ||
-    properties.breakdowns.chartBreakdownType == 'none'
+    properties.breakdowns.seriesBreakdown === undefined || properties.breakdowns.chartBreakdownType == 'none'
       ? properties.breakdowns.chartBreakdown
       : properties.breakdowns.seriesBreakdown;
-  charts = sumOverSeriesFieldBreakdown(
-    charts,
-    breakDownField,
-    properties.aggregation
-  );
+  charts = sumOverSeriesFieldBreakdown(charts, breakDownField, properties.aggregation);
 
   return charts;
 }
@@ -85,17 +70,9 @@ function extractDataSeries(
   timeRange: TimeRange
 ): DataSeries[] {
   var valueDataFrames: DataFrame[] = getDataFrames(dataFrames, valueFieldName);
-  var weightDataFrames: DataFrame[] =
-    weightFieldName === undefined
-      ? []
-      : getDataFrames(dataFrames, weightFieldName);
+  var weightDataFrames: DataFrame[] = weightFieldName === undefined ? [] : getDataFrames(dataFrames, weightFieldName);
 
-  return extractDataSeriesValuesAndWeights(
-    valueDataFrames,
-    weightDataFrames,
-    filters,
-    timeRange
-  );
+  return extractDataSeriesValuesAndWeights(valueDataFrames, weightDataFrames, filters, timeRange);
 }
 
 function extractDataSeriesValuesAndWeights(
@@ -123,8 +100,7 @@ function extractDataSeriesValuesAndWeights(
     var timestamps = dataFrame.fields[0].values;
 
     var valueField: Field = dataFrame.fields[1];
-    var weightField: Field | undefined =
-      weightFrame === undefined ? undefined : weightFrame.fields[1];
+    var weightField: Field | undefined = weightFrame === undefined ? undefined : weightFrame.fields[1];
     var seriesElement: DataSeries = new DataSeries();
     seriesElement.name = valueField.name;
 
@@ -134,16 +110,12 @@ function extractDataSeriesValuesAndWeights(
       }
     }
 
-    if (
-      filters.filterSeriesForIncludes(seriesElement) ||
-      filters.filterSeriesForExcludes(seriesElement)
-    ) {
+    if (filters.filterSeriesForIncludes(seriesElement) || filters.filterSeriesForExcludes(seriesElement)) {
       continue;
     }
 
     for (let index = 0; index < valueField.values.length; index++) {
-      var weight =
-        weightField !== undefined ? weightField.values.get(index) : 1;
+      var weight = weightField !== undefined ? weightField.values.get(index) : 1;
       var dataPoint: DataPoint = new DataPoint(
         new Coordinates(timestamps.get(index), valueField.values.get(index)),
         weight
@@ -165,13 +137,8 @@ function splitSeriesForCharts(
   let result: Record<string, ChartData> = {};
 
   series.forEach((data) => {
-    let fieldValue = data.dimensions.hasOwnProperty(splitField)
-      ? data.dimensions[splitField]
-      : '';
-    let sortKey =
-      groupField === undefined
-        ? UNKNOWN_SELECTION_VALUE
-        : data.dimensions[groupField];
+    let fieldValue = data.dimensions.hasOwnProperty(splitField) ? data.dimensions[splitField] : '';
+    let sortKey = groupField === undefined ? UNKNOWN_SELECTION_VALUE : data.dimensions[groupField];
     if (!result.hasOwnProperty(fieldValue)) {
       result[fieldValue] = new BasicChartData(fieldValue, sortKey, splitField);
     }
@@ -232,11 +199,7 @@ export function sortCharts(
 }
 
 function compareBySortKey(a: ChartData, b: ChartData) {
-  if (
-    a.sortKey === undefined ||
-    b.sortKey === undefined ||
-    a.sortKey == b.sortKey
-  ) {
+  if (a.sortKey === undefined || b.sortKey === undefined || a.sortKey == b.sortKey) {
     return compareLex(a.name, b.name);
   }
   return 0 - (a.sortKey < b.sortKey ? 1 : -1);
@@ -269,45 +232,29 @@ export function sumOverSeriesFieldBreakdown(
   let result: Record<string, ChartData> = {};
 
   for (let key in chartsSeries) {
-    result[key] = new BasicChartData(
-      key,
-      chartsSeries[key].sortKey,
-      chartsSeries[key].breakDownField
-    );
+    result[key] = new BasicChartData(key, chartsSeries[key].sortKey, chartsSeries[key].breakDownField);
 
     let seriesForBreakdownField: Record<string, DataSeries> = {};
     chartsSeries[key].data.forEach((series) => {
-      if (
-        !seriesForBreakdownField.hasOwnProperty(
-          series.dimensions[seriesFieldBreakdown]
-        )
-      ) {
-        seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]] =
-          series.getEmptySeries();
-        seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]].name =
-          generateChartElementName(
-            key,
-            series.dimensions[seriesFieldBreakdown],
-            chartsSeries[key].sortKey
-          );
-        seriesForBreakdownField[
-          series.dimensions[seriesFieldBreakdown]
-        ].dimensions[seriesFieldBreakdown] =
+      if (!seriesForBreakdownField.hasOwnProperty(series.dimensions[seriesFieldBreakdown])) {
+        seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]] = series.getEmptySeries();
+        seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]].name = generateChartElementName(
+          key,
+          series.dimensions[seriesFieldBreakdown],
+          chartsSeries[key].sortKey
+        );
+        seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]].dimensions[seriesFieldBreakdown] =
           series.dimensions[seriesFieldBreakdown];
       }
     });
 
     if (aggregation == 'sum') {
       chartsSeries[key].data.forEach((series) => {
-        seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]].sum(
-          series
-        );
+        seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]].sum(series);
       });
     } else if (aggregation == 'avg') {
       chartsSeries[key].data.forEach((series) => {
-        seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]].sum(
-          series
-        );
+        seriesForBreakdownField[series.dimensions[seriesFieldBreakdown]].sum(series);
       });
       for (let seriesKey in seriesForBreakdownField) {
         seriesForBreakdownField[seriesKey].calculateAverage();
@@ -316,28 +263,21 @@ export function sumOverSeriesFieldBreakdown(
 
     for (let breakdownFieldValue in seriesForBreakdownField) {
       result[key].data.push(seriesForBreakdownField[breakdownFieldValue]);
-      result[key].originalData.push(
-        seriesForBreakdownField[breakdownFieldValue].clone()
-      );
+      result[key].originalData.push(seriesForBreakdownField[breakdownFieldValue].clone());
     }
   }
 
   return result;
 }
 
-function generateChartElementName(
-  chartName: string,
-  breakDownName: string,
-  sortKey: string | undefined
-): string {
+function generateChartElementName(chartName: string, breakDownName: string, sortKey: string | undefined): string {
   let name: string = ID_PREFIX_CHART_ELEMENT;
   if (sortKey !== undefined) {
     name += ID_SEPERATOR + ID_TYPE_GROUP_ELEMENT + ID_KV_SEPERATOR + sortKey;
   }
   name += ID_SEPERATOR + ID_TYPE_CHART_ELEMENT + ID_KV_SEPERATOR + chartName;
   if (chartName != breakDownName) {
-    name +=
-      ID_SEPERATOR + ID_TYPE_SERIES_ELEMENT + ID_KV_SEPERATOR + breakDownName;
+    name += ID_SEPERATOR + ID_TYPE_SERIES_ELEMENT + ID_KV_SEPERATOR + breakDownName;
   }
 
   return name;
@@ -350,22 +290,14 @@ function compareNumeric(a: number, b: number): number {
   return 0 - (a > b ? -1 : 1);
 }
 
-function getDataFrames(
-  dataFrames: DataFrame[],
-  fieldName: string
-): DataFrame[] {
+function getDataFrames(dataFrames: DataFrame[], fieldName: string): DataFrame[] {
   // Assuming that the relevant field has index 1 (0 is for time field) and has type number
   return dataFrames.filter((frame) => {
-    return (
-      frame.fields[1].name == fieldName && frame.fields[1].type == 'number'
-    );
+    return frame.fields[1].name == fieldName && frame.fields[1].type == 'number';
   });
 }
 
-function normalizeHorizontalAxis(
-  series: DataSeries[],
-  properties: ChartsDataProperties
-): TimeRange {
+function normalizeHorizontalAxis(series: DataSeries[], properties: ChartsDataProperties): TimeRange {
   let minTimestamp = -1;
   let maxTimestamp = 0;
   let maxNumDataPoint = 0;
@@ -394,31 +326,18 @@ function normalizeHorizontalAxis(
   let span = maxTimestamp - minTimestamp;
   for (let index = 0; index < series.length; index++) {
     series[index].dataPoints.forEach((dataPoint) => {
-      let formattedXAxisValue = Math.round(
-        (dataPoint.x() - minTimestamp) * ((maxNumDataPoint - 1) / span)
-      );
+      let formattedXAxisValue = Math.round((dataPoint.x() - minTimestamp) * ((maxNumDataPoint - 1) / span));
 
-      if (
-        dataPoint.x() >= properties.timeRange.start &&
-        dataPoint.x() <= properties.timeRange.end
-      ) {
-        if (
-          minFormattedXAxisValue === undefined ||
-          minFormattedXAxisValue > formattedXAxisValue
-        ) {
+      if (dataPoint.x() >= properties.timeRange.start && dataPoint.x() <= properties.timeRange.end) {
+        if (minFormattedXAxisValue === undefined || minFormattedXAxisValue > formattedXAxisValue) {
           minFormattedXAxisValue = formattedXAxisValue;
         }
-        if (
-          maxFormattedXAxisValue === undefined ||
-          maxFormattedXAxisValue < formattedXAxisValue
-        ) {
+        if (maxFormattedXAxisValue === undefined || maxFormattedXAxisValue < formattedXAxisValue) {
           maxFormattedXAxisValue = formattedXAxisValue;
         }
       }
 
-      let newX = Math.round(
-        (dataPoint.x() - minTimestamp) * ((maxNumDataPoint - 1) / span)
-      );
+      let newX = Math.round((dataPoint.x() - minTimestamp) * ((maxNumDataPoint - 1) / span));
       dataPoint.setUnformattedX(dataPoint.x());
       dataPoint.setX(newX);
 
@@ -432,10 +351,8 @@ function normalizeHorizontalAxis(
   }
 
   return new TimeRange(
-    (properties.formattedTimeRange.start =
-      minFormattedXAxisValue === undefined ? -1 : minFormattedXAxisValue),
-    (properties.formattedTimeRange.end =
-      maxFormattedXAxisValue === undefined ? -1 : maxFormattedXAxisValue + 1)
+    (properties.formattedTimeRange.start = minFormattedXAxisValue === undefined ? -1 : minFormattedXAxisValue),
+    (properties.formattedTimeRange.end = maxFormattedXAxisValue === undefined ? -1 : maxFormattedXAxisValue + 1)
   ); // For some reason the max value seems to be off by one
 }
 
@@ -445,29 +362,17 @@ function sortByMax(result: ChartData[], maxValues: MaxValues) {
     let groupB = b.sortKey === undefined ? UNKNOWN_SELECTION_VALUE : b.sortKey;
 
     if (groupA == groupB) {
-      if (
-        maxValues.groupChartValues[groupA][a.name] ==
-        maxValues.groupChartValues[groupA][b.name]
-      ) {
+      if (maxValues.groupChartValues[groupA][a.name] == maxValues.groupChartValues[groupA][b.name]) {
         return 0;
       }
-      return (
-        0 -
-        (maxValues.groupChartValues[groupA][a.name] <
-        maxValues.groupChartValues[groupA][b.name]
-          ? 1
-          : -1)
-      );
+      return 0 - (maxValues.groupChartValues[groupA][a.name] < maxValues.groupChartValues[groupA][b.name] ? 1 : -1);
     }
 
     if (maxValues.groupValues[groupA] == maxValues.groupValues[groupB]) {
       return 0;
     }
 
-    return (
-      0 -
-      (maxValues.groupValues[groupA] < maxValues.groupValues[groupB] ? 1 : -1)
-    );
+    return 0 - (maxValues.groupValues[groupA] < maxValues.groupValues[groupB] ? 1 : -1);
   });
 }
 
@@ -477,29 +382,17 @@ function sortBySum(result: ChartData[], sumValues: SumValues) {
     let groupB = b.sortKey === undefined ? UNKNOWN_SELECTION_VALUE : b.sortKey;
 
     if (groupA == groupB) {
-      if (
-        sumValues.groupChartValues[groupA][a.name] ==
-        sumValues.groupChartValues[groupA][b.name]
-      ) {
+      if (sumValues.groupChartValues[groupA][a.name] == sumValues.groupChartValues[groupA][b.name]) {
         return 0;
       }
-      return (
-        0 -
-        (sumValues.groupChartValues[groupA][a.name] <
-        sumValues.groupChartValues[groupA][b.name]
-          ? 1
-          : -1)
-      );
+      return 0 - (sumValues.groupChartValues[groupA][a.name] < sumValues.groupChartValues[groupA][b.name] ? 1 : -1);
     }
 
     if (sumValues.groupValues[groupA] == sumValues.groupValues[groupB]) {
       return 0;
     }
 
-    return (
-      0 -
-      (sumValues.groupValues[groupA] < sumValues.groupValues[groupB] ? 1 : -1)
-    );
+    return 0 - (sumValues.groupValues[groupA] < sumValues.groupValues[groupB] ? 1 : -1);
   });
 }
 
@@ -510,18 +403,11 @@ export function calculateTotalsSingleOriginal(charts: ChartData[]): DataSeries {
 
   charts.forEach((chart) => {
     for (var index = 0; index < chart.originalData.length; index++) {
-      for (
-        var xIndex = 0;
-        xIndex < chart.originalData[index].dataPoints.length;
-        xIndex++
-      ) {
-        if (
-          !sums.hasOwnProperty(chart.originalData[index].dataPoints[xIndex].x())
-        ) {
+      for (var xIndex = 0; xIndex < chart.originalData[index].dataPoints.length; xIndex++) {
+        if (!sums.hasOwnProperty(chart.originalData[index].dataPoints[xIndex].x())) {
           sums[chart.originalData[index].dataPoints[xIndex].x()] = 0;
         }
-        sums[chart.originalData[index].dataPoints[xIndex].x()] +=
-          chart.originalData[index].dataPoints[xIndex].y();
+        sums[chart.originalData[index].dataPoints[xIndex].x()] += chart.originalData[index].dataPoints[xIndex].y();
       }
     }
   });
@@ -532,22 +418,15 @@ export function calculateTotalsSingleOriginal(charts: ChartData[]): DataSeries {
   }
 
   keys.forEach((xValue) => {
-    result.dataPoints.push(
-      new DataPoint(new Coordinates(xValue, sums[xValue]))
-    );
+    result.dataPoints.push(new DataPoint(new Coordinates(xValue, sums[xValue])));
   });
 
   return result;
 }
 
-export function buildDataForRangeSelector(
-  timeRange: TimeRange,
-  single: DataSeries
-): string[] {
+export function buildDataForRangeSelector(timeRange: TimeRange, single: DataSeries): string[] {
   let result: string[] = [];
-  console.log(
-    'Building data from time range: ' + timeRange.start + ' - ' + timeRange.end
-  );
+  console.log('Building data from time range: ' + timeRange.start + ' - ' + timeRange.end);
   let start = Math.floor(timeRange.start);
   let end = Math.floor(timeRange.end);
   let step = Math.floor((end - start) / single.dataPoints.length);

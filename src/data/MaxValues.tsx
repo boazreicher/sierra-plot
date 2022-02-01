@@ -7,8 +7,7 @@ export class MaxValues {
 
   constructor(charts: ChartData[]) {
     charts.forEach((chart) => {
-      let groupName =
-        chart.sortKey === undefined ? UNKNOWN_SELECTION_VALUE : chart.sortKey;
+      let groupName = chart.sortKey === undefined ? UNKNOWN_SELECTION_VALUE : chart.sortKey;
       if (!this.groupValues.hasOwnProperty(groupName)) {
         this.groupValues[groupName] = 0;
       }
@@ -25,8 +24,7 @@ export class MaxValues {
           if (!maxYValues.hasOwnProperty(series.dataPoints[index].x())) {
             maxYValues[series.dataPoints[index].x()] = 0;
           }
-          maxYValues[series.dataPoints[index].x()] +=
-            series.dataPoints[index].y();
+          maxYValues[series.dataPoints[index].x()] += series.dataPoints[index].y();
         });
       }
       for (let x in maxYValues) {

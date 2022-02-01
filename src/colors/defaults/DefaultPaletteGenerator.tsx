@@ -5,10 +5,6 @@ import { DefaultTotalColor } from './DefaultTotalColor';
 
 export class DefaultPaletteGenerator extends PaletteGenerator {
   constructor() {
-    super(
-      new DefaultSeriesPalette(),
-      new DefaultGroupPalette(),
-      new DefaultTotalColor()
-    );
+    super(new DefaultSeriesPalette(), new DefaultGroupPalette(), new DefaultTotalColor());
   }
 }

@@ -7,8 +7,7 @@ export class SumValues {
 
   constructor(charts: ChartData[]) {
     charts.forEach((chart) => {
-      let groupName =
-        chart.sortKey === undefined ? UNKNOWN_SELECTION_VALUE : chart.sortKey;
+      let groupName = chart.sortKey === undefined ? UNKNOWN_SELECTION_VALUE : chart.sortKey;
       if (!this.groupValues.hasOwnProperty(groupName)) {
         this.groupValues[groupName] = 0;
       }
@@ -21,8 +20,7 @@ export class SumValues {
 
       for (let index = 0; index < chart.data[0].dataPoints.length; index++) {
         chart.data.forEach((series) => {
-          this.groupChartValues[groupName][chart.name] +=
-            series.dataPoints[index].y();
+          this.groupChartValues[groupName][chart.name] += series.dataPoints[index].y();
           this.groupValues[groupName] += series.dataPoints[index].y();
         });
       }

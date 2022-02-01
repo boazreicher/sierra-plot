@@ -3,19 +3,11 @@ import { Filter } from 'colors/filters/Filter';
 import { HSLFilter } from 'colors/filters/HSLFilter';
 import { Hex } from 'colors/Hex';
 import { HSL } from 'colors/HSL';
-import {
-  FILTER_NAME_PREFIX_SERIES,
-  LUMINANCE_DECREASE_SERIES
-} from 'Constants';
+import { FILTER_NAME_PREFIX_SERIES, LUMINANCE_DECREASE_SERIES } from 'Constants';
 
 export class DefaultSeriesPalette extends BasicPalette {
   constructor() {
-    super(
-      new Hex('4daf4a'),
-      new Hex('d22d2f'),
-      new Hex('377eb8'),
-      new Hex('984ea3')
-    );
+    super(new Hex('4daf4a'), new Hex('d22d2f'), new Hex('377eb8'), new Hex('984ea3'));
   }
 
   asFilters(): DefaultSeriesPalette {

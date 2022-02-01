@@ -17,10 +17,7 @@ export class ChartGroups implements PresentationElement {
     panelOptions: SierraPlotOptions,
     onOptionsChange: optionsChangeCallback
   ) {
-    this.presentationProperties = new ChartGroupPresentationProperties(
-      sierraPlotProperties,
-      onOptionsChange
-    );
+    this.presentationProperties = new ChartGroupPresentationProperties(sierraPlotProperties, onOptionsChange);
     this.panelOptions = panelOptions;
     this.updateBoundsForCharts(charts);
   }
@@ -37,10 +34,7 @@ export class ChartGroups implements PresentationElement {
     this.get(chart.sortKey).addChart(chart.name);
   }
 
-  private addBoundsForGroup(
-    sortKey: string,
-    dimensionsForStackedAreaChart: Dimensions
-  ) {
+  private addBoundsForGroup(sortKey: string, dimensionsForStackedAreaChart: Dimensions) {
     if (!this.contains(sortKey)) {
       this.set(sortKey, new ChartGroup(sortKey));
     }
@@ -51,9 +45,7 @@ export class ChartGroups implements PresentationElement {
     ) {
       this.get(sortKey).boundingBox.minX = dimensionsForStackedAreaChart.startX;
     }
-    if (
-      this.get(sortKey).boundingBox.maxX < dimensionsForStackedAreaChart.startX
-    ) {
+    if (this.get(sortKey).boundingBox.maxX < dimensionsForStackedAreaChart.startX) {
       this.get(sortKey).boundingBox.maxX = dimensionsForStackedAreaChart.startX;
     }
     if (
@@ -62,9 +54,7 @@ export class ChartGroups implements PresentationElement {
     ) {
       this.get(sortKey).boundingBox.minY = dimensionsForStackedAreaChart.startY;
     }
-    if (
-      this.get(sortKey).boundingBox.maxY < dimensionsForStackedAreaChart.startY
-    ) {
+    if (this.get(sortKey).boundingBox.maxY < dimensionsForStackedAreaChart.startY) {
       this.get(sortKey).boundingBox.maxY = dimensionsForStackedAreaChart.startY;
     }
     this.get(sortKey).boundingBox.minY -= this.originalHeight();
@@ -77,12 +67,7 @@ export class ChartGroups implements PresentationElement {
     }
     var elements: SvgElement[] = [];
     for (let group in this.groups) {
-      elements = elements.concat(
-        this.groups[group].toSvgElements(
-          this.panelOptions,
-          this.presentationProperties
-        )
-      );
+      elements = elements.concat(this.groups[group].toSvgElements(this.panelOptions, this.presentationProperties));
     }
 
     return elements;
@@ -122,10 +107,7 @@ export class ChartGroupPresentationProperties {
   palette: ColorPalette;
   onOptionsChange: optionsChangeCallback;
 
-  constructor(
-    sierraPlotProperties: SierraPlotProperties,
-    onOptionsChange: optionsChangeCallback
-  ) {
+  constructor(sierraPlotProperties: SierraPlotProperties, onOptionsChange: optionsChangeCallback) {
     this.startX = sierraPlotProperties.dimensions.startX;
     this.shiftX = sierraPlotProperties.minX;
     this.width = sierraPlotProperties.dimensions.width;

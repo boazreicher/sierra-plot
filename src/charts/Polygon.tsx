@@ -15,9 +15,7 @@ export class Polygon extends SeriesElement {
 
   protected addBottom(): void {
     for (var index = this.dataPoints.length - 1; index >= -0; index--) {
-      var dataPoint = new DataPoint(
-        new Coordinates(this.dataPoints[index].x(), 0)
-      );
+      var dataPoint = new DataPoint(new Coordinates(this.dataPoints[index].x(), 0));
       this.closingDataPoints.push(dataPoint);
     }
   }
@@ -25,30 +23,19 @@ export class Polygon extends SeriesElement {
   stackedOn(polygons: Polygon[]): void {
     for (var index = 0; index < this.dataPoints.length; index++) {
       var shift = 0;
-      for (
-        var polygonIndex = 0;
-        polygonIndex < polygons.length;
-        polygonIndex++
-      ) {
+      for (var polygonIndex = 0; polygonIndex < polygons.length; polygonIndex++) {
         shift +=
           polygons[polygonIndex].dataPoints[index].y() -
-          polygons[polygonIndex].closingDataPoints[
-            polygons[polygonIndex].closingDataPoints.length - index - 1
-          ].y();
+          polygons[polygonIndex].closingDataPoints[polygons[polygonIndex].closingDataPoints.length - index - 1].y();
       }
 
       this.dataPoints[index].shiftY(shift);
 
       var closingShift = 0;
-      for (
-        var polygonIndex = 0;
-        polygonIndex < polygons.length;
-        polygonIndex++
-      ) {
+      for (var polygonIndex = 0; polygonIndex < polygons.length; polygonIndex++) {
         closingShift +=
-          polygons[polygonIndex].dataPoints[
-            polygons[polygonIndex].dataPoints.length - index - 1
-          ].y() - polygons[polygonIndex].closingDataPoints[index].y();
+          polygons[polygonIndex].dataPoints[polygons[polygonIndex].dataPoints.length - index - 1].y() -
+          polygons[polygonIndex].closingDataPoints[index].y();
       }
 
       this.closingDataPoints[index].shiftY(closingShift);

@@ -13,10 +13,7 @@ export class SvgGroup extends SvgElement {
   children: SvgElement[] = [];
 
   buildElement(height?: number): JSX.Element {
-    var maxHeight =
-      this.colorMode == 'values' || this.colorMode == 'valuesInverted'
-        ? this.maxHeight
-        : undefined;
+    var maxHeight = this.colorMode == 'values' || this.colorMode == 'valuesInverted' ? this.maxHeight : undefined;
 
     return (
       <Tooltip content={getTooltip(this.tooltipData, this.id)}>
@@ -99,21 +96,11 @@ export class SvgGroup extends SvgElement {
     this.maxHeight = maxHeight;
   }
 
-  setDisplayedCharts(
-    selection: Selection,
-    chart: ChartData,
-    chartsFieldBreakdown: string
-  ) {
+  setDisplayedCharts(selection: Selection, chart: ChartData, chartsFieldBreakdown: string) {
     if (selection !== undefined && selection.active) {
-      if (
-        selection.key === chartsFieldBreakdown &&
-        selection.value === chart.name
-      ) {
+      if (selection.key === chartsFieldBreakdown && selection.value === chart.name) {
         this.opacity = 1;
-      } else if (
-        selection.key === 'group' &&
-        selection.value === chart.sortKey
-      ) {
+      } else if (selection.key === 'group' && selection.value === chart.sortKey) {
         this.opacity = 1;
       } else {
         this.opacity = 0.1;
@@ -135,17 +122,13 @@ const getTooltip = (data: ToolTipData, chartName: string | undefined) => (
   </>
 );
 
-function getStyle(
-  chart: string,
-  color: Color,
-  chartName: string | undefined
-): React.CSSProperties | undefined {
+function getStyle(chart: string, color: Color, chartName: string | undefined): React.CSSProperties | undefined {
   if (chartName !== undefined && chartName.endsWith(chart)) {
     const style = {
       fontWeight: 'bold',
       color: color.toHsl().toString(),
       textDecoration: 'underline',
-      margin: 0
+      margin: 0,
     } as const;
 
     return style;
@@ -153,18 +136,16 @@ function getStyle(
 
   const style = {
     margin: 0,
-    color: color.toHsl().toString()
+    color: color.toHsl().toString(),
   } as const;
 
   return style;
 }
 
-function getStyleForGroup(
-  color: Color | undefined
-): React.CSSProperties | undefined {
+function getStyleForGroup(color: Color | undefined): React.CSSProperties | undefined {
   const style = {
     textDecoration: 'underline',
-    color: color === undefined ? White().toString() : color.toHsl().toString()
+    color: color === undefined ? White().toString() : color.toHsl().toString(),
   };
 
   return style;

@@ -15,20 +15,13 @@ export class PaletteGenerator {
   private groupPalette: ColorPalette;
   private totalColor: Color;
 
-  constructor(
-    seriesPalette: ColorPalette,
-    groupPalette: ColorPalette,
-    totalColor: Color
-  ) {
+  constructor(seriesPalette: ColorPalette, groupPalette: ColorPalette, totalColor: Color) {
     this.seriesPalette = seriesPalette;
     this.groupPalette = groupPalette;
     this.totalColor = totalColor;
   }
 
-  generatePalettes(
-    sortedCharts: ChartData[],
-    panelOptions: SierraPlotOptions
-  ): ColorPalettes {
+  generatePalettes(sortedCharts: ChartData[], panelOptions: SierraPlotOptions): ColorPalettes {
     this.seriesPalette.reset();
     this.groupPalette.reset();
 
@@ -78,15 +71,8 @@ export class PaletteGenerator {
   ): ColorPalette {
     var chartPalette: BasicPalette =
       selectedValue !== undefined
-        ? this.generatePaletteForSelectedCharts(
-            sortedChartsSeries,
-            selectedValue
-          )
-        : this.generatePaletteForCharts(
-            colorString,
-            colorType,
-            this.getSizeOfLargestGroup(sortedChartsSeries)
-          );
+        ? this.generatePaletteForSelectedCharts(sortedChartsSeries, selectedValue)
+        : this.generatePaletteForCharts(colorString, colorType, this.getSizeOfLargestGroup(sortedChartsSeries));
 
     var palette: PredefinedColorMap = new PredefinedColorMap(
       this.totalColor,
@@ -131,10 +117,7 @@ export class PaletteGenerator {
     return result;
   }
 
-  private generatePaletteForSelectedCharts(
-    sortedChartsSeries: ChartData[],
-    selectedValue: string
-  ): BasicPalette {
+  private generatePaletteForSelectedCharts(sortedChartsSeries: ChartData[], selectedValue: string): BasicPalette {
     var chartPalette: BasicPalette = new BasicPalette();
 
     var numCharts = 0;
@@ -143,22 +126,14 @@ export class PaletteGenerator {
         numCharts++;
       }
     });
-    for (
-      let hue = 0;
-      hue <= 360 * (1 - 1 / numCharts);
-      hue += 360 / numCharts
-    ) {
+    for (let hue = 0; hue <= 360 * (1 - 1 / numCharts); hue += 360 / numCharts) {
       chartPalette.addColor(new HSL(hue, 50, 50));
     }
 
     return chartPalette;
   }
 
-  private generatePaletteForCharts(
-    colorString: string,
-    colorType: ColorType,
-    charts: number
-  ): BasicPalette {
+  private generatePaletteForCharts(colorString: string, colorType: ColorType, charts: number): BasicPalette {
     var chartPalette: BasicPalette = new BasicPalette();
 
     var chartColor: HSL = hexToHsl(colorString);

@@ -64,10 +64,7 @@ export abstract class SvgElement {
       let selectedId = selection.key + ID_KV_SEPERATOR + selection.value;
       if (selection.type === SelectionType.Chart && selectedId == this.id) {
         return true;
-      } else if (
-        selection.type === SelectionType.Group &&
-        selection.value == this.sortKey
-      ) {
+      } else if (selection.type === SelectionType.Group && selection.value == this.sortKey) {
         return true;
       }
     }

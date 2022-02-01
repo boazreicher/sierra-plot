@@ -14,29 +14,15 @@ export class SeriesFilters {
       panelOptions.chartsGroupField !== undefined &&
       panelOptions.selectedChart.hightlightMode == 'exclusive'
     ) {
-      this.addFilter(panelOptions.chartsGroupField, [
-        panelOptions.selectedChart.value
-      ]);
+      this.addFilter(panelOptions.chartsGroupField, [panelOptions.selectedChart.value]);
     } else {
       if (panelOptions.chartsGroupField !== undefined) {
-        this.addFilter(
-          panelOptions.chartsGroupField,
-          panelOptions.selectedGroups
-        );
-        this.addExcludeFilter(
-          panelOptions.chartsGroupField,
-          panelOptions.excludedGroups
-        );
+        this.addFilter(panelOptions.chartsGroupField, panelOptions.selectedGroups);
+        this.addExcludeFilter(panelOptions.chartsGroupField, panelOptions.excludedGroups);
       }
       if (panelOptions.seriesFieldBreakdown !== undefined) {
-        this.addFilter(
-          panelOptions.seriesFieldBreakdown,
-          panelOptions.selectedSeries
-        );
-        this.addExcludeFilter(
-          panelOptions.seriesFieldBreakdown,
-          panelOptions.excludedSeries
-        );
+        this.addFilter(panelOptions.seriesFieldBreakdown, panelOptions.selectedSeries);
+        this.addExcludeFilter(panelOptions.seriesFieldBreakdown, panelOptions.excludedSeries);
       }
     }
   }
@@ -100,9 +86,7 @@ export class SeriesFilters {
         continue;
       }
       for (let index = 0; index < this.excludedValues[field].length; index++) {
-        if (
-          seriesElement.dimensions[field] == this.excludedValues[field][index]
-        ) {
+        if (seriesElement.dimensions[field] == this.excludedValues[field][index]) {
           return true;
         }
       }

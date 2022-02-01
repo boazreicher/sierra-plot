@@ -12,10 +12,7 @@ export class LineChart extends Chart<Polyline> {
     super(id, chartDimensions, Polyline);
   }
 
-  protected formatSeriesElements(
-    elements: SeriesElement[],
-    numDataPoints: number
-  ): SeriesElement[] {
+  protected formatSeriesElements(elements: SeriesElement[], numDataPoints: number): SeriesElement[] {
     var formattedPolylines: SeriesElement[] = [];
     elements.forEach((polyline) => {
       let formattedPolyline = polyline.clone();

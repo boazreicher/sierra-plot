@@ -12,12 +12,7 @@ import { Filter } from 'colors/filters/Filter';
 import { Glow } from 'colors/filters/Glow';
 import { LinearGradient } from 'colors/filters/LinearGradient';
 import { PaletteGenerator } from 'colors/PaletteGenerator';
-import {
-  FILTER_NAME_BEVEL,
-  FILTER_NAME_GLOW,
-  FILTER_NAME_HEAT,
-  FILTER_NAME_HEAT_INVERTED
-} from 'Constants';
+import { FILTER_NAME_BEVEL, FILTER_NAME_GLOW, FILTER_NAME_HEAT, FILTER_NAME_HEAT_INVERTED } from 'Constants';
 import { MaxY } from 'data/MaxY';
 import { Selection, SelectionType } from 'data/Selection';
 import {
@@ -29,7 +24,7 @@ import {
   Dimensions,
   optionsChangeCallback,
   SierraPlotOptions,
-  TimeRange
+  TimeRange,
 } from 'types';
 import { Totals } from './Totals';
 
@@ -63,21 +58,13 @@ export class SierraPlotProperties {
     timeRange: TimeRange,
     onOptionsChange: optionsChangeCallback
   ) {
-    this.maxY = new MaxY(
-      panelOptions.maxYType,
-      panelOptions.chartType,
-      charts,
-      totals
-    );
+    this.maxY = new MaxY(panelOptions.maxYType, panelOptions.chartType, charts, totals);
     this.totalsMaxY = totals.getEffectiveMaxY(panelOptions);
     this.palettes = paletteGenerator.generatePalettes(charts, panelOptions);
     this.onOptionsChange = onOptionsChange;
     this.dimensions = this.generateBaseDimensions(baseDimensionsProperties);
     this.skew = this.calculateSkew(chartDimensionsProperties);
-    this.chartDimensions = this.generateChartDimensions(
-      chartDimensionsProperties,
-      baseDimensionsProperties.topMargin
-    );
+    this.chartDimensions = this.generateChartDimensions(chartDimensionsProperties, baseDimensionsProperties.topMargin);
     this.minX = 0;
     this.timeRange = timeRange;
     this.filters = this.generateFilters(panelOptions.glowSpread);
@@ -86,28 +73,19 @@ export class SierraPlotProperties {
   private generateFilters(glowSpread: number): Set<Filter> {
     let filters: Set<Filter> = new Set<Filter>();
 
-    this.createLinearGradientFilters(
-      this.palettes.getPalette(PaletteType.Regular).toArray()
-    ).forEach(filters.add, filters);
-    this.createLinearGradientFilters(
-      new DefaultGroupPalette().asFilters().toArray()
-    ).forEach(filters.add, filters);
-    this.createLinearGradientFilters(
-      new DefaultSeriesPalette().asFilters().toArray()
-    ).forEach(filters.add, filters);
-    this.createLinearGradientFilters(
-      this.palettes.getPalette(PaletteType.Selected).toArray()
-    ).forEach(filters.add, filters);
+    this.createLinearGradientFilters(this.palettes.getPalette(PaletteType.Regular).toArray()).forEach(
+      filters.add,
+      filters
+    );
+    this.createLinearGradientFilters(new DefaultGroupPalette().asFilters().toArray()).forEach(filters.add, filters);
+    this.createLinearGradientFilters(new DefaultSeriesPalette().asFilters().toArray()).forEach(filters.add, filters);
+    this.createLinearGradientFilters(this.palettes.getPalette(PaletteType.Selected).toArray()).forEach(
+      filters.add,
+      filters
+    );
 
-    filters.add(
-      new LinearGradient(FILTER_NAME_HEAT, new HeatPalette().toArray())
-    );
-    filters.add(
-      new LinearGradient(
-        FILTER_NAME_HEAT_INVERTED,
-        new HeatInvertedPalette().toArray()
-      )
-    );
+    filters.add(new LinearGradient(FILTER_NAME_HEAT, new HeatPalette().toArray()));
+    filters.add(new LinearGradient(FILTER_NAME_HEAT_INVERTED, new HeatInvertedPalette().toArray()));
     filters.add(new Bevel(FILTER_NAME_BEVEL));
     filters.add(new Glow(FILTER_NAME_GLOW, glowSpread));
 
@@ -136,10 +114,8 @@ export class SierraPlotProperties {
   private calculateSkew(properties: ChartDimensionsProperties): number {
     let shiftForTotal = properties.showTotal ? 1 : 0;
     return (
-      (properties.skewPercentage *
-        (this.dimensions.width - this.dimensions.startX)) /
-      (100 +
-        properties.skewPercentage * (properties.numCharts + shiftForTotal - 1))
+      (properties.skewPercentage * (this.dimensions.width - this.dimensions.startX)) /
+      (100 + properties.skewPercentage * (properties.numCharts + shiftForTotal - 1))
     );
   }
 
@@ -186,9 +162,7 @@ export class SierraPlotProperties {
     return palette;
   }
 
-  private generateBaseDimensions(
-    properties: BaseDimensionsProperties
-  ): Dimensions {
+  private generateBaseDimensions(properties: BaseDimensionsProperties): Dimensions {
     var dimensions: Dimensions = new Dimensions();
     dimensions.startX = properties.leftMargin;
     dimensions.startY = properties.topMargin;
@@ -198,39 +172,22 @@ export class SierraPlotProperties {
     return dimensions;
   }
 
-  private generateChartDimensions(
-    properties: ChartDimensionsProperties,
-    topMargin: number
-  ): ChartDimensions {
+  private generateChartDimensions(properties: ChartDimensionsProperties, topMargin: number): ChartDimensions {
     let shiftForTotal = properties.showTotal ? 1 : 0;
-    let width =
-      this.dimensions.width -
-      (properties.numCharts + shiftForTotal - 1) * this.skew -
-      this.dimensions.startX;
+    let width = this.dimensions.width - (properties.numCharts + shiftForTotal - 1) * this.skew - this.dimensions.startX;
     let totalHeight =
-      (this.dimensions.height *
-        (100 - (properties.showTotal ? properties.totalHeightPercentage : 0))) /
-      100;
+      (this.dimensions.height * (100 - (properties.showTotal ? properties.totalHeightPercentage : 0))) / 100;
     let effectiveScaleY = properties.scaleY;
     let height = ((totalHeight / properties.numCharts) * effectiveScaleY) / 100;
     let originalHeight = totalHeight / properties.numCharts;
 
     // This makes sure that no chart goes out of the frame
-    height =
-      Math.min(height, this.dimensions.height - totalHeight + originalHeight) +
-      topMargin;
+    height = Math.min(height, this.dimensions.height - totalHeight + originalHeight) + topMargin;
 
     let shiftY = this.dimensions.height - totalHeight;
     let maxY = this.maxY.getMaxY(undefined);
 
-    return new ChartDimensions(
-      width,
-      height,
-      totalHeight,
-      originalHeight,
-      shiftY,
-      maxY
-    );
+    return new ChartDimensions(width, height, totalHeight, originalHeight, shiftY, maxY);
   }
 
   private uniqueFilters(filters: Set<Filter>): Set<Filter> {

@@ -7,24 +7,16 @@ export class ChartsSvgElements {
   private chartsElements: SvgElement[] = [];
   private presentationElements: PresentationElement[] = [];
 
-  constructor(
-    chartElements: PresentationElement,
-    ...presentationElements: PresentationElement[]
-  ) {
+  constructor(chartElements: PresentationElement, ...presentationElements: PresentationElement[]) {
     this.chartsElements = chartElements.toSvgElements([]);
-    presentationElements.forEach((presentationElement) =>
-      this.presentationElements.push(presentationElement)
-    );
+    presentationElements.forEach((presentationElement) => this.presentationElements.push(presentationElement));
   }
 
   getAllElements(): SvgElement[] {
     let result: SvgElement[] = [];
 
     this.presentationElements.forEach(
-      (presentationElement) =>
-        (result = result.concat(
-          presentationElement.toSvgElements(this.chartsElements)
-        ))
+      (presentationElement) => (result = result.concat(presentationElement.toSvgElements(this.chartsElements)))
     );
 
     return this.chartsElements.concat(result);
@@ -38,10 +30,7 @@ export class ChartsSvgElements {
     let id = field + ID_KV_SEPERATOR + value;
 
     for (let index = 0; index < this.chartsElements.length; index++) {
-      if (
-        this.chartsElements[index].isChartGroup &&
-        this.chartsElements[index].id == id
-      ) {
+      if (this.chartsElements[index].isChartGroup && this.chartsElements[index].id == id) {
         return this.chartsElements[index].boundingBox;
       }
     }

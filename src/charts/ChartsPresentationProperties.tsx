@@ -12,12 +12,7 @@ export class ChartsPresentationProperties {
   outlineColor: Color;
   stepped: boolean;
 
-  constructor(
-    isTotal: boolean,
-    palette: ColorPalette,
-    outlineColor: Color,
-    panelOptions: SierraPlotOptions
-  ) {
+  constructor(isTotal: boolean, palette: ColorPalette, outlineColor: Color, panelOptions: SierraPlotOptions) {
     this.isTotal = isTotal;
     this.palette = palette;
     this.glow = panelOptions.glow;

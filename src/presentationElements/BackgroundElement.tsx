@@ -30,18 +30,15 @@ export class BackgroundElement implements PresentationElement {
     bottomBoundingBox.minX += this.minX;
     topBoundingBox.minX += this.minX;
 
-    let backgroundElementDatapoints: Coordinates[] =
-      this.getBackgroundElementCoordinates(topBoundingBox, bottomBoundingBox);
-    let backgroundElement = this.buildBackgroundElement(
-      backgroundElementDatapoints,
-      this.color
+    let backgroundElementDatapoints: Coordinates[] = this.getBackgroundElementCoordinates(
+      topBoundingBox,
+      bottomBoundingBox
     );
+    let backgroundElement = this.buildBackgroundElement(backgroundElementDatapoints, this.color);
     return [backgroundElement];
   }
 
-  private calculateTopBoundingBox(
-    chartsSvgElements: SvgElement[]
-  ): BoundingBox | undefined {
+  private calculateTopBoundingBox(chartsSvgElements: SvgElement[]): BoundingBox | undefined {
     // Iterating backwards to skip all the presentation elements
     // Using the first and second (non-Total) charts to extrapolate the top bounding box
 
@@ -54,10 +51,7 @@ export class BackgroundElement implements PresentationElement {
         chartsSvgElements[index].id != TOTAL_ELEMENT_ID
       ) {
         first = chartsSvgElements[index].children[0].boundingBox;
-      } else if (
-        chartsSvgElements[index].isGroup() &&
-        chartsSvgElements[index].id != TOTAL_ELEMENT_ID
-      ) {
+      } else if (chartsSvgElements[index].isGroup() && chartsSvgElements[index].id != TOTAL_ELEMENT_ID) {
         second = chartsSvgElements[index].children[0].boundingBox;
         break;
       }
@@ -80,10 +74,7 @@ export class BackgroundElement implements PresentationElement {
     return undefined;
   }
 
-  private buildBackgroundElement(
-    backgroundElementDatapoints: Coordinates[],
-    color: string
-  ) {
+  private buildBackgroundElement(backgroundElementDatapoints: Coordinates[], color: string) {
     let backgroundElement = new SvgPolygon();
     backgroundElement.dataPoints = backgroundElementDatapoints;
     backgroundElement.id = 'bg';
@@ -93,22 +84,13 @@ export class BackgroundElement implements PresentationElement {
     return backgroundElement;
   }
 
-  private getBackgroundElementCoordinates(
-    topBoundingBox: BoundingBox,
-    bottomBoundingBox: BoundingBox
-  ): Coordinates[] {
+  private getBackgroundElementCoordinates(topBoundingBox: BoundingBox, bottomBoundingBox: BoundingBox): Coordinates[] {
     let coordinates: Coordinates[] = [];
 
     let topLeft = new Coordinates(topBoundingBox.minX, topBoundingBox.maxY);
     let topRight = new Coordinates(topBoundingBox.maxX, topBoundingBox.maxY);
-    let bottomLeft = new Coordinates(
-      bottomBoundingBox.minX,
-      bottomBoundingBox.maxY
-    );
-    let bottomRight = new Coordinates(
-      bottomBoundingBox.maxX,
-      bottomBoundingBox.maxY
-    );
+    let bottomLeft = new Coordinates(bottomBoundingBox.minX, bottomBoundingBox.maxY);
+    let bottomRight = new Coordinates(bottomBoundingBox.maxX, bottomBoundingBox.maxY);
 
     coordinates.push(topLeft);
     coordinates.push(topRight);

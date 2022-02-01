@@ -4,13 +4,7 @@ import { RGB } from 'colors/RGB';
 
 export function hexToRgb(hex: string): RGB {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result
-    ? new RGB(
-        parseInt(result[1], 16),
-        parseInt(result[2], 16),
-        parseInt(result[3], 16)
-      )
-    : new RGB(0, 0, 0);
+  return result ? new RGB(parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)) : new RGB(0, 0, 0);
 }
 
 export function hexToHsl(hex: string): HSL {

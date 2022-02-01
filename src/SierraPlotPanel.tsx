@@ -15,13 +15,7 @@ export { seriesField };
 
 interface Props extends PanelProps<SierraPlotOptions> {}
 
-export const SierraPlotPanel: React.FC<Props> = ({
-  options,
-  data,
-  width,
-  height,
-  onOptionsChange
-}) => {
+export const SierraPlotPanel: React.FC<Props> = ({ options, data, width, height, onOptionsChange }) => {
   const xAxisHeight = X_AXIS_HEIGHT;
   const styles = getStyles();
 
@@ -65,6 +59,6 @@ const getStyles = stylesFactory(() => {
       bottom: 0;
       left: 0;
       padding: 10px;
-    `
+    `,
   };
 });

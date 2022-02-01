@@ -20,10 +20,7 @@ export class TotalChartData extends ChartData {
 
     return chartGroup;
   }
-  protected getChartLabel(
-    sierraPlotProperties: SierraPlotProperties,
-    panelOptions: SierraPlotOptions
-  ): ChartLabel {
+  protected getChartLabel(sierraPlotProperties: SierraPlotProperties, panelOptions: SierraPlotOptions): ChartLabel {
     return ChartLabel.empty();
   }
   protected getChartsPresentationProperties(
@@ -37,44 +34,22 @@ export class TotalChartData extends ChartData {
       true,
       panelOptions.chartBreakdownType
     );
-    return new ChartsPresentationProperties(
-      true,
-      palette,
-      Black(),
-      panelOptions
-    );
+    return new ChartsPresentationProperties(true, palette, Black(), panelOptions);
   }
-  protected getEffectiveGroupMaxY(
-    sierraPlotProperties: SierraPlotProperties
-  ): number | undefined {
+  protected getEffectiveGroupMaxY(sierraPlotProperties: SierraPlotProperties): number | undefined {
     return undefined;
   }
-  protected getEffectiveStartY(
-    sierraPlotProperties: SierraPlotProperties,
-    numCharts: number
-  ): number {
+  protected getEffectiveStartY(sierraPlotProperties: SierraPlotProperties, numCharts: number): number {
     return this.getEffectiveChartHeight(sierraPlotProperties);
   }
-  protected getEffectiveMaxY(
-    sierraPlotProperties: SierraPlotProperties
-  ): number | undefined {
+  protected getEffectiveMaxY(sierraPlotProperties: SierraPlotProperties): number | undefined {
     return undefined;
   }
-  protected getEffectiveChartHeight(
-    sierraPlotProperties: SierraPlotProperties
-  ): number {
-    return (
-      sierraPlotProperties.dimensions.height -
-      sierraPlotProperties.chartDimensions.totalHeight
-    );
+  protected getEffectiveChartHeight(sierraPlotProperties: SierraPlotProperties): number {
+    return sierraPlotProperties.dimensions.height - sierraPlotProperties.chartDimensions.totalHeight;
   }
 
-  constructor(
-    name: string,
-    sortKey: string | undefined,
-    breakDownField: string,
-    type: ChartType = 'other'
-  ) {
+  constructor(name: string, sortKey: string | undefined, breakDownField: string, type: ChartType = 'other') {
     super(name, sortKey, breakDownField, type);
   }
 }

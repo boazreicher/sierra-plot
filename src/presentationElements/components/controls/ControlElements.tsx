@@ -6,14 +6,7 @@ import { Defs } from './Defs';
 import { FogBtn, FogOperation } from './Fog';
 import { Timer } from './Timer';
 import { Grid } from './Grid';
-import {
-  ChartChart,
-  ChartSeries,
-  TotalChart,
-  TotalGroup,
-  TotalSeries,
-  TotalTotal
-} from './Chart';
+import { ChartChart, ChartSeries, TotalChart, TotalGroup, TotalSeries, TotalTotal } from './Chart';
 import { Container } from './Container';
 import { RangeSelector } from './RangeSelector';
 import { ScaleType } from './ScaleType';
@@ -23,11 +16,7 @@ export const ControlElements = ({
 }: React.SVGProps<SVGElement> & { chartsSvgElements: ChartsSvgElements } & {
   panelOptions: SierraPlotOptions;
 } & { onOptionsChange: optionsChangeCallback }) =>
-  createControlElements(
-    props.chartsSvgElements,
-    props.panelOptions,
-    props.onOptionsChange
-  );
+  createControlElements(props.chartsSvgElements, props.panelOptions, props.onOptionsChange);
 
 function createControlElements(
   chartsSvgElements: ChartsSvgElements,

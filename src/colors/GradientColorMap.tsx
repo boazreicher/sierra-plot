@@ -10,7 +10,7 @@ import {
   ID_PREFIX_TOTAL_ELEMENT,
   ID_SEPERATOR,
   LUMINANCE_INCEASE_CHARTS,
-  TOTAL_ELEMENT_ID
+  TOTAL_ELEMENT_ID,
 } from 'Constants';
 import { ElementId } from 'data/ElementId';
 
@@ -23,10 +23,7 @@ export class GradientColorMap implements ColorPalette {
   addColor(key: string, color: Color) {
     var elements = key.split(ID_SEPERATOR);
     var type = elements[0];
-    if (
-      type == ID_PREFIX_TOTAL_ELEMENT &&
-      elements[elements.length - 1] == TOTAL_ELEMENT_ID
-    ) {
+    if (type == ID_PREFIX_TOTAL_ELEMENT && elements[elements.length - 1] == TOTAL_ELEMENT_ID) {
       this.total = color;
       return;
     }
@@ -41,27 +38,21 @@ export class GradientColorMap implements ColorPalette {
         case ID_TYPE_SERIES_ELEMENT:
           if (!this.seriesElements.hasOwnProperty(value)) {
             var newColor = color.clone().toHsl();
-            newColor.shiftHue(
-              HUE_SHIFT_SERIES * Object.keys(this.seriesElements).length
-            );
+            newColor.shiftHue(HUE_SHIFT_SERIES * Object.keys(this.seriesElements).length);
             this.seriesElements[value] = newColor;
           }
           break;
         case ID_TYPE_CHART_ELEMENT:
           if (!this.chartElements.hasOwnProperty(value)) {
             var newColor = color.clone().toHsl();
-            newColor.increaseLuminance(
-              LUMINANCE_INCEASE_CHARTS * Object.keys(this.chartElements).length
-            );
+            newColor.increaseLuminance(LUMINANCE_INCEASE_CHARTS * Object.keys(this.chartElements).length);
             this.chartElements[value] = newColor;
           }
           break;
         case ID_TYPE_GROUP_ELEMENT:
           if (!this.groupElements.hasOwnProperty(value)) {
             var newColor = color.clone().toHsl();
-            newColor.shiftHue(
-              HUE_SHIFT_GROUPS * Object.keys(this.groupElements).length
-            );
+            newColor.shiftHue(HUE_SHIFT_GROUPS * Object.keys(this.groupElements).length);
             this.groupElements[value] = newColor;
           }
           break;
@@ -72,10 +63,7 @@ export class GradientColorMap implements ColorPalette {
   }
 
   getColorFor(elementId: ElementId): Color {
-    if (
-      elementId.type == ID_PREFIX_TOTAL_ELEMENT &&
-      elementId.value == TOTAL_ELEMENT_ID
-    ) {
+    if (elementId.type == ID_PREFIX_TOTAL_ELEMENT && elementId.value == TOTAL_ELEMENT_ID) {
       if (this.total === undefined) {
         throw new Error('No color defined for total');
       }

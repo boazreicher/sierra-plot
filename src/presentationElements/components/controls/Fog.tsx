@@ -18,19 +18,9 @@ export function FogBtn(
   }
 }
 
-function fogToggle(
-  panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback
-) {
+function fogToggle(panelOptions: SierraPlotOptions, onOptionsChange: optionsChangeCallback) {
   return (
-    <g
-      onClick={getFogOnClickHandler(
-        FogOperation.TOGGLE,
-        panelOptions,
-        onOptionsChange
-      )}
-      className={CLICKABLE_CLASS}
-    >
+    <g onClick={getFogOnClickHandler(FogOperation.TOGGLE, panelOptions, onOptionsChange)} className={CLICKABLE_CLASS}>
       <path
         id="fog"
         style={getStyleObj(
@@ -44,19 +34,9 @@ function fogToggle(
   );
 }
 
-function fogBtnUp(
-  panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback
-) {
+function fogBtnUp(panelOptions: SierraPlotOptions, onOptionsChange: optionsChangeCallback) {
   return (
-    <g
-      onClick={getFogOnClickHandler(
-        FogOperation.UP,
-        panelOptions,
-        onOptionsChange
-      )}
-      className={CLICKABLE_CLASS}
-    >
+    <g onClick={getFogOnClickHandler(FogOperation.UP, panelOptions, onOptionsChange)} className={CLICKABLE_CLASS}>
       <path
         style={getStyleObj(
           'fill:url(#linearGradient8241);fill-opacity:1;stroke:#000000;stroke-width:3.24637444;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
@@ -69,19 +49,9 @@ function fogBtnUp(
   );
 }
 
-function fogBtnDown(
-  panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback
-) {
+function fogBtnDown(panelOptions: SierraPlotOptions, onOptionsChange: optionsChangeCallback) {
   return (
-    <g
-      onClick={getFogOnClickHandler(
-        FogOperation.DOWN,
-        panelOptions,
-        onOptionsChange
-      )}
-      className={CLICKABLE_CLASS}
-    >
+    <g onClick={getFogOnClickHandler(FogOperation.DOWN, panelOptions, onOptionsChange)} className={CLICKABLE_CLASS}>
       <path
         style={getStyleObj(
           'fill:url(#linearGradient8143);fill-opacity:1;stroke:#000000;stroke-width:3.24637428;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'
@@ -126,5 +96,5 @@ function getFogStroke(showFog: boolean) {
 export enum FogOperation {
   TOGGLE,
   UP,
-  DOWN
+  DOWN,
 }

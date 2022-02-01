@@ -35,10 +35,7 @@ export function getOnClickHandlerForChart(
     ) {
       panelOptions.selectedChart.deselect();
     } else {
-      panelOptions.selectedChart = new Selection(
-        panelOptions.chartsFieldBreakdown,
-        chartName
-      );
+      panelOptions.selectedChart = new Selection(panelOptions.chartsFieldBreakdown, chartName);
       panelOptions.selectedChart.x = x;
       panelOptions.selectedChart.y = y;
       panelOptions.selectedChart.type = SelectionType.Chart;

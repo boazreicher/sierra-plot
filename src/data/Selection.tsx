@@ -24,21 +24,13 @@ export class Selection {
   }
 
   updatePositionForGroup(groupName: string, x: number, y: number) {
-    if (
-      this.active &&
-      this.type === SelectionType.Group &&
-      this.value == groupName
-    ) {
+    if (this.active && this.type === SelectionType.Group && this.value == groupName) {
       this.x = x;
       this.y = y;
     }
   }
   updatePositionForChart(chartName: string, x: number, y: number) {
-    if (
-      this.active &&
-      this.type === SelectionType.Chart &&
-      this.value == chartName
-    ) {
+    if (this.active && this.type === SelectionType.Chart && this.value == chartName) {
       this.x = x;
       this.y = y;
     }
@@ -48,5 +40,5 @@ export class Selection {
 export enum SelectionType {
   None = 1,
   Chart,
-  Group
+  Group,
 }

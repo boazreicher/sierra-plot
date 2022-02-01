@@ -3,15 +3,9 @@ import * as React from 'react';
 import { optionsChangeCallback, SierraPlotOptions } from 'types';
 import { getStyleObj } from './Utils';
 
-export function Grid(
-  panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback
-) {
+export function Grid(panelOptions: SierraPlotOptions, onOptionsChange: optionsChangeCallback) {
   return (
-    <g
-      onClick={getGridOnClickHandler(panelOptions, onOptionsChange)}
-      className={CLICKABLE_CLASS}
-    >
+    <g onClick={getGridOnClickHandler(panelOptions, onOptionsChange)} className={CLICKABLE_CLASS}>
       <rect
         style={getStyleObj(
           'fill:url(#linearGradient16762);fill-opacity:1;stroke:#000000;stroke-width:0.735;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1'

@@ -31,10 +31,7 @@ export class HSLFilter extends Filter {
       throw new Error('Failed to extract components from ' + hsl);
     }
 
-    return new HSLFilter(
-      new HSL(+hslComponents[1], +hslComponents[2], +hslComponents[3]),
-      hsl[1]
-    );
+    return new HSLFilter(new HSL(+hslComponents[1], +hslComponents[2], +hslComponents[3]), hsl[1]);
   }
 }
 

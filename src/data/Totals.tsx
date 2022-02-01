@@ -4,7 +4,7 @@ import {
   ID_TYPE_CHART_ELEMENT,
   ID_TYPE_GROUP_ELEMENT,
   ID_TYPE_SERIES_ELEMENT,
-  TOTAL_ELEMENT_ID
+  TOTAL_ELEMENT_ID,
 } from 'Constants';
 import { Coordinates, SierraPlotOptions } from 'types';
 import { DataPoint } from './DataPoint';
@@ -17,11 +17,7 @@ export class Totals {
   multi: DataSeries[] = [];
   original: DataSeries;
 
-  constructor(
-    charts: ChartData[],
-    original: DataSeries,
-    panelOptions: SierraPlotOptions
-  ) {
+  constructor(charts: ChartData[], original: DataSeries, panelOptions: SierraPlotOptions) {
     this.single = this.calculateTotalsSingle(charts);
     this.multi = this.calculateTotalsSeries(charts, panelOptions);
     this.original = original;
@@ -63,10 +59,8 @@ export class Totals {
   getSelectedTotals(panelOptions: SierraPlotOptions): DataSeries[] {
     if (
       panelOptions.totalBreakdown == 'chart' ||
-      (panelOptions.totalBreakdown == 'group' &&
-        panelOptions.chartsGroupField !== undefined) ||
-      (panelOptions.totalBreakdown == 'series' &&
-        panelOptions.seriesFieldBreakdown !== undefined)
+      (panelOptions.totalBreakdown == 'group' && panelOptions.chartsGroupField !== undefined) ||
+      (panelOptions.totalBreakdown == 'series' && panelOptions.seriesFieldBreakdown !== undefined)
     ) {
       return this.multi;
     } else {
@@ -74,10 +68,7 @@ export class Totals {
     }
   }
 
-  private calculateTotalsSeries(
-    sortedChartsSeries: ChartData[],
-    panelOptions: SierraPlotOptions
-  ): DataSeries[] {
+  private calculateTotalsSeries(sortedChartsSeries: ChartData[], panelOptions: SierraPlotOptions): DataSeries[] {
     var stacked: DataSeries[] = [];
     var stacked100: DataSeries[] = [];
     var summationsForGroups: Record<string, DataSeries> = {};
@@ -88,44 +79,26 @@ export class Totals {
       panelOptions.selectedChart.active &&
       panelOptions.selectedChart.type === SelectionType.Group
     ) {
-      if (
-        panelOptions.totalBreakdown == 'series' &&
-        panelOptions.seriesFieldBreakdown !== undefined
-      ) {
-        this.getTotalsBreakDownForSeries(
-          sortedChartsSeries,
-          summationsForGroups,
-          panelOptions.selectedChart.value
-        );
+      if (panelOptions.totalBreakdown == 'series' && panelOptions.seriesFieldBreakdown !== undefined) {
+        this.getTotalsBreakDownForSeries(sortedChartsSeries, summationsForGroups, panelOptions.selectedChart.value);
       } else {
-        this.getTotalsBreakDownForCharts(
-          sortedChartsSeries,
-          summationsForGroups,
-          panelOptions.selectedChart.value
-        );
+        this.getTotalsBreakDownForCharts(sortedChartsSeries, summationsForGroups, panelOptions.selectedChart.value);
       }
     } else {
       switch (panelOptions.totalBreakdown) {
         case 'none':
           break;
         case 'series':
-          this.getTotalsBreakDownForSeries(
-            sortedChartsSeries,
-            summationsForGroups
-          );
+          this.getTotalsBreakDownForSeries(sortedChartsSeries, summationsForGroups);
           break;
         case 'chart':
-          this.getTotalsBreakDownForCharts(
-            sortedChartsSeries,
-            summationsForGroups
-          );
+          this.getTotalsBreakDownForCharts(sortedChartsSeries, summationsForGroups);
           break;
         case 'group':
           this.getTotalsBreakDownForGroups(
             sortedChartsSeries,
             summationsForGroups,
-            panelOptions.totalChartType == 'line' &&
-              panelOptions.aggregation == 'avg'
+            panelOptions.totalChartType == 'line' && panelOptions.aggregation == 'avg'
           );
           break;
       }
@@ -136,20 +109,14 @@ export class Totals {
       summations100ForGroups[group] = summationsForGroups[group].clone();
     }
 
-    for (
-      var index = 0;
-      index < sortedChartsSeries[0].data[0].dataPoints.length;
-      index++
-    ) {
+    for (var index = 0; index < sortedChartsSeries[0].data[0].dataPoints.length; index++) {
       var sum = 0;
       for (let group in summationsForGroups) {
         sum += summationsForGroups[group].dataPoints[index].y();
       }
       for (let group in summationsForGroups) {
         summations100ForGroups[group].dataPoints[index].setY(
-          sum == 0
-            ? 0
-            : (100 * summationsForGroups[group].dataPoints[index].y()) / sum
+          sum == 0 ? 0 : (100 * summationsForGroups[group].dataPoints[index].y()) / sum
         );
       }
     }
@@ -189,8 +156,7 @@ export class Totals {
         }
         if (!summationsForGroups.hasOwnProperty(seriesName)) {
           summationsForGroups[seriesName] = chart.data[0].getEmptySeries();
-          summationsForGroups[seriesName].name =
-            ID_TYPE_SERIES_ELEMENT + ID_KV_SEPERATOR + seriesName;
+          summationsForGroups[seriesName].name = ID_TYPE_SERIES_ELEMENT + ID_KV_SEPERATOR + seriesName;
         }
         summationsForGroups[seriesName].sum(series);
       });
@@ -218,8 +184,7 @@ export class Totals {
       }
       if (!summationsForGroups.hasOwnProperty(chart.name)) {
         summationsForGroups[chart.name] = chart.data[0].getEmptySeries();
-        summationsForGroups[chart.name].name =
-          ID_TYPE_CHART_ELEMENT + ID_KV_SEPERATOR + chart.name;
+        summationsForGroups[chart.name].name = ID_TYPE_CHART_ELEMENT + ID_KV_SEPERATOR + chart.name;
         summationsForGroups[chart.name].sortKey = chart.sortKey;
       }
       for (let index = 0; index < chart.data.length; index++) {
@@ -240,15 +205,11 @@ export class Totals {
       }
       if (!summationsForGroups.hasOwnProperty(chart.sortKey)) {
         summationsForGroups[chart.sortKey] = chart.data[0].getEmptySeries();
-        summationsForGroups[chart.sortKey].name =
-          ID_TYPE_GROUP_ELEMENT + ID_KV_SEPERATOR + chart.sortKey;
+        summationsForGroups[chart.sortKey].name = ID_TYPE_GROUP_ELEMENT + ID_KV_SEPERATOR + chart.sortKey;
       }
       for (let index = 0; index < chart.data.length; index++) {
         if (average) {
-          summationsForGroups[chart.sortKey].average(
-            chart.data[index],
-            chart.data[index].getEmptySeries()
-          );
+          summationsForGroups[chart.sortKey].average(chart.data[index], chart.data[index].getEmptySeries());
         } else {
           summationsForGroups[chart.sortKey].sum(chart.data[index]);
         }
@@ -264,16 +225,11 @@ export class Totals {
 
     charts.forEach((chart) => {
       for (var index = 0; index < chart.data.length; index++) {
-        for (
-          var xIndex = 0;
-          xIndex < chart.data[index].dataPoints.length;
-          xIndex++
-        ) {
+        for (var xIndex = 0; xIndex < chart.data[index].dataPoints.length; xIndex++) {
           if (!sums.hasOwnProperty(chart.data[index].dataPoints[xIndex].x())) {
             sums[chart.data[index].dataPoints[xIndex].x()] = 0;
           }
-          sums[chart.data[index].dataPoints[xIndex].x()] +=
-            chart.data[index].dataPoints[xIndex].y();
+          sums[chart.data[index].dataPoints[xIndex].x()] += chart.data[index].dataPoints[xIndex].y();
         }
       }
     });
@@ -284,9 +240,7 @@ export class Totals {
     }
 
     keys.forEach((xValue) => {
-      result.dataPoints.push(
-        new DataPoint(new Coordinates(xValue, sums[xValue]))
-      );
+      result.dataPoints.push(new DataPoint(new Coordinates(xValue, sums[xValue])));
     });
 
     return result;

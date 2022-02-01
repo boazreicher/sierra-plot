@@ -5,8 +5,7 @@ import { SierraPlotSvgElement } from './SierraPlotSvgElement';
 
 export const SierraPlotSvgElements = ({
   ...props
-}: React.SVGProps<SVGElement> & { chartsSvgElements: ChartsSvgElements }) =>
-  createElements(props.chartsSvgElements);
+}: React.SVGProps<SVGElement> & { chartsSvgElements: ChartsSvgElements }) => createElements(props.chartsSvgElements);
 
 function createElements(chartsSvgElements: ChartsSvgElements) {
   return (

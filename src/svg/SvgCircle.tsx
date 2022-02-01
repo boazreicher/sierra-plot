@@ -17,11 +17,7 @@ export class SvgCircle extends SvgElement {
 
   buildElement(height?: number): JSX.Element {
     return (
-      <Tooltip
-        content={
-          this.toolTipContent === undefined ? <></> : this.toolTipContent
-        }
-      >
+      <Tooltip content={this.toolTipContent === undefined ? <></> : this.toolTipContent}>
         <circle
           id={this.id}
           className={this.class}

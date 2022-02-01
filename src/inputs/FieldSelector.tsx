@@ -2,12 +2,7 @@ import { SelectableValue, StandardEditorProps } from '@grafana/data';
 import { Select } from '@grafana/ui';
 import React from 'react';
 
-export const FieldSelector: React.FC<StandardEditorProps<string>> = ({
-  item,
-  value,
-  onChange,
-  context
-}) => {
+export const FieldSelector: React.FC<StandardEditorProps<string>> = ({ item, value, onChange, context }) => {
   const options: SelectableValue<string>[] = [];
 
   let values: Set<string> = new Set();
@@ -31,7 +26,7 @@ export const FieldSelector: React.FC<StandardEditorProps<string>> = ({
     for (let value of values) {
       options.push({
         label: value,
-        value: value
+        value: value,
       });
     }
   }

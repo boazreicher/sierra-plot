@@ -10,12 +10,7 @@ export class MaxY {
   total: number | undefined;
   group: Record<string, number> | undefined;
 
-  constructor(
-    maxYType: ScaleType,
-    chartType: ChartType,
-    charts: ChartData[],
-    totals: Totals
-  ) {
+  constructor(maxYType: ScaleType, chartType: ChartType, charts: ChartData[], totals: Totals) {
     this.scaleType = maxYType;
     if (maxYType === 'group') {
       this.group = this.generateMaxYValueForGroups(charts, chartType);
@@ -24,10 +19,7 @@ export class MaxY {
     this.total = this.calculateMaxYForSingleSeries(totals.single);
   }
 
-  private generateMaxYValueForGroups(
-    charts: ChartData[],
-    chartType: ChartType
-  ): Record<string, number> {
+  private generateMaxYValueForGroups(charts: ChartData[], chartType: ChartType): Record<string, number> {
     var result: Record<string, number> = {};
 
     charts.forEach((chart) => {
@@ -70,37 +62,23 @@ export class MaxY {
     return result;
   }
 
-  private calculateMaxY(
-    chartsSeries: ChartData[],
-    chartType: ChartType
-  ): number {
+  private calculateMaxY(chartsSeries: ChartData[], chartType: ChartType): number {
     let maxY = 0;
 
     chartsSeries.forEach((chart) => {
       let chartSums: Record<number, number> = {};
       for (let index = 0; index < chart.data.length; index++) {
-        for (
-          let xIndex = 0;
-          xIndex < chart.data[index].dataPoints.length;
-          xIndex++
-        ) {
-          if (
-            !chartSums.hasOwnProperty(chart.data[index].dataPoints[xIndex].x())
-          ) {
+        for (let xIndex = 0; xIndex < chart.data[index].dataPoints.length; xIndex++) {
+          if (!chartSums.hasOwnProperty(chart.data[index].dataPoints[xIndex].x())) {
             chartSums[chart.data[index].dataPoints[xIndex].x()] = 0;
           }
           if (chartType == 'area') {
             // Calculate maxY as sum, since chart is stacked
-            chartSums[chart.data[index].dataPoints[xIndex].x()] +=
-              chart.data[index].dataPoints[xIndex].y();
+            chartSums[chart.data[index].dataPoints[xIndex].x()] += chart.data[index].dataPoints[xIndex].y();
           } else {
             // Calculate maxY seperatly for each series, since there's no stacking
-            if (
-              chartSums[chart.data[index].dataPoints[xIndex].x()] <
-              chart.data[index].dataPoints[xIndex].y()
-            ) {
-              chartSums[chart.data[index].dataPoints[xIndex].x()] =
-                chart.data[index].dataPoints[xIndex].y();
+            if (chartSums[chart.data[index].dataPoints[xIndex].x()] < chart.data[index].dataPoints[xIndex].y()) {
+              chartSums[chart.data[index].dataPoints[xIndex].x()] = chart.data[index].dataPoints[xIndex].y();
             }
           }
         }

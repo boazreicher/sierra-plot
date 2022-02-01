@@ -13,12 +13,7 @@ export class Charts {
   totals: Totals;
   totalChart: TotalChartData;
 
-  constructor(
-    charts: ChartData[],
-    totals: Totals,
-    properties: SierraPlotProperties,
-    panelOptions: SierraPlotOptions
-  ) {
+  constructor(charts: ChartData[], totals: Totals, properties: SierraPlotProperties, panelOptions: SierraPlotOptions) {
     this.charts = charts;
     this.totals = totals;
     this.totalChart = new TotalChartData(
@@ -47,11 +42,7 @@ export class Charts {
     return this.totalChart.dimensions;
   }
 
-  getLabels(
-    selection: Selection,
-    selectedGroup: ChartGroup,
-    enabled: boolean
-  ): SvgElement[] {
+  getLabels(selection: Selection, selectedGroup: ChartGroup, enabled: boolean): SvgElement[] {
     if (!enabled) {
       return [];
     }
@@ -73,10 +64,7 @@ export class Charts {
     return elements;
   }
 
-  private buildCharts(
-    sierraPlotProperties: SierraPlotProperties,
-    panelOptions: SierraPlotOptions
-  ) {
+  private buildCharts(sierraPlotProperties: SierraPlotProperties, panelOptions: SierraPlotOptions) {
     this.charts.forEach((chart) => {
       chart.type = panelOptions.chartType;
       chart.colorMode = panelOptions.colorMode;
@@ -88,10 +76,7 @@ export class Charts {
         panelOptions.selectedChart.type == SelectionType.Group
           ? panelOptions.selectedChart.value
           : UNKNOWN_SELECTION_VALUE;
-      if (
-        selectedGroup != UNKNOWN_SELECTION_VALUE &&
-        selectedGroup != chart.sortKey
-      ) {
+      if (selectedGroup != UNKNOWN_SELECTION_VALUE && selectedGroup != chart.sortKey) {
         chart.inSelectedGroup = false;
       }
     });

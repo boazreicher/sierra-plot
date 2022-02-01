@@ -1,8 +1,4 @@
-import {
-  ID_PREFIX_TOTAL_ELEMENT,
-  ID_SEPERATOR,
-  TOTAL_ELEMENT_ID
-} from 'Constants';
+import { ID_PREFIX_TOTAL_ELEMENT, ID_SEPERATOR, TOTAL_ELEMENT_ID } from 'Constants';
 import { SvgElement } from 'svg/SvgElement';
 import { Dimensions } from 'types';
 import { DataSeries } from 'data/DataSeries';
@@ -14,11 +10,7 @@ export abstract class Chart<ElementType extends SeriesElement> {
   id: string;
   chartDimensions: Dimensions;
 
-  constructor(
-    id: string,
-    chartDimensions: Dimensions,
-    private type: new () => ElementType
-  ) {
+  constructor(id: string, chartDimensions: Dimensions, private type: new () => ElementType) {
     this.id = id;
     this.chartDimensions = chartDimensions;
   }
@@ -34,15 +26,9 @@ export abstract class Chart<ElementType extends SeriesElement> {
       chartsPresentationProperties.stepped
     );
 
-    let formattedSeriesElements = this.formatSeriesElements(
-      seriesElements,
-      numDataPoints
-    );
+    let formattedSeriesElements = this.formatSeriesElements(seriesElements, numDataPoints);
 
-    return this.generateSvgElements(
-      formattedSeriesElements,
-      chartsPresentationProperties
-    );
+    return this.generateSvgElements(formattedSeriesElements, chartsPresentationProperties);
   }
 
   protected generateSvgElements(
@@ -63,43 +49,26 @@ export abstract class Chart<ElementType extends SeriesElement> {
         continue;
       }
       let elementId = new ElementId(svgElement.id);
-      color = chartsPresentationProperties.palette
-        .getColorFor(elementId)
-        .toString();
+      color = chartsPresentationProperties.palette.getColorFor(elementId).toString();
 
       svgElement.stroke = color;
       svgElement.title = this.generateTitle(seriesElements[index].id);
 
-      this.setStyleForUnderlyingType(
-        svgElement,
-        color,
-        chartsPresentationProperties
-      );
+      this.setStyleForUnderlyingType(svgElement, color, chartsPresentationProperties);
 
       elements.push(svgElement);
 
       if (elementId.type == 'te') {
         if (
           index < seriesElements.length - 1 &&
-          (seriesElements[index + 1].sortKey != lastSortKey ||
-            lastSortKey === undefined)
+          (seriesElements[index + 1].sortKey != lastSortKey || lastSortKey === undefined)
         ) {
-          this.addTopSvgElement(
-            elements,
-            seriesElements[index],
-            chartsPresentationProperties,
-            true
-          );
+          this.addTopSvgElement(elements, seriesElements[index], chartsPresentationProperties, true);
         }
       }
     }
 
-    this.addTopSvgElement(
-      elements,
-      seriesElements[seriesElements.length - 1],
-      chartsPresentationProperties,
-      false
-    );
+    this.addTopSvgElement(elements, seriesElements[seriesElements.length - 1], chartsPresentationProperties, false);
 
     return elements;
   }
@@ -118,16 +87,9 @@ export abstract class Chart<ElementType extends SeriesElement> {
     chartsPresentationProperties: ChartsPresentationProperties,
     totalNotLast: boolean
   ): void;
-  protected abstract formatSeriesElements(
-    elements: SeriesElement[],
-    numDataPoints: number
-  ): SeriesElement[];
+  protected abstract formatSeriesElements(elements: SeriesElement[], numDataPoints: number): SeriesElement[];
 
-  protected buildElements(
-    series: DataSeries[],
-    isTotal: boolean,
-    stepped: boolean
-  ): SeriesElement[] {
+  protected buildElements(series: DataSeries[], isTotal: boolean, stepped: boolean): SeriesElement[] {
     var elements: SeriesElement[] = [];
 
     var effectiveMaxY = this.calculateEffectiveMaxY(series);
@@ -167,10 +129,7 @@ export abstract class Chart<ElementType extends SeriesElement> {
 
     let elementId = new ElementId(id);
 
-    if (
-      elementId.type == ID_PREFIX_TOTAL_ELEMENT &&
-      elementId.value == TOTAL_ELEMENT_ID
-    ) {
+    if (elementId.type == ID_PREFIX_TOTAL_ELEMENT && elementId.value == TOTAL_ELEMENT_ID) {
       return elementId.value;
     }
 

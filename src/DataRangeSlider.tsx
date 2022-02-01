@@ -25,7 +25,7 @@ class RangeSliderComponent extends React.Component<Props, State> {
     super(props);
     this.state = {
       selectedRange: [],
-      selectedData: []
+      selectedData: [],
     };
 
     if (props.panelOptions.showRangeSelector) {
@@ -40,10 +40,7 @@ class RangeSliderComponent extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
-    if (
-      prevProps.data === this.props.data ||
-      !this.props.panelOptions.showRangeSelector
-    ) {
+    if (prevProps.data === this.props.data || !this.props.panelOptions.showRangeSelector) {
       return;
     }
     this.createDiagram();
@@ -52,10 +49,7 @@ class RangeSliderComponent extends React.Component<Props, State> {
   render() {
     return this.props.panelOptions.showRangeSelector ? (
       <svg
-        x={getXAxisStartX(
-          this.props.sierraPlotProperties.minX,
-          this.props.sierraPlotProperties.dimensions.startX
-        )}
+        x={getXAxisStartX(this.props.sierraPlotProperties.minX, this.props.sierraPlotProperties.dimensions.startX)}
         y={getXAxisYPos(
           this.props.sierraPlotProperties.dimensions.height,
           this.props.sierraPlotProperties.dimensions.startY
@@ -65,7 +59,7 @@ class RangeSliderComponent extends React.Component<Props, State> {
           marginTop: '0px',
           borderRadius: '5px',
           paddingTop: '0px',
-          paddingLeft: '0px'
+          paddingLeft: '0px',
         }}
         ref={this.nodeRef}
       />
@@ -101,7 +95,7 @@ class RangeSliderComponent extends React.Component<Props, State> {
         this.props.onOptionsChange(this.props.panelOptions);
         this.setState({
           selectedRange: d.range,
-          selectedData: d.data
+          selectedData: d.data,
         });
       })
       .render();

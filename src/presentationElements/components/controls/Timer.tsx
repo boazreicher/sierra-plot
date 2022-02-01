@@ -1,21 +1,11 @@
 import { CLICKABLE_CLASS } from 'Constants';
 import * as React from 'react';
-import {
-  optionsChangeCallback,
-  SierraPlotOptions,
-  TransitionType
-} from 'types';
+import { optionsChangeCallback, SierraPlotOptions, TransitionType } from 'types';
 import { getStyleObj } from './Utils';
 
-export function Timer(
-  panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback
-) {
+export function Timer(panelOptions: SierraPlotOptions, onOptionsChange: optionsChangeCallback) {
   return (
-    <g
-      className={CLICKABLE_CLASS}
-      onClick={getTimerOnClickHandler(panelOptions, onOptionsChange)}
-    >
+    <g className={CLICKABLE_CLASS} onClick={getTimerOnClickHandler(panelOptions, onOptionsChange)}>
       <rect
         style={getStyleObj(
           'fill:url(#linearGradient2349);fill-opacity:1;stroke:' +
@@ -48,9 +38,7 @@ export function Timer(
       >
         <tspan
           id="tspan12002"
-          style={getStyleObj(
-            'font-size:9.76979px;fill:#d2d2d2;fill-opacity:1;stroke-width:0.366367'
-          )}
+          style={getStyleObj('font-size:9.76979px;fill:#d2d2d2;fill-opacity:1;stroke-width:0.366367')}
           x="195.16956"
           y="66.593407"
         >

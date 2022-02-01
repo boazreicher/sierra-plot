@@ -3,12 +3,7 @@ import { MultiSelect } from '@grafana/ui';
 import React from 'react';
 import { groupField } from 'SierraPlotPanel';
 
-export const GroupsSelector: React.FC<StandardEditorProps<string[]>> = ({
-  item,
-  value,
-  onChange,
-  context
-}) => {
+export const GroupsSelector: React.FC<StandardEditorProps<string[]>> = ({ item, value, onChange, context }) => {
   const options: SelectableValue<string>[] = [];
 
   options.push({ label: 'All', value: '*' });
@@ -19,11 +14,7 @@ export const GroupsSelector: React.FC<StandardEditorProps<string[]>> = ({
 
     var values: Set<string> = new Set();
     for (let i = 0; i < frames.length; i++) {
-      for (
-        let fieldIndex = 0;
-        fieldIndex < frames[i].fields.length;
-        fieldIndex++
-      ) {
+      for (let fieldIndex = 0; fieldIndex < frames[i].fields.length; fieldIndex++) {
         for (let label in frames[i].fields[fieldIndex].labels) {
           if (groupField === undefined || groupField != label) {
             continue;
@@ -44,7 +35,7 @@ export const GroupsSelector: React.FC<StandardEditorProps<string[]>> = ({
     for (let value of values) {
       options.push({
         label: value,
-        value: value
+        value: value,
       });
     }
   }

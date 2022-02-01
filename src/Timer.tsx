@@ -54,25 +54,17 @@ export class Timer {
   private constructor() {}
 
   private shouldReset(panelOptions: SierraPlotOptions): boolean {
-    if (
-      panelOptions.selectedChart === undefined ||
-      this.panelOptions?.selectedChart === undefined
-    ) {
+    if (panelOptions.selectedChart === undefined || this.panelOptions?.selectedChart === undefined) {
       return false;
     }
 
     if (this.panelOptions?.selectedChart != panelOptions.selectedChart) {
       return true;
     }
-    if (
-      this.panelOptions?.selectedChart.type != panelOptions.selectedChart.type
-    ) {
+    if (this.panelOptions?.selectedChart.type != panelOptions.selectedChart.type) {
       return true;
     }
-    if (
-      this.panelOptions?.selectedChart.hightlightMode !=
-      panelOptions.selectedChart.hightlightMode
-    ) {
+    if (this.panelOptions?.selectedChart.hightlightMode != panelOptions.selectedChart.hightlightMode) {
       return true;
     }
     if (this.panelOptions?.transitionType != panelOptions.transitionType) {
@@ -96,31 +88,17 @@ export class Timer {
     }
     this.active = true;
     this.intervalId = setInterval(() => {
-      if (
-        this.active &&
-        this.panelOptions !== undefined &&
-        this.onOptionsChange !== undefined
-      ) {
+      if (this.active && this.panelOptions !== undefined && this.onOptionsChange !== undefined) {
         switch (this.panelOptions.transitionType) {
           case 'groups':
-            this.panelOptions.selectedChart = new Selection(
-              'group',
-              this.groups[this.cursor++ % this.groups.length]
-            );
+            this.panelOptions.selectedChart = new Selection('group', this.groups[this.cursor++ % this.groups.length]);
             this.panelOptions.selectedChart.type = SelectionType.Group;
             this.panelOptions.selectedChart.hightlightMode = 'focus';
             break;
           case 'charts':
-            let chartId: string =
-              this.chartIds[this.cursor++ % this.chartIds.length];
-            let chartName = chartId.replace(
-              this.panelOptions.chartsFieldBreakdown + ID_KV_SEPERATOR,
-              ''
-            );
-            this.panelOptions.selectedChart = new Selection(
-              this.panelOptions.chartsFieldBreakdown,
-              chartName
-            );
+            let chartId: string = this.chartIds[this.cursor++ % this.chartIds.length];
+            let chartName = chartId.replace(this.panelOptions.chartsFieldBreakdown + ID_KV_SEPERATOR, '');
+            this.panelOptions.selectedChart = new Selection(this.panelOptions.chartsFieldBreakdown, chartName);
             this.panelOptions.selectedChart.x = this.charts[chartId].x;
             this.panelOptions.selectedChart.y = this.charts[chartId].y;
             this.panelOptions.selectedChart.type = SelectionType.Chart;

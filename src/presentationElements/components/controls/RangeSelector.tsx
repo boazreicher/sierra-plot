@@ -3,10 +3,7 @@ import * as React from 'react';
 import { optionsChangeCallback, SierraPlotOptions } from 'types';
 import { getStyleObj } from './Utils';
 
-export function RangeSelector(
-  panelOptions: SierraPlotOptions,
-  onOptionsChange: optionsChangeCallback
-) {
+export function RangeSelector(panelOptions: SierraPlotOptions, onOptionsChange: optionsChangeCallback) {
   return (
     <g
       id="btn_range_selector"

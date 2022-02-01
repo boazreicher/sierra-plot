@@ -21,17 +21,7 @@ export class HSL implements Color {
   }
 
   toString(): string {
-    return (
-      'hsl(' +
-      Math.round(this.h) +
-      ',' +
-      Math.round(this.s) +
-      '%,' +
-      Math.round(this.l) +
-      '%,' +
-      this.a +
-      ')'
-    );
+    return 'hsl(' + Math.round(this.h) + ',' + Math.round(this.s) + '%,' + Math.round(this.l) + '%,' + this.a + ')';
   }
 
   increaseLuminance(increasePercentage: number) {

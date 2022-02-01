@@ -41,7 +41,7 @@ export class SvgText extends SvgElement {
   getDivStyleForChartLabel() {
     const divStyle = {
       font: this.textSize + 'px Roboto, Helvetica, Arial, sans-serif',
-      fill: this.fill
+      fill: this.fill,
     };
 
     return divStyle;

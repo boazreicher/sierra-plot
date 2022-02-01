@@ -9,7 +9,7 @@ import {
   FILTER_NAME_PREFIX_SELECTED_CHART,
   FILTER_NAME_PREFIX_GROUP,
   FILTER_NAME_PREFIX_CHART,
-  FILTER_NAME_PREFIX_SERIES
+  FILTER_NAME_PREFIX_SERIES,
 } from 'Constants';
 import { HSL } from 'colors/HSL';
 import { ElementId } from 'data/ElementId';
@@ -51,15 +51,8 @@ export class PredefinedColorMap implements ColorPalette {
     throw new Error('Method not implemented.');
   }
 
-  addKey(
-    elementId: ElementId,
-    colorMode: ColorMode,
-    selected: boolean = false
-  ) {
-    if (
-      elementId.type == ID_PREFIX_TOTAL_ELEMENT &&
-      elementId.value == TOTAL_ELEMENT_ID
-    ) {
+  addKey(elementId: ElementId, colorMode: ColorMode, selected: boolean = false) {
+    if (elementId.type == ID_PREFIX_TOTAL_ELEMENT && elementId.value == TOTAL_ELEMENT_ID) {
       return;
     }
 
@@ -68,10 +61,7 @@ export class PredefinedColorMap implements ColorPalette {
       group = elementId.group;
       if (!this.groupElements.hasOwnProperty(group)) {
         let groupColor = this.groupPalette.next().toHsl();
-        this.groupElements[group] = new HSLFilter(
-          groupColor,
-          FILTER_NAME_PREFIX_GROUP
-        );
+        this.groupElements[group] = new HSLFilter(groupColor, FILTER_NAME_PREFIX_GROUP);
       }
     }
 
@@ -80,39 +70,27 @@ export class PredefinedColorMap implements ColorPalette {
         let chartColor: Color = this.chartPalette.next();
 
         if (selected) {
-          this.chartElements[elementId.chart] = new HSLFilter(
-            chartColor.toHsl(),
-            FILTER_NAME_PREFIX_SELECTED_CHART
-          );
+          this.chartElements[elementId.chart] = new HSLFilter(chartColor.toHsl(), FILTER_NAME_PREFIX_SELECTED_CHART);
         } else if (colorMode == 'group') {
           this.chartElements[elementId.chart] = new HSLFilter(
             blend(this.groupElements[group], chartColor).toHsl(),
             FILTER_NAME_PREFIX_CHART
           );
         } else {
-          this.chartElements[elementId.chart] = new HSLFilter(
-            chartColor.toHsl(),
-            FILTER_NAME_PREFIX_CHART
-          );
+          this.chartElements[elementId.chart] = new HSLFilter(chartColor.toHsl(), FILTER_NAME_PREFIX_CHART);
         }
       }
     }
     if (elementId.series !== undefined) {
       if (!this.seriesElements.hasOwnProperty(elementId.series)) {
         let seriesColor = this.seriesPalette.next();
-        this.seriesElements[elementId.series] = new HSLFilter(
-          seriesColor.toHsl(),
-          FILTER_NAME_PREFIX_SERIES
-        );
+        this.seriesElements[elementId.series] = new HSLFilter(seriesColor.toHsl(), FILTER_NAME_PREFIX_SERIES);
       }
     }
   }
 
   getColorFor(elementId: ElementId): Color {
-    if (
-      elementId.type == ID_PREFIX_TOTAL_ELEMENT &&
-      elementId.value == TOTAL_ELEMENT_ID
-    ) {
+    if (elementId.type == ID_PREFIX_TOTAL_ELEMENT && elementId.value == TOTAL_ELEMENT_ID) {
       if (this.total === undefined) {
         throw new Error('No color defined for total');
       }
@@ -121,23 +99,15 @@ export class PredefinedColorMap implements ColorPalette {
       return this.labels;
     }
 
-    if (
-      elementId.type == ID_PREFIX_TOTAL_ELEMENT &&
-      elementId.series !== undefined
-    ) {
+    if (elementId.type == ID_PREFIX_TOTAL_ELEMENT && elementId.series !== undefined) {
       return this.seriesElements[elementId.series];
     }
 
     if (elementId.series !== undefined) {
       if (elementId.chart === undefined) {
-        throw new Error(
-          'Missing chart element in ' + JSON.stringify(elementId)
-        );
+        throw new Error('Missing chart element in ' + JSON.stringify(elementId));
       } else {
-        return this.calculateSeriesElement(
-          this.seriesElements[elementId.series],
-          elementId.chart
-        );
+        return this.calculateSeriesElement(this.seriesElements[elementId.series], elementId.chart);
       }
     }
     if (elementId.chart !== undefined) {
@@ -166,9 +136,7 @@ export class PredefinedColorMap implements ColorPalette {
 
     this.currentChart = chart;
     let shifted: HSL = baseColor.clone().toHsl();
-    shifted.decreaseLuminance(
-      LUMINANCE_DECREASE_SERIES * (this.chartCursor % 2)
-    );
+    shifted.decreaseLuminance(LUMINANCE_DECREASE_SERIES * (this.chartCursor % 2));
 
     return new HSLFilter(shifted.toHsl(), FILTER_NAME_PREFIX_SERIES);
   }
