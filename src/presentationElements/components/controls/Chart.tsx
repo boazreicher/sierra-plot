@@ -265,7 +265,7 @@ export function ChartChart(panelOptions: SierraPlotOptions, onOptionsChange: opt
         id="btn_chart_chart"
         style={getStyleObj(
           'fill:' +
-            getChartColor(new RGB(102, 51, 153), panelOptions.chartBreakdownType == 'series') +
+            getChartColor(new RGB(102, 51, 153), panelOptions.chartBreakdownType === 'series') +
             ';fill-opacity:1;stroke:#0f0f0f;stroke-width:0.735;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0735,0.0735;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal'
         )}
         d="m 146.21095,73.97096 -2.87388,1.130576 -1.38427,-1.217799 -4.36676,1.562712 -3.41981,-1.80603 -4.86895,1.837975 -3.61014,-0.133484 v 0 l -2.94142,-1.217383 -2.59571,-1.217798 -3.46083,0.999473 -3.28771,0.948669 -5.9783,-1.190313 -3.23909,4.080284 v 20.201077 h 49.59058 v -20.05783 l -1.61277,-1.815406 -3.6337,1.217798 z"
@@ -371,8 +371,8 @@ function getChartBreakdownTypeOnClickHandler(
 ): React.MouseEventHandler<SVGPolygonElement> | undefined {
   var clickEventHandler: React.MouseEventHandler = (event) => {
     panelOptions.chartBreakdownType = type;
-    if (type == 'none') {
-      if (panelOptions.totalBreakdown == 'series') {
+    if (type === 'none') {
+      if (panelOptions.totalBreakdown === 'series') {
         panelOptions.totalBreakdown = 'chart';
       }
     }
@@ -413,7 +413,7 @@ function getTotalTypeOnClickHandler(
   type: TotalBreakdown
 ): React.MouseEventHandler<SVGElement> | undefined {
   var clickEventHandler: React.MouseEventHandler = (event) => {
-    if (type == 'series' && seriesDisabled(panelOptions)) {
+    if (type === 'series' && seriesDisabled(panelOptions)) {
       console.log('Button is disabled.  No series data available');
       return;
     }

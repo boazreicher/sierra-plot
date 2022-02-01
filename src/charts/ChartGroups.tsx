@@ -65,7 +65,7 @@ export class ChartGroups implements PresentationElement {
     if (!this.panelOptions.showGroups) {
       return [];
     }
-    var elements: SvgElement[] = [];
+
     for (let group in this.groups) {
       elements = elements.concat(this.groups[group].toSvgElements(this.panelOptions, this.presentationProperties));
     }
