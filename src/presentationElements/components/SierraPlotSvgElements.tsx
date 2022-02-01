@@ -14,7 +14,7 @@ function createElements(chartsSvgElements: ChartsSvgElements) {
         .getAllElements()
         .sort(compareByZOrder)
         .map((element) => (
-          <SierraPlotSvgElement element={element} height={undefined} />
+          <SierraPlotSvgElement key={element.id} element={element} height={undefined} />
         ))}
     </>
   );

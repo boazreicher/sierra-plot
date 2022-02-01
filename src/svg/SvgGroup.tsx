@@ -117,7 +117,7 @@ const getTooltip = (data: ToolTipData, chartName: string | undefined) => (
     {Object.keys(data.charts)
       .reverse()
       .map((chart) => (
-        <p style={getStyle(chart, data.charts[chart], chartName)}>{chart}</p>
+        <p key={chartName} style={getStyle(chart, data.charts[chart], chartName)}>{chart}</p>
       ))}
   </>
 );
