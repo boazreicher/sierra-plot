@@ -11,14 +11,14 @@ The following example showcases how a Sierra Plot can be used to visualize and a
 <li>split by result type (<i>OK</i> or <i>ERROR</i>)
 </ul>
 
-![initial](/img/examples/servers_requests/initial.PNG)
+![initial](/img/examples/serversrequests/initial.PNG)
 
 Before diving in, we can make the plot a bit clearer by changing the plot's [`Max Y Type`](configuration_options.md#series) from `Global` to `Group` using the [on-panel controls](controls.md)
 !!! hint inline
 
     Using `Max Y Type` => `Group` makes sense here, since comparing individual server metrics across different regions isn't very relevant.  The overall comparison across different regions is captured in the Totals chart
 
-![initial](/img/examples/servers_requests/initial_group.PNG)
+![initial](/img/examples/serversrequests/initialgroup.PNG)
 
 ### I.I  Overview
 
@@ -28,7 +28,7 @@ The Totals chart is a simple stacked area chart that clearly shows the overall t
 <br>
 By changing the [`Totals Chart Type`](configuration_options.md#totals) to `Line` and playing aroung with the `Total Height Percent` value, we get:
 
-![initial](/img/examples/servers_requests/initial_totals_trend.PNG)
+![initial](/img/examples/serversrequests/initialtotalstrend.PNG)
 
 A number of observations become apparent now:
 <ol>
@@ -44,7 +44,7 @@ A number of observations become apparent now:
 
 We can see the request count by type (<i>OK</i> or <i>ERROR</i>) by using the [`Series Breakdown`](configuration_options.md#series) and [`Totals Breakdown`](configuration_options.md#totals) features in the plot's [controls](controls.md):
 
-![errors](img/examples/servers_requests/errors_breakdown.png)
+![errors](img/examples/serversrequests/errorsbreakdown.png)
 !!! note inline
 
     Using [`Stacked100`](features.md#totals-drilldown) for the totals chart, since we usually care more about the relative error rate, and not the absoulte number of errors
@@ -68,7 +68,7 @@ To get a clear picture that specifically targets error rates (as opposed to the 
 
     Instead of the number of requests of each type, the plot now represents the relative error rate `Error / Total` for each server.  The Totals chart represents the weighted error rate across its selected breakdown
 
-![errors line](img/examples/servers_requests/errors_all.png)
+![errors line](img/examples/serversrequests/errorsall.png)
 We can now feel confident that we didn't miss anything before (for example, a high error rate during a time where the number of requests is very small, which might not be visible in a stacked area chart)
 
 ### I.II  Specific Drilldowns
@@ -78,13 +78,13 @@ Now that we have a high-level picture of the systems behaviour over the 48 hour 
 In [I.I.II](examples.md#iiii-error-trend) we saw an error spike in us-east-2 at around 12:00 PM on Jan 01
 <br>
 By [drilling down on the us-east-2 group](features.md#group-drilldown) and focusing on the specific time around the issue using the [date range control](features.md#date-range-control) we can get a clearer picture of the behavior in us-east-2 at the time of the issue:
-![spike issue](img/examples/servers_requests/errors_zoom1.png)
+![spike issue](img/examples/serversrequests/errorszoom1.png)
 !!! note inline
 
     In this example, [`Gridlines`](controls.md) were enabled.  They help us connect events in the plot to specific points in time (which might be difficult due to the plot's skew property)
 
 We'll drilldown on us-east-2 again so we can focus on it completely:
-![spike issue zoom](img/examples/servers_requests/errors_zoom2.png)
+![spike issue zoom](img/examples/serversrequests/errorszoom2.png)
 
 A number of observations become apparent now:
 <ol>
@@ -105,7 +105,7 @@ The above observations might lead us to the following conclusions:
 In [I.I.II](examples.md#iiii-error-trend) we saw an error spike in ap-southeast-1 at around 10:00 AM on Jan 01
 <br>
 By [drilling down on the ap-southeast-1 group](features.md#group-drilldown) we can get a clearer picture of the behaviour of the servers in that region:
-![spike issue 2](img/examples/servers_requests/errors_zoom_2_1.png)
+![spike issue 2](img/examples/serversrequests/errorszoom21.png)
 
 A number of observations become apparent now:
 <ol>
@@ -123,11 +123,11 @@ The above observations might lead us to the following conclusions:
 #### I.II.III  Traffic Routing
 
 If we look at us-west-1, we can spot something odd happening at around 06:00 AM Jan 01:
-![routing](img/examples/servers_requests/servers_reroute0.png)
+![routing](img/examples/serversrequests/serversreroute0.png)
 Let's drilldown further:
-![routing 2](img/examples/servers_requests/servers_reroute01.png)
+![routing 2](img/examples/serversrequests/serversreroute01.png)
 And now let's focus on the specific time range:
-![routing 3](img/examples/servers_requests/servers_reroute1.png) 
+![routing 3](img/examples/serversrequests/serversreroute1.png) 
 
 A number of observations become apparent now:
 <ol>
@@ -149,7 +149,7 @@ The above observations might lead us to the following conclusions:
 We noticed earlier that in <i>eu-central-1</i>, two servers didn't get any traffic at all during most of the 48 hour period
 <br>
 Let's focus on that region:
-![autoscaling 1](img/examples/servers_requests/autoscaling1.png)
+![autoscaling 1](img/examples/serversrequests/autoscaling1.png)
 
 A number of observations become apparent now:
 <ol>
@@ -170,7 +170,7 @@ The above observations might lead us to the following conclusions:
 </ol>
 
 Let's see if there was any noticeable effect on the amount of errors during that time:
-![autoscaling 2](img/examples/servers_requests/autoscaling2.png)
+![autoscaling 2](img/examples/serversrequests/autoscaling2.png)
 
 A number of observations become apparent now:
 <ol>
@@ -189,7 +189,7 @@ The above observations might lead us to the following conclusions:
 
 Let's focus on the regions us-east-1 and us-east-2 by selecting them as the `Group Values` in [Fields [Advanced]](configuration_options.md#fields-advanced):
 
-![region spillover 1](img/examples/servers_requests/region_spillover1.png)
+![region spillover 1](img/examples/serversrequests/regionspillover1.png)
 
 By looking at the Totals chart we can observe the following:
 <ol>
@@ -210,7 +210,7 @@ The above observations might lead us to the following conclusions:
 
 It might be interesting to change the Totals chart's stack mode to `Stacked100`, to see the relative traffic distribution between the two us-east regions:
 
-![region spillover 2](img/examples/servers_requests/region_spillover2.png)
+![region spillover 2](img/examples/serversrequests/regionspillover2.png)
 
 This shows us that the traffic distribution between the two us-east regions is roughly equal.
 <br>
@@ -274,10 +274,10 @@ The following example shows request rates across a 24 hour period (with 5 minute
 <br>
 It shows that even with a very large number of charts, overall trends and abnormal behaviours are still easy to spot:
 
-![many](img/examples/many/200_1.png)
-![many](img/examples/many/200_2.png)
-![many](img/examples/many/200_3.png)
-![many](img/examples/many/200_4.png)
+![many](img/examples/many/2001.png)
+![many](img/examples/many/2002.png)
+![many](img/examples/many/2003.png)
+![many](img/examples/many/2004.png)
 
 ### III.II 2000 Servers
 
@@ -287,7 +287,7 @@ The following example shows request rates across a 12 hour period (with 5 minute
 <br>
 Even now, trends and outliers are still readily apparent
 
-![many](img/examples/many/2000_1.png)
-![many](img/examples/many/2000_2.png)
-![many](img/examples/many/2000_3.png)
-![many](img/examples/many/2000_4.png)
+![many](img/examples/many/20001.png)
+![many](img/examples/many/20002.png)
+![many](img/examples/many/20003.png)
+![many](img/examples/many/20004.png)

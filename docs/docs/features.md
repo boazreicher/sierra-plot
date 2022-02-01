@@ -5,7 +5,7 @@
 ### Group Drilldown
 It is possible to drilldown into a specific group by clicking the (colored) group segment on the left part of the plot
 <br>
-![Image title](/img/group_drilldown_new_1.PNG)
+![Image title](/img/groupdrilldownnew1.PNG)
 <br>
 <br>
 The first drilldown focuses on the group by changing the plot's appearance in the following ways:
@@ -20,12 +20,12 @@ Changing the color palette for the charts in the selected group (to make them mo
 Having the totals chart represent only the data from the selected group
 </li>
 </ol>
-![Image title](/img/group_drilldown_new_2.PNG)
+![Image title](/img/groupdrilldownnew2.PNG)
 <br>
 <br>
 Drilling down into a group that's already in focus, changes it to exlucsive mode, where in addition to the effects of focusing the group, all of the other groups are altogether removed from the plot
 <br>
-![Image title](/img/group_drilldown_new_3.PNG)
+![Image title](/img/groupdrilldownnew3.PNG)
 <br>
 Clicking on a group that is already in exclusive mode will reset the selection (no group is selected)
 
@@ -40,7 +40,7 @@ Fading out all of the charts
 Setting the X-axis right below the selected chart
 </li>
 </ol>
-![Image title](/img/chart_drilldown_new_1.PNG)
+![Image title](/img/chartdrilldownnew1.PNG)
 <br>
 Clicking on a chart that is already in focus will reset the selection (no chart is selected)
 
@@ -48,7 +48,7 @@ Clicking on a chart that is already in focus will reset the selection (no chart 
 
 Clicking on the totals chart switches its stack mode from regular to stacked to 100% and back
 <br>
-![Image title](/img/totals_drilldown_new_1.PNG)
+![Image title](/img/totalsdrilldownnew1.PNG)
 
 ## Date Range Control
 
@@ -66,7 +66,7 @@ A specific time range can be selected by clicking on the date range control char
 
 The selection can be modified and moved by interacting with it.  A single click on the date range control chart (outside of the selection) will reset the selected range:
 
-![control](img/date_range_control.gif)
+![control](img/daterangecontrol.gif)
 
 ## Fog
 
@@ -74,7 +74,7 @@ Fog is used to highlight values above a certain threshold.  Parts of the chart b
 <br>
 By using fog, it is much easier to spot outlier values (which will be above the fog)
 
-![Image title](/img/fog_new.PNG)
+![Image title](/img/fognew.PNG)
 
 ## Transitions
 
@@ -88,10 +88,10 @@ There are two different tranisition modes:
 <br>
 1. `Group`: The plot periodically highlights a different group:
 <br>
-![Image title](/img/transitions_group.gif)
+![Image title](/img/transitionsgroup.gif)
 <br>
 1. `Chart`: The plot periodically highlights a different chart:
 <br>
-![Image title](/img/transitions_chart.gif)
+![Image title](/img/transitionschart.gif)
 
 The cycle period is [configurable](configuration_options.md#transitions)
