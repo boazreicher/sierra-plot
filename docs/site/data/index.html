@@ -57,6 +57,12 @@
                 </ul>
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Data</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <ul>
@@ -104,7 +110,60 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="data">Data<a class="headerlink" href="#data" title="Permanent link">#</a></h1>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
+<p>The Sierra Plot panel expects <i>time series</i> data frames, meaning each series must contain at least on field with <code>time</code> type (if multiple such fields exist, the first one will be used)
+<br>
+The data must also contain at least one field with type <code>number</code> to be used as the <a href="../configuration_options/#fields"><code>Amplitude</code></a>
+<br>
+At least one field of type <code>string</code> is also required, to be used ad the <a href="../configuration_options/#fields"><code>Chart Breakdown</code></a>
+<br>
+<br>
+For example, let's assume that we want to plot the number of requests hitting a number of different servers
+<br>
+Each server is located in some region
+<br>
+Our request count metric is calculated separately for <code>type=OK</code> and <code>type=ERROR</code>
+<br>
+<br>
+For the above example, our data will contain a <code>time</code> field, a <code>number</code> field that represents the number of requests, and a <code>string</code> field representing the server name</p>
+<p>The following (optional) fields can also be used:</p>
+<table>
+<thead>
+<tr>
+<th>Use</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Group Breakdown</code></td>
+<td><code>string</code></td>
+<td>Group charts with the same group value</td>
+<td>region</td>
+</tr>
+<tr>
+<td><code>Series Breakdown</code></td>
+<td><code>string</code></td>
+<td>Split the charts' data according to the series values</td>
+<td>type</td>
+</tr>
+<tr>
+<td><code>Weight</code></td>
+<td><code>number</code></td>
+<td>Used for weighted average calculations</td>
+<td>total requests</td>
+</tr>
+</tbody>
+</table>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
+<ul>
+<li>Sierra Plot expects that each data frame has the same fields</li>
+<li>Sierra Plot expects that each data frame be of the same length</li>
+<li>Sierra Plot doesn't currently support null values</li>
+</ul>
               
             </div>
           </div>
