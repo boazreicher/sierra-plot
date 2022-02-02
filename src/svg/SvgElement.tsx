@@ -59,6 +59,10 @@ export abstract class SvgElement {
 
   abstract hasDataPoints(): boolean;
 
+  getKey(): string | undefined {
+    return this.id;
+  }
+
   isHighlighted(selection: Selection): boolean {
     if (selection !== undefined && selection.active) {
       let selectedId = selection.key + ID_KV_SEPERATOR + selection.value;

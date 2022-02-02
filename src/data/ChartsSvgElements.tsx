@@ -19,7 +19,11 @@ export class ChartsSvgElements {
       (presentationElement) => (result = result.concat(presentationElement.toSvgElements(this.chartsElements)))
     );
 
-    return this.chartsElements.concat(result);
+    // For some reason some elements appear multiple times
+    result = this.chartsElements.concat(result);
+    let unique = new Set(result);
+
+    return Array.from(unique);
   }
 
   getChartsElements(): SvgElement[] {

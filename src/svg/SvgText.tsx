@@ -1,3 +1,4 @@
+import { KEY_PREFIX_LABEL_ELEMENT } from 'Constants';
 import React from 'react';
 import { SvgElement } from 'svg/SvgElement';
 import { ChartType } from 'types';
@@ -45,5 +46,9 @@ export class SvgText extends SvgElement {
     };
 
     return divStyle;
+  }
+
+  getKey(): string | undefined {
+    return KEY_PREFIX_LABEL_ELEMENT + this.text;
   }
 }

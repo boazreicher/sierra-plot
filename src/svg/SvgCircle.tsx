@@ -43,7 +43,7 @@ export class SvgCircle extends SvgElement {
     throw new Error('Method not implemented.');
   }
   isGroup(): boolean {
-    throw new Error('Method not implemented.');
+    return false;
   }
   hasDataPoints(): boolean {
     throw new Error('Method not implemented.');
