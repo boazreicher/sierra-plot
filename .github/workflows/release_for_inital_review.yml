@@ -117,17 +117,6 @@ jobs:
       - name: Lint plugin
         run: echo "Skipping plugin validator, because the plugin is not signed"
 
-      - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }} UNSIGNED
-          body_path: ${{ steps.changelog.outputs.path }}
-          draft: false
-
       - name: Add plugin to release
         id: upload-plugin-asset
         uses: actions/upload-release-asset@v1
