@@ -40,6 +40,8 @@ export const ID_TYPE_CHART_ELEMENT = 'c';
 export const ID_TYPE_GROUP_ELEMENT = 'g';
 export const ID_TYPE_LABEL_ELEMENT = 'l';
 
+export const KEY_PREFIX_LABEL_ELEMENT = "lbl_";
+
 export const HUE_SHIFT_SERIES = 40;
 export const HUE_SHIFT_GROUPS = 20;
 export const LUMINANCE_INCEASE_CHARTS = 10;

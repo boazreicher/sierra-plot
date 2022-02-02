@@ -115,7 +115,6 @@ export class ChartElements implements PresentationElement {
           }
         }
       }
-
       elements.push(chartGroup);
     });
 
