@@ -6,6 +6,7 @@ import { FieldSelector } from 'inputs/FieldSelector';
 import { OptionalFieldSelector } from 'inputs/OptionalFieldSelector';
 import { GroupsSelector } from 'inputs/GroupsSelector';
 import { SeriesSelector } from 'inputs/SeriesSelector';
+import { LabelSelectorAutoFill } from 'inputs/LabelSelectorAutoFill';
 
 export const plugin = new PanelPlugin<SierraPlotOptions>(SierraPlotPanel).setPanelOptions((builder) => {
   return builder
@@ -23,7 +24,7 @@ export const plugin = new PanelPlugin<SierraPlotOptions>(SierraPlotPanel).setPan
       name: 'Breakdown',
       description: 'Field for chart breakdown',
       category: ['Fields'],
-      editor: LabelSelector,
+      editor: LabelSelectorAutoFill,
     })
     .addCustomEditor({
       id: 'chartsGroupField',

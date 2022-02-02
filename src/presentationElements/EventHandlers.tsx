@@ -55,6 +55,7 @@ export function getOnClickHandlerForTotal(
   let clickEventHandler: React.MouseEventHandler = (event) => {
     if (panelOptions.selectedChart === undefined) {
       panelOptions.selectedChart = new Selection('', '');
+      panelOptions.selectedChart.deselect();
     }
 
     if (panelOptions.totalStackMode === 'stacked') {
