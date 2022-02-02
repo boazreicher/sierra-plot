@@ -118,7 +118,7 @@ jobs:
         run: echo "Skipping plugin validator, because the plugin is not signed"
 
       - name: Get release
-        id: get_release
+        id: get_current_release
         uses: bruceadams/get-release@v1.2.3
         with:
           latest: true
