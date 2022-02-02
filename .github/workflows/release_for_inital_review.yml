@@ -126,7 +126,7 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }} UNSIGNED
           body_path: ${{ steps.changelog.outputs.path }}
-          draft: true
+          draft: false
 
       - name: Add plugin to release
         id: upload-plugin-asset
