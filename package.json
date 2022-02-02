@@ -1,6 +1,6 @@
 {
     "name": "sierraplot",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "Sierra Plot Grafana Plugin",
     "scripts": {
         "build": "grafana-toolkit plugin:build",
@@ -12,7 +12,7 @@
         "restart": "net stop Grafana && net start Grafana",
         "runAll": "grafana-toolkit plugin:dev && grafana-toolkit plugin:sign --rootUrls http://localhost:3000/ && net stop Grafana && net start Grafana"
     },
-    "author": "boazr",
+    "author": "boazreicher",
     "license": "Apache-2.0",
     "devDependencies": {
         "@grafana/data": "latest",

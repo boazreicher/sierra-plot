@@ -2,11 +2,11 @@
     "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
     "type": "panel",
     "name": "Sierra Plot",
-    "id": "boazr-sierraplot-panel",
+    "id": "boazreicher-sierraplot-panel",
     "info": {
         "description": "Sierra Plot Panel",
         "author": {
-            "name": "boazr",
+            "name": "boazreicher",
             "url": "https://github.com/boazreicher"
         },
         "keywords": [
