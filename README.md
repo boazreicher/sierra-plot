@@ -1,5 +1,7 @@
-# sierra-plot
+# Sierra Plot
 Sierra Plot Grafana Panel Plugin
+
+Documentation can be found [here](https://boazreicher.github.io/sierra-plot/)
 
 
 [![pages-build-deployment](https://github.com/boazreicher/sierra-plot/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/boazreicher/sierra-plot/actions/workflows/pages/pages-build-deployment)
