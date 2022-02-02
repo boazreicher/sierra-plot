@@ -426,7 +426,7 @@ export function calculateTotalsSingleOriginal(charts: ChartData[]): DataSeries {
 
 export function buildDataForRangeSelector(timeRange: TimeRange, single: DataSeries): string[] {
   let result: string[] = [];
-  console.log('Building data from time range: ' + timeRange.start + ' - ' + timeRange.end);
+
   let start = Math.floor(timeRange.start);
   let end = Math.floor(timeRange.end);
   let step = Math.floor((end - start) / single.dataPoints.length);
