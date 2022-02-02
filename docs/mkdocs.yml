@@ -1,6 +1,8 @@
 site_name: Sierra Plot
-theme: readthedocs
+theme:
+  name: readthedocs
 extra_css: [custom.css]
+logo: None
 markdown_extensions:
   - admonition
   - attr_list
