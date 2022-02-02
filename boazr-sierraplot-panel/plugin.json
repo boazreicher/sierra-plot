@@ -1,0 +1,63 @@
+{
+    "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
+    "type": "panel",
+    "name": "Sierra Plot",
+    "id": "boazr-sierraplot-panel",
+    "info": {
+        "description": "Sierra Plot Panel",
+        "author": {
+            "name": "boazr",
+            "url": "https://github.com/boazreicher"
+        },
+        "keywords": [
+            "Sierra",
+            "Ridgeline",
+            "Joyplot",
+            "Joy Plot"
+        ],
+        "logos": {
+            "small": "img/logo.svg",
+            "large": "img/logo.svg"
+        },
+        "links": [{
+                "name": "Website",
+                "url": "https://github.com/boazreicher/sierra-plot"
+            },
+            {
+                "name": "License",
+                "url": "https://github.com/boazreicher/sierra-plot/blob/main/LICENSE"
+            }
+        ],
+        "screenshots": [{
+                "name": "Covid-19",
+                "path": "img/covid.png"
+            },
+            {
+                "name": "Covid-19 2",
+                "path": "img/covid2.png"
+            },
+            {
+                "name": "Mortality Rates",
+                "path": "img/mortality.png"
+            },
+            {
+                "name": "200 Servers",
+                "path": "img/200.png"
+            },
+            {
+                "name": "2000 Servers",
+                "path": "img/2000.png"
+            },
+            {
+                "name": "Transitions",
+                "path": "img/transitions.gif"
+            }
+        ],
+        "version": "1.0.2",
+        "updated": "2022-02-02"
+    },
+    "dependencies": {
+        "grafanaDependency": ">=7.0.0",
+        "plugins": []
+    }
+}

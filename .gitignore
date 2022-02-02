@@ -31,3 +31,5 @@ e2e-results/
 
 src/test
 .prettierrc
+
+*.zip
