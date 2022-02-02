@@ -1,6 +1,8 @@
 # Sierra Plot
 Sierra Plot Grafana Panel Plugin
 
+![logo](https://boazreicher.github.io/sierra-plot/img/logo.svg)
+
 Documentation can be found [here](https://boazreicher.github.io/sierra-plot/)
 
 
