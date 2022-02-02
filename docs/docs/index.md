@@ -1,6 +1,6 @@
 # Sierra Plot
 
-Sierra Plot is a Grafan panel plugin for visualizing datasets containing a very large number of series
+Sierra Plot is a Grafana panel plugin for visualizing datasets containing a very large number of series
 <br>
 A Sierra Plot is an extension of the [Ridgeline Plot](https://blog.revolutionanalytics.com/2017/07/joyplots.html)[^1], with a number of additional elements, most notably:
 <ul>
@@ -10,5 +10,6 @@ A Sierra Plot is an extension of the [Ridgeline Plot](https://blog.revolutionana
 <li>And much <a href="features/">more</a></li>
 </ul>
 
+![logo](img/logo.svg)
 
 [^1]: Although the use case is quite different, the original motivation is [Brendan Gregg's](https://www.brendangregg.com/index.html) [Frequency Trails](https://www.brendangregg.com/FrequencyTrails/intro.html)
