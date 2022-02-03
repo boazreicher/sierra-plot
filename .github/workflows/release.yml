@@ -124,16 +124,15 @@ jobs:
           popd
           plugincheck ${{ steps.metadata.outputs.archive }}
 
-      - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get release
+        id: get_current_release
+        uses: bruceadams/get-release@v1.2.3
         with:
+          latest: true
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body_path: ${{ steps.changelog.outputs.path }}
-          draft: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Add plugin to release
         id: upload-plugin-asset
@@ -141,7 +140,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ steps.get_current_release.outputs.upload_url }}
           asset_path: ./${{ steps.metadata.outputs.archive }}
           asset_name: ${{ steps.metadata.outputs.archive }}
           asset_content_type: application/zip
@@ -152,7 +151,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ steps.get_current_release.outputs.upload_url }}
           asset_path: ./${{ steps.metadata.outputs.archive-checksum }}
           asset_name: ${{ steps.metadata.outputs.archive-checksum }}
           asset_content_type: text/plain

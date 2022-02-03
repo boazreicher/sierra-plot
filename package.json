@@ -1,6 +1,6 @@
 {
     "name": "sierraplot",
-    "version": "1.0.13",
+    "version": "1.0.14",
     "description": "Sierra Plot Grafana Plugin",
     "scripts": {
         "build": "grafana-toolkit plugin:build",
