@@ -5,6 +5,8 @@ The following examples can be used to get a better practical sense of how Sierra
 Each example contains the source data (in <i>csv</i> format) and a sample dashboard JSON file
 <br>
 To load the data into Grafana, the [CSV Datasource plugin](https://grafana.com/grafana/plugins/marcusolsson-csv-datasource/) is required
+<br>
+When using the CSV Datasource, the [prepare time series transformation](https://grafana.com/docs/grafana/latest/panels/transformations/types-options/#prepare-time-series) needs to be used (already configured in the sample dashboard JSONs)
 
 
 !!! note inline
@@ -52,3 +54,20 @@ Dataset: [CSV](https://github.com/boazreicher/sierra-plot/raw/main/examples/data
 Dashboard: [JSON](https://github.com/boazreicher/sierra-plot/raw/main/examples/dashboards/covid19.json)
 
 ![image_small](img/examples/mortality/mortality1.png)
+
+
+## Promethues Datasource
+The following example uses the standard Prometheus data source and uses the metric for the CPU utilization of the Prometheus server
+<br>
+Dashboard: [JSON](https://github.com/boazreicher/sierra-plot/raw/main/examples/dashboards/promethues.json)
+
+
+![image_small](img/groupdrilldownnew1.png)
+
+## TestData DB Datasource
+The following example uses the default TestData DB data source
+<br>
+Dashboard: [JSON](https://github.com/boazreicher/sierra-plot/raw/main/examples/dashboards/randomwalk.json)
+
+
+![image_small](img/defaultdatasource.png)

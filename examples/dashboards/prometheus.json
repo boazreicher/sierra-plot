@@ -1,0 +1,147 @@
+{
+    "annotations": {
+        "list": [{
+            "builtIn": 1,
+            "datasource": "-- Grafana --",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "target": {
+                "limit": 100,
+                "matchAny": false,
+                "tags": [],
+                "type": "dashboard"
+            },
+            "type": "dashboard"
+        }]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "links": [],
+    "liveNow": false,
+    "panels": [{
+        "datasource": "Prometheus",
+        "gridPos": {
+            "h": 8,
+            "w": 7,
+            "x": 0,
+            "y": 0
+        },
+        "id": 6,
+        "options": {
+            "aggregation": "sum",
+            "amplitudeField": "Value",
+            "backgroundColor": "#000000",
+            "chartBreakdownType": "none",
+            "chartLabelShiftX": 213,
+            "chartLabelSize": 80,
+            "chartType": "area",
+            "chartsFieldBreakdown": "core",
+            "chartsGroupField": "groupdim",
+            "color": "#ad1ab7",
+            "colorMode": "group",
+            "colorSteps": 2,
+            "colorType": "sequential",
+            "excludedGroups": [
+                ""
+            ],
+            "excludedSeries": [
+                ""
+            ],
+            "fogBlur": 50,
+            "fogColor": "white",
+            "fogHeight": 50,
+            "glow": false,
+            "glowSpread": 29,
+            "gridlineColor": "#0488d0",
+            "gridlineEnabled": false,
+            "gridlinePosition": "below",
+            "gridlineTicks": 30,
+            "gridlineWidth": 3,
+            "groupLabelSize": 100,
+            "groupOpacity": 0.2,
+            "labelColor": "#d3d3d3",
+            "leftMargin": 0,
+            "markersColor": "#663399",
+            "markersMode": "disable",
+            "markersRadius": 10,
+            "maxYType": "global",
+            "outlineColor": "#000000",
+            "outlineOpacity": 1,
+            "outlineWidth": 2.7,
+            "panX": 0,
+            "panY": 0,
+            "scaleY": 163,
+            "selectedChart": {
+                "active": false,
+                "hightlightMode": "none",
+                "key": "",
+                "type": 1,
+                "value": "",
+                "x": 0,
+                "y": 2333.3333333333335
+            },
+            "selectedChartSaturation": 50,
+            "selectedGroups": [
+                "*"
+            ],
+            "selectedSeries": [
+                "*"
+            ],
+            "seperationPerc": -46,
+            "seriesCountSize": "sm",
+            "seriesFieldBreakdown": "mode",
+            "showBackground": false,
+            "showChartLabels": false,
+            "showControlElements": false,
+            "showFog": false,
+            "showFrame": false,
+            "showGroups": true,
+            "showRangeSelector": false,
+            "showSeriesCount": false,
+            "showTotal": true,
+            "skewPercentage": 2.48,
+            "sortMode": "lex",
+            "stepped": false,
+            "switchTotal": true,
+            "text": "Default value of text input option",
+            "timeRangeEnd": 1642614119000,
+            "timeRangeStart": 1642527780000,
+            "topMargin": 0,
+            "totalBreakdown": "chart",
+            "totalChartType": "area",
+            "totalOpacity": 0.2,
+            "totalPerc": 32,
+            "totalStackMode": "stacked",
+            "transitionPeriod": "5000",
+            "transitionType": "none",
+            "ySeperation": 0,
+            "zoomPercentageX": 100
+        },
+        "targets": [{
+            "exemplar": true,
+            "expr": "sum(label_replace(label_replace(label_replace(rate(windows_cpu_time_total{mode!=\"idle\"}[1m]), \"groupdim\", \"group1\", \"core\", \"0,([0123])\"), \"groupdim\", \"group2\", \"core\", \"0,([45])\"), \"groupdim\", \"group33\", \"core\", \"0,([67])\")) by (core, mode, job, groupdim)",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+        }],
+        "type": "boazr-sierraplot-panel"
+    }],
+    "refresh": false,
+    "schemaVersion": 31,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "2022-01-19T17:51:20.000Z",
+        "to": "2022-01-19T18:11:20.000Z"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Demo - CPU (Prometheus)"
+}
