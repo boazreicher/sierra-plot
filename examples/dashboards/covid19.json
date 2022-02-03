@@ -75,6 +75,8 @@
             "outlineColor": "#000000",
             "outlineOpacity": 1,
             "outlineWidth": 1.1,
+            "panX": 0,
+            "panY": 0,
             "scaleY": 1029,
             "selectedChart": {
                 "active": false,
@@ -90,6 +92,7 @@
             "selectedSeries": [
                 "*"
             ],
+            "seperationPerc": -500,
             "seriesFieldBreakdown": "gender",
             "showBackground": true,
             "showChartLabels": true,
@@ -180,7 +183,7 @@
             }
         }],
         "transparent": true,
-        "type": "monkcharts"
+        "type": "boazr-sierraplot-panel"
     }],
     "refresh": false,
     "schemaVersion": 31,

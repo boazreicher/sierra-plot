@@ -11,6 +11,38 @@ To load the data into Grafana, the [CSV Datasource plugin](https://grafana.com/g
 
     The data used in the following examples should not be used for any actual analysis.  Some of the data is completely generated, while some is based on real-world data sets, but with modifications made just for the purpose of these examples
 
+
+## Servers
+
+Based on [this example](examples.md#i-requests-to-servers)
+<br>
+Dataset: [CSV](https://github.com/boazreicher/sierra-plot/raw/main/examples/data/test_servers.csv)
+<br>
+Dashboard: [JSON](https://github.com/boazreicher/sierra-plot/raw/main/examples/dashboards/server1.json)
+
+![image_small](img/examples/serversrequests/initial.png)
+
+## Servers Errors
+
+Based on [this example](examples.md#iiii-error-trend)
+<br>
+Dataset: [CSV](https://github.com/boazreicher/sierra-plot/raw/main/examples/data/test_servers.csv)
+<br>
+Dashboard: [JSON](https://github.com/boazreicher/sierra-plot/raw/main/examples/dashboards/servers_errors.json)
+
+![image_small](img/examples/serversrequests/errorsall.png)
+
+
+## Mortality Rates
+
+Based on [this example](examples.md#ii-mortality-rates)
+<br>
+Dataset: [CSV](https://github.com/boazreicher/sierra-plot/raw/main/examples/data/france_mortality.csv)
+<br>
+Dashboard: [JSON](https://github.com/boazreicher/sierra-plot/raw/main/examples/dashboards/mortality.json)
+
+![image_small](img/examples/serversrequests/initial.png)
+
 ## Covid-19
 
 Based on [this example](examples.md#iii-covid19-cases)
@@ -19,4 +51,4 @@ Dataset: [CSV](https://github.com/boazreicher/sierra-plot/raw/main/examples/data
 <br>
 Dashboard: [JSON](https://github.com/boazreicher/sierra-plot/raw/main/examples/dashboards/covid19.json)
 
-![covid_small](img/examples/covid/covid1.png)
+![image_small](img/examples/mortality/mortality1.png)
