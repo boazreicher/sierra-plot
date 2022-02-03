@@ -1,13 +1,13 @@
 {
     "name": "sierraplot",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "description": "Sierra Plot Grafana Plugin",
     "scripts": {
         "build": "grafana-toolkit plugin:build",
         "test": "grafana-toolkit plugin:test",
         "dev": "grafana-toolkit plugin:dev",
         "watch": "grafana-toolkit plugin:dev --watch",
-        "sign": "grafana-toolkit plugin:sign --rootUrls http://localhost:3000/",
+        "sign": "grafana-toolkit plugin:sign",
         "start": "yarn watch",
         "restart": "net stop Grafana && net start Grafana",
         "runAll": "grafana-toolkit plugin:dev && grafana-toolkit plugin:sign --rootUrls http://localhost:3000/ && net stop Grafana && net start Grafana"
