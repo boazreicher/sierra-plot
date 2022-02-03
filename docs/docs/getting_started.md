@@ -59,7 +59,7 @@ Dashboard: [JSON](https://github.com/boazreicher/sierra-plot/raw/main/examples/d
 ## Promethues Datasource
 The following example uses the standard Prometheus data source and uses the metric for the CPU utilization of the Prometheus server
 <br>
-Dashboard: [JSON](https://github.com/boazreicher/sierra-plot/raw/main/examples/dashboards/promethues.json)
+Dashboard: [JSON](https://github.com/boazreicher/sierra-plot/raw/main/examples/dashboards/prometheus.json)
 
 
 ![image_small](img/groupdrilldownnew1.png)
