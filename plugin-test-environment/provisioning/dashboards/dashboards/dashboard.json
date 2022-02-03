@@ -323,7 +323,7 @@
         ],
         "title": "Example",
         "transparent": true,
-        "type": "boazr-sierraplot-panel"
+        "type": "boazreicher-sierraplot-panel"
     }],
     "schemaVersion": 31,
     "style": "dark",
