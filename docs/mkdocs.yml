@@ -1,4 +1,6 @@
 site_name: Sierra Plot
+repo_url: https://github.com/boazreicher/sierra-plot
+edit_uri: blob/main/docs/docs/
 theme:
   name: readthedocs
 extra_css: [custom.css]
