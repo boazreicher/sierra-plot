@@ -147,7 +147,7 @@
                 }
             ],
             "transparent": true,
-            "type": "boazr-sierraplot-panel"
+            "type": "boazreicher-sierraplot-panel"
         },
         {
             "datasource": "-- Dashboard --",
@@ -273,7 +273,7 @@
                 }
             ],
             "transparent": true,
-            "type": "boazr-sierraplot-panel"
+            "type": "boazreicher-sierraplot-panel"
         }
     ],
     "schemaVersion": 31,
