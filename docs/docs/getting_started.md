@@ -51,7 +51,7 @@ Dataset: [CSV](https://github.com/boazreicher/sierra-plot/raw/main/examples/data
 <br>
 Dashboard: [JSON](https://github.com/boazreicher/sierra-plot/raw/main/examples/dashboards/mortality.json)
 
-![image_small](img/examples/serversrequests/initial.png)
+![image_small](img/examples/mortality/mortality1.png)
 
 ### Covid-19
 
@@ -61,7 +61,7 @@ Dataset: [CSV](https://github.com/boazreicher/sierra-plot/raw/main/examples/data
 <br>
 Dashboard: [JSON](https://github.com/boazreicher/sierra-plot/raw/main/examples/dashboards/covid19.json)
 
-![image_small](img/examples/mortality/mortality1.png)
+![image_small](img/examples/covid/covid1.png)
 
 
 ### Promethues Datasource
