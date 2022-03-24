@@ -147,7 +147,7 @@
                 }
             ],
             "transparent": true,
-            "type": "monkcharts"
+            "type": "boazr-sierraplot-panel"
         },
         {
             "datasource": "-- Dashboard --",
@@ -273,7 +273,7 @@
                 }
             ],
             "transparent": true,
-            "type": "monkcharts"
+            "type": "boazr-sierraplot-panel"
         }
     ],
     "schemaVersion": 31,
